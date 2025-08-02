@@ -61,7 +61,7 @@ export interface ExtractedData {
 export interface ReportSummary {
   totalGoals: number;
   totalBMPs: number;
-  completionRate: number;
+  completionRate: number | null;
 }
 
 /**

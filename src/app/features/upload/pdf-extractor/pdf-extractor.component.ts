@@ -1,6 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../core/services/api.service';
+import { MockApiService } from '../../../core/services/mock-api.service';
 import {
   UploadResponse,
   ExtractedData,
@@ -14,6 +15,11 @@ import {
 })
 export class PdfExtractorComponent {
   private readonly apiService = inject(ApiService);
+  private readonly mockApiService = inject(MockApiService);
+
+  // 🎭 TOGGLE THIS FLAG TO SWITCH BETWEEN REAL API AND MOCK
+  // Set to true for development without consuming tokens
+  private readonly useMockData = true;
 
   // Component state with proper typing
   selectedFile = signal<File | null>(null);
@@ -21,6 +27,13 @@ export class PdfExtractorComponent {
   extractionResponse = signal<UploadResponse | null>(null);
   extractedData = signal<ExtractedData | null>(null);
   errorMessage = signal<string | null>(null);
+
+  /**
+   * Get the appropriate service based on mock flag
+   */
+  private getService() {
+    return this.useMockData ? this.mockApiService : this.apiService;
+  }
 
   /**
    * Handle file selection from input or drag & drop
@@ -61,7 +74,8 @@ export class PdfExtractorComponent {
     this.extractionResponse.set(null);
     this.extractedData.set(null);
 
-    this.apiService.extractFromPdf(file).subscribe({
+    const service = this.getService();
+    service.extractFromPdf(file).subscribe({
       next: (response: UploadResponse) => {
         console.log('PDF extraction successful:', response);
         this.extractionResponse.set(response);
@@ -90,7 +104,8 @@ export class PdfExtractorComponent {
    * Test backend connection
    */
   testConnection() {
-    this.apiService.testConnection().subscribe({
+    const service = this.getService();
+    service.testConnection().subscribe({
       next: (response: any) => {
         console.log('Backend connected:', response);
         this.errorMessage.set(null);
