@@ -74,7 +74,7 @@ export interface Goal {
   targetArea?: string;
   schedule?: string;
   contacts?: Contact[];
-  desiredOutcomes?: string[];
+  desiredOutcomes?: string[] | null;
 }
 
 /**
@@ -82,15 +82,15 @@ export interface Goal {
  */
 export interface BMP {
   name: string;
-  description?: string;
-  type?: 'Nutrient' | 'Pathogen' | 'Sediment' | string;
+  description?: string | null;
+  type?: 'Nutrient' | 'Pathogen' | 'Sediment' | string | null;
   targetAreas?: string[];
-  quantity?: number;
-  unit?: string; // e.g. "ft", "ac", "ea"
-  estimatedCost?: number;
+  quantity?: number | null;
+  unit?: string | null; // e.g. "ft", "ac", "ea"
+  estimatedCost?: number | null;
   partners?: Organization[];
   schedule?: string;
-  priorityFactors?: string[];
+  priorityFactors?: string[] | null;
 }
 
 /**
@@ -160,12 +160,12 @@ export interface EventDetail {
  */
 export interface GeographicArea {
   name: string;
-  counties?: string[];
-  acreage?: number;
-  landUseTypes?: LandUseType[];
-  population?: number;
-  towns?: string[];
-  huc?: string;
+  counties?: string[] | null;
+  acreage?: number | null;
+  landUseTypes?: LandUseType[] | null;
+  population?: number | null;
+  towns?: string[] | null;
+  huc?: string | null;
   description?: string;
 }
 
@@ -181,11 +181,11 @@ export interface LandUseType {
  * Contact for a person/team member/agency
  */
 export interface Contact {
-  name: string;
-  role?: string;
-  organization?: string;
-  phone?: string;
-  email?: string;
+  name?: string | null;
+  role?: string | null;
+  organization?: string | null;
+  phone?: string | null;
+  email?: string | null;
 }
 
 /**

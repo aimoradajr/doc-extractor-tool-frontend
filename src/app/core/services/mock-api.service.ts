@@ -97,6 +97,122 @@ export class MockApiService {
     ],
   } as ExtractedData;
 
+  private readonly mockExtractedData2: ExtractedData = {
+    reportSummary: {
+      totalGoals: 1,
+      totalBMPs: 9,
+      completionRate: null,
+    },
+    goals: [
+      {
+        description:
+          'Reduce nutrient and sediment loading, achieve standards for Low DO/Organic enrichment ands narrative standards for nutrient loading, and Fish and Wildlife Support designated use',
+        objective:
+          'Continue existing programs and projects related to farmer education, BMP implementation, and habitat conservation',
+        targetArea: 'Entire watershed',
+        schedule: '2012-2014',
+        contacts: [
+          {
+            name: 'Mark Gilbert',
+            role: null,
+            organization: 'MSWCC',
+          },
+          {
+            name: null,
+            role: null,
+            organization: 'NRCS',
+          },
+          {
+            name: null,
+            role: null,
+            organization: 'Tippah Co. SWCD',
+          },
+        ],
+        desiredOutcomes: null,
+      },
+    ],
+    bmps: [
+      {
+        name: 'Grade Stabilization Structures',
+        description: null,
+        type: null,
+        targetAreas: ['Entire Watershed'],
+        quantity: null,
+        unit: null,
+        estimatedCost: null,
+        partners: [
+          {
+            name: 'Local landowners',
+          },
+        ],
+        schedule: '2012-2014',
+        priorityFactors: null,
+      },
+    ],
+    implementation: [],
+    monitoring: [],
+    outreach: [],
+    geographicAreas: [
+      {
+        name: 'Bell Creek-West Prong Muddy Creek Watershed',
+        counties: null,
+        acreage: null,
+        landUseTypes: null,
+        population: null,
+        towns: null,
+        huc: null,
+        description:
+          'The targeted area for this project is the cropland and pastureland in Tippah County that lie within the watershed boundaries.',
+      },
+    ],
+    contacts: [
+      {
+        name: 'Mark Gilbert',
+        role: null,
+        organization: 'MSWCC',
+        phone: '601-354-7645',
+        email: null,
+      },
+      {
+        name: null,
+        role: null,
+        organization: 'NRCS',
+        phone: '662-837-4464 ext. 3',
+        email: null,
+      },
+      {
+        name: null,
+        role: null,
+        organization: 'Tippah Co. SWCD',
+        phone: '662-837-4464 ext. 3',
+        email: null,
+      },
+    ],
+    organizations: [
+      {
+        name: 'MSWCC',
+        contact: {
+          name: 'Mark Gilbert',
+          role: null,
+        },
+      },
+      {
+        name: 'NRCS',
+        contact: {
+          name: null,
+          role: null,
+        },
+      },
+      {
+        name: 'Tippah Co. SWCD',
+        contact: {
+          name: null,
+          role: null,
+        },
+      },
+    ],
+  } as ExtractedData;
+
   /**
    * Mock PDF extraction that returns sample data
    * @param file - The PDF file (ignored in mock)
@@ -112,7 +228,7 @@ export class MockApiService {
         originalName: file.name,
         size: file.size,
       },
-      extracted: this.mockExtractedData,
+      extracted: this.mockExtractedData2,
     };
 
     // Simulate processing delay (1-3 seconds)
