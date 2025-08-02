@@ -20,7 +20,10 @@ export class ApiService {
     const formData = new FormData();
     formData.append('pdf', file);
 
-    console.log('🌐 REAL API: Extracting from PDF using:', `${this.baseUrl}/extract`);
+    console.log(
+      '🌐 REAL API: Extracting from PDF using:',
+      `${this.baseUrl}/extract`
+    );
 
     return this.http.post<UploadResponse>(`${this.baseUrl}/extract`, formData);
   }

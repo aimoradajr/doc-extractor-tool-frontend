@@ -6,7 +6,6 @@ import { UploadResponse, ExtractedData } from '../interfaces/api.interfaces';
   providedIn: 'root',
 })
 export class MockApiService {
-  
   /**
    * Mock sample data for testing without consuming API tokens
    */
@@ -14,89 +13,88 @@ export class MockApiService {
     reportSummary: {
       totalGoals: 2,
       totalBMPs: 1,
-      completionRate: null
+      completionRate: null,
     },
     goals: [
       {
-        id: "080302040403",
-        description: "Identification of Causes and Sources of Impairment",
-        objective: "Restore and maintain the quality of impaired water bodies through the establishment of pollutant specific allowable loads",
-        targetArea: "Basket Creek-Hickahala Creek Watershed",
+        id: '080302040403',
+        description: 'Identification of Causes and Sources of Impairment',
+        objective:
+          'Restore and maintain the quality of impaired water bodies through the establishment of pollutant specific allowable loads',
+        targetArea: 'Basket Creek-Hickahala Creek Watershed',
         contacts: [],
         desiredOutcomes: [
-          "Restoration of water quality",
-          "Establishment of pollutant specific allowable loads"
-        ]
+          'Restoration of water quality',
+          'Establishment of pollutant specific allowable loads',
+        ],
       },
       {
-        description: "Expected Load Reduction",
-        objective: "Ensure the maximum load of TBODu specified in the TMDL of 1,317 lbs/day will not be exceeded",
-        targetArea: "Basket Creek-Hickahala Creek Watershed",
+        description: 'Expected Load Reduction',
+        objective:
+          'Ensure the maximum load of TBODu specified in the TMDL of 1,317 lbs/day will not be exceeded',
+        targetArea: 'Basket Creek-Hickahala Creek Watershed',
         contacts: [],
         desiredOutcomes: [
-          "50% reduction in fecal coliform in Hickahala Creek",
-          "70% reduction in James Wolf Creek"
-        ]
-      }
+          '50% reduction in fecal coliform in Hickahala Creek',
+          '70% reduction in James Wolf Creek',
+        ],
+      },
     ],
     bmps: [
       {
-        name: "Fencing",
-        type: "Sediment",
-        targetAreas: [
-          "Basket Creek-Hickahala Creek Watershed"
-        ],
+        name: 'Fencing',
+        type: 'Sediment',
+        targetAreas: ['Basket Creek-Hickahala Creek Watershed'],
         partners: [],
         priorityFactors: [
-          "Likely water quality benefit",
-          "Willing landowners",
-          "Implementation of the recommendations of the TMDLs",
-          "Ease of showing effectiveness of the BMP(s) through monitoring",
-          "Shorter length of time for anticipated results"
-        ]
-      }
+          'Likely water quality benefit',
+          'Willing landowners',
+          'Implementation of the recommendations of the TMDLs',
+          'Ease of showing effectiveness of the BMP(s) through monitoring',
+          'Shorter length of time for anticipated results',
+        ],
+      },
     ],
     implementation: [],
     monitoring: [],
     outreach: [],
     geographicAreas: [
       {
-        name: "Basket Creek-Hickahala Creek Watershed",
-        counties: [
-          "Tate County"
-        ],
+        name: 'Basket Creek-Hickahala Creek Watershed',
+        counties: ['Tate County'],
         acreage: 35085,
         landUseTypes: [
           {
-            type: "cropland",
-            percent: 11
+            type: 'cropland',
+            percent: 11,
           },
           {
-            type: "forest",
-            percent: 17
+            type: 'forest',
+            percent: 17,
           },
           {
-            type: "pasture/grass",
-            percent: 44
-          }
+            type: 'pasture/grass',
+            percent: 44,
+          },
         ],
         towns: [],
-        huc: "080302040403",
-        description: "The Basket Creek-Hickahala Creek watershed is located in Tate County and covers 35,085 acres. This watershed contains many landuse types including agricultural land, pastureland, and forest areas."
-      }
+        huc: '080302040403',
+        description:
+          'The Basket Creek-Hickahala Creek watershed is located in Tate County and covers 35,085 acres. This watershed contains many landuse types including agricultural land, pastureland, and forest areas.',
+      },
     ],
     contacts: [],
     organizations: [
       {
-        name: "Mississippi Soil and Water Conservation Commission"
+        name: 'Mississippi Soil and Water Conservation Commission',
       },
       {
-        name: "Natural Resources Conservation Service"
+        name: 'Natural Resources Conservation Service',
       },
       {
-        name: "Soil and Water Conservation Districts"
-      }
-    ]
+        name: 'Soil and Water Conservation Districts',
+      },
+    ],
   } as ExtractedData;
 
   /**
@@ -106,23 +104,21 @@ export class MockApiService {
    */
   extractFromPdf(file: File): Observable<UploadResponse> {
     console.log('🎭 MOCK: Using mock data for PDF extraction');
-    
+
     const mockResponse: UploadResponse = {
-      message: "PDF processed successfully with mock data",
+      message: 'PDF processed successfully with mock data',
       file: {
         filename: `mock_${Date.now()}.pdf`,
         originalName: file.name,
-        size: file.size
+        size: file.size,
       },
-      extracted: this.mockExtractedData
+      extracted: this.mockExtractedData,
     };
 
     // Simulate processing delay (1-3 seconds)
     const randomDelay = Math.random() * 2000 + 1000;
-    
-    return of(mockResponse).pipe(
-      delay(randomDelay)
-    );
+
+    return of(mockResponse).pipe(delay(randomDelay));
   }
 
   /**
@@ -131,14 +127,12 @@ export class MockApiService {
    */
   testConnection(): Observable<any> {
     console.log('🎭 MOCK: Connection test using mock service');
-    
+
     return of({
       status: 'ok',
       message: 'Mock backend connected successfully',
       timestamp: new Date().toISOString(),
-      mode: 'MOCK_MODE'
-    }).pipe(
-      delay(500)
-    );
+      mode: 'MOCK_MODE',
+    }).pipe(delay(500));
   }
 }

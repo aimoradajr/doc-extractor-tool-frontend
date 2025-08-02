@@ -24,9 +24,15 @@ export class PdfExtractorComponent {
   // Component state with proper typing
   selectedFile = signal<File | null>(null);
   isProcessing = signal(false);
+  isTestingConnection = signal(false);
   extractionResponse = signal<UploadResponse | null>(null);
   extractedData = signal<ExtractedData | null>(null);
   errorMessage = signal<string | null>(null);
+  connectionStatus = signal<{
+    success: boolean;
+    message: string;
+    mode?: string;
+  } | null>(null);
 
   /**
    * Get the appropriate service based on mock flag
@@ -104,19 +110,29 @@ export class PdfExtractorComponent {
    * Test backend connection
    */
   testConnection() {
+    this.isTestingConnection.set(true);
+    this.errorMessage.set(null);
+    this.connectionStatus.set(null);
+
     const service = this.getService();
     service.testConnection().subscribe({
       next: (response: any) => {
         console.log('Backend connected:', response);
-        this.errorMessage.set(null);
+        this.connectionStatus.set({
+          success: true,
+          message: response.message || 'Backend connection successful!',
+          mode: response.mode || (this.useMockData ? 'MOCK_MODE' : 'LIVE_MODE'),
+        });
+        this.isTestingConnection.set(false);
       },
       error: (error: any) => {
         console.error('Connection failed:', error);
-        this.errorMessage.set(
-          `Backend connection failed: ${
-            error.message || 'Check if backend is running on port 5000'
-          }`
-        );
+        this.connectionStatus.set({
+          success: false,
+          message:
+            error.message || 'Connection failed - check if backend is running',
+        });
+        this.isTestingConnection.set(false);
       },
     });
   }
@@ -127,8 +143,10 @@ export class PdfExtractorComponent {
   reset() {
     this.selectedFile.set(null);
     this.isProcessing.set(false);
+    this.isTestingConnection.set(false);
     this.extractionResponse.set(null);
     this.extractedData.set(null);
     this.errorMessage.set(null);
+    this.connectionStatus.set(null);
   }
 }
