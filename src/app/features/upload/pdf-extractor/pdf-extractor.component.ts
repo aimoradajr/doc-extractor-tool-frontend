@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../core/services/api.service';
 import { MockApiService } from '../../../core/services/mock-api.service';
@@ -13,7 +13,7 @@ import {
   templateUrl: './pdf-extractor.component.html',
   styleUrl: './pdf-extractor.component.scss',
 })
-export class PdfExtractorComponent {
+export class PdfExtractorComponent implements OnInit {
   private readonly apiService = inject(ApiService);
   private readonly mockApiService = inject(MockApiService);
 
@@ -43,14 +43,49 @@ export class PdfExtractorComponent {
   }
 
   /**
+   * Initialize component - auto-load mock data if in mock mode
+   */
+  ngOnInit() {
+    if (this.useMockData()) {
+      this.loadMockData();
+    }
+  }
+
+  /**
+   * Load mock data automatically to display sample results
+   */
+  private loadMockData() {
+    console.log('🎭 Auto-loading mock data for preview...');
+
+    // Create a dummy file for display purposes
+    const dummyFile = new File(['dummy'], 'sample-watershed-report.pdf', {
+      type: 'application/pdf',
+    });
+    this.selectedFile.set(dummyFile);
+
+    // Simply call the existing extractFromPdf function
+    // It will automatically use the mock service since useMockData() is true
+    this.extractFromPdf();
+  }
+
+  /**
    * Toggle between mock and real API
    */
   toggleMockMode() {
     this.useMockData.set(!this.useMockData());
     this.connectionStatus.set(null); // Clear previous connection status
+
     console.log(
       `🔄 Switched to ${this.useMockData() ? 'MOCK' : 'REAL'} API mode`
     );
+
+    // Auto-load mock data when switching to mock mode
+    if (this.useMockData()) {
+      this.loadMockData();
+    } else {
+      // Clear data when switching to real mode
+      this.reset();
+    }
   }
 
   /**

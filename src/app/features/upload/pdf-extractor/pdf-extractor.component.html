@@ -39,6 +39,11 @@
           >
             {{ useMockData() ? "🎭 Mock" : "🌐 Live" }}
           </span>
+          @if (useMockData()) {
+          <span class="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded-full">
+            Auto-loaded sample data
+          </span>
+          }
         </div>
 
         <!-- Connection Test Button -->
