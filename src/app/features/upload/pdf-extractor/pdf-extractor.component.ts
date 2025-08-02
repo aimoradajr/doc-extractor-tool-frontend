@@ -17,9 +17,10 @@ export class PdfExtractorComponent {
   private readonly apiService = inject(ApiService);
   private readonly mockApiService = inject(MockApiService);
 
-  // 🎭 TOGGLE THIS FLAG TO SWITCH BETWEEN REAL API AND MOCK
-  // Set to true for development without consuming tokens
-  private readonly useMockData = true;
+  // 🛠️ DEVELOPMENT DEBUG CONTROLS
+  // Set showDebugPanel to false to hide all debug tools in production
+  showDebugPanel = signal(true);
+  useMockData = signal(true); // Now toggleable from UI
 
   // Component state with proper typing
   selectedFile = signal<File | null>(null);
@@ -38,7 +39,18 @@ export class PdfExtractorComponent {
    * Get the appropriate service based on mock flag
    */
   private getService() {
-    return this.useMockData ? this.mockApiService : this.apiService;
+    return this.useMockData() ? this.mockApiService : this.apiService;
+  }
+
+  /**
+   * Toggle between mock and real API
+   */
+  toggleMockMode() {
+    this.useMockData.set(!this.useMockData());
+    this.connectionStatus.set(null); // Clear previous connection status
+    console.log(
+      `🔄 Switched to ${this.useMockData() ? 'MOCK' : 'REAL'} API mode`
+    );
   }
 
   /**
@@ -121,7 +133,8 @@ export class PdfExtractorComponent {
         this.connectionStatus.set({
           success: true,
           message: response.message || 'Backend connection successful!',
-          mode: response.mode || (this.useMockData ? 'MOCK_MODE' : 'LIVE_MODE'),
+          mode:
+            response.mode || (this.useMockData() ? 'MOCK_MODE' : 'LIVE_MODE'),
         });
         this.isTestingConnection.set(false);
       },
