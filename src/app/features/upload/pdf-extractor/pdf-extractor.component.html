@@ -330,35 +330,103 @@
           <!-- Summary Tab -->
           @if (activeTab() === 'summary') {
           <div class="space-y-6">
-            @if (extractedData()!.reportSummary) {
-            <div class="p-4 bg-white rounded border">
-              <h4 class="font-semibold text-green-800 mb-4">Report Summary</h4>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                <div class="p-3 bg-gray-50 rounded">
-                  <span class="font-medium text-gray-600">Total Goals:</span>
-                  <p class="text-2xl font-bold text-green-600 mt-1">
-                    {{ extractedData()!.reportSummary!.totalGoals }}
-                  </p>
-                </div>
-                <div class="p-3 bg-gray-50 rounded">
-                  <span class="font-medium text-gray-600">Total BMPs:</span>
-                  <p class="text-2xl font-bold text-blue-600 mt-1">
-                    {{ extractedData()!.reportSummary!.totalBMPs }}
-                  </p>
-                </div>
-                <div class="p-3 bg-gray-50 rounded">
-                  <span class="font-medium text-gray-600"
-                    >Completion Rate:</span
-                  >
-                  <p class="text-2xl font-bold text-purple-600 mt-1">
-                    {{
-                      extractedData()!.reportSummary!.completionRate || "N/A"
-                    }}
-                  </p>
+            <!-- Overview and Status Summary Row -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Overview Card -->
+              <div class="p-4 bg-gray-50 rounded border">
+                <h4 class="font-semibold text-green-800 mb-4">Overview</h4>
+                <p class="text-sm text-gray-700 leading-relaxed">
+                  This report tracks
+                  {{ extractedData()!.goals?.length || 0 }} main goals related
+                  to different critical areas, with multiple benchmarks for each
+                  goal. The data shows implementation status across multiple
+                  watersheds in Columbia County.
+                </p>
+              </div>
+
+              <!-- Status Summary Card -->
+              <div class="p-4 bg-gray-50 rounded border">
+                <h4 class="font-semibold text-green-800 mb-4">
+                  Status Summary
+                </h4>
+                <div class="grid grid-cols-3 gap-4 text-center">
+                  <div>
+                    <p class="text-2xl font-bold text-green-600 mb-1">100%</p>
+                    <p class="text-xs text-gray-600">Protection Goals</p>
+                  </div>
+                  <div>
+                    <p class="text-2xl font-bold text-blue-600 mb-1">90%</p>
+                    <p class="text-xs text-gray-600">Enhancement Goals</p>
+                  </div>
+                  <div>
+                    <p class="text-2xl font-bold text-purple-600 mb-1">48%</p>
+                    <p class="text-xs text-gray-600">Benchmarks Met</p>
+                  </div>
                 </div>
               </div>
             </div>
-            }
+
+            <!-- Data Visualization Section -->
+            <div class="p-4 bg-white rounded border">
+              <h4 class="font-semibold text-green-800 mb-4">
+                Data Visualization
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Chart Card 1 -->
+                <div
+                  class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                >
+                  <div class="flex items-center justify-center h-32">
+                    <p class="text-gray-500 text-sm">Goals Progress Chart</p>
+                  </div>
+                </div>
+
+                <!-- Chart Card 2 -->
+                <div
+                  class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                >
+                  <div class="flex items-center justify-center h-32">
+                    <p class="text-gray-500 text-sm">BMPs Implementation</p>
+                  </div>
+                </div>
+
+                <!-- Chart Card 3 -->
+                <div
+                  class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                >
+                  <div class="flex items-center justify-center h-32">
+                    <p class="text-gray-500 text-sm">Geographic Distribution</p>
+                  </div>
+                </div>
+
+                <!-- Chart Card 4 -->
+                <div
+                  class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                >
+                  <div class="flex items-center justify-center h-32">
+                    <p class="text-gray-500 text-sm">Timeline Overview</p>
+                  </div>
+                </div>
+
+                <!-- Chart Card 5 -->
+                <div
+                  class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                >
+                  <div class="flex items-center justify-center h-32">
+                    <p class="text-gray-500 text-sm">Status Breakdown</p>
+                  </div>
+                </div>
+
+                <!-- Chart Card 6 -->
+                <div
+                  class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                >
+                  <div class="flex items-center justify-center h-32">
+                    <p class="text-gray-500 text-sm">Performance Metrics</p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <!-- Quick Overview Cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
