@@ -1,75 +1,54 @@
 /**
  * API Response Interfaces for PDF Document Extractor
- * Based on analysis of agricultural/environmental watershed reports
+ * Matches backend interfaces exactly for type safety
  */
 
 // =============================================================================
-// API Response Types
+// API Response Types (Backend Contract)
 // =============================================================================
+
+/**
+ * PDF extraction result from backend processing
+ */
+export interface PdfExtractionResult {
+  text: string;
+  pages: number;
+  textLength: number;
+}
 
 /**
  * Response from PDF upload endpoint
  */
 export interface UploadResponse {
-  success: boolean;
-  jobId: string;
-  fileName: string;
-  fileSize: number;
-  uploadedAt: Date | string;
-  message?: string;
-}
-
-/**
- * Job processing status response
- */
-export interface JobStatusResponse {
-  jobId: string;
-  status: JobStatus;
-  progress: number;
-  message?: string;
-  estimatedTimeRemaining?: number;
-}
-
-/**
- * Main extraction results from PDF processing
- */
-export interface ExtractionResults {
-  jobId: string;
-  fileName: string;
-  status: JobStatus;
-  processingTime: number;
-  accuracy: number;
-  extractedAt: Date | string;
-
-  // Core extracted data
-  reportSummary: ReportSummary;
-  goals: Goal[];
-  bmps: BMP[];
-  implementationActivities: ImplementationActivity[];
-  monitoringMetrics: MonitoringMetric[];
-  outreachActivities: OutreachActivity[];
-  geographicAreas: GeographicArea[];
-  contacts: Contact[];
-  organizations: Organization[];
-
-  // Raw extraction data
-  rawText?: string;
-  metadata: {
-    pageCount: number;
-    wordCount: number;
-    documentType: string;
-    extractionMethod: string;
+  message: string;
+  file: {
+    filename: string;
+    originalName: string;
+    size: number;
   };
+  extracted: PdfExtractionResult;
 }
 
 /**
- * Processing job status enumeration
+ * Error response from backend
  */
-export enum JobStatus {
-  PENDING = 'pending',
-  PROCESSING = 'processing',
-  COMPLETED = 'completed',
-  FAILED = 'failed',
+export interface ErrorResponse {
+  error: string;
+}
+
+/**
+ * Main extracted data structure from backend
+ */
+export interface ExtractedData {
+  goals?: Goal[];
+  bmps?: BMP[];
+  implementation?: ImplementationActivity[];
+  monitoring?: MonitoringMetric[];
+  outreach?: OutreachActivity[];
+  geographicAreas?: GeographicArea[];
+  contacts?: Contact[];
+  organizations?: Organization[];
+  reportSummary?: ReportSummary;
 }
 
 // =============================================================================
@@ -83,9 +62,6 @@ export interface ReportSummary {
   totalGoals: number;
   totalBMPs: number;
   completionRate: number;
-  reportType?: string;
-  watershedName?: string;
-  reportingPeriod?: string;
 }
 
 /**
@@ -99,8 +75,6 @@ export interface Goal {
   schedule?: string;
   contacts?: Contact[];
   desiredOutcomes?: string[];
-  priority?: 'High' | 'Medium' | 'Low';
-  status?: 'Not Started' | 'In Progress' | 'Completed';
 }
 
 /**
@@ -109,23 +83,14 @@ export interface Goal {
 export interface BMP {
   name: string;
   description?: string;
-  type?:
-    | 'Nutrient'
-    | 'Pathogen'
-    | 'Sediment'
-    | 'Habitat'
-    | 'Water Quality'
-    | string;
+  type?: "Nutrient" | "Pathogen" | "Sediment" | string;
   targetAreas?: string[];
   quantity?: number;
   unit?: string; // e.g. "ft", "ac", "ea"
   estimatedCost?: number;
-  actualCost?: number;
   partners?: Organization[];
   schedule?: string;
   priorityFactors?: string[];
-  implementationStatus?: 'Planned' | 'In Progress' | 'Completed' | 'Delayed';
-  effectiveness?: number; // 0-100 percentage
 }
 
 /**
@@ -136,11 +101,9 @@ export interface ImplementationActivity {
   responsibleParties?: Organization[];
   startDate?: string;
   endDate?: string;
-  status?: 'Planned' | 'Active' | 'Completed' | 'Cancelled';
+  status?: string;
   outcome?: string;
   probableCompletionDate?: string;
-  budget?: number;
-  associatedBMPs?: string[]; // References to BMP names
 }
 
 /**
@@ -155,8 +118,6 @@ export interface MonitoringMetric {
   responsibleParties?: Organization[];
   sampleLocations?: string[];
   sampleSchedule?: string;
-  currentValue?: number | string;
-  trend?: 'Improving' | 'Stable' | 'Declining' | 'Unknown';
 }
 
 /**
@@ -166,8 +127,6 @@ export interface Threshold {
   parameter: string; // e.g., "Dissolved Oxygen"
   value: string | number;
   units?: string;
-  comparisonOperator?: '<' | '>' | '<=' | '>=' | '=';
-  thresholdType?: 'Target' | 'Warning' | 'Critical';
 }
 
 /**
@@ -180,11 +139,8 @@ export interface OutreachActivity {
   indicators?: string;
   schedule?: string;
   budget?: number;
-  actualCost?: number;
   events?: EventDetail[];
   targetAudience?: string;
-  participantCount?: number;
-  effectiveness?: string;
 }
 
 /**
@@ -195,11 +151,8 @@ export interface EventDetail {
   audience?: string;
   materialsProvided?: string[];
   estimatedParticipants?: number;
-  actualParticipants?: number;
   cost?: number;
   date?: string;
-  location?: string;
-  feedback?: string;
 }
 
 /**
@@ -212,19 +165,16 @@ export interface GeographicArea {
   landUseTypes?: LandUseType[];
   population?: number;
   towns?: string[];
-  huc?: string; // Hydrologic Unit Code
+  huc?: string;
   description?: string;
-  waterBodies?: string[];
-  majorLandowners?: string[];
 }
 
 /**
- * Land use type and percentage
+ * Land use type and percent
  */
 export interface LandUseType {
-  type: string; // e.g., "cropland", "forest", "urban"
+  type: string; // e.g., "cropland"
   percent: number; // e.g., 11
-  acres?: number;
 }
 
 /**
@@ -236,8 +186,6 @@ export interface Contact {
   organization?: string;
   phone?: string;
   email?: string;
-  address?: string;
-  isPrimaryContact?: boolean;
 }
 
 /**
@@ -246,7 +194,49 @@ export interface Contact {
 export interface Organization {
   name: string;
   contact?: Contact;
-  type?: 'Government' | 'Non-Profit' | 'Private' | 'Academic' | 'Other';
-  role?: string; // e.g., "Lead Agency", "Partner", "Contractor"
-  fundingContribution?: number;
+}
+
+// =============================================================================
+// Accuracy Testing Types
+// =============================================================================
+
+/**
+ * Result from accuracy testing
+ */
+export interface AccuracyTestResult {
+  testCase: string;
+  metrics: {
+    precision: number;
+    recall: number;
+    f1Score: number;
+  };
+  details: {
+    goals: AccuracyMetric;
+    bmps: AccuracyMetric;
+    implementation: AccuracyMetric;
+    monitoring: AccuracyMetric;
+  };
+}
+
+/**
+ * Accuracy metrics for a specific data type
+ */
+export interface AccuracyMetric {
+  precision: number;
+  recall: number;
+  f1Score: number;
+  correctCount: number;
+  totalExtracted: number;
+  totalExpected: number;
+}
+
+/**
+ * Test case definition
+ */
+export interface TestCase {
+  id: string;
+  name: string;
+  pdfPath: string;
+  groundTruthPath: string;
+  hasGroundTruth: boolean;
 }
