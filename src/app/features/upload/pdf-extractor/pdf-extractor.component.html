@@ -6,9 +6,16 @@
         📄 PDF Document Extractor
       </h1>
       <p class="text-gray-600">
-        Upload your agricultural or environmental PDF reports for AI-powered
-        data extraction
+        Upload your PDF files to test the backend connection
       </p>
+
+      <!-- Test Connection Button -->
+      <button
+        (click)="testConnection()"
+        class="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+      >
+        🔌 Test Backend Connection
+      </button>
     </div>
 
     <!-- Error Message -->
@@ -38,7 +45,7 @@
     }
 
     <!-- Upload Section -->
-    @if (!currentJobId() && !extractionResults()) {
+    @if (!uploadResponse()) {
     <div
       class="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center hover:border-gray-400 transition-colors"
     >
@@ -109,7 +116,7 @@
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               ></path>
             </svg>
-            Uploading... } @else { Extract Data }
+            Uploading... } @else { 📤 Upload PDF }
           </button>
 
           <button
@@ -124,155 +131,56 @@
     </div>
     }
 
-    <!-- Processing Section -->
-    @if (currentJobId() && !extractionResults()) {
-    <div class="text-center py-12">
-      <div
-        class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-blue-500 bg-blue-100"
-      >
-        <svg
-          class="animate-spin -ml-1 mr-3 h-5 w-5 text-blue-500"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <circle
-            class="opacity-25"
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            stroke-width="4"
-          ></circle>
-          <path
-            class="opacity-75"
-            fill="currentColor"
-            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-          ></path>
-        </svg>
-        {{ getStatusText() }}
-      </div>
-
-      @if (uploadProgress() > 0) {
-      <div class="mt-4 max-w-md mx-auto">
-        <div class="bg-gray-200 rounded-full h-2">
-          <div
-            class="bg-blue-600 h-2 rounded-full transition-all duration-300"
-            [style.width.%]="uploadProgress()"
-          ></div>
-        </div>
-        <p class="text-sm text-gray-600 mt-2">
-          {{ uploadProgress() }}% complete
-        </p>
-      </div>
-      }
-    </div>
-    }
-
-    <!-- Results Section -->
-    @if (extractionResults()) {
+    <!-- Upload Response Section -->
+    @if (uploadResponse()) {
     <div class="space-y-6">
       <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-bold text-gray-900">Extraction Results</h2>
+        <h2 class="text-2xl font-bold text-gray-900">✅ Upload Successful!</h2>
         <button
           (click)="reset()"
           class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
         >
-          Process Another Document
+          Upload Another File
         </button>
       </div>
 
-      <!-- Document Info -->
+      <!-- Raw Response Display -->
       <div class="bg-gray-50 rounded-lg p-6">
         <h3 class="text-lg font-semibold text-gray-900 mb-4">
-          Document Information
+          Backend Response
         </h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-          <div>
-            <span class="font-medium text-gray-700">File Name:</span>
-            <p class="text-gray-900">{{ extractionResults()!.fileName }}</p>
-          </div>
-          <div>
-            <span class="font-medium text-gray-700">Pages:</span>
-            <p class="text-gray-900">
-              {{ extractionResults()!.extractedData.metadata.pageCount }}
-            </p>
-          </div>
-          <div>
-            <span class="font-medium text-gray-700">Word Count:</span>
-            <p class="text-gray-900">
-              {{ extractionResults()!.extractedData.metadata.wordCount }}
-            </p>
-          </div>
-          <div>
-            <span class="font-medium text-gray-700">Accuracy:</span>
-            <p class="text-gray-900">{{ extractionResults()!.accuracy }}%</p>
-          </div>
-        </div>
+        <pre
+          class="bg-white border border-gray-200 rounded p-4 text-sm text-gray-800 overflow-auto max-h-96"
+          >{{ uploadResponse() | json }}</pre
+        >
       </div>
 
-      <!-- Extracted Data -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <!-- Summary -->
-        @if (extractionResults()!.extractedData.summary) {
-        <div class="bg-white border border-gray-200 rounded-lg p-6">
-          <h3 class="text-lg font-semibold text-gray-900 mb-4">Summary</h3>
-          <p class="text-gray-700 text-sm leading-relaxed">
-            {{ extractionResults()!.extractedData.summary }}
-          </p>
-        </div>
-        }
-
-        <!-- Key Findings -->
-        @if (extractionResults()!.extractedData.keyFindings.length > 0) {
-        <div class="bg-white border border-gray-200 rounded-lg p-6">
-          <h3 class="text-lg font-semibold text-gray-900 mb-4">Key Findings</h3>
-          <ul class="space-y-2">
-            @for (finding of extractionResults()!.extractedData.keyFindings;
-            track $index) {
-            <li class="flex items-start">
-              <span
-                class="flex-shrink-0 h-1.5 w-1.5 bg-blue-600 rounded-full mt-2 mr-3"
-              ></span>
-              <span class="text-sm text-gray-700">{{ finding }}</span>
-            </li>
-            }
-          </ul>
-        </div>
-        }
-      </div>
-
-      <!-- Document Sections -->
-      @if (extractionResults()!.extractedData.sections.length > 0) {
-      <div class="bg-white border border-gray-200 rounded-lg p-6">
-        <h3 class="text-lg font-semibold text-gray-900 mb-4">
-          Document Sections
+      <!-- File Information -->
+      <div class="bg-blue-50 rounded-lg p-6">
+        <h3 class="text-lg font-semibold text-blue-900 mb-4">
+          File Information
         </h3>
-        <div class="space-y-4">
-          @for (section of extractionResults()!.extractedData.sections; track
-          $index) {
-          <div class="border-l-4 border-blue-500 pl-4">
-            <div class="flex items-center justify-between mb-2">
-              <h4 class="font-medium text-gray-900">{{ section.title }}</h4>
-              <span class="text-xs text-gray-500"
-                >Page {{ section.pageNumber }}</span
-              >
-            </div>
-            <p class="text-sm text-gray-700 leading-relaxed">
-              {{ section.content }}
-            </p>
-            <div class="mt-2">
-              <span
-                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"
-              >
-                {{ section.confidence }}% confidence
-              </span>
-            </div>
+        <div class="grid grid-cols-2 gap-4 text-sm">
+          <div>
+            <span class="font-medium text-blue-700">File Name:</span>
+            <p class="text-blue-900">{{ selectedFile()!.name }}</p>
           </div>
-          }
+          <div>
+            <span class="font-medium text-blue-700">File Size:</span>
+            <p class="text-blue-900">
+              {{ (selectedFile()!.size / 1024 / 1024).toFixed(2) }} MB
+            </p>
+          </div>
+          <div>
+            <span class="font-medium text-blue-700">File Type:</span>
+            <p class="text-blue-900">{{ selectedFile()!.type }}</p>
+          </div>
+          <div>
+            <span class="font-medium text-blue-700">Status:</span>
+            <p class="text-green-600 font-semibold">Successfully uploaded!</p>
+          </div>
         </div>
       </div>
-      }
     </div>
     }
   </div>

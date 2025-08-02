@@ -2,46 +2,34 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import {
-  UploadResponse,
-  ExtractionResults,
-  JobStatusResponse,
-} from '../interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
   private readonly http = inject(HttpClient);
-  private readonly baseUrl = environment.apiUrl || 'http://localhost:3000/api';
+  private readonly baseUrl = environment.apiUrl;
 
   /**
    * Upload a PDF file for processing
    * @param file - The PDF file to upload
    * @returns Observable with upload response
    */
-  uploadFile(file: File): Observable<UploadResponse> {
+  uploadFile(file: File): Observable<any> {
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('pdf', file);
 
-    return this.http.post<UploadResponse>(`${this.baseUrl}/upload`, formData);
+    console.log('Uploading to:', `${this.baseUrl}/upload`);
+
+    return this.http.post(`${this.baseUrl}/upload`, formData);
   }
 
   /**
-   * Get extraction results by job ID
-   * @param jobId - The job ID returned from upload
-   * @returns Observable with extraction results
+   * Test backend connection
+   * @returns Observable with backend status
    */
-  getExtractionResults(jobId: string): Observable<ExtractionResults> {
-    return this.http.get<ExtractionResults>(`${this.baseUrl}/results/${jobId}`);
-  }
-
-  /**
-   * Get job status
-   * @param jobId - The job ID to check
-   * @returns Observable with job status
-   */
-  getJobStatus(jobId: string): Observable<JobStatusResponse> {
-    return this.http.get<JobStatusResponse>(`${this.baseUrl}/status/${jobId}`);
+  testConnection(): Observable<any> {
+    console.log('Testing connection to:', this.baseUrl);
+    return this.http.get(`${this.baseUrl.replace('/api', '')}`);
   }
 }

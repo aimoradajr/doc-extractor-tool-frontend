@@ -1,12 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../core/services/api.service';
-import {
-  JobStatus,
-  UploadResponse,
-  ExtractionResults,
-  JobStatusResponse,
-} from '../../../core/interfaces';
 
 @Component({
   selector: 'app-pdf-extractor',
@@ -17,13 +11,10 @@ import {
 export class PdfExtractorComponent {
   private readonly apiService = inject(ApiService);
 
-  // Component state using signals (Angular 17+ pattern)
+  // Simplified component state
   selectedFile = signal<File | null>(null);
   isUploading = signal(false);
-  uploadProgress = signal(0);
-  currentJobId = signal<string | null>(null);
-  jobStatus = signal<JobStatus>(JobStatus.PENDING);
-  extractionResults = signal<ExtractionResults | null>(null);
+  uploadResponse = signal<any>(null);
   errorMessage = signal<string | null>(null);
 
   /**
@@ -48,6 +39,7 @@ export class PdfExtractorComponent {
 
       this.selectedFile.set(file);
       this.errorMessage.set(null);
+      this.uploadResponse.set(null);
     }
   }
 
@@ -60,70 +52,40 @@ export class PdfExtractorComponent {
 
     this.isUploading.set(true);
     this.errorMessage.set(null);
+    this.uploadResponse.set(null);
 
     this.apiService.uploadFile(file).subscribe({
-      next: (response: UploadResponse) => {
+      next: (response: any) => {
         console.log('Upload successful:', response);
-        this.currentJobId.set(response.jobId);
-        this.jobStatus.set(response.status);
+        this.uploadResponse.set(response);
         this.isUploading.set(false);
-
-        // Start polling for job status
-        this.pollJobStatus();
       },
       error: (error: any) => {
         console.error('Upload failed:', error);
-        this.errorMessage.set('Upload failed. Please try again.');
+        this.errorMessage.set(
+          `Upload failed: ${error.message || 'Please try again.'}`
+        );
         this.isUploading.set(false);
       },
     });
   }
 
   /**
-   * Poll job status until completion
+   * Test backend connection
    */
-  private pollJobStatus() {
-    const jobId = this.currentJobId();
-    if (!jobId) return;
-
-    const pollInterval = setInterval(() => {
-      this.apiService.getJobStatus(jobId).subscribe({
-        next: (status: JobStatusResponse) => {
-          this.jobStatus.set(status.status);
-          this.uploadProgress.set(status.progress || 0);
-
-          if (status.status === JobStatus.COMPLETED) {
-            clearInterval(pollInterval);
-            this.loadExtractionResults();
-          } else if (status.status === JobStatus.FAILED) {
-            clearInterval(pollInterval);
-            this.errorMessage.set(status.message || 'Processing failed.');
-          }
-        },
-        error: (error: any) => {
-          console.error('Status check failed:', error);
-          clearInterval(pollInterval);
-          this.errorMessage.set('Failed to check processing status.');
-        },
-      });
-    }, 2000); // Poll every 2 seconds
-  }
-
-  /**
-   * Load extraction results when job is completed
-   */
-  private loadExtractionResults() {
-    const jobId = this.currentJobId();
-    if (!jobId) return;
-
-    this.apiService.getExtractionResults(jobId).subscribe({
-      next: (results: ExtractionResults) => {
-        console.log('Results loaded:', results);
-        this.extractionResults.set(results);
+  testConnection() {
+    this.apiService.testConnection().subscribe({
+      next: (response: any) => {
+        console.log('Backend connected:', response);
+        this.errorMessage.set(null);
       },
       error: (error: any) => {
-        console.error('Failed to load results:', error);
-        this.errorMessage.set('Failed to load extraction results.');
+        console.error('Connection failed:', error);
+        this.errorMessage.set(
+          `Backend connection failed: ${
+            error.message || 'Check if backend is running on port 5000'
+          }`
+        );
       },
     });
   }
@@ -134,28 +96,7 @@ export class PdfExtractorComponent {
   reset() {
     this.selectedFile.set(null);
     this.isUploading.set(false);
-    this.uploadProgress.set(0);
-    this.currentJobId.set(null);
-    this.jobStatus.set(JobStatus.PENDING);
-    this.extractionResults.set(null);
+    this.uploadResponse.set(null);
     this.errorMessage.set(null);
-  }
-
-  /**
-   * Get status display text
-   */
-  getStatusText(): string {
-    switch (this.jobStatus()) {
-      case JobStatus.PENDING:
-        return 'Waiting to start...';
-      case JobStatus.PROCESSING:
-        return 'Processing document...';
-      case JobStatus.COMPLETED:
-        return 'Processing complete!';
-      case JobStatus.FAILED:
-        return 'Processing failed';
-      default:
-        return 'Unknown status';
-    }
   }
 }
