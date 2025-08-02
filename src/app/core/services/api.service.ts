@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { UploadResponse } from '../interfaces/api.interfaces';
+import { ExtractedData } from '../interfaces/api.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -14,9 +14,9 @@ export class ApiService {
   /**
    * Extract data from a PDF file
    * @param file - The PDF file to process
-   * @returns Observable with extraction response including structured data
+   * @returns Observable with extracted data
    */
-  extractFromPdf(file: File): Observable<UploadResponse> {
+  extractFromPdf(file: File): Observable<ExtractedData> {
     const formData = new FormData();
     formData.append('pdf', file);
 
@@ -25,7 +25,7 @@ export class ApiService {
       `${this.baseUrl}/extract`
     );
 
-    return this.http.post<UploadResponse>(`${this.baseUrl}/extract`, formData);
+    return this.http.post<ExtractedData>(`${this.baseUrl}/extract`, formData);
   }
 
   /**

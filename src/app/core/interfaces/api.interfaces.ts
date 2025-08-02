@@ -17,19 +17,6 @@ export interface PdfExtractionResult {
 }
 
 /**
- * Response from PDF upload endpoint
- */
-export interface UploadResponse {
-  message: string;
-  file: {
-    filename: string;
-    originalName: string;
-    size: number;
-  };
-  extracted: ExtractedData; // Changed from PdfExtractionResult to ExtractedData
-}
-
-/**
  * Error response from backend
  */
 export interface ErrorResponse {

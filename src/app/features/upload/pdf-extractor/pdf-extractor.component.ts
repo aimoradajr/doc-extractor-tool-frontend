@@ -2,10 +2,7 @@ import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../core/services/api.service';
 import { MockApiService } from '../../../core/services/mock-api.service';
-import {
-  UploadResponse,
-  ExtractedData,
-} from '../../../core/interfaces/api.interfaces';
+import { ExtractedData } from '../../../core/interfaces/api.interfaces';
 
 @Component({
   selector: 'app-pdf-extractor',
@@ -26,8 +23,12 @@ export class PdfExtractorComponent implements OnInit {
   selectedFile = signal<File | null>(null);
   isProcessing = signal(false);
   isTestingConnection = signal(false);
-  extractionResponse = signal<UploadResponse | null>(null);
   extractedData = signal<ExtractedData | null>(null);
+  uploadedFileInfo = signal<{
+    name: string;
+    originalName: string;
+    size: number;
+  } | null>(null);
   errorMessage = signal<string | null>(null);
   connectionStatus = signal<{
     success: boolean;
@@ -134,7 +135,7 @@ export class PdfExtractorComponent implements OnInit {
 
       this.selectedFile.set(file);
       this.errorMessage.set(null);
-      this.extractionResponse.set(null);
+      this.uploadedFileInfo.set(null);
       this.extractedData.set(null);
     }
   }
@@ -148,20 +149,23 @@ export class PdfExtractorComponent implements OnInit {
 
     this.isProcessing.set(true);
     this.errorMessage.set(null);
-    this.extractionResponse.set(null);
+    this.uploadedFileInfo.set(null);
     this.extractedData.set(null);
 
     const service = this.getService();
     service.extractFromPdf(file).subscribe({
-      next: (response: UploadResponse) => {
-        console.log('PDF extraction successful:', response);
-        this.extractionResponse.set(response);
+      next: (extractedData: ExtractedData) => {
+        console.log('PDF extraction successful:', extractedData);
 
-        // Set the structured extracted data
-        if (response.extracted) {
-          this.extractedData.set(response.extracted);
-          console.log('Structured data extracted:', response.extracted);
-        }
+        // Set the extracted data directly
+        this.extractedData.set(extractedData);
+
+        // Track file info for display
+        this.uploadedFileInfo.set({
+          name: file.name,
+          originalName: file.name,
+          size: file.size,
+        });
 
         this.isProcessing.set(false);
       },
@@ -216,7 +220,7 @@ export class PdfExtractorComponent implements OnInit {
     this.selectedFile.set(null);
     this.isProcessing.set(false);
     this.isTestingConnection.set(false);
-    this.extractionResponse.set(null);
+    this.uploadedFileInfo.set(null);
     this.extractedData.set(null);
     this.errorMessage.set(null);
     this.connectionStatus.set(null);

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, delay } from 'rxjs';
-import { UploadResponse, ExtractedData } from '../interfaces/api.interfaces';
+import { ExtractedData } from '../interfaces/api.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -216,25 +216,15 @@ export class MockApiService {
   /**
    * Mock PDF extraction that returns sample data
    * @param file - The PDF file (ignored in mock)
-   * @returns Observable with mock extraction response
+   * @returns Observable with mock ExtractedData (matching live API)
    */
-  extractFromPdf(file: File): Observable<UploadResponse> {
+  extractFromPdf(file: File): Observable<ExtractedData> {
     console.log('🎭 MOCK: Using mock data for PDF extraction');
-
-    const mockResponse: UploadResponse = {
-      message: 'PDF processed successfully with mock data',
-      file: {
-        filename: `mock_${Date.now()}.pdf`,
-        originalName: file.name,
-        size: file.size,
-      },
-      extracted: this.mockExtractedData,
-    };
 
     // Simulate processing delay (1-3 seconds)
     const randomDelay = Math.random() * 2000 + 1000;
 
-    return of(mockResponse).pipe(delay(randomDelay));
+    return of(this.mockExtractedData).pipe(delay(randomDelay));
   }
 
   /**

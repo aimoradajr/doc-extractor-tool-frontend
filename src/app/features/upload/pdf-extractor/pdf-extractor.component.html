@@ -158,7 +158,7 @@
     }
 
     <!-- Upload Section -->
-    @if (!extractionResponse()) {
+    @if (!extractedData()) {
     <div
       class="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center hover:border-gray-400 transition-colors"
     >
@@ -245,7 +245,7 @@
     }
 
     <!-- Extraction Results Section -->
-    @if (extractionResponse()) {
+    @if (extractedData()) {
     <div class="space-y-6">
       <div class="flex items-center justify-between">
         <h2 class="text-2xl font-bold text-gray-900">Extraction Complete!</h2>
@@ -266,13 +266,13 @@
           <div>
             <span class="font-medium text-blue-700">File Processed:</span>
             <p class="text-blue-900">
-              {{ extractionResponse()!.file.originalName }}
+              {{ uploadedFileInfo()!.originalName }}
             </p>
           </div>
           <div>
             <span class="font-medium text-blue-700">File Size:</span>
             <p class="text-blue-900">
-              {{ (extractionResponse()!.file.size / 1024 / 1024).toFixed(2) }}
+              {{ (uploadedFileInfo()!.size / 1024 / 1024).toFixed(2) }}
               MB
             </p>
           </div>
@@ -294,7 +294,7 @@
         <div class="mt-4 p-3 bg-white rounded border">
           <span class="font-medium text-green-700">Status:</span>
           <p class="text-green-800 font-semibold">
-            {{ extractionResponse()!.message }}
+            PDF extraction completed successfully
           </p>
         </div>
       </div>
