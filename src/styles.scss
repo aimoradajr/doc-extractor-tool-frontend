@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* Custom component classes */
+.upload-zone {
+  @apply border-2 border-dashed border-gray-300 rounded-lg p-12 text-center hover:border-gray-400 transition-colors;
+}
+
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-6 py-2 rounded-md text-sm font-medium transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-md text-sm font-medium transition-colors;
+}
