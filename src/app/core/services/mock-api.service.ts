@@ -228,7 +228,7 @@ export class MockApiService {
         originalName: file.name,
         size: file.size,
       },
-      extracted: this.mockExtractedData2,
+      extracted: this.mockExtractedData,
     };
 
     // Simulate processing delay (1-3 seconds)
