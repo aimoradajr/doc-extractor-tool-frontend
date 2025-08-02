@@ -2,6 +2,11 @@
 
 AI-powered tool for extracting structured data from agricultural and environmental PDF reports with high accuracy.
 
+## 🔗 Related Repositories
+
+- **Backend**: [doc-extractor-tool-backend](https://github.com/aimoradajr/doc-extractor-tool-backend) - Express.js API server with AI processing
+- **Frontend**: [doc-extractor-tool-frontend](https://github.com/aimoradajr/doc-extractor-tool-frontend) - Angular 19 client application (this repo)
+
 ## 🎯 Project Overview
 
 This Angular 19 frontend provides a modern, user-friendly interface for uploading PDF documents and viewing extracted data. The tool specializes in parsing unstructured agricultural/environmental reports and organizing information into logical categories.
@@ -10,8 +15,10 @@ This Angular 19 frontend provides a modern, user-friendly interface for uploadin
 
 - **Framework**: Angular 19.2.14 (with Standalone Components)
 - **Language**: TypeScript 5.7.2
-- **Styling**: SCSS
+- **Styling**: SCSS + Tailwind CSS 3.4.17
 - **Architecture**: Standalone Components (Modern Angular)
+- **HTTP Client**: Angular HttpClient with typed services
+- **State Management**: Angular Signals (Angular 17+ pattern)
 - **Features**: Routing, Hot Module Replacement (HMR)
 
 ## 🚀 Quick Start
@@ -78,55 +85,144 @@ ng generate service services/service-name
 
 ## 🔧 Backend Integration
 
-This frontend connects to a Node.js/Express backend running on:
+This frontend connects to a Node.js/Express backend with the following API endpoints:
 
-- **Development**: `http://localhost:5000`
-- **Production**: TBD
+### **API Configuration:**
 
-## 📊 Features (Planned)
+- **Development**: `http://localhost:5000/api`
+- **Production**: `https://doc-extractor-tool-backend.onrender.com/api`
 
-- [ ] Drag & drop PDF upload
-- [ ] Real-time extraction progress
-- [ ] Data visualization dashboard
-- [ ] Export results (JSON/CSV)
-- [ ] Accuracy testing UI
-- [ ] Responsive design
+### **Available Endpoints:**
 
-## 🎨 UI Components (To Be Added)
+- `POST /api/upload` - Upload PDF files (expects 'pdf' field in FormData)
+- `GET /api/extract` - Extract data from uploaded PDFs
+- `GET /` - Health check endpoint
 
-- [ ] File upload component
-- [ ] Progress indicators
-- [ ] Data tables and charts
-- [ ] Accuracy metrics display
+### **Environment Management:**
+
+The app uses Angular's standard environment configuration:
+
+- `environment.ts` → Development settings
+- `environment.prod.ts` → Production settings
+- Automatic switching during build process
+
+## 📊 Features
+
+### **✅ Completed:**
+
+- 📤 **PDF Upload Component** - Drag & drop file upload with validation
+- 🎨 **Modern UI** - Tailwind CSS styling with responsive design
+- 🔌 **Backend Integration** - HTTP client with typed API services
+- 🌍 **Environment Management** - Separate dev/prod configurations
+- ⚡ **Real-time Feedback** - Upload progress and error handling
+- 🛡️ **File Validation** - PDF type and size validation (10MB limit)
+
+### **🚧 In Progress:**
+
+- 📊 **Data Visualization** - Display extraction results
+- 📈 **Progress Tracking** - Real-time processing status
+
+### **📋 Planned:**
+
+- 📋 **Export Results** - JSON/CSV download functionality
+- 🎯 **Accuracy Metrics** - Display confidence scores
+- 📱 **Mobile Optimization** - Enhanced responsive design
+
+## 🎨 Components Architecture
+
+### **Core Components:**
+
+- **PDF Extractor Component** (`/features/upload/pdf-extractor`)
+  - File upload with drag & drop support
+  - Real-time upload progress
+  - Backend connectivity testing
+  - Response display and error handling
+
+### **Services:**
+
+- **API Service** (`/core/services/api.service`)
+  - Typed HTTP methods
+  - Environment-aware endpoint configuration
+  - File upload with proper FormData handling
+
+### **Interfaces:**
+
+- **API Interfaces** (`/core/interfaces/api.interfaces`)
+  - TypeScript definitions for API responses
+  - Enum for job status tracking
+  - Structured data models
 
 ## 📈 Current Status
 
-**Phase**: Foundation Setup ✅
+**Phase**: Core Functionality Complete ✅
 
-- ✅ Angular 19 project structure created
-- ✅ Standalone components architecture
-- ✅ Development server running
-- ✅ Basic routing configured
-- ✅ Scalable directory structure established
-- ✅ Core services foundation (API service)
-- ✅ TypeScript interfaces defined
-- ✅ Environment configuration
+### **✅ Completed:**
 
-**Next Steps**:
+- Angular 19 project structure with best practices
+- Standalone components architecture
+- Scalable directory structure (core/shared/features)
+- Tailwind CSS integration for modern styling
+- PDF upload component with validation
+- Typed API services with environment switching
+- Backend connectivity (localhost:5000 ↔ Render production)
+- Error handling and user feedback
+- Production-ready build configuration
 
-1. Add Tailwind CSS for styling
-2. Create file upload component
-3. Build dashboard components
-4. Add progress indicators and loading states
+### **🎯 Current Capabilities:**
+
+- Upload PDF files up to 10MB
+- Test backend connectivity
+- Display upload responses
+- Environment-aware API calls (dev/prod)
+- Responsive UI with Tailwind CSS
+
+### **📋 Next Development Phase:**
+
+1. Implement data visualization components
+2. Add extraction results processing
+3. Create export functionality
+4. Enhance mobile responsiveness
 
 ## 🌐 Deployment
 
-- **Frontend**: Vercel (static deployment)
-- **Backend**: Render (Node.js server)
+### **Frontend Deployment:**
 
-## 📝 Notes
+- **Platform**: Vercel (Zero-config deployment)
+- **Build**: Automatic production builds with environment switching
+- **URL**: Auto-deployed on git push to main branch
 
-This is the frontend portion of a full-stack PDF extraction tool. The backend handles PDF processing and LLM integration for intelligent data extraction.
+### **Backend Integration:**
+
+- **Development**: Express.js server on `localhost:5000`
+- **Production**: Render deployment at `doc-extractor-tool-backend.onrender.com`
+- **Repository**: [aimoradajr/doc-extractor-tool-backend](https://github.com/aimoradajr/doc-extractor-tool-backend)
+- **API**: RESTful endpoints with FormData support
+
+### **Deployment Notes:**
+
+- No `vercel.json` needed (Vercel auto-detects Angular)
+- Environment variables automatically switched during build
+- Production builds use optimized settings
+
+## 📝 Development Notes
+
+### **Architecture Decisions:**
+
+- **Standalone Components**: Using Angular 19's modern standalone approach
+- **Signals**: Implementing Angular's reactive state management
+- **Environment Management**: Standard Angular approach (no over-engineering)
+- **Styling**: Tailwind CSS for utility-first styling approach
+
+### **Key Implementation Details:**
+
+- FormData uploads use 'pdf' field name for backend compatibility
+- Environment switching via Angular's fileReplacements
+- Type safety with TypeScript interfaces for API responses
+- Component composition for maintainable code structure
+
+### **Backend Communication:**
+
+This frontend interfaces with an Express.js backend ([doc-extractor-tool-backend](https://github.com/aimoradajr/doc-extractor-tool-backend)) that handles PDF processing and AI-powered data extraction for agricultural/environmental reports.
 
 ---
 
