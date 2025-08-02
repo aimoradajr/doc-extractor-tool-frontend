@@ -40,15 +40,15 @@ export class PdfExtractorComponent implements OnInit {
 
   // Available tabs for the report data
   tabs = [
-    { id: 'summary', label: 'Summary', icon: '📋' },
-    { id: 'goals', label: 'Goals', icon: '🎯' },
-    { id: 'bmps', label: 'BMPs', icon: '🛠️' },
-    { id: 'implementation', label: 'Implementation', icon: '⚙️' },
-    { id: 'monitoring', label: 'Monitoring', icon: '📊' },
-    { id: 'outreach', label: 'Outreach', icon: '📢' },
-    { id: 'areas', label: 'Areas', icon: '🗺️' },
-    { id: 'organizations', label: 'Organizations', icon: '🏢' },
-    { id: 'charts', label: 'Charts', icon: '📈' },
+    { id: 'summary', label: 'Summary', icon: '' },
+    { id: 'goals', label: 'Goals', icon: '' },
+    { id: 'bmps', label: 'BMPs', icon: '' },
+    { id: 'implementation', label: 'Implementation', icon: '' },
+    { id: 'monitoring', label: 'Monitoring', icon: '' },
+    { id: 'outreach', label: 'Outreach', icon: '' },
+    { id: 'areas', label: 'Areas', icon: '' },
+    { id: 'organizations', label: 'Organizations', icon: '' },
+    { id: 'charts', label: 'Charts', icon: '' },
   ];
 
   /**

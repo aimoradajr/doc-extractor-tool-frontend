@@ -3,7 +3,7 @@
     <!-- Header -->
     <div class="text-center mb-8">
       <h1 class="text-3xl font-bold text-gray-900 mb-2">
-        📄 PDF Document Extractor
+        PDF Document Extractor
       </h1>
       <p class="text-gray-600">
         Upload agricultural/environmental PDFs to extract structured data
@@ -14,7 +14,7 @@
     @if (showDebugPanel()) {
     <div class="mb-8 p-4 bg-gray-50 border border-gray-200 rounded-lg">
       <h3 class="text-sm font-semibold text-gray-700 mb-4 flex items-center">
-        🛠️ Development Debug Panel
+        Development Debug Panel
       </h3>
 
       <div class="flex flex-wrap items-center gap-4">
@@ -37,7 +37,7 @@
               useMockData() ? 'text-blue-600 font-medium' : 'text-gray-500'
             "
           >
-            {{ useMockData() ? "🎭 Mock" : "🌐 Live" }}
+            {{ useMockData() ? "Mock" : "Live" }}
           </span>
           @if (useMockData()) {
           <span class="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded-full">
@@ -73,7 +73,7 @@
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
             ></path>
           </svg>
-          Testing... } @else { 🔌 Test Connection }
+          Testing... } @else { Test Connection }
         </button>
       </div>
 
@@ -248,9 +248,7 @@
     @if (extractionResponse()) {
     <div class="space-y-6">
       <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-bold text-gray-900">
-          ✅ Extraction Complete!
-        </h2>
+        <h2 class="text-2xl font-bold text-gray-900">Extraction Complete!</h2>
         <button
           (click)="reset()"
           class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
@@ -262,7 +260,7 @@
       <!-- Extraction Summary -->
       <div class="bg-blue-50 rounded-lg p-6">
         <h3 class="text-lg font-semibold text-blue-900 mb-4">
-          📊 Extraction Summary
+          Extraction Summary
         </h3>
         <div class="grid grid-cols-2 gap-4 text-sm">
           <div>
@@ -305,7 +303,7 @@
       @if (extractedData()) {
       <div class="bg-green-50 rounded-lg p-6">
         <h3 class="text-lg font-semibold text-green-900 mb-6">
-          🌱 Extracted Agricultural/Environmental Data
+          Extracted Agricultural/Environmental Data
         </h3>
 
         <!-- Tab Navigation -->
@@ -334,9 +332,7 @@
           <div class="space-y-6">
             @if (extractedData()!.reportSummary) {
             <div class="p-4 bg-white rounded border">
-              <h4 class="font-semibold text-green-800 mb-4">
-                📋 Report Summary
-              </h4>
+              <h4 class="font-semibold text-green-800 mb-4">Report Summary</h4>
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                 <div class="p-3 bg-gray-50 rounded">
                   <span class="font-medium text-gray-600">Total Goals:</span>
@@ -368,7 +364,6 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div class="p-4 bg-white rounded border">
                 <div class="flex items-center">
-                  <span class="text-2xl mr-3">🎯</span>
                   <div>
                     <p class="text-sm text-gray-600">Goals</p>
                     <p class="text-xl font-bold">
@@ -380,7 +375,6 @@
 
               <div class="p-4 bg-white rounded border">
                 <div class="flex items-center">
-                  <span class="text-2xl mr-3">🛠️</span>
                   <div>
                     <p class="text-sm text-gray-600">BMPs</p>
                     <p class="text-xl font-bold">
@@ -392,7 +386,6 @@
 
               <div class="p-4 bg-white rounded border">
                 <div class="flex items-center">
-                  <span class="text-2xl mr-3">🗺️</span>
                   <div>
                     <p class="text-sm text-gray-600">Areas</p>
                     <p class="text-xl font-bold">
@@ -404,7 +397,6 @@
 
               <div class="p-4 bg-white rounded border">
                 <div class="flex items-center">
-                  <span class="text-2xl mr-3">🏢</span>
                   <div>
                     <p class="text-sm text-gray-600">Organizations</p>
                     <p class="text-xl font-bold">
@@ -423,7 +415,7 @@
             @if (extractedData()!.goals && extractedData()!.goals!.length > 0) {
             <div class="space-y-4">
               <h4 class="font-semibold text-green-800 mb-4">
-                🎯 Goals ({{ extractedData()!.goals!.length }})
+                Goals ({{ extractedData()!.goals!.length }})
               </h4>
               @for (goal of extractedData()!.goals!; track $index) {
               <div
@@ -458,7 +450,6 @@
             </div>
             } @else {
             <div class="text-center py-8 text-gray-500">
-              <span class="text-4xl mb-4 block">🎯</span>
               <p>No goals data available</p>
             </div>
             }
@@ -471,9 +462,7 @@
             @if (extractedData()!.bmps && extractedData()!.bmps!.length > 0) {
             <div class="space-y-4">
               <h4 class="font-semibold text-green-800 mb-4">
-                🛠️ Best Management Practices ({{
-                  extractedData()!.bmps!.length
-                }})
+                Best Management Practices ({{ extractedData()!.bmps!.length }})
               </h4>
               @for (bmp of extractedData()!.bmps!; track $index) {
               <div
@@ -519,7 +508,6 @@
             </div>
             } @else {
             <div class="text-center py-8 text-gray-500">
-              <span class="text-4xl mb-4 block">🛠️</span>
               <p>No BMPs data available</p>
             </div>
             }
@@ -529,7 +517,6 @@
           <!-- Implementation Tab -->
           @if (activeTab() === 'implementation') {
           <div class="text-center py-8 text-gray-500">
-            <span class="text-4xl mb-4 block">⚙️</span>
             <p class="text-lg font-medium mb-2">Implementation Details</p>
             <p class="text-sm">
               Implementation tracking data will be displayed here
@@ -540,7 +527,6 @@
           <!-- Monitoring Tab -->
           @if (activeTab() === 'monitoring') {
           <div class="text-center py-8 text-gray-500">
-            <span class="text-4xl mb-4 block">📊</span>
             <p class="text-lg font-medium mb-2">Monitoring Data</p>
             <p class="text-sm">
               Environmental monitoring metrics will be displayed here
@@ -551,7 +537,6 @@
           <!-- Outreach Tab -->
           @if (activeTab() === 'outreach') {
           <div class="text-center py-8 text-gray-500">
-            <span class="text-4xl mb-4 block">📢</span>
             <p class="text-lg font-medium mb-2">Outreach Programs</p>
             <p class="text-sm">
               Community outreach and education data will be displayed here
@@ -566,7 +551,7 @@
             extractedData()!.geographicAreas!.length > 0) {
             <div class="space-y-4">
               <h4 class="font-semibold text-green-800 mb-4">
-                🗺️ Geographic Areas ({{
+                Geographic Areas ({{
                   extractedData()!.geographicAreas!.length
                 }})
               </h4>
@@ -624,7 +609,6 @@
             </div>
             } @else {
             <div class="text-center py-8 text-gray-500">
-              <span class="text-4xl mb-4 block">🗺️</span>
               <p>No geographic areas data available</p>
             </div>
             }
@@ -638,7 +622,7 @@
             extractedData()!.organizations!.length > 0) {
             <div class="space-y-4">
               <h4 class="font-semibold text-green-800 mb-4">
-                🏢 Organizations ({{ extractedData()!.organizations!.length }})
+                Organizations ({{ extractedData()!.organizations!.length }})
               </h4>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 @for (org of extractedData()!.organizations!; track $index) {
@@ -662,7 +646,6 @@
             </div>
             } @else {
             <div class="text-center py-8 text-gray-500">
-              <span class="text-4xl mb-4 block">🏢</span>
               <p>No organizations data available</p>
             </div>
             }
@@ -672,7 +655,6 @@
           <!-- Charts Tab -->
           @if (activeTab() === 'charts') {
           <div class="text-center py-8 text-gray-500">
-            <span class="text-4xl mb-4 block">📈</span>
             <p class="text-lg font-medium mb-2">Data Visualization</p>
             <p class="text-sm">Charts and graphs will be displayed here</p>
           </div>
