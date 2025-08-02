@@ -26,7 +26,7 @@ export interface UploadResponse {
     originalName: string;
     size: number;
   };
-  extracted: PdfExtractionResult;
+  extracted: ExtractedData; // Changed from PdfExtractionResult to ExtractedData
 }
 
 /**
@@ -83,7 +83,7 @@ export interface Goal {
 export interface BMP {
   name: string;
   description?: string;
-  type?: "Nutrient" | "Pathogen" | "Sediment" | string;
+  type?: 'Nutrient' | 'Pathogen' | 'Sediment' | string;
   targetAreas?: string[];
   quantity?: number;
   unit?: string; // e.g. "ft", "ac", "ea"

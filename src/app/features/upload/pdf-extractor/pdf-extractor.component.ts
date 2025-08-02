@@ -1,6 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../core/services/api.service';
+import {
+  UploadResponse,
+  ExtractedData,
+} from '../../../core/interfaces/api.interfaces';
 
 @Component({
   selector: 'app-pdf-extractor',
@@ -11,10 +15,11 @@ import { ApiService } from '../../../core/services/api.service';
 export class PdfExtractorComponent {
   private readonly apiService = inject(ApiService);
 
-  // Simplified component state
+  // Component state with proper typing
   selectedFile = signal<File | null>(null);
-  isUploading = signal(false);
-  uploadResponse = signal<any>(null);
+  isProcessing = signal(false);
+  extractionResponse = signal<UploadResponse | null>(null);
+  extractedData = signal<ExtractedData | null>(null);
   errorMessage = signal<string | null>(null);
 
   /**
@@ -39,33 +44,44 @@ export class PdfExtractorComponent {
 
       this.selectedFile.set(file);
       this.errorMessage.set(null);
-      this.uploadResponse.set(null);
+      this.extractionResponse.set(null);
+      this.extractedData.set(null);
     }
   }
 
   /**
-   * Upload the selected PDF file
+   * Extract data from the selected PDF file
    */
-  uploadFile() {
+  extractFromPdf() {
     const file = this.selectedFile();
     if (!file) return;
 
-    this.isUploading.set(true);
+    this.isProcessing.set(true);
     this.errorMessage.set(null);
-    this.uploadResponse.set(null);
+    this.extractionResponse.set(null);
+    this.extractedData.set(null);
 
-    this.apiService.uploadFile(file).subscribe({
-      next: (response: any) => {
-        console.log('Upload successful:', response);
-        this.uploadResponse.set(response);
-        this.isUploading.set(false);
+    this.apiService.extractFromPdf(file).subscribe({
+      next: (response: UploadResponse) => {
+        console.log('PDF extraction successful:', response);
+        this.extractionResponse.set(response);
+
+        // Set the structured extracted data
+        if (response.extracted) {
+          this.extractedData.set(response.extracted);
+          console.log('Structured data extracted:', response.extracted);
+        }
+
+        this.isProcessing.set(false);
       },
       error: (error: any) => {
-        console.error('Upload failed:', error);
+        console.error('PDF extraction failed:', error);
         this.errorMessage.set(
-          `Upload failed: ${error.message || 'Please try again.'}`
+          `Extraction failed: ${
+            error.error?.error || error.message || 'Please try again.'
+          }`
         );
-        this.isUploading.set(false);
+        this.isProcessing.set(false);
       },
     });
   }
@@ -95,8 +111,9 @@ export class PdfExtractorComponent {
    */
   reset() {
     this.selectedFile.set(null);
-    this.isUploading.set(false);
-    this.uploadResponse.set(null);
+    this.isProcessing.set(false);
+    this.extractionResponse.set(null);
+    this.extractedData.set(null);
     this.errorMessage.set(null);
   }
 }
