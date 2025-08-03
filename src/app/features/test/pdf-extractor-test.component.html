@@ -433,9 +433,11 @@
           @for (comparison of testResult()!.detailedComparisons!.goals; track
           $index) {
           <div class="flex items-start space-x-2 text-sm">
-            <span class="text-lg">{{
-              getComparisonIcon(comparison.type)
-            }}</span>
+            <span
+              class="flex items-center"
+              [class]="getComparisonColor(comparison.type)"
+              [innerHTML]="getComparisonIcon(comparison.type)"
+            ></span>
             <span [class]="getComparisonColor(comparison.type)">{{
               comparison.message
             }}</span>
@@ -454,9 +456,11 @@
           @for (comparison of testResult()!.detailedComparisons!.bmps; track
           $index) {
           <div class="flex items-start space-x-2 text-sm">
-            <span class="text-lg">{{
-              getComparisonIcon(comparison.type)
-            }}</span>
+            <span
+              class="flex items-center"
+              [class]="getComparisonColor(comparison.type)"
+              [innerHTML]="getComparisonIcon(comparison.type)"
+            ></span>
             <span [class]="getComparisonColor(comparison.type)">{{
               comparison.message
             }}</span>
@@ -475,9 +479,11 @@
           @for (comparison of testResult()!.detailedComparisons!.implementation;
           track $index) {
           <div class="flex items-start space-x-2 text-sm">
-            <span class="text-lg">{{
-              getComparisonIcon(comparison.type)
-            }}</span>
+            <span
+              class="flex items-center"
+              [class]="getComparisonColor(comparison.type)"
+              [innerHTML]="getComparisonIcon(comparison.type)"
+            ></span>
             <span [class]="getComparisonColor(comparison.type)">{{
               comparison.message
             }}</span>
@@ -496,9 +502,11 @@
           @for (comparison of testResult()!.detailedComparisons!.monitoring;
           track $index) {
           <div class="flex items-start space-x-2 text-sm">
-            <span class="text-lg">{{
-              getComparisonIcon(comparison.type)
-            }}</span>
+            <span
+              class="flex items-center"
+              [class]="getComparisonColor(comparison.type)"
+              [innerHTML]="getComparisonIcon(comparison.type)"
+            ></span>
             <span [class]="getComparisonColor(comparison.type)">{{
               comparison.message
             }}</span>

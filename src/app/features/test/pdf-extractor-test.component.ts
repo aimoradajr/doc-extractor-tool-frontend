@@ -834,7 +834,7 @@ export class PdfExtractorTestComponent implements OnInit {
             message: 'Focuses on prioritization, omits BMP types.',
           },
           {
-            type: 'unexpected_extra',
+            type: 'surplus_actual',
             category: 'goals',
             expected: null,
             actual:
@@ -842,7 +842,7 @@ export class PdfExtractorTestComponent implements OnInit {
             message: 'TMDL development not explicitly listed in ground truth.',
           },
           {
-            type: 'unexpected_extra',
+            type: 'surplus_actual',
             category: 'goals',
             expected: null,
             actual:
@@ -851,7 +851,7 @@ export class PdfExtractorTestComponent implements OnInit {
               'No direct match in ground truth; related to pathogen standards.',
           },
           {
-            type: 'unexpected_extra',
+            type: 'surplus_actual',
             category: 'goals',
             expected: null,
             actual:
@@ -1170,8 +1170,12 @@ export class PdfExtractorTestComponent implements OnInit {
     switch (type) {
       case 'perfect_match':
         return 'text-green-600';
-      case 'unexpected_extra':
+      case 'partial_match':
         return 'text-yellow-600';
+      case 'surplus_actual':
+        return 'text-red-600';
+      case 'surplus_actual':
+        return 'text-red-600';
       case 'missing_expected':
         return 'text-red-600';
       default:
@@ -1185,13 +1189,17 @@ export class PdfExtractorTestComponent implements OnInit {
   getComparisonIcon(type: string): string {
     switch (type) {
       case 'perfect_match':
-        return '✅';
+        return '✅ Match';
+      case 'partial_match':
+        return '✅ Partial Match';
+      case 'surplus_actual':
+        return '➕ Extra Found';
       case 'unexpected_extra':
-        return '❓';
+        return '➕ Extra Found';
       case 'missing_expected':
-        return '❌';
+        return '❌ Missing Expected';
       default:
-        return '•';
+        return '• Unknown';
     }
   }
 

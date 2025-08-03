@@ -238,7 +238,7 @@ export interface AccuracyMetric {
 export interface ComparisonItem {
   type:
     | 'perfect_match'
-    | 'unexpected_extra'
+    | 'surplus_actual'
     | 'missing_expected'
     | 'partial_match';
   category: string;
