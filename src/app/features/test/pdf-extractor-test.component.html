@@ -216,7 +216,10 @@
     <div class="bg-white rounded-lg shadow-sm border p-6">
       <h3 class="text-lg font-semibold text-gray-900 mb-4">Overall Metrics</h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="text-center p-4 bg-gray-50 rounded-lg">
+        <div
+          class="text-center p-4 bg-gray-50 rounded-lg cursor-help"
+          title="Precision: The percentage of extracted items that are actually correct."
+        >
           <p
             class="text-2xl font-bold"
             [class]="getMetricColor(testResult()!.metrics.precision)"
@@ -225,7 +228,10 @@
           </p>
           <p class="text-sm text-gray-600">Precision</p>
         </div>
-        <div class="text-center p-4 bg-gray-50 rounded-lg">
+        <div
+          class="text-center p-4 bg-gray-50 rounded-lg cursor-help"
+          title="Recall: The percentage of actual items that were successfully extracted."
+        >
           <p
             class="text-2xl font-bold"
             [class]="getMetricColor(testResult()!.metrics.recall)"
@@ -234,7 +240,10 @@
           </p>
           <p class="text-sm text-gray-600">Recall</p>
         </div>
-        <div class="text-center p-4 bg-gray-50 rounded-lg">
+        <div
+          class="text-center p-4 bg-gray-50 rounded-lg cursor-help"
+          title="F1 Score: The balanced average of precision and recall."
+        >
           <p
             class="text-2xl font-bold"
             [class]="getMetricColor(testResult()!.metrics.f1Score)"
