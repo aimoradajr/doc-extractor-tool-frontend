@@ -1,6 +1,6 @@
 # 📄 PDF Document Extractor - Frontend v0.1.0
 
-AI-powered tool for extracting structured data from agricultural and environmental PDF reports with high accuracy.
+AI-powered tool for extracting structured data from agricultural and environmental PDF reports with comprehensive accuracy testing and validation capabilities.
 
 ## 🔗 Related Repositories
 
@@ -9,7 +9,7 @@ AI-powered tool for extracting structured data from agricultural and environment
 
 ## 🎯 Project Overview
 
-This Angular 19 frontend provides a modern, user-friendly interface for uploading PDF documents and viewing extracted data. The tool specializes in parsing unstructured agricultural/environmental reports and organizing information into logical categories.
+This Angular 19 frontend provides a sophisticated, user-friendly interface for uploading PDF documents, extracting structured data, and performing detailed accuracy testing. The tool specializes in parsing unstructured agricultural/environmental reports and organizing information into logical categories with comprehensive validation against ground truth data.
 
 ## 🛠️ Technology Stack
 
@@ -45,18 +45,24 @@ Navigate to `http://localhost:4200/`. The app will auto-reload on file changes.
 src/
 ├── app/
 │   ├── core/                  # Core application modules
-│   │   ├── interfaces/        # TypeScript interfaces
-│   │   ├── models/           # Data models
-│   │   └── services/         # Singleton services (API, etc.)
+│   │   ├── interfaces/        # TypeScript interfaces (API types, models)
+│   │   ├── models/           # Data models and entities
+│   │   └── services/         # Singleton services
+│   │       ├── api.service.ts        # HTTP API service
+│   │       ├── accuracy-test.service.ts  # Accuracy testing service
+│   │       └── mock-api.service.ts   # Mock data for development
 │   ├── shared/               # Shared modules
 │   │   ├── components/       # Reusable components
 │   │   ├── directives/       # Custom directives
 │   │   └── pipes/           # Custom pipes
 │   ├── features/            # Feature modules
 │   │   ├── upload/          # File upload functionality
-│   │   ├── dashboard/       # Main dashboard
-│   │   └── results/         # Results display
-│   ├── app.component.ts     # Main app component (standalone)
+│   │   │   └── pdf-extractor/ # Main extraction component
+│   │   ├── test/            # Accuracy testing functionality
+│   │   │   └── pdf-extractor-test.component.* # Test interface
+│   │   ├── dashboard/       # Main dashboard (planned)
+│   │   └── results/         # Results display (planned)
+│   ├── app.component.*      # Main app shell with navigation
 │   ├── app.config.ts        # App configuration
 │   └── app.routes.ts        # Route definitions
 ├── environments/            # Environment configs
@@ -94,8 +100,11 @@ This frontend connects to a Node.js/Express backend with the following API endpo
 
 ### **Available Endpoints:**
 
-- `POST /api/upload` - Upload PDF files (expects 'pdf' field in FormData)
+- `POST /api/upload` - Upload PDF files for extraction (expects 'pdf' field in FormData)
 - `GET /api/extract` - Extract data from uploaded PDFs
+- `GET /api/accuracy-test/presets` - Get available test presets
+- `POST /api/accuracy-test/preset` - Run accuracy test with preset data
+- `POST /api/accuracy-test/file` - Run accuracy test with uploaded file
 - `GET /` - Health check endpoint
 
 ### **Environment Management:**
@@ -110,78 +119,156 @@ The app uses Angular's standard environment configuration:
 
 ### **✅ Completed:**
 
-- 📤 **PDF Upload Component** - Drag & drop file upload with validation
-- 🎨 **Modern UI** - Tailwind CSS styling with responsive design
-- 🔌 **Backend Integration** - HTTP client with typed API services
-- 🌍 **Environment Management** - Separate dev/prod configurations
-- ⚡ **Real-time Feedback** - Upload progress and error handling
+- 📤 **PDF Upload & Extraction** - Drag & drop file upload with validation and real-time extraction
+- 🧪 **Accuracy Testing Suite** - Comprehensive testing framework with preset and custom file modes
+- 🎯 **Navigation System** - Intuitive route-based navigation with active state highlighting
+- 📊 **Detailed Metrics Dashboard** - Precision, Recall, F1 Score analysis with category breakdowns
+- 🔍 **Comparison Analysis** - Item-by-item comparison with visual indicators (Match/Partial/Missing/Extra)
+- 🏷️ **Smart Categorization** - Structured extraction of Goals, BMPs, Implementation, and Monitoring data
+- 🎨 **Modern UI/UX** - Tailwind CSS styling with responsive design and accessibility features
+- 🔌 **Backend Integration** - HTTP client with typed API services and environment switching
+- 🌍 **Environment Management** - Separate dev/prod configurations with automatic switching
+- ⚡ **Real-time Feedback** - Upload progress, error handling, and loading states
 - 🛡️ **File Validation** - PDF type and size validation (10MB limit)
+- 📈 **Visual Analytics** - Color-coded metrics (green/yellow/red) based on performance thresholds
 
-### **🚧 In Progress:**
+### **🚧 Current State:**
 
-- 📊 **Data Visualization** - Display extraction results
-- 📈 **Progress Tracking** - Real-time processing status
+- **Navigation**: Two-page application with "Extract Documents" and "Accuracy Test" modes
+- **Testing Framework**: Full preset-based testing with 4 predefined test cases and custom file upload
+- **Metrics Analysis**: Complete precision/recall/F1 calculation with detailed category breakdowns
+- **UI Polish**: Professional interface with consistent styling and intuitive user interactions
 
-### **📋 Planned:**
+### **📋 Planned Enhancements:**
 
-- 📋 **Export Results** - JSON/CSV download functionality
-- 🎯 **Accuracy Metrics** - Display confidence scores
-- 📱 **Mobile Optimization** - Enhanced responsive design
+- 📋 **Export Results** - JSON/CSV download functionality for test results
+- 📱 **Mobile Optimization** - Enhanced responsive design for mobile devices
+- � **Batch Processing** - Multiple file processing capabilities
+- 🔄 **Real-time Processing** - WebSocket integration for live processing updates
+- 📈 **Historical Analytics** - Test result history and trend analysis
 
-## 🎨 Components Architecture
+## 🎨 Application Architecture
 
 ### **Core Components:**
 
+- **App Component** (`app.component.*`)
+
+  - Main application shell with centralized navigation
+  - Route-based active state highlighting
+  - Responsive header with navigation links
+  - Footer with application information
+
 - **PDF Extractor Component** (`/features/upload/pdf-extractor`)
+
   - File upload with drag & drop support
   - Real-time upload progress
   - Backend connectivity testing
   - Response display and error handling
 
+- **PDF Extractor Test Component** (`/features/test/pdf-extractor-test`)
+  - Comprehensive accuracy testing interface
+  - Preset and custom file testing modes
+  - Detailed metrics and comparison analysis
+  - Visual result presentation with color-coded indicators
+
 ### **Services:**
 
 - **API Service** (`/core/services/api.service`)
-  - Typed HTTP methods
+
+  - Typed HTTP methods for document extraction
   - Environment-aware endpoint configuration
   - File upload with proper FormData handling
 
-### **Interfaces:**
+- **Accuracy Test Service** (`/core/services/accuracy-test.service`)
+
+  - Specialized service for accuracy testing
+  - Preset management and file-based testing
+  - Result processing and analysis
+
+- **Mock API Service** (`/core/services/mock-api.service`)
+  - Development mock data provider
+  - Testing data for offline development
+
+### **Interfaces & Models:**
 
 - **API Interfaces** (`/core/interfaces/api.interfaces`)
   - TypeScript definitions for API responses
-  - Enum for job status tracking
-  - Structured data models
+  - Accuracy test result models
+  - Preset option definitions
+  - Structured data models for Goals, BMPs, Implementation, Monitoring
+
+### **Navigation & Routing:**
+
+- **App Routes** (`app.routes.ts`)
+
+  - Route configuration for main extraction and testing pages
+  - Title management for browser tabs
+  - Wildcard routing for error handling
+
+- **Navigation System**
+  - Active route detection with Router service
+  - Conditional styling for navigation states
+  - Responsive navigation with hover effects
 
 ## 📈 Current Status
 
-**Phase**: Core Functionality Complete ✅
+**Phase**: Advanced Testing & Analytics Complete ✅
 
-### **✅ Completed:**
+### **✅ Major Accomplishments:**
 
-- Angular 19 project structure with best practices
-- Standalone components architecture
-- Scalable directory structure (core/shared/features)
-- Tailwind CSS integration for modern styling
-- PDF upload component with validation
-- Typed API services with environment switching
-- Backend connectivity (localhost:5000 ↔ Render production)
-- Error handling and user feedback
-- Production-ready build configuration
+- **Complete Angular 19 Architecture**: Modern standalone components with best practices
+- **Advanced Testing Framework**: Comprehensive accuracy testing with preset and custom modes
+- **Professional Navigation**: Route-based navigation with active state highlighting
+- **Detailed Analytics Dashboard**: Precision/Recall/F1 metrics with category breakdowns
+- **Visual Comparison System**: Color-coded indicators for match analysis
+- **Responsive Design**: Tailwind CSS with mobile-first approach
+- **Type-Safe API Integration**: Full TypeScript coverage with environment switching
+- **Error Handling & UX**: Comprehensive user feedback and loading states
 
 ### **🎯 Current Capabilities:**
 
-- Upload PDF files up to 10MB
-- Test backend connectivity
-- Display upload responses
-- Environment-aware API calls (dev/prod)
-- Responsive UI with Tailwind CSS
+#### **Document Extraction:**
 
-### **📋 Next Development Phase:**
+- Upload PDF files up to 10MB with drag & drop
+- Real-time extraction processing
+- Structured data organization (Goals, BMPs, Implementation, Monitoring)
 
-1. Implement data visualization components
-2. Add extraction results processing
-3. Create export functionality
-4. Enhance mobile responsiveness
+#### **Accuracy Testing:**
+
+- **Preset Mode**: 4 predefined test cases with ground truth validation
+- **Custom Mode**: Upload any PDF for extraction testing
+- **Comprehensive Metrics**: Precision, Recall, F1 Score calculations
+- **Detailed Comparisons**: Item-by-item analysis with visual indicators
+- **Performance Analytics**: Color-coded results (🟢 Excellent, 🟡 Good, 🔴 Needs Improvement)
+
+#### **User Experience:**
+
+- Professional navigation with active route highlighting
+- Responsive design across all device sizes
+- Real-time loading states and progress indicators
+- Clear error messaging and validation feedback
+
+### **� Testing Framework Features:**
+
+#### **Available Test Presets:**
+
+1. **Bell Creek Muddy Creek Watershed Plan 2012**
+2. **Basket Creek Hickahala Creek 9 Key Element Plan 2018**
+3. **Pickwick Reservoir Watershed Plan 2009**
+4. **Broken Pumpkin 9 Key Element Plan 2019**
+
+#### **Comparison Analysis:**
+
+- ✅ **Perfect Match**: Exact content alignment
+- ✅ **Partial Match**: Semantic similarity with minor differences
+- ➕ **Extra Found**: Additional extracted content not in ground truth
+- ❌ **Missing Expected**: Ground truth content not extracted
+
+#### **Performance Metrics:**
+
+- **Overall Metrics**: Combined precision, recall, and F1 score
+- **Category Breakdown**: Individual metrics for Goals, BMPs, Implementation, Monitoring
+- **Visual Indicators**: Color-coded performance levels with intuitive styling
 
 ## 🌐 Deployment
 
@@ -208,22 +295,41 @@ The app uses Angular's standard environment configuration:
 
 ### **Architecture Decisions:**
 
-- **Standalone Components**: Using Angular 19's modern standalone approach
-- **Signals**: Implementing Angular's reactive state management
-- **Environment Management**: Standard Angular approach (no over-engineering)
-- **Styling**: Tailwind CSS for utility-first styling approach
+- **Standalone Components**: Using Angular 19's modern standalone approach for better tree-shaking
+- **Signals**: Implementing Angular's reactive state management for efficient change detection
+- **Router Integration**: Centralized navigation with active route detection and highlighting
+- **Service Architecture**: Layered services (API, AccuracyTest, Mock) for separation of concerns
+- **Environment Management**: Standard Angular approach with automatic switching
+- **Styling Strategy**: Tailwind CSS for utility-first styling with consistent design system
+- **Type Safety**: Comprehensive TypeScript coverage with interface definitions
 
 ### **Key Implementation Details:**
 
-- FormData uploads use 'pdf' field name for backend compatibility
-- Environment switching via Angular's fileReplacements
-- Type safety with TypeScript interfaces for API responses
-- Component composition for maintainable code structure
+- **Navigation System**: Router service integration with isActiveRoute() method for active state detection
+- **File Upload**: FormData handling with 'pdf' field name for backend compatibility
+- **Testing Framework**: Dual-mode testing (preset/custom) with comprehensive comparison analysis
+- **Visual Indicators**: Emoji-based icons with innerHTML binding for proper rendering
+- **Error Handling**: Centralized error management with user-friendly feedback
+- **Performance**: Efficient change detection with Angular Signals and OnPush strategies
+- **Responsive Design**: Mobile-first approach with Tailwind's responsive utilities
 
 ### **Backend Communication:**
 
-This frontend interfaces with an Express.js backend ([doc-extractor-tool-backend](https://github.com/aimoradajr/doc-extractor-tool-backend)) that handles PDF processing and AI-powered data extraction for agricultural/environmental reports.
+This frontend interfaces with an Express.js backend ([doc-extractor-tool-backend](https://github.com/aimoradajr/doc-extractor-tool-backend)) that handles:
+
+- PDF processing and AI-powered data extraction
+- Ground truth validation for accuracy testing
+- Structured data organization for agricultural/environmental reports
+- Comprehensive comparison analysis with detailed metrics
+
+### **Recent Major Updates:**
+
+- **Navigation Enhancement**: Added route-based active state highlighting
+- **Accuracy Testing**: Complete testing framework with preset and custom file modes
+- **Visual Improvements**: Color-coded comparison system with intuitive icons
+- **Performance Metrics**: Detailed precision/recall/F1 analysis with category breakdowns
+- **UI Consistency**: Standardized styling across all components and sections
 
 ---
 
-_Generated with Angular CLI 19.2.15 | Last Updated: August 2, 2025_
+_Generated with Angular CLI 19.2.15 | Last Updated: August 3, 2025_
