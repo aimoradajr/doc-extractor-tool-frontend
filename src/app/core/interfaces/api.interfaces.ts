@@ -187,11 +187,16 @@ export interface Organization {
 // Accuracy Testing Types
 // =============================================================================
 
+// =============================================================================
+// Accuracy Testing Types
+// =============================================================================
+
 /**
  * Result from accuracy testing
  */
 export interface AccuracyTestResult {
   testCase: string;
+  model: string;
   metrics: {
     precision: number;
     recall: number;
@@ -202,6 +207,16 @@ export interface AccuracyTestResult {
     bmps: AccuracyMetric;
     implementation: AccuracyMetric;
     monitoring: AccuracyMetric;
+  };
+  comparison?: {
+    expected: any;
+    actual: any;
+  };
+  detailedComparisons?: {
+    goals: ComparisonItem[];
+    bmps: ComparisonItem[];
+    implementation: ComparisonItem[];
+    monitoring: ComparisonItem[];
   };
 }
 
@@ -215,6 +230,34 @@ export interface AccuracyMetric {
   correctCount: number;
   totalExtracted: number;
   totalExpected: number;
+}
+
+/**
+ * Comparison item for detailed analysis
+ */
+export interface ComparisonItem {
+  type: 'perfect_match' | 'unexpected_extra' | 'missing_expected';
+  category: string;
+  expected: string | null;
+  actual: string | null;
+  message: string;
+}
+
+/**
+ * Preset option for testing
+ */
+export interface PresetOption {
+  id: string;
+  name: string;
+  pdfFile: string;
+  groundTruthFile: string;
+}
+
+/**
+ * API response for presets endpoint
+ */
+export interface PresetsResponse {
+  presets: PresetOption[];
 }
 
 /**

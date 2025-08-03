@@ -1,0 +1,540 @@
+<div class="max-w-6xl mx-auto p-6 space-y-6">
+  <!-- Header -->
+  <div class="bg-white rounded-lg shadow-sm border p-6">
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">
+      PDF Extractor Accuracy Test
+    </h1>
+    <p class="text-gray-600">
+      Test the accuracy of PDF extraction using preset test cases or upload your
+      own files.
+    </p>
+
+    <!-- Navigation -->
+    <div class="mt-4 flex justify-center space-x-4">
+      <a href="/" class="text-blue-600 hover:text-blue-800 font-medium text-sm">
+        Extract Documents
+      </a>
+      <span class="text-gray-400">|</span>
+      <a
+        href="/test"
+        class="text-blue-600 hover:text-blue-800 font-medium text-sm"
+      >
+        Accuracy Test
+      </a>
+    </div>
+  </div>
+
+  <!-- Mode Selection -->
+  <div class="bg-white rounded-lg shadow-sm border p-6">
+    <h2 class="text-xl font-semibold text-gray-900 mb-4">Test Mode</h2>
+    <div class="flex space-x-4">
+      <button
+        (click)="switchMode('preset')"
+        [class]="
+          mode() === 'preset'
+            ? 'bg-blue-600 text-white'
+            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+        "
+        class="px-4 py-2 rounded-md font-medium transition-colors"
+      >
+        Preset Mode
+      </button>
+      <button
+        (click)="switchMode('upload')"
+        [class]="
+          mode() === 'upload'
+            ? 'bg-blue-600 text-white'
+            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+        "
+        class="px-4 py-2 rounded-md font-medium transition-colors"
+      >
+        Upload Mode
+      </button>
+    </div>
+
+    <div class="mt-4 text-sm text-gray-600">
+      @if (mode() === 'preset') {
+      <p>
+        Select from predefined test cases with known ground truth data for
+        accuracy measurement.
+      </p>
+      } @else {
+      <p>
+        Upload your own PDF file to test extraction capabilities (no ground
+        truth comparison).
+      </p>
+      }
+    </div>
+  </div>
+
+  <!-- Test Configuration -->
+  <div class="bg-white rounded-lg shadow-sm border p-6">
+    <h2 class="text-xl font-semibold text-gray-900 mb-4">Test Configuration</h2>
+
+    <!-- Preset Mode -->
+    @if (mode() === 'preset') {
+    <div class="space-y-4">
+      <div>
+        <label
+          for="preset-select"
+          class="block text-sm font-medium text-gray-700 mb-2"
+        >
+          Select Test Preset
+        </label>
+        @if (isLoadingPresets()) {
+        <div class="flex items-center text-gray-500">
+          <div
+            class="animate-spin rounded-full h-4 w-4 border-2 border-blue-500 border-t-transparent mr-2"
+          ></div>
+          Loading presets...
+        </div>
+        } @else {
+        <select
+          id="preset-select"
+          [(ngModel)]="selectedPreset"
+          class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        >
+          <option value="">Choose a preset...</option>
+          @for (preset of presetOptions(); track preset.id) {
+          <option [value]="preset.id">
+            [{{ preset.id }}] {{ preset.name }}
+          </option>
+          }
+        </select>
+
+        @if (selectedPreset()) { @for (preset of presetOptions(); track
+        preset.id) { @if (preset.id === selectedPreset()) {
+        <div class="mt-2 text-sm text-gray-600 space-y-1">
+          <p><strong>PDF File:</strong> {{ preset.pdfFile }}</p>
+          <p><strong>Ground Truth:</strong> {{ preset.groundTruthFile }}</p>
+        </div>
+        } } } }
+      </div>
+    </div>
+    }
+
+    <!-- Upload Mode -->
+    @if (mode() === 'upload') {
+    <div class="space-y-4">
+      <div>
+        <label
+          for="pdf-upload"
+          class="block text-sm font-medium text-gray-700 mb-2"
+        >
+          Upload PDF File
+        </label>
+        <div
+          class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-gray-400 transition-colors"
+        >
+          <div class="space-y-1 text-center">
+            <svg
+              class="mx-auto h-12 w-12 text-gray-400"
+              stroke="currentColor"
+              fill="none"
+              viewBox="0 0 48 48"
+            >
+              <path
+                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <div class="flex text-sm text-gray-600">
+              <label
+                for="pdf-upload"
+                class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500"
+              >
+                <span>Upload a file</span>
+                <input
+                  id="pdf-upload"
+                  type="file"
+                  accept=".pdf"
+                  (change)="onFileSelected($event)"
+                  class="sr-only"
+                />
+              </label>
+              <p class="pl-1">or drag and drop</p>
+            </div>
+            <p class="text-xs text-gray-500">PDF up to 10MB</p>
+          </div>
+        </div>
+
+        @if (selectedFile()) {
+        <div class="mt-2 p-3 bg-blue-50 rounded-md">
+          <p class="text-sm text-blue-800">
+            <strong>Selected:</strong> {{ selectedFile()!.name }} ({{
+              (selectedFile()!.size / 1024 / 1024).toFixed(2)
+            }}
+            MB)
+          </p>
+        </div>
+        }
+      </div>
+    </div>
+    }
+
+    <!-- Error Message -->
+    @if (errorMessage()) {
+    <div class="mt-4 p-3 bg-red-50 border border-red-200 rounded-md">
+      <p class="text-red-700 text-sm">{{ errorMessage() }}</p>
+    </div>
+    }
+
+    <!-- Run Test Button -->
+    <div class="mt-6">
+      <button
+        (click)="runTest()"
+        [disabled]="
+          isLoading() ||
+          (mode() === 'preset' && !selectedPreset()) ||
+          (mode() === 'upload' && !selectedFile())
+        "
+        [class]="
+          isLoading() ||
+          (mode() === 'preset' && !selectedPreset()) ||
+          (mode() === 'upload' && !selectedFile())
+            ? 'bg-gray-300 cursor-not-allowed'
+            : 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500'
+        "
+        class="inline-flex items-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors"
+      >
+        @if (isLoading()) {
+        <div
+          class="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent mr-2"
+        ></div>
+        Running Test... } @else { Run Accuracy Test }
+      </button>
+    </div>
+  </div>
+
+  <!-- Test Results -->
+  @if (testResult()) {
+  <div class="space-y-6">
+    <!-- Test Overview -->
+    <div class="bg-white rounded-lg shadow-sm border p-6">
+      <h2 class="text-xl font-semibold text-gray-900 mb-4">Test Results</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <p class="text-sm text-gray-600">Test Case</p>
+          <p class="font-medium text-gray-900">{{ testResult()!.testCase }}</p>
+        </div>
+        <div>
+          <p class="text-sm text-gray-600">AI Model</p>
+          <p class="font-medium text-gray-900">{{ testResult()!.model }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overall Metrics -->
+    <div class="bg-white rounded-lg shadow-sm border p-6">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">Overall Metrics</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="text-center p-4 bg-gray-50 rounded-lg">
+          <p
+            class="text-2xl font-bold"
+            [class]="getMetricColor(testResult()!.metrics.precision)"
+          >
+            {{ formatPercentage(testResult()!.metrics.precision) }}
+          </p>
+          <p class="text-sm text-gray-600">Precision</p>
+        </div>
+        <div class="text-center p-4 bg-gray-50 rounded-lg">
+          <p
+            class="text-2xl font-bold"
+            [class]="getMetricColor(testResult()!.metrics.recall)"
+          >
+            {{ formatPercentage(testResult()!.metrics.recall) }}
+          </p>
+          <p class="text-sm text-gray-600">Recall</p>
+        </div>
+        <div class="text-center p-4 bg-gray-50 rounded-lg">
+          <p
+            class="text-2xl font-bold"
+            [class]="getMetricColor(testResult()!.metrics.f1Score)"
+          >
+            {{ formatPercentage(testResult()!.metrics.f1Score) }}
+          </p>
+          <p class="text-sm text-gray-600">F1 Score</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Metrics by Category -->
+    <div class="bg-white rounded-lg shadow-sm border p-6">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">Detailed Metrics</h3>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Goals -->
+        <div class="border rounded-lg p-4">
+          <h4 class="font-medium text-gray-900 mb-3">Goals</h4>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between">
+              <span>Precision:</span>
+              <span
+                [class]="getMetricColor(testResult()!.details.goals.precision)"
+              >
+                {{ formatPercentage(testResult()!.details.goals.precision) }}
+              </span>
+            </div>
+            <div class="flex justify-between">
+              <span>Recall:</span>
+              <span
+                [class]="getMetricColor(testResult()!.details.goals.recall)"
+              >
+                {{ formatPercentage(testResult()!.details.goals.recall) }}
+              </span>
+            </div>
+            <div class="flex justify-between">
+              <span>F1 Score:</span>
+              <span
+                [class]="getMetricColor(testResult()!.details.goals.f1Score)"
+              >
+                {{ formatPercentage(testResult()!.details.goals.f1Score) }}
+              </span>
+            </div>
+            <div class="text-xs text-gray-600 mt-2">
+              {{ testResult()!.details.goals.correctCount }} correct /
+              {{ testResult()!.details.goals.totalExtracted }} extracted /
+              {{ testResult()!.details.goals.totalExpected }} expected
+            </div>
+          </div>
+        </div>
+
+        <!-- BMPs -->
+        <div class="border rounded-lg p-4">
+          <h4 class="font-medium text-gray-900 mb-3">BMPs</h4>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between">
+              <span>Precision:</span>
+              <span
+                [class]="getMetricColor(testResult()!.details.bmps.precision)"
+              >
+                {{ formatPercentage(testResult()!.details.bmps.precision) }}
+              </span>
+            </div>
+            <div class="flex justify-between">
+              <span>Recall:</span>
+              <span [class]="getMetricColor(testResult()!.details.bmps.recall)">
+                {{ formatPercentage(testResult()!.details.bmps.recall) }}
+              </span>
+            </div>
+            <div class="flex justify-between">
+              <span>F1 Score:</span>
+              <span
+                [class]="getMetricColor(testResult()!.details.bmps.f1Score)"
+              >
+                {{ formatPercentage(testResult()!.details.bmps.f1Score) }}
+              </span>
+            </div>
+            <div class="text-xs text-gray-600 mt-2">
+              {{ testResult()!.details.bmps.correctCount }} correct /
+              {{ testResult()!.details.bmps.totalExtracted }} extracted /
+              {{ testResult()!.details.bmps.totalExpected }} expected
+            </div>
+          </div>
+        </div>
+
+        <!-- Implementation -->
+        <div class="border rounded-lg p-4">
+          <h4 class="font-medium text-gray-900 mb-3">Implementation</h4>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between">
+              <span>Precision:</span>
+              <span
+                [class]="
+                  getMetricColor(testResult()!.details.implementation.precision)
+                "
+              >
+                {{
+                  formatPercentage(
+                    testResult()!.details.implementation.precision
+                  )
+                }}
+              </span>
+            </div>
+            <div class="flex justify-between">
+              <span>Recall:</span>
+              <span
+                [class]="
+                  getMetricColor(testResult()!.details.implementation.recall)
+                "
+              >
+                {{
+                  formatPercentage(testResult()!.details.implementation.recall)
+                }}
+              </span>
+            </div>
+            <div class="flex justify-between">
+              <span>F1 Score:</span>
+              <span
+                [class]="
+                  getMetricColor(testResult()!.details.implementation.f1Score)
+                "
+              >
+                {{
+                  formatPercentage(testResult()!.details.implementation.f1Score)
+                }}
+              </span>
+            </div>
+            <div class="text-xs text-gray-600 mt-2">
+              {{ testResult()!.details.implementation.correctCount }} correct /
+              {{ testResult()!.details.implementation.totalExtracted }}
+              extracted /
+              {{ testResult()!.details.implementation.totalExpected }} expected
+            </div>
+          </div>
+        </div>
+
+        <!-- Monitoring -->
+        <div class="border rounded-lg p-4">
+          <h4 class="font-medium text-gray-900 mb-3">Monitoring</h4>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between">
+              <span>Precision:</span>
+              <span
+                [class]="
+                  getMetricColor(testResult()!.details.monitoring.precision)
+                "
+              >
+                {{
+                  formatPercentage(testResult()!.details.monitoring.precision)
+                }}
+              </span>
+            </div>
+            <div class="flex justify-between">
+              <span>Recall:</span>
+              <span
+                [class]="
+                  getMetricColor(testResult()!.details.monitoring.recall)
+                "
+              >
+                {{ formatPercentage(testResult()!.details.monitoring.recall) }}
+              </span>
+            </div>
+            <div class="flex justify-between">
+              <span>F1 Score:</span>
+              <span
+                [class]="
+                  getMetricColor(testResult()!.details.monitoring.f1Score)
+                "
+              >
+                {{ formatPercentage(testResult()!.details.monitoring.f1Score) }}
+              </span>
+            </div>
+            <div class="text-xs text-gray-600 mt-2">
+              {{ testResult()!.details.monitoring.correctCount }} correct /
+              {{ testResult()!.details.monitoring.totalExtracted }} extracted /
+              {{ testResult()!.details.monitoring.totalExpected }} expected
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Comparisons -->
+    @if (testResult()!.detailedComparisons) {
+    <div class="bg-white rounded-lg shadow-sm border p-6">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">
+        Detailed Comparisons
+      </h3>
+
+      <!-- Goals Comparisons -->
+      @if (testResult()!.detailedComparisons!.goals &&
+      testResult()!.detailedComparisons!.goals.length > 0) {
+      <div class="mb-6">
+        <h4 class="font-medium text-gray-900 mb-3">Goals</h4>
+        <div class="space-y-2">
+          @for (comparison of testResult()!.detailedComparisons!.goals; track
+          $index) {
+          <div class="flex items-start space-x-2 text-sm">
+            <span class="text-lg">{{
+              getComparisonIcon(comparison.type)
+            }}</span>
+            <span [class]="getComparisonColor(comparison.type)">{{
+              comparison.message
+            }}</span>
+          </div>
+          }
+        </div>
+      </div>
+      }
+
+      <!-- BMPs Comparisons -->
+      @if (testResult()!.detailedComparisons!.bmps &&
+      testResult()!.detailedComparisons!.bmps.length > 0) {
+      <div class="mb-6">
+        <h4 class="font-medium text-gray-900 mb-3">BMPs</h4>
+        <div class="space-y-2">
+          @for (comparison of testResult()!.detailedComparisons!.bmps; track
+          $index) {
+          <div class="flex items-start space-x-2 text-sm">
+            <span class="text-lg">{{
+              getComparisonIcon(comparison.type)
+            }}</span>
+            <span [class]="getComparisonColor(comparison.type)">{{
+              comparison.message
+            }}</span>
+          </div>
+          }
+        </div>
+      </div>
+      }
+
+      <!-- Implementation Comparisons -->
+      @if (testResult()!.detailedComparisons!.implementation &&
+      testResult()!.detailedComparisons!.implementation.length > 0) {
+      <div class="mb-6">
+        <h4 class="font-medium text-gray-900 mb-3">Implementation</h4>
+        <div class="space-y-2">
+          @for (comparison of testResult()!.detailedComparisons!.implementation;
+          track $index) {
+          <div class="flex items-start space-x-2 text-sm">
+            <span class="text-lg">{{
+              getComparisonIcon(comparison.type)
+            }}</span>
+            <span [class]="getComparisonColor(comparison.type)">{{
+              comparison.message
+            }}</span>
+          </div>
+          }
+        </div>
+      </div>
+      }
+
+      <!-- Monitoring Comparisons -->
+      @if (testResult()!.detailedComparisons!.monitoring &&
+      testResult()!.detailedComparisons!.monitoring.length > 0) {
+      <div class="mb-6">
+        <h4 class="font-medium text-gray-900 mb-3">Monitoring</h4>
+        <div class="space-y-2">
+          @for (comparison of testResult()!.detailedComparisons!.monitoring;
+          track $index) {
+          <div class="flex items-start space-x-2 text-sm">
+            <span class="text-lg">{{
+              getComparisonIcon(comparison.type)
+            }}</span>
+            <span [class]="getComparisonColor(comparison.type)">{{
+              comparison.message
+            }}</span>
+          </div>
+          }
+        </div>
+      </div>
+      }
+    </div>
+    }
+
+    <!-- Actions -->
+    <div class="bg-white rounded-lg shadow-sm border p-6">
+      <div class="flex space-x-4">
+        <button
+          (click)="reset()"
+          class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-md font-medium transition-colors"
+        >
+          Run Another Test
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+</div>

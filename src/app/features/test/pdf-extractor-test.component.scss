@@ -1,0 +1,57 @@
+// PDF Extractor Test Component Styles
+// Using Tailwind CSS classes primarily, minimal custom styles
+
+.test-result-card {
+  transition: all 0.2s ease-in-out;
+}
+
+.test-result-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.metric-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.comparison-item {
+  border-left: 3px solid transparent;
+  padding-left: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.comparison-item.success {
+  border-left-color: #10b981;
+}
+
+.comparison-item.warning {
+  border-left-color: #f59e0b;
+}
+
+.comparison-item.error {
+  border-left-color: #ef4444;
+}
+
+// Custom scrollbar for long comparison lists
+.comparison-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.comparison-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.comparison-list::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.comparison-list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.comparison-list::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
