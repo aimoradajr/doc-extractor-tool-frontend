@@ -11,7 +11,34 @@
   <header class="bg-white shadow">
     <nav class="container mx-auto px-6 py-4">
       <div class="flex items-center justify-between">
-        <div class="text-xl font-bold">📄 Document Extractor Tool</div>
+        <div class="flex items-center space-x-6">
+          <div class="text-xl font-bold">📄 Document Extraction Tool</div>
+
+          <!-- Navigation Links -->
+          <div class="flex items-center space-x-4">
+            <a
+              href="/"
+              [class]="
+                isActiveRoute('/')
+                  ? 'px-4 py-2 bg-blue-600 text-white rounded-md font-medium text-sm transition-colors'
+                  : 'px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md font-medium text-sm transition-colors'
+              "
+            >
+              Extract Documents
+            </a>
+            <a
+              href="/test"
+              [class]="
+                isActiveRoute('/test')
+                  ? 'px-4 py-2 bg-blue-600 text-white rounded-md font-medium text-sm transition-colors'
+                  : 'px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md font-medium text-sm transition-colors'
+              "
+            >
+              Accuracy Test
+            </a>
+          </div>
+        </div>
+
         <div class="text-sm text-gray-600">
           AI-Powered Agricultural Report Analysis
         </div>
@@ -24,7 +51,7 @@
   </main>
 
   <footer class="text-center py-4 mt-8 text-gray-500 text-xs">
-    <p>&copy; 2025 Document Extractor Tool v0.1.0. All Rights Reserved.</p>
+    <p>&copy; 2025 Document Extraction Tool v0.1.0. All Rights Reserved.</p>
   </footer>
 </div>
 

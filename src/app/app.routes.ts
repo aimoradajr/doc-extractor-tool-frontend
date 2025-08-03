@@ -6,12 +6,12 @@ export const routes: Routes = [
   {
     path: '',
     component: PdfExtractorComponent,
-    title: 'PDF Document Extractor',
+    title: 'PDF Document Extraction',
   },
   {
     path: 'test',
     component: PdfExtractorTestComponent,
-    title: 'PDF Extractor Test',
+    title: 'PDF Extraction Test',
   },
   {
     path: '**',
