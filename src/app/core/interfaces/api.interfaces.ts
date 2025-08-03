@@ -236,7 +236,11 @@ export interface AccuracyMetric {
  * Comparison item for detailed analysis
  */
 export interface ComparisonItem {
-  type: 'perfect_match' | 'unexpected_extra' | 'missing_expected';
+  type:
+    | 'perfect_match'
+    | 'unexpected_extra'
+    | 'missing_expected'
+    | 'partial_match';
   category: string;
   expected: string | null;
   actual: string | null;

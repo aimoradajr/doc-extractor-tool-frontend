@@ -38,25 +38,25 @@ export class PdfExtractorTestComponent implements OnInit {
       testCase: 'preset2-Basket Creek Hickahala Creek 9 Key Element Plan 2018',
       model: 'gpt-3.5-turbo',
       metrics: {
-        precision: 0,
-        recall: 0,
-        f1Score: 0,
+        precision: 0.5,
+        recall: 0.3,
+        f1Score: 0.375,
       },
       details: {
         goals: {
-          precision: 0,
-          recall: 0,
-          f1Score: 0,
-          correctCount: 0,
+          precision: 0.5,
+          recall: 0.3,
+          f1Score: 0.375,
+          correctCount: 3,
           totalExtracted: 6,
-          totalExpected: 13,
+          totalExpected: 10,
         },
         bmps: {
-          precision: 0,
-          recall: 0,
-          f1Score: 0,
-          correctCount: 0,
-          totalExtracted: 2,
+          precision: 1,
+          recall: 1,
+          f1Score: 1,
+          correctCount: 6,
+          totalExtracted: 6,
           totalExpected: 6,
         },
         implementation: {
@@ -645,63 +645,63 @@ export class PdfExtractorTestComponent implements OnInit {
           model: 'gpt-3.5-turbo',
           reportSummary: {
             totalGoals: 6,
-            totalBMPs: 2,
+            totalBMPs: 6,
             completionRate: 0.5,
           },
           goals: [
             {
               description:
                 'Develop a TMDL to address pollutants causing biological impairment in Hickahala Creek.',
-              objective: 'Develop TMDL for pollutants',
+              objective: 'Develop TMDL for biological impairment',
               targetArea: 'Hickahala Creek',
               schedule: '2003',
               contacts: [],
-              desiredOutcomes: ['Biological impairment reduction'],
+              desiredOutcomes: ['TMDL development'],
               sourceExcerpt:
-                "A TMDL was developed to address those pollutants. Hickahala Creek Drainage Area (DA) (MS305E) was included on MS's 1996 and 1998 Section 303(d) List.",
+                'A TMDL was developed to address those pollutants.',
             },
             {
               description:
-                'Implement BMPs to mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed.',
-              objective: 'Implement BMPs for sediment and nutrient mitigation',
+                'Implement nutrient BMPs to reduce sediment and nutrient issues in the watershed.',
+              objective: 'Implement nutrient BMPs',
               targetArea: 'Basket Creek-Hickahala Creek watershed',
               schedule: 'ongoing',
               contacts: [],
               desiredOutcomes: ['Sediment and nutrient reduction'],
-              sourceExcerpt:
-                'Based on their analysis, installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed.',
+              sourceExcerpt: 'nutrient BMPs will be implemented watershed.',
             },
             {
-              description: 'Develop a Fecal Coliform TMDL for Hickahala Creek.',
-              objective: 'Develop TMDL for Fecal Coliform',
-              targetArea: 'Hickahala Creek',
+              description:
+                'Reduce fecal coliform levels in Hickahala Creek by 50% and in James Wolf Creek by 70%.',
+              objective: 'Reduce fecal coliform levels',
+              targetArea: 'Hickahala Creek, James Wolf Creek',
               schedule: '2003',
               contacts: [],
               desiredOutcomes: ['Fecal coliform reduction'],
               sourceExcerpt:
-                'A fecal coliform TMDL for Hickahala Creek was developed in 2003 to address the pathogen impairment.',
+                'Fecal coliform TMDL for Hickahala Creek is calling for a 50% reduction.',
             },
             {
               description:
                 'Prioritize BMPs for implementation in newly converted pasture areas.',
               objective: 'Prioritize BMPs in pasture areas',
-              targetArea: 'Newly converted pasture areas',
+              targetArea: 'Pasture areas',
               schedule: 'ongoing',
               contacts: [],
-              desiredOutcomes: ['Effective BMP implementation'],
+              desiredOutcomes: ['Effective BMP placement'],
               sourceExcerpt:
-                'As such, BMPs will be prioritized for implementation in the newly converted pasture areas.',
+                'BMPs will be prioritized for implementation in the newly converted pasture.',
             },
             {
               description:
-                'Ensure no future impacts to water quality from permitted facilities.',
+                'Ensure no future impacts to water quality from permitted facilities by meeting water quality standards for pathogens.',
               objective: 'Prevent water quality impacts',
-              targetArea: 'Water quality',
+              targetArea: 'Permitted facilities',
               schedule: 'ongoing',
               contacts: [],
-              desiredOutcomes: ['Prevention of water quality impacts'],
+              desiredOutcomes: ['Compliance with water quality standards'],
               sourceExcerpt:
-                'According to the TMDL, no future impacts are expected to water quality from permitted facilities.',
+                'no future impacts are expected to water quality from permitted facilities.',
             },
             {
               description:
@@ -710,16 +710,16 @@ export class PdfExtractorTestComponent implements OnInit {
               targetArea: 'Pasturelands',
               schedule: 'ongoing',
               contacts: [],
-              desiredOutcomes: ['Limit livestock access to streams'],
+              desiredOutcomes: ['Livestock access limitation'],
               sourceExcerpt:
-                'In order to mitigate any NPS contributors to pathogens in the watershed, the watershed team will work to identify opportunities to implement BMPs on pasturelands.',
+                'the watershed team will work to identify opportunities to implement BMPs on pasturelands.',
             },
           ],
           bmps: [
             {
-              name: 'Fencing and streambank protection',
+              name: 'Fencing',
               description:
-                'Install fencing and streambank protection to limit livestock access to streams.',
+                'Install fencing to limit livestock access to streams.',
               type: 'Pathogen',
               targetAreas: ['Pasturelands'],
               quantity: null,
@@ -727,20 +727,72 @@ export class PdfExtractorTestComponent implements OnInit {
               estimatedCost: null,
               partners: [],
               schedule: 'ongoing',
-              priorityFactors: ['Limiting livestock access'],
+              priorityFactors: ['Livestock access limitation'],
             },
             {
-              name: 'Nutrient BMPs implementation',
+              name: 'Watering facilities',
               description:
-                'Implement nutrient BMPs to reduce nutrient runoff in the watershed.',
+                'Construct watering facilities away from streams to reduce nutrient runoff.',
               type: 'Nutrient',
-              targetAreas: ['Watershed'],
+              targetAreas: ['Pasturelands'],
               quantity: null,
               unit: null,
               estimatedCost: null,
               partners: [],
               schedule: 'ongoing',
-              priorityFactors: ['Nutrient reduction'],
+              priorityFactors: ['Nutrient runoff reduction'],
+            },
+            {
+              name: 'Ponds',
+              description:
+                'Create ponds to capture sediment and nutrients from runoff.',
+              type: 'Sediment',
+              targetAreas: ['Pasturelands'],
+              quantity: null,
+              unit: null,
+              estimatedCost: null,
+              partners: [],
+              schedule: 'ongoing',
+              priorityFactors: ['Sediment capture'],
+            },
+            {
+              name: 'Streambank and shoreline protection',
+              description:
+                'Implement measures to stabilize streambanks and protect shorelines.',
+              type: 'Sediment',
+              targetAreas: ['Streambanks, Shorelines'],
+              quantity: null,
+              unit: null,
+              estimatedCost: null,
+              partners: [],
+              schedule: 'ongoing',
+              priorityFactors: ['Erosion prevention'],
+            },
+            {
+              name: 'Grade stabilization structures',
+              description:
+                'Install structures to prevent erosion and sedimentation.',
+              type: 'Sediment',
+              targetAreas: ['Erosion-prone areas'],
+              quantity: null,
+              unit: null,
+              estimatedCost: null,
+              partners: [],
+              schedule: 'ongoing',
+              priorityFactors: ['Erosion prevention'],
+            },
+            {
+              name: 'Heavy use areas',
+              description:
+                'Designate heavy use areas to concentrate livestock impact and reduce runoff.',
+              type: 'Pathogen',
+              targetAreas: ['Pasturelands'],
+              quantity: null,
+              unit: null,
+              estimatedCost: null,
+              partners: [],
+              schedule: 'ongoing',
+              priorityFactors: ['Livestock impact reduction'],
             },
           ],
           implementation: [],
@@ -754,214 +806,157 @@ export class PdfExtractorTestComponent implements OnInit {
       detailedComparisons: {
         goals: [
           {
-            type: 'unexpected_extra',
+            type: 'partial_match',
             category: 'goals',
-            expected: null,
-            actual: 'Develop TMDL for pollutants',
+            expected:
+              'Implement nutrient BMPs to reduce TN, TP and sediment in the watershed.',
+            actual:
+              'Implement nutrient BMPs to reduce sediment and nutrient issues in the watershed.',
             message:
-              'Found unexpected goal: "Develop TMDL for pollutants" (not in ground truth)',
+              'Covers nutrient BMPs and sediment, but omits TN/TP specifics.',
           },
           {
-            type: 'unexpected_extra',
+            type: 'partial_match',
             category: 'goals',
-            expected: null,
-            actual: 'Implement BMPs for sediment and nutrient mitigation',
-            message:
-              'Found unexpected goal: "Implement BMPs for sediment and nutrient mitigation" (not in ground truth)',
+            expected:
+              'Achieve 50% fecal coliform reduction in Hickahala Creek and 70% in James Wolf Creek.',
+            actual:
+              'Reduce fecal coliform levels in Hickahala Creek by 50% and in James Wolf Creek by 70%.',
+            message: 'Semantically equivalent; wording differs.',
           },
           {
-            type: 'unexpected_extra',
+            type: 'partial_match',
             category: 'goals',
-            expected: null,
-            actual: 'Develop TMDL for Fecal Coliform',
-            message:
-              'Found unexpected goal: "Develop TMDL for Fecal Coliform" (not in ground truth)',
-          },
-          {
-            type: 'unexpected_extra',
-            category: 'goals',
-            expected: null,
-            actual: 'Prioritize BMPs in pasture areas',
-            message:
-              'Found unexpected goal: "Prioritize BMPs in pasture areas" (not in ground truth)',
+            expected:
+              'Install BMPs (fencing, ponds, grade stabilization, etc.) prioritizing newly converted pasture areas.',
+            actual:
+              'Prioritize BMPs for implementation in newly converted pasture areas.',
+            message: 'Focuses on prioritization, omits BMP types.',
           },
           {
             type: 'unexpected_extra',
             category: 'goals',
             expected: null,
-            actual: 'Prevent water quality impacts',
-            message:
-              'Found unexpected goal: "Prevent water quality impacts" (not in ground truth)',
+            actual:
+              'Develop a TMDL to address pollutants causing biological impairment in Hickahala Creek.',
+            message: 'TMDL development not explicitly listed in ground truth.',
           },
           {
             type: 'unexpected_extra',
             category: 'goals',
             expected: null,
-            actual: 'Implement BMPs on pasturelands',
+            actual:
+              'Ensure no future impacts to water quality from permitted facilities by meeting water quality standards for pathogens.',
             message:
-              'Found unexpected goal: "Implement BMPs on pasturelands" (not in ground truth)',
+              'No direct match in ground truth; related to pathogen standards.',
           },
           {
-            type: 'missing_expected',
+            type: 'unexpected_extra',
             category: 'goals',
-            expected: 'Reduce nutrient and sediment loads.',
-            actual: null,
-            message:
-              'Missing expected goal: "Reduce nutrient and sediment loads."',
-          },
-          {
-            type: 'missing_expected',
-            category: 'goals',
-            expected: 'Mitigate pathogens and meet TMDL targets.',
-            actual: null,
-            message:
-              'Missing expected goal: "Mitigate pathogens and meet TMDL targets."',
-          },
-          {
-            type: 'missing_expected',
-            category: 'goals',
-            expected: 'Mitigate sediment and nutrient issues.',
-            actual: null,
-            message:
-              'Missing expected goal: "Mitigate sediment and nutrient issues."',
-          },
-          {
-            type: 'missing_expected',
-            category: 'goals',
-            expected: 'Improve water quality via community education.',
-            actual: null,
-            message:
-              'Missing expected goal: "Improve water quality via community education."',
-          },
-          {
-            type: 'missing_expected',
-            category: 'goals',
-            expected: 'Team refinement of the plan.',
-            actual: null,
-            message: 'Missing expected goal: "Team refinement of the plan."',
-          },
-          {
-            type: 'missing_expected',
-            category: 'goals',
-            expected: 'Establish baseline for water quality.',
-            actual: null,
-            message:
-              'Missing expected goal: "Establish baseline for water quality."',
-          },
-          {
-            type: 'missing_expected',
-            category: 'goals',
-            expected: 'Obtain landowner commitment.',
-            actual: null,
-            message: 'Missing expected goal: "Obtain landowner commitment."',
-          },
-          {
-            type: 'missing_expected',
-            category: 'goals',
-            expected: 'Ongoing plan revision through meetings.',
-            actual: null,
-            message:
-              'Missing expected goal: "Ongoing plan revision through meetings."',
+            expected: null,
+            actual:
+              'Identify opportunities to implement BMPs on pasturelands to limit livestock access to streams.',
+            message: 'Related to BMPs on pasturelands, but not a direct match.',
           },
           {
             type: 'missing_expected',
             category: 'goals',
             expected:
-              'Install practices for nutrient, sediment, and pathogen problems.',
+              'Promote behavior changes and BMPs through education and outreach.',
             actual: null,
-            message:
-              'Missing expected goal: "Install practices for nutrient, sediment, and pathogen problems."',
+            message: 'No extracted goal about education/outreach.',
           },
           {
             type: 'missing_expected',
             category: 'goals',
-            expected: 'Ensure proper BMP installation.',
+            expected:
+              'Establish Watershed Implementation Team to refine the Watershed Based Plan.',
             actual: null,
-            message: 'Missing expected goal: "Ensure proper BMP installation."',
+            message: 'No extracted goal about team refinement.',
           },
           {
             type: 'missing_expected',
             category: 'goals',
-            expected: 'Evaluate effectiveness of BMPs.',
+            expected:
+              'Conduct baseline condition monitoring with historical and new data.',
             actual: null,
-            message: 'Missing expected goal: "Evaluate effectiveness of BMPs."',
+            message: 'No extracted goal about baseline monitoring.',
           },
           {
             type: 'missing_expected',
             category: 'goals',
-            expected: 'Structured education and outreach.',
+            expected:
+              'Meet with landowners to secure commitment to install BMPs.',
             actual: null,
-            message:
-              'Missing expected goal: "Structured education and outreach."',
+            message: 'No extracted goal about landowner commitment.',
           },
           {
             type: 'missing_expected',
             category: 'goals',
-            expected: 'Produce final revised plan.',
+            expected:
+              'Establish routine meetings for the Team to support plan revision.',
             actual: null,
-            message: 'Missing expected goal: "Produce final revised plan."',
+            message: 'No extracted goal about ongoing meetings.',
+          },
+          {
+            type: 'missing_expected',
+            category: 'goals',
+            expected:
+              'Implement BMPs by schedule per TMDL and project requirements.',
+            actual: null,
+            message: 'No extracted goal about scheduled BMP implementation.',
+          },
+          {
+            type: 'missing_expected',
+            category: 'goals',
+            expected:
+              'Coordinate to inspect BMPs installed with Section 319 funds.',
+            actual: null,
+            message: 'No extracted goal about BMP inspection.',
           },
         ],
         bmps: [
           {
-            type: 'unexpected_extra',
-            category: 'bmps',
-            expected: null,
-            actual: 'Fencing and streambank protection',
-            message:
-              'Found unexpected BMP: "Fencing and streambank protection" (not in ground truth)',
-          },
-          {
-            type: 'unexpected_extra',
-            category: 'bmps',
-            expected: null,
-            actual: 'Nutrient BMPs implementation',
-            message:
-              'Found unexpected BMP: "Nutrient BMPs implementation" (not in ground truth)',
-          },
-          {
-            type: 'missing_expected',
+            type: 'perfect_match',
             category: 'bmps',
             expected: 'Fencing',
-            actual: null,
-            message: 'Missing expected BMP: "Fencing"',
+            actual: 'Fencing',
+            message: 'BMP name and purpose match.',
           },
           {
-            type: 'missing_expected',
+            type: 'partial_match',
             category: 'bmps',
             expected: 'Tank/Trough (Watering Facilities)',
-            actual: null,
-            message:
-              'Missing expected BMP: "Tank/Trough (Watering Facilities)"',
+            actual: 'Watering facilities',
+            message: 'Same BMP, slightly different naming.',
           },
           {
-            type: 'missing_expected',
+            type: 'partial_match',
             category: 'bmps',
             expected: 'Ponds',
-            actual: null,
-            message: 'Missing expected BMP: "Ponds"',
+            actual: 'Ponds',
+            message: 'Purpose matches, description less detailed.',
           },
           {
-            type: 'missing_expected',
+            type: 'partial_match',
             category: 'bmps',
             expected: 'Streambank and Shoreline Protection',
-            actual: null,
-            message:
-              'Missing expected BMP: "Streambank and Shoreline Protection"',
+            actual: 'Streambank and shoreline protection',
+            message: 'Same BMP, minor wording difference.',
           },
           {
-            type: 'missing_expected',
+            type: 'partial_match',
             category: 'bmps',
             expected: 'Grade Stabilization Structure',
-            actual: null,
-            message: 'Missing expected BMP: "Grade Stabilization Structure"',
+            actual: 'Grade stabilization structures',
+            message: 'Same BMP, pluralization difference.',
           },
           {
-            type: 'missing_expected',
+            type: 'partial_match',
             category: 'bmps',
             expected: 'Heavy Use Area Protection',
-            actual: null,
-            message: 'Missing expected BMP: "Heavy Use Area Protection"',
+            actual: 'Heavy use areas',
+            message: 'Same BMP, description less detailed.',
           },
         ],
         implementation: [
@@ -971,8 +966,7 @@ export class PdfExtractorTestComponent implements OnInit {
             expected:
               'Develop and execute subgrant agreement specifying roles and milestones.',
             actual: null,
-            message:
-              'Missing expected implementation: "Develop and execute subgrant agreement specifying roles and milestones."',
+            message: 'No implementation activities extracted.',
           },
           {
             type: 'missing_expected',
@@ -980,8 +974,7 @@ export class PdfExtractorTestComponent implements OnInit {
             expected:
               'Coordinate meetings, media, and social media promotion for project activities.',
             actual: null,
-            message:
-              'Missing expected implementation: "Coordinate meetings, media, and social media promotion for project activities."',
+            message: 'No implementation activities extracted.',
           },
           {
             type: 'missing_expected',
@@ -989,8 +982,7 @@ export class PdfExtractorTestComponent implements OnInit {
             expected:
               'Inform landowners/operators and secure participation for BMP implementation.',
             actual: null,
-            message:
-              'Missing expected implementation: "Inform landowners/operators and secure participation for BMP implementation."',
+            message: 'No implementation activities extracted.',
           },
           {
             type: 'missing_expected',
@@ -998,16 +990,14 @@ export class PdfExtractorTestComponent implements OnInit {
             expected:
               'Determine priority pollutant areas via GIS and site surveys, install BMPs.',
             actual: null,
-            message:
-              'Missing expected implementation: "Determine priority pollutant areas via GIS and site surveys, install BMPs."',
+            message: 'No implementation activities extracted.',
           },
           {
             type: 'missing_expected',
             category: 'implementation',
             expected: 'Monitor baseline and post-BMP water quality conditions.',
             actual: null,
-            message:
-              'Missing expected implementation: "Monitor baseline and post-BMP water quality conditions."',
+            message: 'No implementation activities extracted.',
           },
           {
             type: 'missing_expected',
@@ -1015,8 +1005,7 @@ export class PdfExtractorTestComponent implements OnInit {
             expected:
               'Conduct inspections and collect GPS/photo documentation of BMP installations.',
             actual: null,
-            message:
-              'Missing expected implementation: "Conduct inspections and collect GPS/photo documentation of BMP installations."',
+            message: 'No implementation activities extracted.',
           },
         ],
         monitoring: [
@@ -1025,8 +1014,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'monitoring',
             expected: 'Water quality standards compliance monitoring',
             actual: null,
-            message:
-              'Missing expected monitoring: "Water quality standards compliance monitoring"',
+            message: 'No monitoring activities extracted.',
           },
         ],
       },
