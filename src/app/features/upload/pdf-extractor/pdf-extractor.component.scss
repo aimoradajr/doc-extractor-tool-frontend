@@ -1,1 +1,9 @@
+/* Custom class for extract result tabs */
+::ng-deep .am-extract-result-tabs {
+  /* Target the PrimeNG tab panels inside this custom class */
+  .p-tabpanels {
+    padding-left: 0rem !important;
+    padding-right: 0rem !important;
+  }
+}
 /* Component styles - cleaned up */

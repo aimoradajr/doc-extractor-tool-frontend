@@ -11,6 +11,17 @@ export class MockApiService {
    */
   private readonly mockExtractedData: ExtractedData = {
     reportSummary: {
+      summary:
+        'This watershed management plan focuses on restoring water quality in the Basket Creek-Hickahala Creek Watershed through targeted pollution reduction strategies and best management practices implementation.',
+      watershedName: 'Basket Creek-Hickahala Creek Watershed',
+      planTitle: 'Basket Creek-Hickahala Creek Watershed Management Plan',
+      planDate: '2023-05-15',
+      authors: [
+        'Department of Environmental Quality',
+        'Watershed Management Council',
+      ],
+      organizations: ['DEQ', 'WMC', 'Local Conservation District'],
+      geographicRegion: 'Southeast Mississippi',
       totalGoals: 2,
       totalBMPs: 1,
       completionRate: null,
@@ -99,6 +110,17 @@ export class MockApiService {
 
   private readonly mockExtractedData2: ExtractedData = {
     reportSummary: {
+      summary:
+        'Comprehensive water quality improvement plan for the Duck River Watershed focusing on agricultural runoff reduction and habitat restoration through strategic implementation of conservation practices.',
+      watershedName: 'Duck River Watershed',
+      planTitle: 'Duck River Watershed Protection and Restoration Plan',
+      planDate: '2023-08-22',
+      authors: [
+        'Tennessee Department of Environment',
+        'Duck River Conservation Alliance',
+      ],
+      organizations: ['TDEC', 'DRCA', 'NRCS', 'Local Farmers Cooperative'],
+      geographicRegion: 'Middle Tennessee River Basin',
       totalGoals: 1,
       totalBMPs: 9,
       completionRate: null,

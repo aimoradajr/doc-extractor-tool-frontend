@@ -1,13 +1,14 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabViewModule } from 'primeng/tabview';
+import { CardModule } from 'primeng/card';
 import { ApiService } from '../../../core/services/api.service';
 import { MockApiService } from '../../../core/services/mock-api.service';
 import { ExtractedData } from '../../../core/interfaces/api.interfaces';
 
 @Component({
   selector: 'app-pdf-extractor',
-  imports: [CommonModule, TabViewModule],
+  imports: [CommonModule, TabViewModule, CardModule],
   templateUrl: './pdf-extractor.component.html',
   styleUrl: './pdf-extractor.component.scss',
 })

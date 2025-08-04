@@ -399,13 +399,13 @@
           </button> -->
         </div>
 
-        <!-- Extraction Summary -->
-        <div class="am-results-summary-data">
-          <h3 class="text-lg font-semibold mb-4">Summary</h3>
+        <!-- Document Details -->
+        <div class="am-results-document-details">
+          <h3 class="text-lg font-semibold mb-4">Document Details</h3>
           <div class="pl-4">
-            <div class="space-y-1">
+            <div class="space-y-2">
               <p class="text-sm">
-                <span class="font-medium">File:</span>
+                <span class="font-medium">File Name:</span>
                 <span class="ml-2">{{ uploadedFileInfo()!.originalName }}</span>
               </p>
               <p class="text-sm">
@@ -417,6 +417,43 @@
                   MB</span
                 >
               </p>
+              @if (extractedData()!.reportSummary?.watershedName) {
+              <p class="text-sm">
+                <span class="font-medium">Watershed Name:</span>
+                <span class="ml-2">{{
+                  extractedData()!.reportSummary!.watershedName
+                }}</span>
+              </p>
+              } @if (extractedData()!.reportSummary?.planTitle) {
+              <p class="text-sm">
+                <span class="font-medium">Plan Title:</span>
+                <span class="ml-2">{{
+                  extractedData()!.reportSummary!.planTitle
+                }}</span>
+              </p>
+              } @if (extractedData()!.reportSummary?.planDate) {
+              <p class="text-sm">
+                <span class="font-medium">Plan Date/Publication:</span>
+                <span class="ml-2">{{
+                  extractedData()!.reportSummary!.planDate
+                }}</span>
+              </p>
+              } @if (extractedData()!.reportSummary?.authors &&
+              extractedData()!.reportSummary!.authors!.length > 0) {
+              <p class="text-sm">
+                <span class="font-medium">Authors/Organization:</span>
+                <span class="ml-2">{{
+                  extractedData()!.reportSummary!.authors!.join(", ")
+                }}</span>
+              </p>
+              } @if (extractedData()!.reportSummary?.geographicRegion) {
+              <p class="text-sm">
+                <span class="font-medium">Geographic Region:</span>
+                <span class="ml-2">{{
+                  extractedData()!.reportSummary!.geographicRegion
+                }}</span>
+              </p>
+              }
             </div>
           </div>
         </div>
@@ -424,58 +461,84 @@
         <!-- Structured Data Display with Tabs -->
         @if (extractedData()) {
         <div class="am-results-structured-data mt-2">
-          <h3 class="text-lg font-semibold mb-4">Details</h3>
+          <h3 class="text-lg font-semibold mb-4">Plan Details</h3>
 
           <!-- PrimeNG TabView -->
-          <p-tabView [scrollable]="true">
+          <p-tabView [scrollable]="true" class="am-extract-result-tabs">
             <!-- Summary Tab -->
             <p-tabPanel header="Summary">
               <div class="space-y-6">
                 <!-- Overview and Status Summary Row -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <!-- Overview Card -->
-                  <div class="p-4 bg-gray-50 rounded border">
-                    <h4 class="font-semibold text-green-800 mb-4">Overview</h4>
+                  <p-card header="Overview">
                     <p class="text-sm text-gray-700 leading-relaxed">
-                      This report tracks
-                      {{ extractedData()!.goals?.length || 0 }} main goals
-                      related to different critical areas, with multiple
-                      benchmarks for each goal. The data shows implementation
-                      status across multiple watersheds in Columbia County.
+                      {{
+                        extractedData()!.reportSummary?.summary ||
+                          "No summary available"
+                      }}
                     </p>
-                  </div>
+                  </p-card>
 
                   <!-- Status Summary Card -->
-                  <div class="p-4 bg-gray-50 rounded border">
-                    <h4 class="font-semibold text-green-800 mb-4">
-                      Status Summary
-                    </h4>
-                    <div class="grid grid-cols-3 gap-4 text-center">
+                  <p-card header="Data Summary">
+                    <div
+                      class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center"
+                    >
                       <div>
                         <p class="text-2xl font-bold text-green-600 mb-1">
-                          100%
+                          {{ extractedData()!.goals?.length || 0 }}
                         </p>
-                        <p class="text-xs text-gray-600">Protection Goals</p>
+                        <p class="text-xs text-gray-600">Goals</p>
                       </div>
                       <div>
-                        <p class="text-2xl font-bold text-blue-600 mb-1">90%</p>
-                        <p class="text-xs text-gray-600">Enhancement Goals</p>
+                        <p class="text-2xl font-bold text-blue-600 mb-1">
+                          {{ extractedData()!.bmps?.length || 0 }}
+                        </p>
+                        <p class="text-xs text-gray-600">BMPs</p>
                       </div>
                       <div>
                         <p class="text-2xl font-bold text-purple-600 mb-1">
-                          48%
+                          {{ extractedData()!.implementation?.length || 0 }}
                         </p>
-                        <p class="text-xs text-gray-600">Benchmarks Met</p>
+                        <p class="text-xs text-gray-600">Implementation</p>
+                      </div>
+                      <div>
+                        <p class="text-2xl font-bold text-orange-600 mb-1">
+                          {{ extractedData()!.monitoring?.length || 0 }}
+                        </p>
+                        <p class="text-xs text-gray-600">Monitoring</p>
+                      </div>
+                      <div>
+                        <p class="text-2xl font-bold text-red-600 mb-1">
+                          {{ extractedData()!.outreach?.length || 0 }}
+                        </p>
+                        <p class="text-xs text-gray-600">Outreach</p>
+                      </div>
+                      <div>
+                        <p class="text-2xl font-bold text-indigo-600 mb-1">
+                          {{ extractedData()!.geographicAreas?.length || 0 }}
+                        </p>
+                        <p class="text-xs text-gray-600">Areas</p>
+                      </div>
+                      <div>
+                        <p class="text-2xl font-bold text-pink-600 mb-1">
+                          {{ extractedData()!.contacts?.length || 0 }}
+                        </p>
+                        <p class="text-xs text-gray-600">Contacts</p>
+                      </div>
+                      <div>
+                        <p class="text-2xl font-bold text-teal-600 mb-1">
+                          {{ extractedData()!.organizations?.length || 0 }}
+                        </p>
+                        <p class="text-xs text-gray-600">Organizations</p>
                       </div>
                     </div>
-                  </div>
+                  </p-card>
                 </div>
 
                 <!-- Data Visualization Section -->
-                <div class="p-4 bg-white rounded border">
-                  <h4 class="font-semibold text-green-800 mb-4">
-                    Data Visualization
-                  </h4>
+                <p-card header="Data Visualization">
                   <div
                     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
                   >
@@ -537,7 +600,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </p-card>
 
                 <!-- Quick Overview Cards -->
                 <div
