@@ -365,15 +365,33 @@
         <div class="space-y-2">
           @for (comparison of testResult()!.detailedComparisons!.goals; track
           $index) {
-          <div class="flex items-start space-x-2 text-sm">
-            <span
-              class="flex items-center"
-              [class]="getComparisonColor(comparison.type)"
-              [innerHTML]="getComparisonIcon(comparison.type)"
-            ></span>
-            <span [class]="getComparisonColor(comparison.type)">{{
-              comparison.message
-            }}</span>
+          <div class="border rounded-md p-3 hover:bg-gray-50 transition-colors">
+            <div
+              class="flex items-start space-x-2 text-sm cursor-pointer"
+              (click)="toggleComparisonDetails('goals', $index)"
+            >
+              <span
+                class="flex items-center"
+                [class]="getComparisonColor(comparison.type)"
+                [innerHTML]="getComparisonIcon(comparison.type)"
+              ></span>
+              <div class="flex-1" [class]="getComparisonColor(comparison.type)">
+                <span>{{ comparison.message }}</span>
+              </div>
+              <span class="text-gray-400 text-xs">
+                @if (isComparisonExpanded('goals', $index)) { ▼ } @else { ▶ }
+              </span>
+            </div>
+            @if (isComparisonExpanded('goals', $index) && (comparison.expected
+            || comparison.actual)) {
+            <div class="mt-2 ml-6 space-y-1 text-xs text-gray-600">
+              @if (comparison.expected) {
+              <div>Expected: '{{ comparison.expected }}'</div>
+              } @if (comparison.actual) {
+              <div>Actual: '{{ comparison.actual }}'</div>
+              }
+            </div>
+            }
           </div>
           }
         </div>
@@ -388,15 +406,33 @@
         <div class="space-y-2">
           @for (comparison of testResult()!.detailedComparisons!.bmps; track
           $index) {
-          <div class="flex items-start space-x-2 text-sm">
-            <span
-              class="flex items-center"
-              [class]="getComparisonColor(comparison.type)"
-              [innerHTML]="getComparisonIcon(comparison.type)"
-            ></span>
-            <span [class]="getComparisonColor(comparison.type)">{{
-              comparison.message
-            }}</span>
+          <div class="border rounded-md p-3 hover:bg-gray-50 transition-colors">
+            <div
+              class="flex items-start space-x-2 text-sm cursor-pointer"
+              (click)="toggleComparisonDetails('bmps', $index)"
+            >
+              <span
+                class="flex items-center"
+                [class]="getComparisonColor(comparison.type)"
+                [innerHTML]="getComparisonIcon(comparison.type)"
+              ></span>
+              <div class="flex-1" [class]="getComparisonColor(comparison.type)">
+                <span>{{ comparison.message }}</span>
+              </div>
+              <span class="text-gray-400 text-xs">
+                @if (isComparisonExpanded('bmps', $index)) { ▼ } @else { ▶ }
+              </span>
+            </div>
+            @if (isComparisonExpanded('bmps', $index) && (comparison.expected ||
+            comparison.actual)) {
+            <div class="mt-2 ml-6 space-y-1 text-xs text-gray-600">
+              @if (comparison.expected) {
+              <div>Expected: '{{ comparison.expected }}'</div>
+              } @if (comparison.actual) {
+              <div>Actual: '{{ comparison.actual }}'</div>
+              }
+            </div>
+            }
           </div>
           }
         </div>
@@ -411,15 +447,34 @@
         <div class="space-y-2">
           @for (comparison of testResult()!.detailedComparisons!.implementation;
           track $index) {
-          <div class="flex items-start space-x-2 text-sm">
-            <span
-              class="flex items-center"
-              [class]="getComparisonColor(comparison.type)"
-              [innerHTML]="getComparisonIcon(comparison.type)"
-            ></span>
-            <span [class]="getComparisonColor(comparison.type)">{{
-              comparison.message
-            }}</span>
+          <div class="border rounded-md p-3 hover:bg-gray-50 transition-colors">
+            <div
+              class="flex items-start space-x-2 text-sm cursor-pointer"
+              (click)="toggleComparisonDetails('implementation', $index)"
+            >
+              <span
+                class="flex items-center"
+                [class]="getComparisonColor(comparison.type)"
+                [innerHTML]="getComparisonIcon(comparison.type)"
+              ></span>
+              <div class="flex-1" [class]="getComparisonColor(comparison.type)">
+                <span>{{ comparison.message }}</span>
+              </div>
+              <span class="text-gray-400 text-xs">
+                @if (isComparisonExpanded('implementation', $index)) { ▼ } @else
+                { ▶ }
+              </span>
+            </div>
+            @if (isComparisonExpanded('implementation', $index) &&
+            (comparison.expected || comparison.actual)) {
+            <div class="mt-2 ml-6 space-y-1 text-xs text-gray-600">
+              @if (comparison.expected) {
+              <div>Expected: '{{ comparison.expected }}'</div>
+              } @if (comparison.actual) {
+              <div>Actual: '{{ comparison.actual }}'</div>
+              }
+            </div>
+            }
           </div>
           }
         </div>
@@ -434,15 +489,34 @@
         <div class="space-y-2">
           @for (comparison of testResult()!.detailedComparisons!.monitoring;
           track $index) {
-          <div class="flex items-start space-x-2 text-sm">
-            <span
-              class="flex items-center"
-              [class]="getComparisonColor(comparison.type)"
-              [innerHTML]="getComparisonIcon(comparison.type)"
-            ></span>
-            <span [class]="getComparisonColor(comparison.type)">{{
-              comparison.message
-            }}</span>
+          <div class="border rounded-md p-3 hover:bg-gray-50 transition-colors">
+            <div
+              class="flex items-start space-x-2 text-sm cursor-pointer"
+              (click)="toggleComparisonDetails('monitoring', $index)"
+            >
+              <span
+                class="flex items-center"
+                [class]="getComparisonColor(comparison.type)"
+                [innerHTML]="getComparisonIcon(comparison.type)"
+              ></span>
+              <div class="flex-1" [class]="getComparisonColor(comparison.type)">
+                <span>{{ comparison.message }}</span>
+              </div>
+              <span class="text-gray-400 text-xs">
+                @if (isComparisonExpanded('monitoring', $index)) { ▼ } @else { ▶
+                }
+              </span>
+            </div>
+            @if (isComparisonExpanded('monitoring', $index) &&
+            (comparison.expected || comparison.actual)) {
+            <div class="mt-2 ml-6 space-y-1 text-xs text-gray-600">
+              @if (comparison.expected) {
+              <div>Expected: '{{ comparison.expected }}'</div>
+              } @if (comparison.actual) {
+              <div>Actual: '{{ comparison.actual }}'</div>
+              }
+            </div>
+            }
           </div>
           }
         </div>
