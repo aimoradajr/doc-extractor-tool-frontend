@@ -279,9 +279,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'Project Manager',
                 },
               ],
-              startDate: 'Month 1',
-              probableCompletionDate: 'Month 1',
-              outcome: 'Subgrant Agreement executed',
             },
             {
               description:
@@ -294,9 +291,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'Partners',
                 },
               ],
-              startDate: 'Month 1',
-              endDate: 'Month 36',
-              outcome: 'Public informed and project activities coordinated',
             },
             {
               description:
@@ -315,9 +309,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'MDEQ',
                 },
               ],
-              startDate: 'Month 1',
-              endDate: 'Month 6',
-              outcome: 'Landowner commitments secured',
             },
             {
               description:
@@ -336,9 +327,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'MDEQ',
                 },
               ],
-              startDate: 'Month 1',
-              endDate: 'Month 36',
-              outcome: 'Priority areas identified and BMPs installed',
             },
             {
               description:
@@ -351,9 +339,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'Monitoring Partners',
                 },
               ],
-              startDate: 'Month 1',
-              endDate: 'Month 36',
-              outcome: 'Baseline and post-BMP water quality monitoring',
             },
             {
               description:
@@ -363,9 +348,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'Project Partners',
                 },
               ],
-              startDate: 'Month 13',
-              endDate: 'Month 36',
-              outcome: 'Maintenance agreements submitted',
             },
             {
               description: 'Conduct inspections of BMPs during construction.',
@@ -374,9 +356,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'Project Partners',
                 },
               ],
-              startDate: 'Month 3',
-              endDate: 'Month 36',
-              outcome: 'BMP construction inspections completed',
             },
             {
               description:
@@ -395,9 +374,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'NRCS',
                 },
               ],
-              startDate: 'Month 3',
-              endDate: 'Month 36',
-              outcome: 'All BMPs geospatially documented',
             },
             {
               description:
@@ -407,9 +383,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'Project Partners',
                 },
               ],
-              startDate: 'Month 3',
-              endDate: 'Month 36',
-              outcome: 'Photo documentation completed',
             },
             {
               description:
@@ -419,9 +392,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'Project Partners',
                 },
               ],
-              startDate: 'Month 1',
-              endDate: 'Month 36',
-              outcome: 'Load reduction and site condition reports submitted',
             },
             {
               description:
@@ -434,9 +404,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'WIT',
                 },
               ],
-              startDate: 'Month 1',
-              probableCompletionDate: 'Month 2',
-              outcome: 'WIT established',
             },
             {
               description:
@@ -449,8 +416,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'Monitoring Partners',
                 },
               ],
-              probableCompletionDate: 'Completed using historical data',
-              outcome: 'Baseline condition monitoring completed',
             },
             {
               description:
@@ -460,9 +425,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'Project Partners',
                 },
               ],
-              startDate: 'Month 1',
-              endDate: 'Month 6',
-              outcome: 'Landowner commitment secured',
             },
             {
               description:
@@ -472,9 +434,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'WIT',
                 },
               ],
-              startDate: 'Month 1',
-              endDate: 'Month 36',
-              outcome: 'WIT meetings held and plan revisions supported',
             },
             {
               description: 'Implement BMPs in targeted areas.',
@@ -483,9 +442,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'Project Partners',
                 },
               ],
-              startDate: 'Month 6',
-              endDate: 'Month 36',
-              outcome: 'BMPs installed',
             },
             {
               description:
@@ -498,9 +454,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'Monitoring Partners',
                 },
               ],
-              startDate: 'Month 42',
-              endDate: 'Month 48',
-              outcome: 'Post-BMP monitoring completed',
             },
             {
               description:
@@ -513,10 +466,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'Project Partners',
                 },
               ],
-              startDate: 'Month 8',
-              endDate: 'Month 36',
-              outcome:
-                'Education/outreach events scheduled and outreach plan finalized',
             },
             {
               description: 'Finalize revised Watershed Based Plan.',
@@ -528,9 +477,6 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'WIT',
                 },
               ],
-              startDate: 'Month 30',
-              endDate: 'Month 36',
-              outcome: 'Final revised WBP completed',
             },
           ],
           monitoring: [
@@ -917,8 +863,6 @@ export class PdfExtractorTestComponent implements OnInit {
               ],
 
               status: 'planned',
-              outcome:
-                'Nutrient and sediment loads reduced to modeled NPS loads in TMDL',
 
               sourceExcerpt:
                 'In order to achieve the modeled NPS loads in the TMDL, nutrient BMPs will be implemented watershed. This will be done by implementing in-field conservation practices that target both TN, TP and sediment reduction as soils in MS are known to have high phosphorus content.',
@@ -942,8 +886,6 @@ export class PdfExtractorTestComponent implements OnInit {
               ],
 
               status: 'planned',
-              outcome:
-                'Mitigate NPS contributors to pathogens in the watershed',
 
               sourceExcerpt:
                 'the watershed team will work to identify opportunities to implement BMPs on pasturelands and lands used for grazing to limit livestock access to streams.',
@@ -961,8 +903,6 @@ export class PdfExtractorTestComponent implements OnInit {
               ],
 
               status: 'planned',
-              outcome:
-                'Project implementation, administration, management, and watershed plan revision, as well as hosting and facilitating team meetings',
 
               sourceExcerpt:
                 'MDEQ plans to work under a memorandum of agreement (MOA) with the MSWCC to implement this project.',

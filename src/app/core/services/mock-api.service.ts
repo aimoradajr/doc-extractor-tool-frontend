@@ -146,11 +146,7 @@ export class MockApiService {
             name: 'Mississippi Soil and Water Conservation Commission',
           },
         ],
-        startDate: 'During project implementation period',
-        endDate: 'End of grant period',
         status: 'planned',
-        outcome: 'Achieve modeled NPS loads in the TMDL',
-        probableCompletionDate: 'End of grant period',
         sourceExcerpt:
           'In order to achieve the modeled NPS loads in the TMDL, nutrient BMPs will be implemented watershed. This will be done by implementing in-field conservation practices that target both TN, TP and sediment reduction as soils in MS are known to have high phosphorus content.',
       },
@@ -165,11 +161,7 @@ export class MockApiService {
             name: 'Mississippi Soil and Water Conservation Commission',
           },
         ],
-        startDate: 'During project implementation period',
-        endDate: 'End of grant period',
         status: 'planned',
-        outcome: 'Mitigate NPS contributors to pathogens in the watershed',
-        probableCompletionDate: 'End of grant period',
         sourceExcerpt:
           'the watershed team will work to identify opportunities to implement BMPs on pasturelands and lands used for grazing to limit livestock access to streams.',
       },
@@ -184,12 +176,7 @@ export class MockApiService {
             name: 'Mississippi Soil and Water Conservation Commission',
           },
         ],
-        startDate: 'During project implementation period',
-        endDate: 'End of grant period',
         status: 'planned',
-        outcome:
-          'Project implementation, administration, management, and plan revision completed',
-        probableCompletionDate: 'End of grant period',
         sourceExcerpt:
           'MDEQ plans to work under a memorandum of agreement (MOA) with the MSWCC to implement this project. Project partners provided the funding amounts used to estimate costs for BMP installation.',
       },
