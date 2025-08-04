@@ -427,42 +427,23 @@
           <h3 class="text-lg font-semibold mb-4">Details</h3>
 
           <!-- Tab Navigation -->
-          <div class="relative tab-group">
-            <!-- Scrollable tab container -->
-            <div class="overflow-x-auto scrollbar-hide">
-              <div
-                class="flex border-b border-stone-200 relative min-w-max"
-                role="tablist"
-              >
+          <div>
+            <div>
+              <div role="tablist">
                 @for (tab of tabs; track tab.id) {
                 <button
                   (click)="switchTab(tab.id)"
-                  class="tab-link text-sm inline-block py-2 px-4 transition-colors duration-300 mr-1 relative whitespace-nowrap flex-shrink-0"
-                  [class]="
-                    activeTab() === tab.id
-                      ? 'text-stone active'
-                      : 'text-stone-500 hover:text-stone-800'
-                  "
+                  [class]="activeTab() === tab.id ? 'active' : ''"
                 >
                   {{ tab.icon }} {{ tab.label }}
-                  <!-- Individual tab underline -->
-                  @if (activeTab() === tab.id) {
-                  <div
-                    class="absolute bottom-0 left-0 right-0 h-0.5 bg-stone-800"
-                  ></div>
-                  }
                 </button>
                 }
               </div>
             </div>
-            <!-- Scroll indicators (optional) -->
-            <div
-              class="absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-white to-transparent pointer-events-none sm:hidden"
-            ></div>
           </div>
 
           <!-- Tab Content -->
-          <div class="mt-4 tab-content-container">
+          <div>
             <!-- Summary Tab -->
             @if (activeTab() === 'summary') {
             <div class="space-y-6">
