@@ -100,7 +100,7 @@ export class PdfExtractorTestComponent implements OnInit {
           reportSummary: {
             totalGoals: 3,
             totalBMPs: 6,
-            completionRate: null,
+            completionRate: 0.41,
           },
           goals: [
             {
@@ -231,7 +231,7 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'SWCD',
                 },
               ],
-              schedule: null,
+
               priorityFactors: [
                 'Likely water quality benefit',
                 'Willing landowners',
@@ -239,7 +239,7 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Ease of showing effectiveness of the BMP(s) through monitoring',
                 'Shorter length of time for anticipated results (i.e., within the grant period)',
               ],
-              excerpt:
+              sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
             {
@@ -265,7 +265,7 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'SWCD',
                 },
               ],
-              schedule: null,
+              schedule: undefined,
               priorityFactors: [
                 'Likely water quality benefit',
                 'Willing landowners',
@@ -273,7 +273,7 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Ease of showing effectiveness of the BMP(s) through monitoring',
                 'Shorter length of time for anticipated results (i.e., within the grant period)',
               ],
-              excerpt:
+              sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
             {
@@ -299,7 +299,7 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'SWCD',
                 },
               ],
-              schedule: null,
+
               priorityFactors: [
                 'Likely water quality benefit',
                 'Willing landowners',
@@ -307,7 +307,7 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Ease of showing effectiveness of the BMP(s) through monitoring',
                 'Shorter length of time for anticipated results (i.e., within the grant period)',
               ],
-              excerpt:
+              sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
             {
@@ -333,7 +333,7 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'SWCD',
                 },
               ],
-              schedule: null,
+
               priorityFactors: [
                 'Likely water quality benefit',
                 'Willing landowners',
@@ -341,7 +341,7 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Ease of showing effectiveness of the BMP(s) through monitoring',
                 'Shorter length of time for anticipated results (i.e., within the grant period)',
               ],
-              excerpt:
+              sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
             {
@@ -367,7 +367,7 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'SWCD',
                 },
               ],
-              schedule: null,
+
               priorityFactors: [
                 'Likely water quality benefit',
                 'Willing landowners',
@@ -375,7 +375,7 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Ease of showing effectiveness of the BMP(s) through monitoring',
                 'Shorter length of time for anticipated results (i.e., within the grant period)',
               ],
-              excerpt:
+              sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
             {
@@ -401,7 +401,7 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'SWCD',
                 },
               ],
-              schedule: null,
+
               priorityFactors: [
                 'Likely water quality benefit',
                 'Willing landowners',
@@ -409,7 +409,7 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Ease of showing effectiveness of the BMP(s) through monitoring',
                 'Shorter length of time for anticipated results (i.e., within the grant period)',
               ],
-              excerpt:
+              sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
           ],
@@ -693,14 +693,14 @@ export class PdfExtractorTestComponent implements OnInit {
               frequency: 'Prior to BMP installation',
               thresholds: [
                 {
-                  description:
-                    'M-BISQ score 10 points below attainment threshold for West Bioregion',
+                  parameter: 'M-BISQ score',
+                  value:
+                    '10 points below attainment threshold for West Bioregion',
                 },
               ],
               responsibleParties: [
                 {
                   name: 'Trained personnel',
-                  type: 'Agency or partner staff',
                 },
               ],
               sampleLocations: [
@@ -720,7 +720,6 @@ export class PdfExtractorTestComponent implements OnInit {
               responsibleParties: [
                 {
                   name: 'Trained personnel',
-                  type: 'Agency or partner staff',
                 },
               ],
               sampleLocations: [
@@ -738,19 +737,15 @@ export class PdfExtractorTestComponent implements OnInit {
               partners: [
                 {
                   name: 'MDEQ',
-                  type: 'Agency',
                 },
                 {
                   name: 'MSWCC',
-                  type: 'Agency',
                 },
                 {
                   name: 'NRCS',
-                  type: 'Agency',
                 },
                 {
                   name: 'Tate County Soil and Water Conservation District',
-                  type: 'Agency',
                 },
               ],
               indicators:
@@ -768,7 +763,7 @@ export class PdfExtractorTestComponent implements OnInit {
                     'Project updates',
                     'Educational materials',
                   ],
-                  estimatedParticipants: null,
+
                   date: 'At least 3 meetings during project period',
                 },
                 {
@@ -778,7 +773,7 @@ export class PdfExtractorTestComponent implements OnInit {
                     'Demonstration materials',
                     'Refreshments',
                   ],
-                  estimatedParticipants: null,
+
                   date: 'To be scheduled during project period',
                 },
               ],
@@ -790,7 +785,6 @@ export class PdfExtractorTestComponent implements OnInit {
               partners: [
                 {
                   name: 'MDEQ',
-                  type: 'Agency',
                 },
               ],
               indicators:
@@ -845,19 +839,15 @@ export class PdfExtractorTestComponent implements OnInit {
               partners: [
                 {
                   name: 'MDEQ',
-                  type: 'Agency',
                 },
                 {
                   name: 'MSWCC',
-                  type: 'Agency',
                 },
                 {
                   name: 'NRCS',
-                  type: 'Agency',
                 },
                 {
                   name: 'Tate County Soil and Water Conservation District',
-                  type: 'Agency',
                 },
               ],
               indicators:
@@ -875,7 +865,7 @@ export class PdfExtractorTestComponent implements OnInit {
                     'Refreshments',
                     'Meeting materials',
                   ],
-                  estimatedParticipants: null,
+
                   date: 'During project period',
                 },
               ],
@@ -887,7 +877,6 @@ export class PdfExtractorTestComponent implements OnInit {
               partners: [
                 {
                   name: 'MDEQ',
-                  type: 'Agency',
                 },
               ],
               indicators:
@@ -923,8 +912,7 @@ export class PdfExtractorTestComponent implements OnInit {
                   percent: 44,
                 },
               ],
-              population: null,
-              towns: null,
+
               huc: '080302040403',
               description:
                 'The major watershed covered by the plan, located in Tate County, Mississippi. Dominant land uses are cropland, forest, and pasture/grass. Identified in the 2011 National Land Cover Database. Includes impaired segments MS305E, MS305M1, and MS305M2.',
@@ -932,10 +920,9 @@ export class PdfExtractorTestComponent implements OnInit {
             {
               name: 'Hickahala Creek Drainage Area (DA)',
               counties: ['Tate County'],
-              acreage: null,
-              landUseTypes: null,
-              population: null,
-              towns: null,
+
+              population: undefined,
+              towns: undefined,
               huc: 'MS305E',
               description:
                 "A drainage area included on Mississippi’s 1996 and 1998 Section 303(d) List as an 'evaluated' impairment. Subject to TMDLs for organic enrichment, low dissolved oxygen, and nutrients.",
@@ -943,10 +930,9 @@ export class PdfExtractorTestComponent implements OnInit {
             {
               name: 'Hickahala Creek (Segment MS305M2)',
               counties: ['Tate County'],
-              acreage: null,
-              landUseTypes: null,
-              population: null,
-              towns: null,
+              acreage: undefined,
+              landUseTypes: undefined,
+
               huc: 'MS305M2',
               description:
                 'A monitored segment of Hickahala Creek, listed as impaired for recreational use due to high fecal coliform levels.',
@@ -954,10 +940,7 @@ export class PdfExtractorTestComponent implements OnInit {
             {
               name: 'James-Wolf Creek (Segment MS305M1)',
               counties: ['Tate County'],
-              acreage: null,
-              landUseTypes: null,
-              population: null,
-              towns: null,
+
               huc: 'MS305M1',
               description:
                 'A segment that flows into the watershed from the southwest, impaired for recreational use due to high fecal coliform. Confluences with Hickahala Creek.',
@@ -967,23 +950,19 @@ export class PdfExtractorTestComponent implements OnInit {
           organizations: [
             {
               name: 'Natural Resources Conservation Service',
-              contact: null,
             },
             {
               name: 'Mississippi Soil and Water Conservation Commission',
-              contact: null,
+              contact: undefined,
             },
             {
               name: 'Tate County Soil and Water Conservation District',
-              contact: null,
             },
             {
               name: 'USGS',
-              contact: null,
             },
             {
               name: 'MDEQ',
-              contact: null,
             },
           ],
         },
@@ -1001,7 +980,7 @@ export class PdfExtractorTestComponent implements OnInit {
               objective:
                 'Restore and maintain water quality in impaired water bodies by establishing pollutant-specific allowable loads (TMDLs).',
               targetArea: 'Basket Creek-Hickahala Creek Watershed',
-              schedule: null,
+
               contacts: [],
               desiredOutcomes: [
                 'Water bodies meet designated use',
@@ -1017,7 +996,7 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Reduce pathogen levels to meet water quality standards for recreational use.',
               targetArea:
                 'Hickahala Creek and James Wolf Creek within Basket Creek-Hickahala Creek Watershed',
-              schedule: null,
+
               contacts: [],
               desiredOutcomes: [
                 'Fecal coliform levels reduced by 50% in Hickahala Creek',
@@ -1032,7 +1011,7 @@ export class PdfExtractorTestComponent implements OnInit {
               objective:
                 'Reduce nutrient and sediment loads through BMP implementation.',
               targetArea: 'Basket Creek-Hickahala Creek Watershed',
-              schedule: null,
+
               contacts: [],
               desiredOutcomes: [
                 'Nutrient and sediment loads reduced to modeled NPS loads in TMDL',
@@ -1048,9 +1027,7 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Install fencing to limit livestock access to streams.',
               type: 'Pathogen',
               targetAreas: ['Pasturelands', 'Lands used for grazing'],
-              quantity: null,
-              unit: null,
-              estimatedCost: null,
+
               partners: [
                 {
                   name: 'NRCS',
@@ -1062,7 +1039,7 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'SWCD',
                 },
               ],
-              schedule: null,
+
               priorityFactors: [
                 'Likely water quality benefit',
                 'Willing landowners',
@@ -1079,9 +1056,7 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Install watering facilities to provide alternative water sources for livestock.',
               type: 'Pathogen',
               targetAreas: ['Pasturelands', 'Lands used for grazing'],
-              quantity: null,
-              unit: null,
-              estimatedCost: null,
+
               partners: [
                 {
                   name: 'NRCS',
@@ -1093,7 +1068,7 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'SWCD',
                 },
               ],
-              schedule: null,
+
               priorityFactors: [
                 'Likely water quality benefit',
                 'Willing landowners',
@@ -1110,9 +1085,7 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Establish heavy use areas to reduce soil erosion and sedimentation.',
               type: 'Sediment',
               targetAreas: ['Pasturelands', 'Lands used for grazing'],
-              quantity: null,
-              unit: null,
-              estimatedCost: null,
+
               partners: [
                 {
                   name: 'NRCS',
@@ -1124,7 +1097,7 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'SWCD',
                 },
               ],
-              schedule: null,
+
               priorityFactors: [
                 'Likely water quality benefit',
                 'Willing landowners',
@@ -1141,9 +1114,7 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Construct ponds to manage runoff and improve water quality.',
               type: 'Nutrient',
               targetAreas: ['Pasturelands', 'Lands used for grazing'],
-              quantity: null,
-              unit: null,
-              estimatedCost: null,
+
               partners: [
                 {
                   name: 'NRCS',
@@ -1155,7 +1126,7 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'SWCD',
                 },
               ],
-              schedule: null,
+
               priorityFactors: [
                 'Likely water quality benefit',
                 'Willing landowners',
@@ -1172,9 +1143,7 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Implement streambank and shoreline protection to reduce erosion and sedimentation.',
               type: 'Sediment',
               targetAreas: ['Pasturelands', 'Lands used for grazing'],
-              quantity: null,
-              unit: null,
-              estimatedCost: null,
+
               partners: [
                 {
                   name: 'NRCS',
@@ -1186,7 +1155,7 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'SWCD',
                 },
               ],
-              schedule: null,
+
               priorityFactors: [
                 'Likely water quality benefit',
                 'Willing landowners',
@@ -1203,9 +1172,7 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Install grade stabilization structures to control gully erosion and reduce sediment delivery.',
               type: 'Sediment',
               targetAreas: ['Pasturelands', 'Lands used for grazing'],
-              quantity: null,
-              unit: null,
-              estimatedCost: null,
+
               partners: [
                 {
                   name: 'NRCS',
@@ -1217,7 +1184,7 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'SWCD',
                 },
               ],
-              schedule: null,
+
               priorityFactors: [
                 'Likely water quality benefit',
                 'Willing landowners',
@@ -1244,12 +1211,11 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'SWCD',
                 },
               ],
-              startDate: null,
-              endDate: null,
+
               status: 'planned',
               outcome:
                 'Nutrient and sediment loads reduced to modeled NPS loads in TMDL',
-              probableCompletionDate: null,
+
               sourceExcerpt:
                 'In order to achieve the modeled NPS loads in the TMDL, nutrient BMPs will be implemented watershed. This will be done by implementing in-field conservation practices that target both TN, TP and sediment reduction as soils in MS are known to have high phosphorus content.',
             },
@@ -1270,12 +1236,11 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'SWCD',
                 },
               ],
-              startDate: null,
-              endDate: null,
+
               status: 'planned',
               outcome:
                 'Mitigate NPS contributors to pathogens in the watershed',
-              probableCompletionDate: null,
+
               sourceExcerpt:
                 'the watershed team will work to identify opportunities to implement BMPs on pasturelands and lands used for grazing to limit livestock access to streams.',
             },
@@ -1290,12 +1255,11 @@ export class PdfExtractorTestComponent implements OnInit {
                   name: 'MSWCC',
                 },
               ],
-              startDate: null,
-              endDate: null,
+
               status: 'planned',
               outcome:
                 'Project implementation, administration, management, and watershed plan revision, as well as hosting and facilitating team meetings',
-              probableCompletionDate: null,
+
               sourceExcerpt:
                 'MDEQ plans to work under a memorandum of agreement (MOA) with the MSWCC to implement this project.',
             },
@@ -1306,7 +1270,7 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Use biological data and the Mississippi Benthic Index of Stream Quality (M-BISQ) for assessment of biological impairment.',
               indicator: 'Biological impairment (macroinvertebrate index)',
               method: 'Mississippi Benthic Index of Stream Quality (M-BISQ)',
-              frequency: null,
+
               thresholds: [],
               responsibleParties: [
                 {
@@ -1316,7 +1280,7 @@ export class PdfExtractorTestComponent implements OnInit {
               sampleLocations: [
                 'Wadeable streams outside of the MS Alluvial Plain',
               ],
-              sampleSchedule: null,
+
               sourceExcerpt:
                 'a robust multi-metric benthic macroinvertebrate index, the Mississippi Benthic Index of Stream Quality (M-BISQ), was developed for wadeable streams outside of the MS Alluvial Plain. Using biological data, the evaluated listings for pesticides and sedimentation/siltation were replaced with biological impairment.',
             },
@@ -1336,8 +1300,8 @@ export class PdfExtractorTestComponent implements OnInit {
               ],
               indicators:
                 'Number of landowners engaged, number of Farm Bill sign-ups',
-              schedule: null,
-              budget: null,
+
+              budget: undefined,
               events: [],
               targetAudience: 'Local landowners and operators',
               sourceExcerpt:
@@ -1363,7 +1327,7 @@ export class PdfExtractorTestComponent implements OnInit {
                   percent: 44,
                 },
               ],
-              population: null,
+
               towns: [],
               huc: '080302040403',
               description:
@@ -1374,11 +1338,11 @@ export class PdfExtractorTestComponent implements OnInit {
             {
               name: 'Hickahala Creek Drainage Area (DA) (MS305E)',
               counties: ['Tate County'],
-              acreage: null,
+
               landUseTypes: [],
-              population: null,
+
               towns: [],
-              huc: null,
+
               description:
                 'Hickahala Creek Drainage Area (DA) (MS305E) was included on MS’s 1996 and 1998 Section 303(d) List as an “evaluated” impairment.',
               sourceExcerpt:
@@ -1387,11 +1351,11 @@ export class PdfExtractorTestComponent implements OnInit {
             {
               name: 'James-Wolf Creek (MS305M1)',
               counties: ['Tate County'],
-              acreage: null,
+
               landUseTypes: [],
-              population: null,
+
               towns: [],
-              huc: null,
+
               description:
                 'A segment of James-Wolf Creek (MS305M1) that flows into the watershed and confluences with Hickahala Creek from the southwest.',
               sourceExcerpt:
@@ -1400,11 +1364,11 @@ export class PdfExtractorTestComponent implements OnInit {
             {
               name: 'Hickahala Creek (MS305M2)',
               counties: ['Tate County'],
-              acreage: null,
+
               landUseTypes: [],
-              population: null,
+
               towns: [],
-              huc: null,
+
               description:
                 'A segment of Hickahala Creek (MS305M2) was also included on the “monitored” portion of MS’s 1998 Section 303(d) List of Impaired Water Bodies.',
               sourceExcerpt:
@@ -1465,7 +1429,7 @@ export class PdfExtractorTestComponent implements OnInit {
           {
             type: 'surplus_actual',
             category: 'goals',
-            expected: null,
+
             actual:
               'Restore and maintain the quality of impaired water bodies through the establishment of pollutant specific allowable loads.',
             message: 'Goal is broader than any single expected goal.',
@@ -1475,7 +1439,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'goals',
             expected:
               'Install BMPs (fencing, ponds, grade stabilization, etc.) prioritizing newly converted pasture areas.',
-            actual: null,
+
             message:
               'No extracted goal addresses prioritizing new pasture areas.',
           },
@@ -1484,7 +1448,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'goals',
             expected:
               'Promote behavior changes and BMPs through education and outreach.',
-            actual: null,
+
             message: 'No extracted goal on education/outreach.',
           },
           {
@@ -1492,7 +1456,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'goals',
             expected:
               'Establish Watershed Implementation Team to refine the Watershed Based Plan.',
-            actual: null,
+
             message: 'No extracted goal about team establishment.',
           },
           {
@@ -1500,7 +1464,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'goals',
             expected:
               'Conduct baseline condition monitoring with historical and new data.',
-            actual: null,
+
             message: 'No extracted goal about baseline monitoring.',
           },
           {
@@ -1508,7 +1472,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'goals',
             expected:
               'Meet with landowners to secure commitment to install BMPs.',
-            actual: null,
+
             message: 'No extracted goal about landowner commitment.',
           },
           {
@@ -1516,7 +1480,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'goals',
             expected:
               'Establish routine meetings for the Team to support plan revision.',
-            actual: null,
+
             message: 'No extracted goal about routine team meetings.',
           },
           {
@@ -1524,7 +1488,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'goals',
             expected:
               'Implement BMPs by schedule per TMDL and project requirements.',
-            actual: null,
+
             message: 'No extracted goal about scheduled BMP implementation.',
           },
           {
@@ -1532,7 +1496,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'goals',
             expected:
               'Coordinate to inspect BMPs installed with Section 319 funds.',
-            actual: null,
+
             message: 'No extracted goal about BMP inspection.',
           },
         ],
@@ -1594,7 +1558,7 @@ export class PdfExtractorTestComponent implements OnInit {
           {
             type: 'surplus_actual',
             category: 'implementation',
-            expected: null,
+
             actual:
               'Work under a memorandum of agreement (MOA) with the MSWCC to implement this project.',
             message:
@@ -1603,7 +1567,7 @@ export class PdfExtractorTestComponent implements OnInit {
           {
             type: 'surplus_actual',
             category: 'implementation',
-            expected: null,
+
             actual:
               'Identify opportunities to implement BMPs on pasturelands and lands used for grazing to limit livestock access to streams.',
             message:
@@ -1614,7 +1578,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'implementation',
             expected:
               'Develop, execute, and implement a Subgrant Agreement that specifies the roles, tasks, requirements, and milestones for project implementation.',
-            actual: null,
+
             message: 'No extracted implementation about Subgrant Agreement.',
           },
           {
@@ -1622,7 +1586,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'implementation',
             expected:
               'Facilitate meetings, media, and social media promotion of the project, and coordinate activities to fully implement this plan.',
-            actual: null,
+
             message: 'No extracted implementation about meetings/media.',
           },
           {
@@ -1630,7 +1594,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'implementation',
             expected:
               'Determine through GIS applications and intensive site surveys the priority areas within the sub-watershed that are contributing significant pollutant loads; install all BMPs in accordance with guideli',
-            actual: null,
+
             message: 'No extracted implementation about GIS/site surveys.',
           },
           {
@@ -1638,7 +1602,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'implementation',
             expected:
               'Facilitate the completion and implementation of a plan to monitor baseline water quality conditions in the watershed and track changes resulting from BMPs.',
-            actual: null,
+
             message:
               'No extracted implementation about baseline monitoring plan.',
           },
@@ -1647,7 +1611,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'implementation',
             expected:
               'Submit blank copies of standard maintenance agreements to MDEQ.',
-            actual: null,
+
             message:
               'No extracted implementation about maintenance agreements.',
           },
@@ -1655,7 +1619,7 @@ export class PdfExtractorTestComponent implements OnInit {
             type: 'missing_expected',
             category: 'implementation',
             expected: 'Conduct inspections of BMPs during construction.',
-            actual: null,
+
             message: 'No extracted implementation about BMP inspections.',
           },
           {
@@ -1663,7 +1627,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'implementation',
             expected:
               'Coordinate the collection of relevant GPS coordinates of all installed BMPs and incorporate this information into a GIS format.',
-            actual: null,
+
             message: 'No extracted implementation about GPS/GIS data.',
           },
           {
@@ -1671,7 +1635,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'implementation',
             expected:
               'Collect photo documentation before, during, and after installation of approved BMPs.',
-            actual: null,
+
             message: 'No extracted implementation about photo documentation.',
           },
           {
@@ -1679,7 +1643,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'implementation',
             expected:
               'Report measured or estimated nonpoint source pollutant load reduction, acreage affected, pre-and post-site conditions, and GIS data.',
-            actual: null,
+
             message:
               'No extracted implementation about reporting pollutant load reduction.',
           },
@@ -1700,7 +1664,7 @@ export class PdfExtractorTestComponent implements OnInit {
             category: 'monitoring',
             expected:
               'Post-BMP monitoring to assess water quality changes downstream of BMP activity, compared to baseline data.',
-            actual: null,
+
             message: 'No extracted monitoring about post-BMP assessment.',
           },
         ],
@@ -1717,21 +1681,21 @@ export class PdfExtractorTestComponent implements OnInit {
             type: 'missing_expected',
             category: 'outreach',
             expected: 'MDEQ Statewide Information/Education Programs',
-            actual: null,
+
             message: 'No extracted outreach about MDEQ programs.',
           },
           {
             type: 'missing_expected',
             category: 'outreach',
             expected: 'Stakeholder Engagement and Meetings',
-            actual: null,
+
             message: 'No extracted outreach about stakeholder meetings.',
           },
           {
             type: 'missing_expected',
             category: 'outreach',
             expected: 'Media and Social Media Promotion',
-            actual: null,
+
             message: 'No extracted outreach about media/social media.',
           },
         ],
@@ -1941,8 +1905,6 @@ export class PdfExtractorTestComponent implements OnInit {
         return 'text-green-600';
       case 'partial_match':
         return 'text-yellow-600';
-      case 'surplus_actual':
-        return 'text-red-600';
       case 'surplus_actual':
         return 'text-red-600';
       case 'missing_expected':

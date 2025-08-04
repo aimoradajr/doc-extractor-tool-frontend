@@ -348,7 +348,6 @@ export class MockApiService {
         indicators:
           'Number of landowners engaged; number of sign-ups for Farm Bill initiatives',
         schedule: 'Ongoing during project period',
-        budget: null,
         events: [
           {
             type: 'outreach meetings',

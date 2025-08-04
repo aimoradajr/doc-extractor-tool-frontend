@@ -27,6 +27,7 @@ export interface ErrorResponse {
  * Main extracted data structure from backend
  */
 export interface ExtractedData {
+  model?: string; // The AI model used for extraction
   goals?: Goal[];
   bmps?: BMP[];
   implementation?: ImplementationActivity[];
@@ -46,13 +47,13 @@ export interface ExtractedData {
  * Summary of the watershed plan
  */
 export interface ReportSummary {
-  summary: string;
-  watershedName: string;
-  planTitle: string;
-  planDate: string | null;
-  authors: string[];
-  organizations: string[];
-  geographicRegion: string;
+  summary?: string;
+  watershedName?: string;
+  planTitle?: string;
+  planDate?: string | null;
+  authors?: string[];
+  organizations?: string[];
+  geographicRegion?: string;
   totalGoals: number;
   totalBMPs: number;
   completionRate: number | null;
@@ -69,6 +70,7 @@ export interface Goal {
   schedule?: string;
   contacts?: Contact[];
   desiredOutcomes?: string[] | null;
+  sourceExcerpt?: string; // Exact text from document where this goal was found
 }
 
 /**
@@ -85,6 +87,7 @@ export interface BMP {
   partners?: Organization[];
   schedule?: string;
   priorityFactors?: string[] | null;
+  sourceExcerpt?: string;
 }
 
 /**
@@ -98,6 +101,7 @@ export interface ImplementationActivity {
   status?: string;
   outcome?: string;
   probableCompletionDate?: string;
+  sourceExcerpt?: string;
 }
 
 /**
@@ -112,6 +116,7 @@ export interface MonitoringMetric {
   responsibleParties?: Organization[];
   sampleLocations?: string[];
   sampleSchedule?: string;
+  sourceExcerpt?: string;
 }
 
 /**
@@ -135,6 +140,7 @@ export interface OutreachActivity {
   budget?: number;
   events?: EventDetail[];
   targetAudience?: string;
+  sourceExcerpt?: string;
 }
 
 /**
@@ -161,6 +167,7 @@ export interface GeographicArea {
   towns?: string[] | null;
   huc?: string | null;
   description?: string;
+  sourceExcerpt?: string;
 }
 
 /**
@@ -188,11 +195,8 @@ export interface Contact {
 export interface Organization {
   name: string;
   contact?: Contact;
+  sourceExcerpt?: string;
 }
-
-// =============================================================================
-// Accuracy Testing Types
-// =============================================================================
 
 // =============================================================================
 // Accuracy Testing Types
@@ -203,9 +207,9 @@ export interface Organization {
  */
 export interface AccuracyTestResult {
   testCase: string;
-  extract_ai_model?: string;
-  compare_ai_model?: string;
-  compare_mode?: string;
+  extract_ai_model?: string; // The AI model used for extraction
+  compare_ai_model?: string; // The AI model used for comparison (undefined for default mode)
+  compare_mode?: string; // The comparison mode used ("ai" or "default")
   metrics: {
     precision: number;
     recall: number;
@@ -216,21 +220,45 @@ export interface AccuracyTestResult {
     bmps: AccuracyMetric;
     implementation: AccuracyMetric;
     monitoring: AccuracyMetric;
-    outreach?: AccuracyMetric;
-    geographicAreas?: AccuracyMetric;
+    outreach: AccuracyMetric;
+    geographicAreas: AccuracyMetric;
   };
+  // DEBUG DATA - Compare expected vs actual
   comparison?: {
-    expected: any;
-    actual: any;
+    expected: ExtractedData; // Ground truth data
+    actual: ExtractedData; // AI extracted data
   };
+  // DETAILED COMPARISONS - Show exactly what matched/didn't match
   detailedComparisons?: {
-    goals: ComparisonItem[];
-    bmps: ComparisonItem[];
-    implementation: ComparisonItem[];
-    monitoring: ComparisonItem[];
-    outreach?: ComparisonItem[];
-    geographicAreas?: ComparisonItem[];
+    goals: ComparisonDetail[];
+    bmps: ComparisonDetail[];
+    implementation: ComparisonDetail[];
+    monitoring: ComparisonDetail[];
+    outreach: ComparisonDetail[];
+    geographicAreas: ComparisonDetail[];
   };
+}
+
+/**
+ * Detailed comparison for individual items
+ */
+export interface ComparisonDetail {
+  type:
+    | 'perfect_match'
+    | 'partial_match'
+    | 'missing_expected'
+    | 'surplus_actual';
+  category:
+    | 'goals'
+    | 'bmps'
+    | 'implementation'
+    | 'monitoring'
+    | 'outreach'
+    | 'geographicAreas';
+  expected?: string | null; // What we expected to find
+  actual?: string | null; // What we actually found
+  similarity?: number; // Similarity score (0-1) for partial matches
+  message: string; // Human-readable explanation
 }
 
 /**
@@ -246,18 +274,14 @@ export interface AccuracyMetric {
 }
 
 /**
- * Comparison item for detailed analysis
+ * Test case definition
  */
-export interface ComparisonItem {
-  type:
-    | 'perfect_match'
-    | 'surplus_actual'
-    | 'missing_expected'
-    | 'partial_match';
-  category: string;
-  expected: string | null;
-  actual: string | null;
-  message: string;
+export interface TestCase {
+  id: string;
+  name: string;
+  pdfPath: string;
+  groundTruthPath: string;
+  hasGroundTruth: boolean;
 }
 
 /**
@@ -271,19 +295,8 @@ export interface PresetOption {
 }
 
 /**
- * API response for presets endpoint
+ * API response for /presets endpoint
  */
 export interface PresetsResponse {
   presets: PresetOption[];
-}
-
-/**
- * Test case definition
- */
-export interface TestCase {
-  id: string;
-  name: string;
-  pdfPath: string;
-  groundTruthPath: string;
-  hasGroundTruth: boolean;
 }
