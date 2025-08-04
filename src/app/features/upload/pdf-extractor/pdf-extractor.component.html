@@ -389,55 +389,35 @@
     <div class="bg-white rounded-lg shadow-lg mt-4 p-8">
       <!-- Extraction Results Section -->
       <div class="space-y-6">
-        <div class="flex items-center justify-between">
-          <h2 class="text-2xl font-bold text-gray-900">Extraction Complete!</h2>
-          <button
+        <div class="text-center">
+          <h2 class="text-2xl font-bold text-gray-900">Extraction Results</h2>
+          <!-- <button
             (click)="reset()"
             class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
           >
             Process Another File
-          </button>
+          </button> -->
         </div>
 
         <!-- Extraction Summary -->
-        <div class="bg-blue-50 rounded-lg p-6">
-          <h3 class="text-lg font-semibold text-blue-900 mb-4">
-            Extraction Summary
-          </h3>
-          <div class="grid grid-cols-2 gap-4 text-sm">
-            <div>
-              <span class="font-medium text-blue-700">File Processed:</span>
-              <p class="text-blue-900">
-                {{ uploadedFileInfo()!.originalName }}
+        <div class="rounded-lg">
+          <h3 class="text-lg font-semibold text-blue-900 mb-4">Summary</h3>
+          <div class="pl-4">
+            <div class="space-y-1">
+              <p class="text-sm">
+                <span class="font-medium">File:</span>
+                <span class="ml-2">{{ uploadedFileInfo()!.originalName }}</span>
+              </p>
+              <p class="text-sm">
+                <span class="font-medium">File Size:</span>
+                <span class="ml-2"
+                  >{{
+                    (uploadedFileInfo()!.size / 1024 / 1024).toFixed(2)
+                  }}
+                  MB</span
+                >
               </p>
             </div>
-            <div>
-              <span class="font-medium text-blue-700">File Size:</span>
-              <p class="text-blue-900">
-                {{ (uploadedFileInfo()!.size / 1024 / 1024).toFixed(2) }}
-                MB
-              </p>
-            </div>
-            @if (extractedData()) {
-            <div>
-              <span class="font-medium text-blue-700">Goals Found:</span>
-              <p class="text-blue-900">
-                {{ extractedData()!.goals?.length || 0 }}
-              </p>
-            </div>
-            <div>
-              <span class="font-medium text-blue-700">BMPs Found:</span>
-              <p class="text-blue-900">
-                {{ extractedData()!.bmps?.length || 0 }}
-              </p>
-            </div>
-            }
-          </div>
-          <div class="mt-4 p-3 bg-white rounded border">
-            <span class="font-medium text-green-700">Status:</span>
-            <p class="text-green-800 font-semibold">
-              PDF extraction completed successfully
-            </p>
           </div>
         </div>
 
