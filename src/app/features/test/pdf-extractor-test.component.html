@@ -63,14 +63,7 @@
           </option>
           }
         </select>
-
-        @if (selectedPreset()) { @for (preset of presetOptions(); track
-        preset.id) { @if (preset.id === selectedPreset()) {
-        <div class="mt-2 text-sm text-gray-600 space-y-1">
-          <p><strong>PDF File:</strong> {{ preset.pdfFile }}</p>
-          <p><strong>Ground Truth:</strong> {{ preset.groundTruthFile }}</p>
-        </div>
-        } } } }
+        }
       </div>
     </div>
 
@@ -446,13 +439,9 @@
             <div class="text-xs text-gray-600 mt-2">
               {{ testResult()!.details.geographicAreas!.correctCount }} correct
               /
-              {{
-                testResult()!.details.geographicAreas!.totalExtracted
-              }}
+              {{ testResult()!.details.geographicAreas!.totalExtracted }}
               extracted /
-              {{
-                testResult()!.details.geographicAreas!.totalExpected
-              }}
+              {{ testResult()!.details.geographicAreas!.totalExpected }}
               expected
             </div>
           </div>
