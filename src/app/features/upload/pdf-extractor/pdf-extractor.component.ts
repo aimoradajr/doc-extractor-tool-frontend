@@ -130,6 +130,11 @@ export class PdfExtractorComponent implements OnInit {
    * Handle drag over event
    */
   onDragOver(event: DragEvent) {
+    // Only allow drag when not displaying results
+    if (this.extractedData()) {
+      return;
+    }
+
     event.preventDefault();
     event.stopPropagation();
     this.isDragOver.set(true);
@@ -139,6 +144,11 @@ export class PdfExtractorComponent implements OnInit {
    * Handle drag leave event
    */
   onDragLeave(event: DragEvent) {
+    // Only allow drag when not displaying results
+    if (this.extractedData()) {
+      return;
+    }
+
     event.preventDefault();
     event.stopPropagation();
     // Only hide overlay if leaving the main container
@@ -153,6 +163,11 @@ export class PdfExtractorComponent implements OnInit {
    * Handle drop event
    */
   onDrop(event: DragEvent) {
+    // Only allow drag when not displaying results
+    if (this.extractedData()) {
+      return;
+    }
+
     event.preventDefault();
     event.stopPropagation();
     this.isDragOver.set(false);

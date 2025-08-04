@@ -1,11 +1,12 @@
 <div
   class="min-h-screen w-full relative"
-  (dragover)="onDragOver($event)"
-  (dragleave)="onDragLeave($event)"
-  (drop)="onDrop($event)"
+  [attr.data-drag-enabled]="!extractedData()"
+  (dragover)="!extractedData() ? onDragOver($event) : null"
+  (dragleave)="!extractedData() ? onDragLeave($event) : null"
+  (drop)="!extractedData() ? onDrop($event) : null"
 >
-  <!-- Full-page drag overlay -->
-  @if (isDragOver()) {
+  <!-- Full-page drag overlay - only show when not displaying results -->
+  @if (isDragOver() && !extractedData()) {
   <div
     class="fixed inset-0 bg-blue-600 bg-opacity-50 flex items-center justify-center z-50 backdrop-blur-sm"
   >
