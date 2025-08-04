@@ -198,6 +198,7 @@ export interface AccuracyTestResult {
   testCase: string;
   extract_ai_model?: string;
   compare_ai_model?: string;
+  compare_mode?: string;
   metrics: {
     precision: number;
     recall: number;
