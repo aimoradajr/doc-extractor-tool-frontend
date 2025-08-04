@@ -23,6 +23,7 @@ export class PdfExtractorComponent implements OnInit {
   selectedFile = signal<File | null>(null);
   isProcessing = signal(false);
   isTestingConnection = signal(false);
+  isDragOver = signal(false);
   extractedData = signal<ExtractedData | null>(null);
   uploadedFileInfo = signal<{
     name: string;
@@ -122,6 +123,63 @@ export class PdfExtractorComponent implements OnInit {
     ) as HTMLInputElement;
     if (fileInput) {
       fileInput.click();
+    }
+  }
+
+  /**
+   * Handle drag over event
+   */
+  onDragOver(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDragOver.set(true);
+  }
+
+  /**
+   * Handle drag leave event
+   */
+  onDragLeave(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    // Only hide overlay if leaving the main container
+    const currentTarget = event.currentTarget as HTMLElement;
+    const relatedTarget = event.relatedTarget as HTMLElement;
+    if (relatedTarget === null || !currentTarget?.contains(relatedTarget)) {
+      this.isDragOver.set(false);
+    }
+  }
+
+  /**
+   * Handle drop event
+   */
+  onDrop(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDragOver.set(false);
+
+    const files = event.dataTransfer?.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+
+      // Validate PDF file
+      if (file.type !== 'application/pdf') {
+        this.errorMessage.set('Please select a PDF file.');
+        return;
+      }
+
+      // Check file size (max 100MB)
+      if (file.size > 100 * 1024 * 1024) {
+        this.errorMessage.set('File size must be less than 100MB.');
+        return;
+      }
+
+      this.selectedFile.set(file);
+      this.errorMessage.set(null);
+      this.uploadedFileInfo.set(null);
+      this.extractedData.set(null);
+
+      // Auto-start extraction immediately
+      this.extractFromPdf();
     }
   }
 
