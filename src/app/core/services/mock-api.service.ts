@@ -193,29 +193,16 @@ export class MockApiService {
     ],
     outreach: [
       {
-        name: 'Farm Bill Initiative Outreach',
+        type: 'Farm Bill Initiative Outreach',
         description:
           'SWCD staff communicate regularly with local landowners and operators to support sign-ups for Farm Bill initiatives.',
-        partners: [
-          {
-            name: 'Soil and Water Conservation Districts',
-          },
-          {
-            name: 'Natural Resources Conservation Service',
-          },
-        ],
-        indicators:
-          'Number of landowners engaged; number of sign-ups for Farm Bill initiatives',
         schedule: 'Ongoing during project period',
-        events: [
-          {
-            type: 'outreach meetings',
-            audience: 'local landowners and operators',
-          },
+        indicator:
+          'Number of landowners engaged; number of sign-ups for Farm Bill initiatives',
+        partners: [
+          'Soil and Water Conservation Districts',
+          'Natural Resources Conservation Service',
         ],
-        targetAudience: 'Local landowners and operators within the watershed',
-        sourceExcerpt:
-          'SWCD staff communicate regularly with the local landowners and operators within the watershed as they work to support sign-ups for Farm Bill initiatives',
       },
     ],
     geographicAreas: [

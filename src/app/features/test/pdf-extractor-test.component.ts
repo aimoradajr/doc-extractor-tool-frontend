@@ -513,166 +513,49 @@ export class PdfExtractorTestComponent implements OnInit {
           ],
           outreach: [
             {
-              name: 'Education and Outreach Events',
+              type: 'Education and Outreach Events',
               description:
                 'Implementation of education and outreach activities to inform and engage the community about water quality, BMPs, and watershed stewardship.',
-              partners: [
-                {
-                  name: 'MDEQ',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'NRCS',
-                },
-                {
-                  name: 'Tate County Soil and Water Conservation District',
-                },
-              ],
-              indicators:
-                'Number of education/outreach events held; attendance; participant feedback; number of materials distributed',
               schedule: 'Months 8-36',
-              budget: 9000,
-              targetAudience:
-                'Landowners, operators, teachers, students, public, stakeholders in the watershed',
-              events: [
-                {
-                  type: 'Watershed Implementation Team (WIT) Meetings',
-                  audience: 'Stakeholders, project partners',
-                  materialsProvided: [
-                    'Meeting agendas',
-                    'Project updates',
-                    'Educational materials',
-                  ],
-
-                  date: 'At least 3 meetings during project period',
-                },
-                {
-                  type: 'Field Days',
-                  audience: 'Public, landowners',
-                  materialsProvided: [
-                    'Demonstration materials',
-                    'Refreshments',
-                  ],
-
-                  date: 'To be scheduled during project period',
-                },
+              indicator:
+                'Number of education/outreach events held; attendance; participant feedback; number of materials distributed',
+              partners: [
+                'MDEQ',
+                'MSWCC',
+                'NRCS',
+                'Tate County Soil and Water Conservation District',
               ],
             },
             {
-              name: 'MDEQ Statewide Information/Education Programs',
+              type: 'MDEQ Statewide Information/Education Programs',
               description:
                 'Utilization of MDEQ-developed programs, manuals, literature, books, videos, and public service announcements tailored for the watershed.',
-              partners: [
-                {
-                  name: 'MDEQ',
-                },
-              ],
-              indicators:
-                'Number of programs delivered; audience reached; feedback and evaluation forms',
               schedule: 'Throughout project period',
-              targetAudience:
-                'Pre-school to adult; community members; school teachers; students',
-              events: [
-                {
-                  type: 'Water Model Presentations',
-                  audience: 'Students, teachers',
-                  materialsProvided: [
-                    'Enviroscapes models',
-                    'Groundwater aquifer models',
-                    'Lesson plans',
-                  ],
-                },
-                {
-                  type: 'Teacher Workshops',
-                  audience: 'Local educators',
-                  materialsProvided: [
-                    'NPS pollution materials',
-                    'Classroom resources',
-                  ],
-                },
-                {
-                  type: 'Adopt A Stream Workshops',
-                  audience: 'Citizens, teachers, students',
-                  materialsProvided: ['Training materials'],
-                },
-                {
-                  type: 'Watershed Harmony Mobile Classroom',
-                  audience: 'Kindergarten – adults, 4th/5th grade focus',
-                  materialsProvided: ['Mobile classroom resources'],
-                },
-                {
-                  type: 'Storm Drain Marking Projects',
-                  audience: 'Scouts, environmental clubs, citizen groups',
-                  materialsProvided: ['Storm drain marking kits'],
-                },
-                {
-                  type: 'Train the Trainer Workshops',
-                  audience: 'Soil and Water Districts, Extension Service staff',
-                  materialsProvided: ['Training materials'],
-                },
-              ],
+              indicator:
+                'Number of programs delivered; audience reached; feedback and evaluation forms',
+              partners: ['MDEQ'],
             },
             {
-              name: 'Stakeholder Engagement and Meetings',
+              type: 'Stakeholder Engagement and Meetings',
               description:
                 'Engage stakeholders through meetings to provide updates, education, and review/modify the watershed plan. Support participation via food, refreshments, and facility rentals.',
-              partners: [
-                {
-                  name: 'MDEQ',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'NRCS',
-                },
-                {
-                  name: 'Tate County Soil and Water Conservation District',
-                },
-              ],
-              indicators:
-                'Number of meetings, participant attendance, feedback',
               schedule: 'Throughout project period (at least 3 meetings)',
-              budget: 4000,
-              targetAudience:
-                'Watershed Implementation Team (WIT), stakeholders',
-              events: [
-                {
-                  type: 'Stakeholder Meetings',
-                  audience: 'WIT members, stakeholders',
-                  materialsProvided: [
-                    'Food',
-                    'Refreshments',
-                    'Meeting materials',
-                  ],
-
-                  date: 'During project period',
-                },
+              indicator: 'Number of meetings, participant attendance, feedback',
+              partners: [
+                'MDEQ',
+                'MSWCC',
+                'NRCS',
+                'Tate County Soil and Water Conservation District',
               ],
             },
             {
-              name: 'Media and Social Media Promotion',
+              type: 'Media and Social Media Promotion',
               description:
                 'Promotion of the project and outreach activities through media and social media channels.',
-              partners: [
-                {
-                  name: 'MDEQ',
-                },
-              ],
-              indicators:
-                'Number of media mentions/social media posts; audience reached',
               schedule: 'Months 1-36',
-              targetAudience: 'General public',
-              events: [
-                {
-                  type: 'Media Promotion',
-                  audience: 'General public',
-                  materialsProvided: ['Press releases', 'Social media posts'],
-                  date: 'Throughout project period',
-                },
-              ],
+              indicator:
+                'Number of media mentions/social media posts; audience reached',
+              partners: ['MDEQ'],
             },
           ],
           geographicAreas: [
@@ -904,25 +787,12 @@ export class PdfExtractorTestComponent implements OnInit {
           ],
           outreach: [
             {
-              name: 'SWCD Staff Communication with Landowners',
+              type: 'SWCD Staff Communication with Landowners',
               description:
                 'SWCD staff communicate regularly with the local landowners and operators within the watershed as they work to support sign-ups for Farm Bill initiatives.',
-              partners: [
-                {
-                  name: 'SWCD',
-                },
-                {
-                  name: 'NRCS',
-                },
-              ],
-              indicators:
+              indicator:
                 'Number of landowners engaged, number of Farm Bill sign-ups',
-
-              budget: undefined,
-              events: [],
-              targetAudience: 'Local landowners and operators',
-              sourceExcerpt:
-                'SWCD staff communicate regularly with the local landowners and operators within the watershed as they work to support sign-ups for Farm Bill initiatives',
+              partners: ['SWCD', 'NRCS'],
             },
           ],
           geographicAreas: [

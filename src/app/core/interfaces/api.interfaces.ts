@@ -240,18 +240,24 @@ export interface Threshold {
 }
 
 /**
- * Education/outreach event or program
+ * A minimal representation of an education or outreach activity
+ * for a watershed implementation plan MVP.
  */
 export interface OutreachActivity {
-  name: string;
-  description?: string;
-  partners?: Organization[];
-  indicators?: string;
+  /** Short label or category (e.g. "signage", "field day", "mailer") */
+  type: string;
+
+  /** What will be done or was done (e.g. "Erect BMP signage along Hwy 15") */
+  description: string;
+
+  /** When it happens or happened (e.g. "2012–2014", "August 2013", "monthly") */
   schedule?: string;
-  budget?: number;
-  events?: EventDetail[];
-  targetAudience?: string;
-  sourceExcerpt?: string;
+
+  /** How success is measured (e.g. "20 signs erected", "300 flyers distributed", "30 participants") */
+  indicator?: string;
+
+  /** Who’s involved (e.g. ["MSWCC", "SWCD", "NRCS"]) */
+  partners?: string[];
 }
 
 /**
