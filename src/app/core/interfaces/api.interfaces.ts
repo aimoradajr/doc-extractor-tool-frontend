@@ -196,7 +196,8 @@ export interface Organization {
  */
 export interface AccuracyTestResult {
   testCase: string;
-  model: string;
+  extract_ai_model?: string;
+  compare_ai_model?: string;
   metrics: {
     precision: number;
     recall: number;

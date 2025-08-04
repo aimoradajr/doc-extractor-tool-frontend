@@ -36,7 +36,8 @@ export class PdfExtractorTestComponent implements OnInit {
     // DEBUG: Initialize with test data for debugging (comment out when not needed)
     this.testResult.set({
       testCase: 'preset2-Basket Creek Hickahala Creek 9 Key Element Plan 2018',
-      model: 'gpt-3.5-turbo',
+      extract_ai_model: 'gpt-4.1',
+      compare_ai_model: 'gpt-3.5-turbo',
       metrics: {
         precision: 0.5,
         recall: 0.3,
