@@ -611,14 +611,13 @@
             </p-tabPanel>
 
             <!-- Goals Tab -->
-            <p-tabPanel header="Goals">
+            <p-tabPanel
+              [header]="'Goals (' + (extractedData()!.goals?.length || 0) + ')'"
+            >
               <div>
                 @if (extractedData()!.goals && extractedData()!.goals!.length >
                 0) {
-                <h4 class="font-semibold text-green-800 mb-4">
-                  Goals ({{ extractedData()!.goals!.length }})
-                </h4>
-                <div class="space-y-4">
+                <div class="space-y-4 pt-3">
                   @for (goal of extractedData()!.goals!; track $index) {
                   <div
                     class="rounded-lg border border-green-200 bg-green-50 p-5 shadow-sm"
@@ -663,7 +662,9 @@
             </p-tabPanel>
 
             <!-- BMPs Tab -->
-            <p-tabPanel header="BMPs">
+            <p-tabPanel
+              [header]="'BMPs (' + (extractedData()!.bmps?.length || 0) + ')'"
+            >
               <div>
                 @if (extractedData()!.bmps && extractedData()!.bmps!.length > 0)
                 {
@@ -731,7 +732,13 @@
             </p-tabPanel>
 
             <!-- Implementation Tab -->
-            <p-tabPanel header="Implementation">
+            <p-tabPanel
+              [header]="
+                'Implementation (' +
+                (extractedData()!.implementation?.length || 0) +
+                ')'
+              "
+            >
               <div class="text-center py-8 text-gray-500">
                 <p class="text-lg font-medium mb-2">Implementation Details</p>
                 <p class="text-sm">
@@ -741,7 +748,13 @@
             </p-tabPanel>
 
             <!-- Monitoring Tab -->
-            <p-tabPanel header="Monitoring">
+            <p-tabPanel
+              [header]="
+                'Monitoring (' +
+                (extractedData()!.monitoring?.length || 0) +
+                ')'
+              "
+            >
               <div class="text-center py-8 text-gray-500">
                 <p class="text-lg font-medium mb-2">Monitoring Data</p>
                 <p class="text-sm">
@@ -751,7 +764,11 @@
             </p-tabPanel>
 
             <!-- Outreach Tab -->
-            <p-tabPanel header="Outreach">
+            <p-tabPanel
+              [header]="
+                'Outreach (' + (extractedData()!.outreach?.length || 0) + ')'
+              "
+            >
               <div class="text-center py-8 text-gray-500">
                 <p class="text-lg font-medium mb-2">Outreach Programs</p>
                 <p class="text-sm">
@@ -761,7 +778,13 @@
             </p-tabPanel>
 
             <!-- Areas Tab -->
-            <p-tabPanel header="Areas">
+            <p-tabPanel
+              [header]="
+                'Areas (' +
+                (extractedData()!.geographicAreas?.length || 0) +
+                ')'
+              "
+            >
               <div>
                 @if (extractedData()!.geographicAreas &&
                 extractedData()!.geographicAreas!.length > 0) {
@@ -837,7 +860,13 @@
             </p-tabPanel>
 
             <!-- Organizations Tab -->
-            <p-tabPanel header="Organizations">
+            <p-tabPanel
+              [header]="
+                'Organizations (' +
+                (extractedData()!.organizations?.length || 0) +
+                ')'
+              "
+            >
               <div>
                 @if (extractedData()!.organizations &&
                 extractedData()!.organizations!.length > 0) {
