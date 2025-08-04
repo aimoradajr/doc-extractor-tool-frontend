@@ -123,13 +123,103 @@
   <div class="bg-white rounded-lg shadow-lg p-8">
     <!-- Header -->
     <div class="text-center mb-8">
-      <h1 class="text-3xl font-bold text-gray-900 mb-2">
-        PDF Document Extraction
+      <h1 class="text-3xl font-bold text-gray-900 max-w-lg mx-auto">
+        Upload a watershed plan PDF to extract structured data
       </h1>
+    </div>
+
+    <!-- Upload Section -->
+    @if (!extractedData()) {
+    <!-- Hidden file input -->
+    <input
+      id="file-upload"
+      name="file-upload"
+      type="file"
+      accept=".pdf"
+      class="sr-only"
+      (change)="onFileSelected($event)"
+    />
+
+    @if (!selectedFile()) {
+    <!-- Upload Button State -->
+    <div class="text-center py-2">
+      <button
+        (click)="triggerFileUpload()"
+        class="bg-blue-600 hover:bg-blue-700 text-white px-14 py-5 rounded-full text-xl font-medium transition-colors inline-flex items-center"
+      >
+        <svg
+          class="w-5 h-5 mr-3"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+          />
+        </svg>
+        Upload PDF
+      </button>
+
+      <!-- <p class="mt-4 text-xs text-gray-500">PDF files up to 100MB</p> -->
+    </div>
+    } @else if (!isProcessing()) {
+    <!-- File Selected State -->
+    <div class="text-center py-8">
+      <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
+        <div class="flex items-center justify-center mb-3">
+          <svg
+            class="w-8 h-8 text-green-500 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            />
+          </svg>
+          <span class="text-green-800 font-medium">File Ready</span>
+        </div>
+        <p class="text-sm font-medium text-gray-900 mb-1">
+          {{ selectedFile()!.name }}
+        </p>
+        <p class="text-xs text-gray-600">
+          {{ (selectedFile()!.size / 1024 / 1024).toFixed(2) }} MB
+        </p>
+      </div>
+
+      <div class="flex justify-center space-x-4">
+        <button
+          (click)="extractFromPdf()"
+          class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md text-sm font-medium transition-colors"
+        >
+          ✨ Extract Data
+        </button>
+        <button
+          (click)="reset()"
+          class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-md text-sm font-medium transition-colors"
+        >
+          Choose Different File
+        </button>
+      </div>
+    </div>
+    } @else {
+    <!-- Processing State -->
+    <div class="text-center py-12">
+      <div
+        class="inline-block animate-spin rounded-full h-16 w-16 border-4 border-blue-200 border-t-blue-600 mb-6"
+      ></div>
+      <h3 class="text-lg font-medium text-gray-900 mb-2">Processing PDF...</h3>
       <p class="text-gray-600">
-        Upload agricultural/environmental PDFs to extract structured data
+        Extracting structured data from {{ selectedFile()!.name }}
       </p>
     </div>
+    } }
 
     <!-- Error Message -->
     @if (errorMessage()) {
@@ -154,93 +244,6 @@
           <p class="text-sm font-medium">{{ errorMessage() }}</p>
         </div>
       </div>
-    </div>
-    }
-
-    <!-- Upload Section -->
-    @if (!extractedData()) {
-    <div
-      class="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center hover:border-gray-400 transition-colors"
-    >
-      <svg
-        class="mx-auto h-12 w-12 text-gray-400"
-        stroke="currentColor"
-        fill="none"
-        viewBox="0 0 48 48"
-      >
-        <path
-          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-
-      @if (!selectedFile()) {
-      <div class="mt-4">
-        <label for="file-upload" class="cursor-pointer">
-          <span class="mt-2 block text-sm font-medium text-gray-900">
-            Select a PDF file to extract data
-          </span>
-          <input
-            id="file-upload"
-            name="file-upload"
-            type="file"
-            accept=".pdf"
-            class="sr-only"
-            (change)="onFileSelected($event)"
-          />
-        </label>
-        <p class="mt-1 text-xs text-gray-500">PDF files up to 10MB</p>
-      </div>
-      } @else {
-      <div class="mt-4">
-        <p class="text-sm font-medium text-gray-900">
-          {{ selectedFile()!.name }}
-        </p>
-        <p class="text-xs text-gray-500">
-          {{ (selectedFile()!.size / 1024 / 1024).toFixed(2) }} MB
-        </p>
-
-        <div class="mt-4 flex justify-center space-x-4">
-          <button
-            (click)="extractFromPdf()"
-            [disabled]="isProcessing()"
-            class="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-6 py-2 rounded-md text-sm font-medium transition-colors"
-          >
-            @if (isProcessing()) {
-            <svg
-              class="animate-spin -ml-1 mr-3 h-4 w-4 text-white inline"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                class="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                stroke-width="4"
-              ></circle>
-              <path
-                class="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              ></path>
-            </svg>
-            Processing... } @else { � Extract Data }
-          </button>
-
-          <button
-            (click)="reset()"
-            class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-md text-sm font-medium transition-colors"
-          >
-            Cancel
-          </button>
-        </div>
-      </div>
-      }
     </div>
     }
 

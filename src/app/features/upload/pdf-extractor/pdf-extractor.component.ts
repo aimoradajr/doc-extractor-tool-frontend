@@ -114,6 +114,18 @@ export class PdfExtractorComponent implements OnInit {
   }
 
   /**
+   * Trigger file upload dialog when container is clicked
+   */
+  triggerFileUpload() {
+    const fileInput = document.getElementById(
+      'file-upload'
+    ) as HTMLInputElement;
+    if (fileInput) {
+      fileInput.click();
+    }
+  }
+
+  /**
    * Handle file selection from input or drag & drop
    */
   onFileSelected(event: Event) {
@@ -127,9 +139,9 @@ export class PdfExtractorComponent implements OnInit {
         return;
       }
 
-      // Check file size (max 10MB)
-      if (file.size > 10 * 1024 * 1024) {
-        this.errorMessage.set('File size must be less than 10MB.');
+      // Check file size (max 100MB)
+      if (file.size > 100 * 1024 * 1024) {
+        this.errorMessage.set('File size must be less than 100MB.');
         return;
       }
 
@@ -137,6 +149,9 @@ export class PdfExtractorComponent implements OnInit {
       this.errorMessage.set(null);
       this.uploadedFileInfo.set(null);
       this.extractedData.set(null);
+
+      // Auto-start extraction immediately
+      this.extractFromPdf();
     }
   }
 
