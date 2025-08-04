@@ -209,6 +209,7 @@ export interface AccuracyTestResult {
     bmps: AccuracyMetric;
     implementation: AccuracyMetric;
     monitoring: AccuracyMetric;
+    outreach?: AccuracyMetric;
   };
   comparison?: {
     expected: any;
@@ -219,6 +220,7 @@ export interface AccuracyTestResult {
     bmps: ComparisonItem[];
     implementation: ComparisonItem[];
     monitoring: ComparisonItem[];
+    outreach?: ComparisonItem[];
   };
 }
 

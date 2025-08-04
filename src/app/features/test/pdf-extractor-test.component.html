@@ -182,7 +182,9 @@
     <!-- Detailed Metrics by Category -->
     <div class="bg-white rounded-lg shadow-sm border p-6">
       <h3 class="text-lg font-semibold text-gray-900 mb-4">Detailed Metrics</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
+      >
         <!-- Goals -->
         <div class="border rounded-lg p-4">
           <h4 class="font-medium text-gray-900 mb-3">Goals</h4>
@@ -347,6 +349,50 @@
             </div>
           </div>
         </div>
+
+        <!-- Outreach -->
+        @if (testResult()!.details.outreach) {
+        <div class="border rounded-lg p-4">
+          <h4 class="font-medium text-gray-900 mb-3">Outreach</h4>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between">
+              <span>Precision:</span>
+              <span
+                [class]="
+                  getMetricColor(testResult()!.details.outreach!.precision)
+                "
+              >
+                {{
+                  formatPercentage(testResult()!.details.outreach!.precision)
+                }}
+              </span>
+            </div>
+            <div class="flex justify-between">
+              <span>Recall:</span>
+              <span
+                [class]="getMetricColor(testResult()!.details.outreach!.recall)"
+              >
+                {{ formatPercentage(testResult()!.details.outreach!.recall) }}
+              </span>
+            </div>
+            <div class="flex justify-between">
+              <span>F1 Score:</span>
+              <span
+                [class]="
+                  getMetricColor(testResult()!.details.outreach!.f1Score)
+                "
+              >
+                {{ formatPercentage(testResult()!.details.outreach!.f1Score) }}
+              </span>
+            </div>
+            <div class="text-xs text-gray-600 mt-2">
+              {{ testResult()!.details.outreach!.correctCount }} correct /
+              {{ testResult()!.details.outreach!.totalExtracted }} extracted /
+              {{ testResult()!.details.outreach!.totalExpected }} expected
+            </div>
+          </div>
+        </div>
+        }
       </div>
     </div>
 
@@ -508,6 +554,47 @@
               </span>
             </div>
             @if (isComparisonExpanded('monitoring', $index) &&
+            (comparison.expected || comparison.actual)) {
+            <div class="mt-2 ml-6 space-y-1 text-xs text-gray-600">
+              @if (comparison.expected) {
+              <div>Expected: '{{ comparison.expected }}'</div>
+              } @if (comparison.actual) {
+              <div>Actual: '{{ comparison.actual }}'</div>
+              }
+            </div>
+            }
+          </div>
+          }
+        </div>
+      </div>
+      }
+
+      <!-- Outreach Comparisons -->
+      @if (testResult()!.detailedComparisons!.outreach &&
+      testResult()!.detailedComparisons!.outreach!.length > 0) {
+      <div class="mb-6">
+        <h4 class="font-medium text-gray-900 mb-3">Outreach</h4>
+        <div class="space-y-2">
+          @for (comparison of testResult()!.detailedComparisons!.outreach!;
+          track $index) {
+          <div class="border rounded-md p-3 hover:bg-gray-50 transition-colors">
+            <div
+              class="flex items-start space-x-2 text-sm cursor-pointer"
+              (click)="toggleComparisonDetails('outreach', $index)"
+            >
+              <span
+                class="flex items-center"
+                [class]="getComparisonColor(comparison.type)"
+                [innerHTML]="getComparisonIcon(comparison.type)"
+              ></span>
+              <div class="flex-1" [class]="getComparisonColor(comparison.type)">
+                <span>{{ comparison.message }}</span>
+              </div>
+              <span class="text-gray-400 text-xs">
+                @if (isComparisonExpanded('outreach', $index)) { ▼ } @else { ▶ }
+              </span>
+            </div>
+            @if (isComparisonExpanded('outreach', $index) &&
             (comparison.expected || comparison.actual)) {
             <div class="mt-2 ml-6 space-y-1 text-xs text-gray-600">
               @if (comparison.expected) {

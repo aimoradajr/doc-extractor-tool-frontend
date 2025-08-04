@@ -78,6 +78,14 @@ export class PdfExtractorTestComponent implements OnInit {
           totalExtracted: 0,
           totalExpected: 1,
         },
+        outreach: {
+          precision: 0.8,
+          recall: 0.6,
+          f1Score: 0.6857,
+          correctCount: 3,
+          totalExtracted: 4,
+          totalExpected: 5,
+        },
       },
       comparison: {
         expected: {
@@ -1292,6 +1300,30 @@ export class PdfExtractorTestComponent implements OnInit {
             expected: 'Water quality standards compliance monitoring',
             actual: null,
             message: 'No monitoring metrics extracted.',
+          },
+        ],
+        outreach: [
+          {
+            type: 'partial_match',
+            category: 'outreach',
+            expected: 'Watershed Education and Outreach',
+            actual: 'Community Education Program',
+            message:
+              'Similar outreach program identified but with different name.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'outreach',
+            expected: 'Water Model Presentations',
+            actual: 'Water Model Presentations',
+            message: 'Outreach event matches exactly.',
+          },
+          {
+            type: 'missing_expected',
+            category: 'outreach',
+            expected: 'Teacher Workshops',
+            actual: null,
+            message: 'Expected teacher workshop not found in extracted data.',
           },
         ],
       },
