@@ -183,21 +183,12 @@ export class MockApiService {
     ],
     monitoring: [
       {
-        description:
-          'Monitor biological impairment using the Mississippi Benthic Index of Stream Quality (M-BISQ) for wadeable streams.',
-        indicator: 'Biological impairment (macroinvertebrate index)',
+        parameter: 'Biological impairment (macroinvertebrate index)',
+        type: 'biological',
         method: 'Mississippi Benthic Index of Stream Quality (M-BISQ)',
         frequency: 'As part of biological monitoring program',
         thresholds: [],
-        responsibleParties: [
-          {
-            name: 'Mississippi Department of Environmental Quality',
-          },
-        ],
-        sampleLocations: ['wadeable streams outside of the MS Alluvial Plain'],
-        sampleSchedule: 'As determined by biological monitoring program',
-        sourceExcerpt:
-          'a robust multi-metric benthic macroinvertebrate index, the Mississippi Benthic Index of Stream Quality (M-BISQ), was developed for wadeable streams outside of the MS Alluvial Plain. Using biological data, the evaluated listings for pesticides and sedimentation/siltation were replaced with biological impairment.',
+        locations: ['wadeable streams outside of the MS Alluvial Plain'],
       },
     ],
     outreach: [

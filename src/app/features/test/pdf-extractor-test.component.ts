@@ -481,49 +481,34 @@ export class PdfExtractorTestComponent implements OnInit {
           ],
           monitoring: [
             {
-              description:
-                'Pre-implementation (baseline) monitoring using chemical and biological sampling data to assess stream condition before BMP installation.',
-              indicator:
+              parameter:
                 'M-BISQ score; other chemical and biological parameters',
+              type: 'biological',
               method:
                 'Standard Operating Procedures; agency Quality Assurance protocols',
               frequency: 'Prior to BMP installation',
               thresholds: [
                 {
                   parameter: 'M-BISQ score',
-                  value:
+                  description:
                     '10 points below attainment threshold for West Bioregion',
                 },
               ],
-              responsibleParties: [
-                {
-                  name: 'Trained personnel',
-                },
-              ],
-              sampleLocations: [
+              locations: [
                 'Historical monitoring stations on Basket Creek and Hickahala Creek',
               ],
-              sampleSchedule: 'One-time (before BMP installation)',
             },
             {
-              description:
-                'Post-BMP monitoring to assess water quality changes downstream of BMP activity, compared to baseline data.',
-              indicator: 'M-BISQ score; chemical and biological parameters',
+              parameter: 'M-BISQ score; chemical and biological parameters',
+              type: 'biological',
               method:
                 'Best professional judgement for station selection; SOPs; agency QA protocols',
               frequency:
                 'At least 1 year post-BMP, possibly up to 5 or more years',
               thresholds: [],
-              responsibleParties: [
-                {
-                  name: 'Trained personnel',
-                },
-              ],
-              sampleLocations: [
+              locations: [
                 'Locations downstream of BMP activity (to be selected)',
               ],
-              sampleSchedule:
-                'Initiated after BMP installation and stream stabilization, repeated annually or as needed',
             },
           ],
           outreach: [
@@ -910,23 +895,11 @@ export class PdfExtractorTestComponent implements OnInit {
           ],
           monitoring: [
             {
-              description:
-                'Use biological data and the Mississippi Benthic Index of Stream Quality (M-BISQ) for assessment of biological impairment.',
-              indicator: 'Biological impairment (macroinvertebrate index)',
+              parameter: 'Biological impairment (macroinvertebrate index)',
+              type: 'biological',
               method: 'Mississippi Benthic Index of Stream Quality (M-BISQ)',
-
               thresholds: [],
-              responsibleParties: [
-                {
-                  name: 'MDEQ',
-                },
-              ],
-              sampleLocations: [
-                'Wadeable streams outside of the MS Alluvial Plain',
-              ],
-
-              sourceExcerpt:
-                'a robust multi-metric benthic macroinvertebrate index, the Mississippi Benthic Index of Stream Quality (M-BISQ), was developed for wadeable streams outside of the MS Alluvial Plain. Using biological data, the evaluated listings for pesticides and sedimentation/siltation were replaced with biological impairment.',
+              locations: ['Wadeable streams outside of the MS Alluvial Plain'],
             },
           ],
           outreach: [
