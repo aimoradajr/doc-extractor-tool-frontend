@@ -37,6 +37,10 @@ export class PdfExtractorComponent implements OnInit {
     mode?: string;
   } | null>(null);
 
+  // Confirmation modal state
+  showConfirmModal = signal(false);
+  pendingFile = signal<File | null>(null);
+
   // Tab management for results display
   activeTab = signal<string>('summary');
 
@@ -135,14 +139,43 @@ export class PdfExtractorComponent implements OnInit {
   }
 
   /**
+   * Show confirmation modal for new file upload when results are already displayed
+   */
+  showUploadConfirmation(file: File) {
+    this.pendingFile.set(file);
+    this.showConfirmModal.set(true);
+  }
+
+  /**
+   * Confirm new file upload - proceed with extraction
+   */
+  confirmUpload() {
+    const file = this.pendingFile();
+    if (file) {
+      this.selectedFile.set(file);
+      this.errorMessage.set(null);
+      this.uploadedFileInfo.set(null);
+      this.extractedData.set(null);
+      this.showConfirmModal.set(false);
+      this.pendingFile.set(null);
+
+      // Start extraction
+      this.extractFromPdf();
+    }
+  }
+
+  /**
+   * Cancel new file upload
+   */
+  cancelUpload() {
+    this.showConfirmModal.set(false);
+    this.pendingFile.set(null);
+  }
+
+  /**
    * Handle drag over event
    */
   onDragOver(event: DragEvent) {
-    // Only allow drag when not displaying results
-    if (this.extractedData()) {
-      return;
-    }
-
     event.preventDefault();
     event.stopPropagation();
     this.isDragOver.set(true);
@@ -152,11 +185,6 @@ export class PdfExtractorComponent implements OnInit {
    * Handle drag leave event
    */
   onDragLeave(event: DragEvent) {
-    // Only allow drag when not displaying results
-    if (this.extractedData()) {
-      return;
-    }
-
     event.preventDefault();
     event.stopPropagation();
     // Only hide overlay if leaving the main container
@@ -171,11 +199,6 @@ export class PdfExtractorComponent implements OnInit {
    * Handle drop event
    */
   onDrop(event: DragEvent) {
-    // Only allow drag when not displaying results
-    if (this.extractedData()) {
-      return;
-    }
-
     event.preventDefault();
     event.stopPropagation();
     this.isDragOver.set(false);
@@ -196,6 +219,13 @@ export class PdfExtractorComponent implements OnInit {
         return;
       }
 
+      // If results are already displayed, show confirmation modal
+      if (this.extractedData()) {
+        this.showUploadConfirmation(file);
+        return;
+      }
+
+      // Otherwise, proceed directly
       this.selectedFile.set(file);
       this.errorMessage.set(null);
       this.uploadedFileInfo.set(null);
@@ -226,6 +256,13 @@ export class PdfExtractorComponent implements OnInit {
         return;
       }
 
+      // If results are already displayed, show confirmation modal
+      if (this.extractedData()) {
+        this.showUploadConfirmation(file);
+        return;
+      }
+
+      // Otherwise, proceed directly
       this.selectedFile.set(file);
       this.errorMessage.set(null);
       this.uploadedFileInfo.set(null);
