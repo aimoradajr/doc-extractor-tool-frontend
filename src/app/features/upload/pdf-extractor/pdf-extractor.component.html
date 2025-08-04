@@ -854,11 +854,135 @@
                 ')'
               "
             >
-              <div class="text-center py-8 text-gray-500">
-                <p class="text-lg font-medium mb-2">Monitoring Data</p>
-                <p class="text-sm">
-                  Environmental monitoring metrics will be displayed here
-                </p>
+              <div>
+                @if (extractedData()!.monitoring &&
+                extractedData()!.monitoring!.length > 0) {
+                <div class="space-y-4 pt-3">
+                  @for (metric of extractedData()!.monitoring!; track $index) {
+                  <div
+                    class="rounded-lg border border-orange-200 bg-orange-50 p-5 shadow-sm"
+                  >
+                    <p class="font-semibold text-orange-900 text-base mb-3">
+                      <span class="font-bold">MONITORING:</span>
+                      {{ metric.description }}
+                    </p>
+
+                    <!-- Monitoring Details Grid -->
+                    <div
+                      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm mb-3"
+                    >
+                      @if (metric.indicator) {
+                      <div>
+                        <span class="font-medium text-gray-600"
+                          >Indicator:</span
+                        >
+                        <span class="text-gray-900 ml-2">{{
+                          metric.indicator
+                        }}</span>
+                      </div>
+                      } @if (metric.method) {
+                      <div>
+                        <span class="font-medium text-gray-600">Method:</span>
+                        <span class="text-gray-900 ml-2">{{
+                          metric.method
+                        }}</span>
+                      </div>
+                      } @if (metric.frequency) {
+                      <div>
+                        <span class="font-medium text-gray-600"
+                          >Frequency:</span
+                        >
+                        <span class="text-gray-900 ml-2">{{
+                          metric.frequency
+                        }}</span>
+                      </div>
+                      } @if (metric.sampleSchedule) {
+                      <div>
+                        <span class="font-medium text-gray-600"
+                          >Sample Schedule:</span
+                        >
+                        <span class="text-gray-900 ml-2">{{
+                          metric.sampleSchedule
+                        }}</span>
+                      </div>
+                      }
+                    </div>
+
+                    <!-- Sample Locations -->
+                    @if (metric.sampleLocations && metric.sampleLocations.length
+                    > 0) {
+                    <div class="mb-3">
+                      <p class="text-sm font-medium text-gray-700 mb-2">
+                        Sample Locations:
+                      </p>
+                      <div class="flex flex-wrap gap-2">
+                        @for (location of metric.sampleLocations; track $index)
+                        {
+                        <span
+                          class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs font-medium"
+                        >
+                          {{ location }}
+                        </span>
+                        }
+                      </div>
+                    </div>
+                    }
+
+                    <!-- Thresholds -->
+                    @if (metric.thresholds && metric.thresholds.length > 0) {
+                    <div class="mb-3">
+                      <p class="text-sm font-medium text-gray-700 mb-2">
+                        Thresholds:
+                      </p>
+                      <div class="space-y-2">
+                        @for (threshold of metric.thresholds; track $index) {
+                        <div
+                          class="bg-white border border-orange-200 rounded p-3 text-sm"
+                        >
+                          <span class="font-medium text-gray-700"
+                            >{{ threshold.parameter }}:</span
+                          >
+                          <span class="text-gray-900 ml-2">{{
+                            threshold.value
+                          }}</span>
+                          @if (threshold.units) {
+                          <span class="text-gray-600 ml-1">{{
+                            threshold.units
+                          }}</span>
+                          }
+                        </div>
+                        }
+                      </div>
+                    </div>
+                    }
+
+                    <!-- Responsible Parties -->
+                    @if (metric.responsibleParties &&
+                    metric.responsibleParties.length > 0) {
+                    <div class="mt-3">
+                      <p class="text-sm font-medium text-gray-700 mb-2">
+                        Responsible Parties:
+                      </p>
+                      <div class="flex flex-wrap gap-2">
+                        @for (party of metric.responsibleParties; track $index)
+                        {
+                        <span
+                          class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs font-medium"
+                        >
+                          {{ party.name }}
+                        </span>
+                        }
+                      </div>
+                    </div>
+                    }
+                  </div>
+                  }
+                </div>
+                } @else {
+                <div class="text-center py-8 text-gray-500">
+                  <p>No monitoring metrics data available</p>
+                </div>
+                }
               </div>
             </p-tabPanel>
 
@@ -868,11 +992,171 @@
                 'Outreach (' + (extractedData()!.outreach?.length || 0) + ')'
               "
             >
-              <div class="text-center py-8 text-gray-500">
-                <p class="text-lg font-medium mb-2">Outreach Programs</p>
-                <p class="text-sm">
-                  Community outreach and education data will be displayed here
-                </p>
+              <div>
+                @if (extractedData()!.outreach &&
+                extractedData()!.outreach!.length > 0) {
+                <div class="space-y-4 pt-3">
+                  @for (activity of extractedData()!.outreach!; track $index) {
+                  <div
+                    class="rounded-lg border border-emerald-200 bg-emerald-50 p-5 shadow-sm"
+                  >
+                    <h3 class="font-semibold text-emerald-900 text-base mb-2">
+                      <span class="font-bold">OUTREACH:</span>
+                      {{ activity.name }}
+                    </h3>
+
+                    @if (activity.description) {
+                    <p class="text-gray-700 text-sm mb-3">
+                      {{ activity.description }}
+                    </p>
+                    }
+
+                    <!-- Outreach Details Grid -->
+                    <div
+                      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm mb-3"
+                    >
+                      @if (activity.schedule) {
+                      <div>
+                        <span class="font-medium text-gray-600">Schedule:</span>
+                        <span class="text-gray-900 ml-2">{{
+                          activity.schedule
+                        }}</span>
+                      </div>
+                      } @if (activity.budget) {
+                      <div>
+                        <span class="font-medium text-gray-600">Budget:</span>
+                        <span class="text-gray-900 ml-2">{{
+                          activity.budget
+                        }}</span>
+                      </div>
+                      } @if (activity.targetAudience) {
+                      <div>
+                        <span class="font-medium text-gray-600"
+                          >Target Audience:</span
+                        >
+                        <span class="text-gray-900 ml-2">{{
+                          activity.targetAudience
+                        }}</span>
+                      </div>
+                      }
+                    </div>
+
+                    <!-- Partners -->
+                    @if (activity.partners && activity.partners.length > 0) {
+                    <div class="mb-3">
+                      <p class="text-sm font-medium text-gray-700 mb-2">
+                        Partners:
+                      </p>
+                      <div class="flex flex-wrap gap-2">
+                        @for (partner of activity.partners; track $index) {
+                        <span
+                          class="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-medium"
+                        >
+                          {{ partner.name }}
+                        </span>
+                        }
+                      </div>
+                    </div>
+                    }
+
+                    <!-- Indicators -->
+                    @if (activity.indicators) {
+                    <div class="mb-3">
+                      <p class="text-sm font-medium text-gray-700 mb-2">
+                        Success Indicators:
+                      </p>
+                      <div
+                        class="bg-white border border-emerald-200 rounded p-3 text-sm"
+                      >
+                        <span class="text-gray-900">{{
+                          activity.indicators
+                        }}</span>
+                      </div>
+                    </div>
+                    }
+
+                    <!-- Events -->
+                    @if (activity.events && activity.events.length > 0) {
+                    <div class="mb-3">
+                      <p class="text-sm font-medium text-gray-700 mb-2">
+                        Planned Events:
+                      </p>
+                      <div class="space-y-2">
+                        @for (event of activity.events; track $index) {
+                        <div
+                          class="bg-white border border-emerald-200 rounded p-3 text-sm"
+                        >
+                          <div class="flex flex-wrap gap-4">
+                            @if (event.type) {
+                            <div>
+                              <span class="font-medium text-gray-700"
+                                >Type:</span
+                              >
+                              <span class="text-gray-900 ml-2">{{
+                                event.type
+                              }}</span>
+                            </div>
+                            } @if (event.audience) {
+                            <div>
+                              <span class="font-medium text-gray-700"
+                                >Audience:</span
+                              >
+                              <span class="text-gray-900 ml-2">{{
+                                event.audience
+                              }}</span>
+                            </div>
+                            } @if (event.estimatedParticipants) {
+                            <div>
+                              <span class="font-medium text-gray-700"
+                                >Est. Participants:</span
+                              >
+                              <span class="text-gray-900 ml-2">{{
+                                event.estimatedParticipants
+                              }}</span>
+                            </div>
+                            } @if (event.cost) {
+                            <div>
+                              <span class="font-medium text-gray-700"
+                                >Cost:</span
+                              >
+                              <span class="text-gray-900 ml-2">{{
+                                event.cost
+                              }}</span>
+                            </div>
+                            } @if (event.date) {
+                            <div>
+                              <span class="font-medium text-gray-700"
+                                >Date:</span
+                              >
+                              <span class="text-gray-900 ml-2">{{
+                                event.date
+                              }}</span>
+                            </div>
+                            }
+                          </div>
+                          @if (event.materialsProvided) {
+                          <div class="mt-2">
+                            <span class="font-medium text-gray-700"
+                              >Materials:</span
+                            >
+                            <span class="text-gray-900 ml-2">{{
+                              event.materialsProvided
+                            }}</span>
+                          </div>
+                          }
+                        </div>
+                        }
+                      </div>
+                    </div>
+                    }
+                  </div>
+                  }
+                </div>
+                } @else {
+                <div class="text-center py-8 text-gray-500">
+                  <p>No outreach activities data available</p>
+                </div>
+                }
               </div>
             </p-tabPanel>
 
@@ -887,65 +1171,131 @@
               <div>
                 @if (extractedData()!.geographicAreas &&
                 extractedData()!.geographicAreas!.length > 0) {
-                <div class="space-y-4">
-                  <h4 class="font-semibold text-green-800 mb-4">
-                    Geographic Areas ({{
-                      extractedData()!.geographicAreas!.length
-                    }})
-                  </h4>
+                <div class="space-y-4 pt-3">
                   @for (area of extractedData()!.geographicAreas!; track $index)
                   {
                   <div
-                    class="p-4 bg-white rounded border border-l-4 border-purple-500"
+                    class="rounded-lg border border-green-200 bg-green-50 p-5 shadow-sm"
                   >
-                    <p class="font-medium text-gray-900 mb-3">
+                    <h3 class="font-semibold text-green-900 text-base mb-3">
                       {{ area.name }}
-                    </p>
+                    </h3>
+
+                    <!-- Geographic Details Grid -->
                     <div
                       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm mb-3"
                     >
-                      @if (area.counties && area.counties.length > 0) {
-                      <div>
-                        <span class="font-medium text-gray-600">Counties:</span>
-                        <p class="text-gray-900 mt-1">
-                          {{ area.counties.join(", ") }}
-                        </p>
-                      </div>
-                      } @if (area.acreage) {
+                      @if (area.acreage) {
                       <div>
                         <span class="font-medium text-gray-600">Acreage:</span>
-                        <p class="text-gray-900 mt-1">
-                          {{ area.acreage | number }} acres
-                        </p>
+                        <span class="text-gray-900 ml-2"
+                          >{{ area.acreage | number }} acres</span
+                        >
+                      </div>
+                      } @if (area.population) {
+                      <div>
+                        <span class="font-medium text-gray-600"
+                          >Population:</span
+                        >
+                        <span class="text-gray-900 ml-2">{{
+                          area.population | number
+                        }}</span>
                       </div>
                       } @if (area.huc) {
                       <div>
                         <span class="font-medium text-gray-600">HUC:</span>
-                        <p class="text-gray-900 mt-1">{{ area.huc }}</p>
+                        <span class="text-gray-900 ml-2">{{ area.huc }}</span>
                       </div>
                       }
                     </div>
-                    @if (area.landUseTypes && area.landUseTypes.length > 0) {
-                    <div class="mt-3">
+
+                    <!-- Counties -->
+                    @if (area.counties && area.counties.length > 0) {
+                    <div class="mb-3">
                       <p class="text-sm font-medium text-gray-700 mb-2">
-                        Land Use Types:
+                        Counties:
                       </p>
                       <div class="flex flex-wrap gap-2">
-                        @for (landUse of area.landUseTypes; track $index) {
+                        @for (county of area.counties; track $index) {
                         <span
                           class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium"
                         >
-                          {{ landUse.type }}: {{ landUse.percent }}%
+                          {{ county }}
                         </span>
                         }
                       </div>
                     </div>
-                    } @if (area.description) {
-                    <p
-                      class="text-sm text-gray-700 mt-3 p-3 bg-gray-50 rounded"
-                    >
-                      {{ area.description }}
-                    </p>
+                    }
+
+                    <!-- Towns -->
+                    @if (area.towns && area.towns.length > 0) {
+                    <div class="mb-3">
+                      <p class="text-sm font-medium text-gray-700 mb-2">
+                        Towns:
+                      </p>
+                      <div class="flex flex-wrap gap-2">
+                        @for (town of area.towns; track $index) {
+                        <span
+                          class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium"
+                        >
+                          {{ town }}
+                        </span>
+                        }
+                      </div>
+                    </div>
+                    }
+
+                    <!-- Land Use Types -->
+                    @if (area.landUseTypes && area.landUseTypes.length > 0) {
+                    <div class="mb-3">
+                      <p class="text-sm font-medium text-gray-700 mb-2">
+                        Land Use Types:
+                      </p>
+                      <div class="space-y-2">
+                        @for (landUse of area.landUseTypes; track $index) {
+                        <div
+                          class="bg-white border border-green-200 rounded p-3 text-sm"
+                        >
+                          <div class="flex justify-between items-center">
+                            <span class="font-medium text-gray-700">{{
+                              landUse.type
+                            }}</span>
+                            <span class="text-green-700 font-semibold"
+                              >{{ landUse.percent }}%</span
+                            >
+                          </div>
+                          <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                            <div
+                              class="bg-green-500 h-2 rounded-full"
+                              [style.width.%]="landUse.percent"
+                            ></div>
+                          </div>
+                        </div>
+                        }
+                      </div>
+                    </div>
+                    }
+
+                    <!-- Description -->
+                    @if (area.description) {
+                    <div class="mt-3 p-3 bg-green-100 rounded text-sm">
+                      <span class="font-medium text-green-800"
+                        >Description:</span
+                      >
+                      <p class="text-green-700 mt-1">{{ area.description }}</p>
+                    </div>
+                    }
+
+                    <!-- Source Excerpt -->
+                    @if (area.sourceExcerpt) {
+                    <div class="mt-3 p-3 bg-green-100 rounded text-sm">
+                      <span class="font-medium text-green-800"
+                        >Source Excerpt:</span
+                      >
+                      <p class="text-green-700 mt-1">
+                        {{ area.sourceExcerpt }}
+                      </p>
+                    </div>
                     }
                   </div>
                   }
@@ -969,32 +1319,79 @@
               <div>
                 @if (extractedData()!.organizations &&
                 extractedData()!.organizations!.length > 0) {
-                <div class="space-y-4">
-                  <h4 class="font-semibold text-green-800 mb-4">
-                    Organizations ({{ extractedData()!.organizations!.length }})
-                  </h4>
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    @for (org of extractedData()!.organizations!; track $index)
-                    {
-                    <div
-                      class="p-4 bg-white rounded border border-l-4 border-orange-500"
-                    >
-                      <p class="font-medium text-gray-900 mb-2">
-                        {{ org.name }}
+                <div class="space-y-4 pt-3">
+                  @for (org of extractedData()!.organizations!; track $index) {
+                  <div
+                    class="rounded-lg border border-blue-200 bg-blue-50 p-5 shadow-sm"
+                  >
+                    <h3 class="font-semibold text-blue-900 text-base mb-3">
+                      {{ org.name }}
+                    </h3>
+
+                    @if (org.contact) {
+                    <div class="bg-white border border-blue-200 rounded p-3">
+                      <p class="text-sm font-medium text-gray-700 mb-2">
+                        Contact Information:
                       </p>
-                      @if (org.contact) {
-                      <div class="text-sm text-gray-600 space-y-1">
-                        <p><strong>Contact:</strong> {{ org.contact.name }}</p>
-                        @if (org.contact.email) {
-                        <p><strong>Email:</strong> {{ org.contact.email }}</p>
+                      <div
+                        class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm"
+                      >
+                        @if (org.contact.name) {
+                        <div>
+                          <span class="font-medium text-gray-600">Name:</span>
+                          <span class="text-gray-900 ml-2">{{
+                            org.contact.name
+                          }}</span>
+                        </div>
+                        } @if (org.contact.role) {
+                        <div>
+                          <span class="font-medium text-gray-600">Role:</span>
+                          <span class="text-gray-900 ml-2">{{
+                            org.contact.role
+                          }}</span>
+                        </div>
+                        } @if (org.contact.organization) {
+                        <div>
+                          <span class="font-medium text-gray-600"
+                            >Organization:</span
+                          >
+                          <span class="text-gray-900 ml-2">{{
+                            org.contact.organization
+                          }}</span>
+                        </div>
+                        } @if (org.contact.email) {
+                        <div>
+                          <span class="font-medium text-gray-600">Email:</span>
+                          <a
+                            href="mailto:{{ org.contact.email }}"
+                            class="text-blue-600 hover:text-blue-800 underline ml-2"
+                          >
+                            {{ org.contact.email }}
+                          </a>
+                        </div>
                         } @if (org.contact.phone) {
-                        <p><strong>Phone:</strong> {{ org.contact.phone }}</p>
+                        <div>
+                          <span class="font-medium text-gray-600">Phone:</span>
+                          <a
+                            href="tel:{{ org.contact.phone }}"
+                            class="text-blue-600 hover:text-blue-800 underline ml-2"
+                          >
+                            {{ org.contact.phone }}
+                          </a>
+                        </div>
                         }
                       </div>
-                      }
+                    </div>
+                    } @if (org.sourceExcerpt) {
+                    <div class="mt-3 p-3 bg-blue-100 rounded text-sm">
+                      <span class="font-medium text-blue-800"
+                        >Source Excerpt:</span
+                      >
+                      <p class="text-blue-700 mt-1">{{ org.sourceExcerpt }}</p>
                     </div>
                     }
                   </div>
+                  }
                 </div>
                 } @else {
                 <div class="text-center py-8 text-gray-500">
