@@ -106,39 +106,30 @@ export class PdfExtractorTestComponent implements OnInit {
             {
               description:
                 'Implement nutrient BMPs to reduce TN, TP and sediment in the watershed.',
-              objective: 'Reduce nutrient and sediment loads.',
-              targetArea: 'Basket Creek-Hickahala Creek Watershed',
               sourceExcerpt:
                 'Nutrient BMPs will be implemented watershed...target both TN, TP and sediment reduction as soils in MS are known to have high phosphorus content.',
             },
             {
               description:
                 'Achieve 50% fecal coliform reduction in Hickahala Creek and 70% in James Wolf Creek.',
-              objective: 'Mitigate pathogens and meet TMDL targets.',
-              targetArea: 'Hickahala Creek and James Wolf Creek sections',
               sourceExcerpt:
                 'The Fecal Coliform TMDL...is calling for a 50% reduction...also calls for a 70% reduction in James Wolf Creek.',
             },
             {
               description:
                 'Install BMPs (fencing, ponds, grade stabilization, etc.) prioritizing newly converted pasture areas.',
-              objective: 'Mitigate sediment and nutrient issues.',
-              targetArea: 'Basket Creek-Hickahala Creek watershed',
               sourceExcerpt:
                 'Installation of the following BMPs would mitigate sediment and nutrient issues...BMPs will be prioritized for implementation in the newly converted pasture areas.',
             },
             {
               description:
                 'Promote behavior changes and BMPs through education and outreach.',
-              objective: 'Improve water quality via community education.',
-              targetArea: 'Basket Creek-Hickahala Creek watershed',
               sourceExcerpt:
                 "The ultimate goal is to bring about behavior changes and the use of 'best management practices' that will improve water quality.",
             },
             {
               description:
                 'Establish Watershed Implementation Team to refine the Watershed Based Plan.',
-              objective: 'Team refinement of the plan.',
               schedule: 'Months 1-2',
               sourceExcerpt:
                 'Establish Watershed Implementation Team to begin refinement of Watershed Based Plan for Basket Creek-Hickahala Creek watershed.',
@@ -146,7 +137,6 @@ export class PdfExtractorTestComponent implements OnInit {
             {
               description:
                 'Conduct baseline condition monitoring with historical and new data.',
-              objective: 'Establish baseline for water quality.',
               schedule: 'Completed using historical data',
               sourceExcerpt:
                 'Initiate watershed monitoring Baseline condition monitoring Completed using historical data.',
@@ -154,7 +144,6 @@ export class PdfExtractorTestComponent implements OnInit {
             {
               description:
                 'Meet with landowners to secure commitment to install BMPs.',
-              objective: 'Obtain landowner commitment.',
               schedule: 'Months 1-6',
               sourceExcerpt:
                 'Meet with landowners and cooperators to secure commitments to install BMPs in priority areas.',
@@ -162,7 +151,6 @@ export class PdfExtractorTestComponent implements OnInit {
             {
               description:
                 'Establish routine meetings for the Team to support plan revision.',
-              objective: 'Ongoing plan revision through meetings.',
               schedule: 'Months 1-36',
               sourceExcerpt:
                 'Establish routine meeting schedule for WIT to support WBP revision.',
@@ -170,15 +158,12 @@ export class PdfExtractorTestComponent implements OnInit {
             {
               description:
                 'Implement BMPs by schedule per TMDL and project requirements.',
-              objective:
-                'Install practices for nutrient, sediment, and pathogen problems.',
               schedule: 'Months 6-36',
               sourceExcerpt: 'Implement BMPs BMP installation Months 6-36.',
             },
             {
               description:
                 'Coordinate to inspect BMPs installed with Section 319 funds.',
-              objective: 'Ensure proper BMP installation.',
               schedule: 'Months 3-36',
               sourceExcerpt:
                 'Coordinate with Landowners to inspect BMPs that were installed using Section 319 funds.',
@@ -186,7 +171,6 @@ export class PdfExtractorTestComponent implements OnInit {
             {
               description:
                 'Begin monitoring to collect data on post-BMP water quality.',
-              objective: 'Evaluate effectiveness of BMPs.',
               schedule: 'Months 42-48',
               sourceExcerpt:
                 'Begin monitoring to collect data on post-BMP water quality Post-BMP Monitoring Months 42-48.',
@@ -194,14 +178,12 @@ export class PdfExtractorTestComponent implements OnInit {
             {
               description:
                 'Finalize education/outreach plan and schedule events.',
-              objective: 'Structured education and outreach.',
               schedule: 'Months 8-36',
               sourceExcerpt:
                 'Finalize education and outreach plan Education/Outreach events scheduled Months 8-36.',
             },
             {
               description: 'Finalize revised Watershed Based Plan.',
-              objective: 'Produce final revised plan.',
               schedule: 'Months 30-36',
               sourceExcerpt:
                 'Finalize revised WBP Final Revised WBP Months 30-36.',
@@ -977,45 +959,18 @@ export class PdfExtractorTestComponent implements OnInit {
             {
               description:
                 'Restore and maintain the quality of impaired water bodies through the establishment of pollutant specific allowable loads.',
-              objective:
-                'Restore and maintain water quality in impaired water bodies by establishing pollutant-specific allowable loads (TMDLs).',
-              targetArea: 'Basket Creek-Hickahala Creek Watershed',
-
-              contacts: [],
-              desiredOutcomes: [
-                'Water bodies meet designated use',
-                'Pollutant loads reduced to allowable levels',
-              ],
               sourceExcerpt:
                 'The TMDL process is designated to restore and maintain the quality of those impaired water bodies through the establishment of pollutant specific allowable loads.',
             },
             {
               description:
                 'Achieve a 50% reduction in fecal coliform in the section of Hickahala Creek within the Basket Creek-Hickahala Creek Watershed and a 70% reduction in James Wolf Creek.',
-              objective:
-                'Reduce pathogen levels to meet water quality standards for recreational use.',
-              targetArea:
-                'Hickahala Creek and James Wolf Creek within Basket Creek-Hickahala Creek Watershed',
-
-              contacts: [],
-              desiredOutcomes: [
-                'Fecal coliform levels reduced by 50% in Hickahala Creek',
-                'Fecal coliform levels reduced by 70% in James Wolf Creek',
-              ],
               sourceExcerpt:
                 'The Fecal Coliform TMDL for Hickahala Creek is calling for a 50% reduction in the section of Hickahala Creek that is located within the Basket Creek-Hickahala Creek Watershed. The same TMDL also calls for a 70% reduction in James Wolf Creek.',
             },
             {
               description:
                 'Implement nutrient BMPs and in-field conservation practices to achieve modeled NPS loads in the TMDL for nutrients and sediment.',
-              objective:
-                'Reduce nutrient and sediment loads through BMP implementation.',
-              targetArea: 'Basket Creek-Hickahala Creek Watershed',
-
-              contacts: [],
-              desiredOutcomes: [
-                'Nutrient and sediment loads reduced to modeled NPS loads in TMDL',
-              ],
               sourceExcerpt:
                 'In order to achieve the modeled NPS loads in the TMDL, nutrient BMPs will be implemented watershed. This will be done by implementing in-field conservation practices that target both TN, TP and sediment reduction as soils in MS are known to have high phosphorus content.',
             },

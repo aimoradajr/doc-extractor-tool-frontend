@@ -32,36 +32,16 @@ export class MockApiService {
     },
     goals: [
       {
-        id: 'goal1',
         description:
           'Reduce organic enrichment, low dissolved oxygen, and nutrient loads to meet TMDL standards in Hickahala and Senatobia Creeks.',
-        objective:
-          'Achieve modeled NPS loads for nutrients and organic enrichment/low DO as specified in the TMDL.',
-        targetArea:
-          'Hickahala and Senatobia Creeks within Basket Creek-Hickahala Creek Watershed',
         schedule: 'Ongoing, as per TMDL implementation',
-        contacts: [],
-        desiredOutcomes: [
-          'Restoration of water quality to meet designated uses',
-          'Compliance with TMDL pollutant load limits',
-        ],
         sourceExcerpt:
           'The TMDL for Organic Enrichment, Low DO, and Nutrients for Hickahala and Senatobia Creeks (MS305E), which encompasses Basket Creek-Hickahala Creek Watershed, states that restrictions on NPDES permitting activities will be put in place.',
       },
       {
-        id: 'goal2',
         description:
           'Achieve a 50% reduction in fecal coliform in Hickahala Creek and a 70% reduction in James Wolf Creek.',
-        objective:
-          'Reduce pathogen impairment to meet water quality standards for recreational use.',
-        targetArea:
-          'Hickahala Creek and James Wolf Creek within Basket Creek-Hickahala Creek Watershed',
         schedule: 'As specified in the Fecal Coliform TMDL (2003)',
-        contacts: [],
-        desiredOutcomes: [
-          'Improved recreational water quality',
-          'Reduced pathogen levels',
-        ],
         sourceExcerpt:
           'The Fecal Coliform TMDL for Hickahala Creek is calling for a 50% reduction in the section of Hickahala Creek that is located within the Basket Creek-Hickahala Creek Watershed. The same TMDL also calls for a 70% reduction in James Wolf Creek.',
       },
@@ -69,16 +49,7 @@ export class MockApiService {
         id: 'goal3',
         description:
           'Implement BMPs to mitigate sediment and nutrient issues in the watershed, prioritizing newly converted pasture areas.',
-        objective:
-          'Install BMPs such as fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
-        targetArea:
-          'Basket Creek-Hickahala Creek Watershed, especially newly converted pasture areas',
         schedule: 'Prioritized during project implementation period',
-        contacts: [],
-        desiredOutcomes: [
-          'Reduced sediment and nutrient loading',
-          'Stream recovery and improved aquatic habitat',
-        ],
         sourceExcerpt:
           'Based on their analysis, installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
       },
