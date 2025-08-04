@@ -427,26 +427,33 @@
           <h3 class="text-lg font-semibold mb-4">Details</h3>
 
           <!-- Tab Navigation -->
-          <div class="border-b border-gray-200 mb-6">
-            <nav class="-mb-px flex space-x-8 overflow-x-auto">
+          <div class="relative tab-group">
+            <div class="flex border-b border-stone-200 relative" role="tablist">
               @for (tab of tabs; track tab.id) {
               <button
                 (click)="switchTab(tab.id)"
-                class="whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm transition-colors"
+                class="tab-link text-sm inline-block py-2 px-4 transition-colors duration-300 mr-1 relative"
                 [class]="
                   activeTab() === tab.id
-                    ? 'border-green-500 text-green-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    ? 'text-stone-800 active'
+                    : 'text-stone-500 hover:text-stone-800'
                 "
               >
                 {{ tab.icon }} {{ tab.label }}
+                <!-- Individual tab underline -->
+                @if (activeTab() === tab.id) {
+                <div
+                  class="absolute bottom-0 left-0 right-0 h-0.5 bg-stone-800"
+                ></div>
+                }
               </button>
               }
-            </nav>
+            </div>
           </div>
 
           <!-- Tab Content -->
-          <div class="tab-content">
+          <div class="mt-4 tab-content-container">
+            >
             <!-- Summary Tab -->
             @if (activeTab() === 'summary') {
             <div class="space-y-6">
