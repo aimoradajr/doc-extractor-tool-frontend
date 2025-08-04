@@ -178,6 +178,8 @@
     </div>
     }
 
+    <!-- Upload Section - Only show when no extracted data -->
+    @if (!extractedData()) {
     <div class="bg-white rounded-lg shadow-lg p-8">
       <!-- Header -->
       <div class="text-center mb-8">
@@ -186,7 +188,6 @@
         </h1>
       </div>
 
-      @if (!extractedData()) {
       <!-- Hidden file input -->
       <input
         id="file-upload"
@@ -259,7 +260,6 @@
         </p>
         }
       </div>
-      }
 
       <!-- Error Message -->
       @if (errorMessage()) {
@@ -284,9 +284,13 @@
         </div>
       </div>
       }
+    </div>
+    }
 
+    <!-- Results Section - Only show when we have extracted data -->
+    @if (extractedData()) {
+    <div class="bg-white rounded-lg shadow-lg p-8">
       <!-- Extraction Results Section -->
-      @if (extractedData()) {
       <div class="space-y-6">
         <div class="flex items-center justify-between">
           <h2 class="text-2xl font-bold text-gray-900">Extraction Complete!</h2>
@@ -783,8 +787,8 @@
         </div>
         }
       </div>
-      }
     </div>
+    }
     <!-- End centered content container -->
   </div>
   <!-- End full-width drag container -->
