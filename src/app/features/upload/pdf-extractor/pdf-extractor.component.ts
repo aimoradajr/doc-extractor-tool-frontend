@@ -118,11 +118,19 @@ export class PdfExtractorComponent implements OnInit {
    * Trigger file upload dialog when container is clicked
    */
   triggerFileUpload() {
+    // Try both file input IDs - regular upload and compact upload
     const fileInput = document.getElementById(
       'file-upload'
     ) as HTMLInputElement;
-    if (fileInput) {
-      fileInput.click();
+    const compactFileInput = document.getElementById(
+      'file-upload-compact'
+    ) as HTMLInputElement;
+
+    // Use the compact input if available (when in results state), otherwise use regular
+    const inputToUse = compactFileInput || fileInput;
+
+    if (inputToUse) {
+      inputToUse.click();
     }
   }
 
