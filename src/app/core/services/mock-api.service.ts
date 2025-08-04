@@ -64,22 +64,7 @@ export class MockApiService {
         quantity: null,
         unit: null,
         estimatedCost: null,
-        partners: [
-          {
-            name: 'Natural Resources Conservation Service',
-          },
-          {
-            name: 'Mississippi Soil and Water Conservation Commission',
-          },
-        ],
         schedule: 'During project implementation period',
-        priorityFactors: [
-          'Likely water quality benefit',
-          'Willing landowners',
-          'Implementation of TMDL recommendations',
-          'Ease of showing effectiveness',
-          'Shorter length of time for anticipated results',
-        ],
         sourceExcerpt:
           'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
       },
@@ -92,22 +77,7 @@ export class MockApiService {
         quantity: null,
         unit: null,
         estimatedCost: null,
-        partners: [
-          {
-            name: 'Natural Resources Conservation Service',
-          },
-          {
-            name: 'Mississippi Soil and Water Conservation Commission',
-          },
-        ],
         schedule: 'During project implementation period',
-        priorityFactors: [
-          'Likely water quality benefit',
-          'Willing landowners',
-          'Implementation of TMDL recommendations',
-          'Ease of showing effectiveness',
-          'Shorter length of time for anticipated results',
-        ],
         sourceExcerpt:
           'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
       },
@@ -120,22 +90,7 @@ export class MockApiService {
         quantity: null,
         unit: null,
         estimatedCost: null,
-        partners: [
-          {
-            name: 'Natural Resources Conservation Service',
-          },
-          {
-            name: 'Mississippi Soil and Water Conservation Commission',
-          },
-        ],
         schedule: 'During project implementation period',
-        priorityFactors: [
-          'Likely water quality benefit',
-          'Willing landowners',
-          'Implementation of TMDL recommendations',
-          'Ease of showing effectiveness',
-          'Shorter length of time for anticipated results',
-        ],
         sourceExcerpt:
           'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
       },
@@ -148,22 +103,7 @@ export class MockApiService {
         quantity: null,
         unit: null,
         estimatedCost: null,
-        partners: [
-          {
-            name: 'Natural Resources Conservation Service',
-          },
-          {
-            name: 'Mississippi Soil and Water Conservation Commission',
-          },
-        ],
         schedule: 'During project implementation period',
-        priorityFactors: [
-          'Likely water quality benefit',
-          'Willing landowners',
-          'Implementation of TMDL recommendations',
-          'Ease of showing effectiveness',
-          'Shorter length of time for anticipated results',
-        ],
         sourceExcerpt:
           'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
       },
@@ -176,22 +116,7 @@ export class MockApiService {
         quantity: null,
         unit: null,
         estimatedCost: null,
-        partners: [
-          {
-            name: 'Natural Resources Conservation Service',
-          },
-          {
-            name: 'Mississippi Soil and Water Conservation Commission',
-          },
-        ],
         schedule: 'During project implementation period',
-        priorityFactors: [
-          'Likely water quality benefit',
-          'Willing landowners',
-          'Implementation of TMDL recommendations',
-          'Ease of showing effectiveness',
-          'Shorter length of time for anticipated results',
-        ],
         sourceExcerpt:
           'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
       },
@@ -204,22 +129,7 @@ export class MockApiService {
         quantity: null,
         unit: null,
         estimatedCost: null,
-        partners: [
-          {
-            name: 'Natural Resources Conservation Service',
-          },
-          {
-            name: 'Mississippi Soil and Water Conservation Commission',
-          },
-        ],
         schedule: 'During project implementation period',
-        priorityFactors: [
-          'Likely water quality benefit',
-          'Willing landowners',
-          'Implementation of TMDL recommendations',
-          'Ease of showing effectiveness',
-          'Shorter length of time for anticipated results',
-        ],
         sourceExcerpt:
           'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
       },

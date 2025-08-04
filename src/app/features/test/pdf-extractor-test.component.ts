@@ -199,28 +199,6 @@ export class PdfExtractorTestComponent implements OnInit {
               quantity: 10000,
               unit: 'ft',
               estimatedCost: 23300,
-              partners: [
-                {
-                  name: 'MDEQ',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'NRCS',
-                },
-                {
-                  name: 'SWCD',
-                },
-              ],
-
-              priorityFactors: [
-                'Likely water quality benefit',
-                'Willing landowners',
-                'Implementation of the recommendations of the TMDLs (this includes implementation of BMPs appropriate for nutrients, sediment, and pathogens)',
-                'Ease of showing effectiveness of the BMP(s) through monitoring',
-                'Shorter length of time for anticipated results (i.e., within the grant period)',
-              ],
               sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
@@ -233,28 +211,7 @@ export class PdfExtractorTestComponent implements OnInit {
               quantity: 3,
               unit: 'ea',
               estimatedCost: 10500,
-              partners: [
-                {
-                  name: 'MDEQ',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'NRCS',
-                },
-                {
-                  name: 'SWCD',
-                },
-              ],
               schedule: undefined,
-              priorityFactors: [
-                'Likely water quality benefit',
-                'Willing landowners',
-                'Implementation of the recommendations of the TMDLs (this includes implementation of BMPs appropriate for nutrients, sediment, and pathogens)',
-                'Ease of showing effectiveness of the BMP(s) through monitoring',
-                'Shorter length of time for anticipated results (i.e., within the grant period)',
-              ],
               sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
@@ -267,28 +224,6 @@ export class PdfExtractorTestComponent implements OnInit {
               quantity: 1240,
               unit: 'ft',
               estimatedCost: 3522,
-              partners: [
-                {
-                  name: 'MDEQ',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'NRCS',
-                },
-                {
-                  name: 'SWCD',
-                },
-              ],
-
-              priorityFactors: [
-                'Likely water quality benefit',
-                'Willing landowners',
-                'Implementation of the recommendations of the TMDLs (this includes implementation of BMPs appropriate for nutrients, sediment, and pathogens)',
-                'Ease of showing effectiveness of the BMP(s) through monitoring',
-                'Shorter length of time for anticipated results (i.e., within the grant period)',
-              ],
               sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
@@ -301,28 +236,6 @@ export class PdfExtractorTestComponent implements OnInit {
               quantity: 4,
               unit: 'ea',
               estimatedCost: 36000,
-              partners: [
-                {
-                  name: 'MDEQ',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'NRCS',
-                },
-                {
-                  name: 'SWCD',
-                },
-              ],
-
-              priorityFactors: [
-                'Likely water quality benefit',
-                'Willing landowners',
-                'Implementation of the recommendations of the TMDLs (this includes implementation of BMPs appropriate for nutrients, sediment, and pathogens)',
-                'Ease of showing effectiveness of the BMP(s) through monitoring',
-                'Shorter length of time for anticipated results (i.e., within the grant period)',
-              ],
               sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
@@ -335,28 +248,6 @@ export class PdfExtractorTestComponent implements OnInit {
               quantity: 500,
               unit: 'ft',
               estimatedCost: 80500,
-              partners: [
-                {
-                  name: 'MDEQ',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'NRCS',
-                },
-                {
-                  name: 'SWCD',
-                },
-              ],
-
-              priorityFactors: [
-                'Likely water quality benefit',
-                'Willing landowners',
-                'Implementation of the recommendations of the TMDLs (this includes implementation of BMPs appropriate for nutrients, sediment, and pathogens)',
-                'Ease of showing effectiveness of the BMP(s) through monitoring',
-                'Shorter length of time for anticipated results (i.e., within the grant period)',
-              ],
               sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
@@ -369,28 +260,6 @@ export class PdfExtractorTestComponent implements OnInit {
               quantity: 8,
               unit: 'ac',
               estimatedCost: 52878,
-              partners: [
-                {
-                  name: 'MDEQ',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'NRCS',
-                },
-                {
-                  name: 'SWCD',
-                },
-              ],
-
-              priorityFactors: [
-                'Likely water quality benefit',
-                'Willing landowners',
-                'Implementation of the recommendations of the TMDLs (this includes implementation of BMPs appropriate for nutrients, sediment, and pathogens)',
-                'Ease of showing effectiveness of the BMP(s) through monitoring',
-                'Shorter length of time for anticipated results (i.e., within the grant period)',
-              ],
               sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
@@ -982,26 +851,6 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Install fencing to limit livestock access to streams.',
               type: 'Pathogen',
               targetAreas: ['Pasturelands', 'Lands used for grazing'],
-
-              partners: [
-                {
-                  name: 'NRCS',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'SWCD',
-                },
-              ],
-
-              priorityFactors: [
-                'Likely water quality benefit',
-                'Willing landowners',
-                'Implementation of TMDL recommendations',
-                'Ease of showing effectiveness',
-                'Shorter time for results',
-              ],
               sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
@@ -1011,26 +860,6 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Install watering facilities to provide alternative water sources for livestock.',
               type: 'Pathogen',
               targetAreas: ['Pasturelands', 'Lands used for grazing'],
-
-              partners: [
-                {
-                  name: 'NRCS',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'SWCD',
-                },
-              ],
-
-              priorityFactors: [
-                'Likely water quality benefit',
-                'Willing landowners',
-                'Implementation of TMDL recommendations',
-                'Ease of showing effectiveness',
-                'Shorter time for results',
-              ],
               sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
@@ -1040,26 +869,6 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Establish heavy use areas to reduce soil erosion and sedimentation.',
               type: 'Sediment',
               targetAreas: ['Pasturelands', 'Lands used for grazing'],
-
-              partners: [
-                {
-                  name: 'NRCS',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'SWCD',
-                },
-              ],
-
-              priorityFactors: [
-                'Likely water quality benefit',
-                'Willing landowners',
-                'Implementation of TMDL recommendations',
-                'Ease of showing effectiveness',
-                'Shorter time for results',
-              ],
               sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
@@ -1069,26 +878,6 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Construct ponds to manage runoff and improve water quality.',
               type: 'Nutrient',
               targetAreas: ['Pasturelands', 'Lands used for grazing'],
-
-              partners: [
-                {
-                  name: 'NRCS',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'SWCD',
-                },
-              ],
-
-              priorityFactors: [
-                'Likely water quality benefit',
-                'Willing landowners',
-                'Implementation of TMDL recommendations',
-                'Ease of showing effectiveness',
-                'Shorter time for results',
-              ],
               sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
@@ -1098,26 +887,6 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Implement streambank and shoreline protection to reduce erosion and sedimentation.',
               type: 'Sediment',
               targetAreas: ['Pasturelands', 'Lands used for grazing'],
-
-              partners: [
-                {
-                  name: 'NRCS',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'SWCD',
-                },
-              ],
-
-              priorityFactors: [
-                'Likely water quality benefit',
-                'Willing landowners',
-                'Implementation of TMDL recommendations',
-                'Ease of showing effectiveness',
-                'Shorter time for results',
-              ],
               sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
@@ -1127,26 +896,6 @@ export class PdfExtractorTestComponent implements OnInit {
                 'Install grade stabilization structures to control gully erosion and reduce sediment delivery.',
               type: 'Sediment',
               targetAreas: ['Pasturelands', 'Lands used for grazing'],
-
-              partners: [
-                {
-                  name: 'NRCS',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'SWCD',
-                },
-              ],
-
-              priorityFactors: [
-                'Likely water quality benefit',
-                'Willing landowners',
-                'Implementation of TMDL recommendations',
-                'Ease of showing effectiveness',
-                'Shorter time for results',
-              ],
               sourceExcerpt:
                 'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
             },
