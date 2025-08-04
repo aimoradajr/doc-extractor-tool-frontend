@@ -36,830 +36,1657 @@ export class PdfExtractorTestComponent implements OnInit {
 
     // DEBUG: Initialize with test data for debugging (comment out when not needed)
     this.testResult.set({
-      testCase: 'preset2-Basket Creek Hickahala Creek 9 Key Element Plan 2018',
+      testCase: 'preset4-Broken Pumpkin 9 Key Element Plan 2019',
       extract_ai_model: 'gpt-4.1',
       compare_ai_model: 'gpt-4.1',
       compare_mode: 'ai',
       metrics: {
-        precision: 0.54,
-        recall: 0.33,
-        f1Score: 0.41,
+        precision: 0.74,
+        recall: 0.67,
+        f1Score: 0.7,
       },
       details: {
         goals: {
-          precision: 0.67,
-          recall: 0.2,
-          f1Score: 0.31,
+          precision: 0.25,
+          recall: 0.5,
+          f1Score: 0.33,
           correctCount: 2,
-          totalExtracted: 3,
-          totalExpected: 10,
+          totalExtracted: 8,
+          totalExpected: 4,
         },
         bmps: {
-          precision: 0.67,
-          recall: 0.67,
-          f1Score: 0.67,
-          correctCount: 4,
-          totalExtracted: 6,
-          totalExpected: 6,
+          precision: 1,
+          recall: 1,
+          f1Score: 1,
+          correctCount: 10,
+          totalExtracted: 10,
+          totalExpected: 10,
         },
         implementation: {
-          precision: 0.33,
-          recall: 0.1,
-          f1Score: 0.15,
-          correctCount: 1,
-          totalExtracted: 3,
+          precision: 0.9,
+          recall: 0.9,
+          f1Score: 0.9,
+          correctCount: 9,
+          totalExtracted: 10,
           totalExpected: 10,
         },
         monitoring: {
           precision: 1,
-          recall: 0.5,
-          f1Score: 0.67,
-          correctCount: 1,
-          totalExtracted: 1,
-          totalExpected: 2,
+          recall: 1,
+          f1Score: 1,
+          correctCount: 9,
+          totalExtracted: 9,
+          totalExpected: 9,
         },
         outreach: {
-          precision: 1,
-          recall: 0.25,
-          f1Score: 0.4,
-          correctCount: 1,
-          totalExtracted: 1,
-          totalExpected: 4,
+          precision: 0.57,
+          recall: 0.4,
+          f1Score: 0.47,
+          correctCount: 4,
+          totalExtracted: 7,
+          totalExpected: 10,
         },
         geographicAreas: {
-          precision: 0.75,
-          recall: 0.75,
-          f1Score: 0.75,
-          correctCount: 3,
-          totalExtracted: 4,
-          totalExpected: 4,
+          precision: 1,
+          recall: 1,
+          f1Score: 1,
+          correctCount: 1,
+          totalExtracted: 1,
+          totalExpected: 1,
         },
       },
       comparison: {
         expected: {
           reportSummary: {
-            totalGoals: 3,
-            totalBMPs: 6,
-            completionRate: 0.41,
+            totalGoals: 1,
+            totalBMPs: 8,
+            completionRate: 0,
           },
           goals: [
             {
               description:
-                'Implement nutrient BMPs to reduce TN, TP and sediment in the watershed.',
+                'Reduce sediment loading in Broken Pumpkin Creek to restore aquatic life use and improve water quality.',
               sourceExcerpt:
-                'Nutrient BMPs will be implemented watershed...target both TN, TP and sediment reduction as soils in MS are known to have high phosphorus content.',
+                'This analysis identified sediment as the primary probable stressor of the water body and a TMDL was developed... Based on the ranges of stable and unstable yield values, a reduction in sediment of 77% to 97% is recommended in the Broken Pumpkin Creek watershed.',
             },
             {
               description:
-                'Achieve 50% fecal coliform reduction in Hickahala Creek and 70% in James Wolf Creek.',
+                'Implement best management practices (BMPs) to control nonpoint source pollution and achieve TMDL targets.',
               sourceExcerpt:
-                'The Fecal Coliform TMDL...is calling for a 50% reduction...also calls for a 70% reduction in James Wolf Creek.',
+                'The USDA NRCS has a list of approved BMPS to address sedimentation and this list will be used to identify candidate BMPs in Broken Pumpkin Creek watershed.',
             },
             {
               description:
-                'Install BMPs (fencing, ponds, grade stabilization, etc.) prioritizing newly converted pasture areas.',
+                'Monitor water quality and track biological integrity to evaluate the effectiveness of implemented BMPs.',
               sourceExcerpt:
-                'Installation of the following BMPs would mitigate sediment and nutrient issues...BMPs will be prioritized for implementation in the newly converted pasture areas.',
+                'Facilitate... the completion and implementation of an effective and efficient plan to monitor baseline water quality conditions in the watershed and track changes in water quality over time resulting from the BMPs implemented through this project.',
             },
             {
               description:
-                'Promote behavior changes and BMPs through education and outreach.',
+                'Engage and educate stakeholders to promote community involvement and support for watershed protection.',
               sourceExcerpt:
-                "The ultimate goal is to bring about behavior changes and the use of 'best management practices' that will improve water quality.",
-            },
-            {
-              description:
-                'Establish Watershed Implementation Team to refine the Watershed Based Plan.',
-              schedule: 'Months 1-2',
-              sourceExcerpt:
-                'Establish Watershed Implementation Team to begin refinement of Watershed Based Plan for Basket Creek-Hickahala Creek watershed.',
-            },
-            {
-              description:
-                'Conduct baseline condition monitoring with historical and new data.',
-              schedule: 'Completed using historical data',
-              sourceExcerpt:
-                'Initiate watershed monitoring Baseline condition monitoring Completed using historical data.',
-            },
-            {
-              description:
-                'Meet with landowners to secure commitment to install BMPs.',
-              schedule: 'Months 1-6',
-              sourceExcerpt:
-                'Meet with landowners and cooperators to secure commitments to install BMPs in priority areas.',
-            },
-            {
-              description:
-                'Establish routine meetings for the Team to support plan revision.',
-              schedule: 'Months 1-36',
-              sourceExcerpt:
-                'Establish routine meeting schedule for WIT to support WBP revision.',
-            },
-            {
-              description:
-                'Implement BMPs by schedule per TMDL and project requirements.',
-              schedule: 'Months 6-36',
-              sourceExcerpt: 'Implement BMPs BMP installation Months 6-36.',
-            },
-            {
-              description:
-                'Coordinate to inspect BMPs installed with Section 319 funds.',
-              schedule: 'Months 3-36',
-              sourceExcerpt:
-                'Coordinate with Landowners to inspect BMPs that were installed using Section 319 funds.',
-            },
-            {
-              description:
-                'Begin monitoring to collect data on post-BMP water quality.',
-              schedule: 'Months 42-48',
-              sourceExcerpt:
-                'Begin monitoring to collect data on post-BMP water quality Post-BMP Monitoring Months 42-48.',
-            },
-            {
-              description:
-                'Finalize education/outreach plan and schedule events.',
-              schedule: 'Months 8-36',
-              sourceExcerpt:
-                'Finalize education and outreach plan Education/Outreach events scheduled Months 8-36.',
-            },
-            {
-              description: 'Finalize revised Watershed Based Plan.',
-              schedule: 'Months 30-36',
-              sourceExcerpt:
-                'Finalize revised WBP Final Revised WBP Months 30-36.',
+                'The ultimate goal is to bring about behavior changes and the use of “best management practices” that will improve water quality and the overall quality of life in the watershed.',
             },
           ],
           bmps: [
             {
-              name: 'Fencing',
-              description:
-                'Install fencing on pasturelands and grazing lands to limit livestock access to streams.',
-              type: 'Pathogen',
-              targetAreas: ['pasturelands', 'lands used for grazing'],
-              quantity: 10000,
-              unit: 'ft',
-              estimatedCost: 23300,
+              name: 'Brush Management',
+              type: 'Non-Structural',
+              quantity: 5,
+              unit: 'ac',
+              estimatedCost: 222.15,
               sourceExcerpt:
-                'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
+                'installation of the following BMPs would help to mitigate sediment issues in Broken Pumpkin Creek watershed: brush management;',
             },
             {
-              name: 'Watering Facilities',
-              description:
-                'Install watering facilities such as tanks or troughs to provide alternative water sources for livestock, keeping them out of streams.',
-              type: 'Pathogen',
-              targetAreas: ['pasturelands', 'lands used for grazing'],
-              quantity: 3,
-              unit: 'ea',
-              estimatedCost: 10500,
-              schedule: undefined,
+              name: 'Herbaceous Weed Management',
+              type: 'Non-Structural',
+              quantity: 325,
+              unit: 'ac',
+              estimatedCost: 21060,
               sourceExcerpt:
-                'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
+                'brush management; weed management; prescribed burning;',
+            },
+            {
+              name: 'Prescribed Burning',
+              type: 'Non-Structural',
+              quantity: 350,
+              unit: 'ac',
+              estimatedCost: 14920.5,
+              sourceExcerpt:
+                'weed management; prescribed burning; cover crops;',
+            },
+            {
+              name: 'Cover Crop',
+              type: 'Nutrient',
+              quantity: 2500,
+              unit: 'ac',
+              estimatedCost: 139650,
+              sourceExcerpt:
+                'prescribed burning; cover crops; critical area planting;',
+            },
+            {
+              name: 'Critical Area Planting',
+              type: 'Sediment',
+              quantity: 55,
+              unit: 'ac',
+              estimatedCost: 26611.2,
+              sourceExcerpt:
+                'cover crops; critical area planting; sediment basins;',
+            },
+            {
+              name: 'Sediment Basin',
+              type: 'Sediment',
+              quantity: 5000,
+              unit: 'cu yd',
+              estimatedCost: 16700,
+              sourceExcerpt:
+                'critical area planting; sediment basins; diversions;',
+            },
+            {
+              name: 'Diversion',
+              type: 'Sediment',
+              quantity: 2500,
+              unit: 'cu yd',
+              estimatedCost: 6000,
+              sourceExcerpt: 'sediment basins; diversions; ponds;',
+            },
+            {
+              name: 'Pond',
+              type: 'Hydrologic',
+              quantity: 8000,
+              unit: 'cu yd',
+              estimatedCost: 31440,
+              sourceExcerpt: 'diversions; ponds; fencing;',
+            },
+            {
+              name: 'Fence',
+              type: 'Structural',
+              quantity: 20000,
+              unit: 'ft',
+              estimatedCost: 44400,
+              sourceExcerpt: 'ponds; fencing; filter strips and field borders;',
+            },
+            {
+              name: 'Field Border',
+              type: 'Sediment',
+              quantity: 54,
+              unit: 'ac',
+              estimatedCost: 34084.8,
+              sourceExcerpt:
+                'fencing; filter strips and field borders; firebreaks;',
+            },
+            {
+              name: 'Filter Strip',
+              type: 'Sediment',
+              quantity: 50,
+              unit: 'ac',
+              estimatedCost: 7317.5,
+              sourceExcerpt:
+                'fencing; filter strips and field borders; firebreaks;',
+            },
+            {
+              name: 'Firebreak',
+              type: 'Structural',
+              quantity: 11000,
+              unit: 'ft',
+              estimatedCost: 2640,
+              sourceExcerpt:
+                'filter strips and field borders; firebreaks; grade stabilization structures;',
+            },
+            {
+              name: 'Grade Stabilization Structure',
+              type: 'Structural',
+              quantity: 18,
+              unit: 'ea',
+              estimatedCost: 180000,
+              sourceExcerpt:
+                'firebreaks; grade stabilization structures; grassed waterways;',
+            },
+            {
+              name: 'Grassed Waterway',
+              type: 'Sediment',
+              quantity: 10,
+              unit: 'ac',
+              estimatedCost: 17538.1,
+              sourceExcerpt:
+                'grade stabilization structures; grassed waterways; irrigation pipeline;',
+            },
+            {
+              name: 'Irrigation Pipeline',
+              type: 'Structural',
+              quantity: 20000,
+              unit: 'ft',
+              estimatedCost: 437000,
+              sourceExcerpt:
+                'grassed waterways; irrigation pipeline; irrigation reservoirs;',
+            },
+            {
+              name: 'Irrigation Reservoir',
+              type: 'Hydrologic',
+              quantity: 40000,
+              unit: 'cu yd',
+              estimatedCost: 328400,
+              sourceExcerpt:
+                'irrigation pipeline; irrigation reservoirs; land clearing;',
+            },
+            {
+              name: 'Land Clearing',
+              type: 'Non-Structural',
+              quantity: 20,
+              unit: 'ac',
+              estimatedCost: 10613,
+              sourceExcerpt:
+                'irrigation reservoirs; land clearing; forage and biomass planting;',
+            },
+            {
+              name: 'Tree/Shrub Preparation',
+              type: 'Habitat',
+              quantity: 350,
+              unit: 'ac',
+              estimatedCost: 89267.5,
+              sourceExcerpt:
+                'land clearing; forage and biomass planting; livestock management practices;',
+            },
+            {
+              name: 'Forage and Biomass Planting',
+              type: 'Non-Structural',
+              quantity: 60,
+              unit: 'ac',
+              estimatedCost: 6568.8,
+              sourceExcerpt:
+                'land clearing; forage and biomass planting; livestock management practices;',
+            },
+            {
+              name: 'Livestock Pipeline',
+              type: 'Structural',
+              quantity: 8000,
+              unit: 'ft',
+              estimatedCost: 15280,
+              sourceExcerpt:
+                'forage and biomass planting; livestock management practices; streambank and shoreline protection;',
+            },
+            {
+              name: 'Prescribed Grazing',
+              type: 'Non-Structural',
+              quantity: 500,
+              unit: 'ac',
+              estimatedCost: 28565,
+              sourceExcerpt:
+                'forage and biomass planting; livestock management practices; streambank and shoreline protection;',
             },
             {
               name: 'Heavy Use Area Protection',
-              description:
-                'Provide protection for heavy use areas to reduce erosion and runoff from locations with high livestock traffic.',
-              type: 'Sediment',
-              targetAreas: ['heavy use areas', 'pasturelands'],
-              quantity: 1240,
+              type: 'Structural',
+              quantity: 15000,
               unit: 'ft',
-              estimatedCost: 3522,
+              estimatedCost: 15600,
               sourceExcerpt:
-                'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
+                'livestock management practices; streambank and shoreline protection; water control structures;',
             },
             {
-              name: 'Ponds',
-              description:
-                'Construct ponds to manage runoff and provide water for livestock away from streams.',
-              type: 'Nutrient',
-              targetAreas: ['pasturelands', 'lands used for grazing'],
-              quantity: 4,
-              unit: 'ea',
-              estimatedCost: 36000,
+              name: 'Livestock Shelter Structure',
+              type: 'Structural',
+              quantity: 2000,
+              unit: 'ft',
+              estimatedCost: 6760,
               sourceExcerpt:
-                'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
+                'livestock management practices; streambank and shoreline protection; water control structures;',
+            },
+            {
+              name: 'Stream Crossing',
+              type: 'Structural',
+              quantity: 3000,
+              unit: 'ft',
+              estimatedCost: 14460,
+              sourceExcerpt:
+                'livestock management practices; streambank and shoreline protection; water control structures;',
             },
             {
               name: 'Streambank and Shoreline Protection',
-              description:
-                'Apply streambank and shoreline protection practices to stabilize banks and prevent erosion.',
-              type: 'Sediment',
-              targetAreas: ['streams', 'shorelines'],
-              quantity: 500,
+              type: 'Habitat',
+              quantity: 275,
               unit: 'ft',
-              estimatedCost: 80500,
+              estimatedCost: 50479,
               sourceExcerpt:
-                'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
+                'livestock management practices; streambank and shoreline protection; water control structures;',
             },
             {
-              name: 'Grade Stabilization Structures',
-              description:
-                'Install grade stabilization structures to reduce erosion (gully and slope stabilization).',
-              type: 'Sediment',
-              targetAreas: ['newly converted pasture areas'],
-              quantity: 8,
-              unit: 'ac',
-              estimatedCost: 52878,
+              name: 'Structure for Water Control',
+              type: 'Structural',
+              quantity: 4400,
+              unit: 'ft',
+              estimatedCost: 9064,
               sourceExcerpt:
-                'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
+                'streambank and shoreline protection; water control structures; terraces;',
+            },
+            {
+              name: 'Terrace',
+              type: 'Sediment',
+              quantity: 9000,
+              unit: 'ft',
+              estimatedCost: 14310,
+              sourceExcerpt:
+                'water control structures; terraces; underground outlets;',
+            },
+            {
+              name: 'Tree/Shrub Establishment',
+              type: 'Habitat',
+              quantity: 66700,
+              unit: 'ea',
+              estimatedCost: 28014,
+              sourceExcerpt:
+                'terraces; underground outlets; habitat development and management; and forest stand improvements.',
+            },
+            {
+              name: 'Watering Facility',
+              type: 'Structural',
+              quantity: 2400,
+              unit: 'gal',
+              estimatedCost: 6744,
+              sourceExcerpt:
+                'terraces; underground outlets; habitat development and management; and forest stand improvements.',
+            },
+            {
+              name: 'Underground Outlet',
+              type: 'Structural',
+              quantity: 2500,
+              unit: 'ft',
+              estimatedCost: 13475,
+              sourceExcerpt:
+                'terraces; underground outlets; habitat development and management; and forest stand improvements.',
+            },
+            {
+              name: 'Early Successional Habitat Development/Management',
+              type: 'Habitat',
+              quantity: 25,
+              unit: 'ac',
+              estimatedCost: 600.75,
+              sourceExcerpt:
+                'underground outlets; habitat development and management; and forest stand improvements.',
+            },
+            {
+              name: 'Forest Stand Improvement',
+              type: 'Habitat',
+              quantity: 500,
+              unit: 'ac',
+              estimatedCost: 105295,
+              sourceExcerpt:
+                'underground outlets; habitat development and management; and forest stand improvements.',
             },
           ],
           implementation: [
             {
               description:
-                'Develop, execute, and implement a Subgrant Agreement that specifies the roles, tasks, requirements, and milestones for project implementation.',
-              responsibleParties: [
-                {
-                  name: 'MDEQ',
-                },
-                {
-                  name: 'Watershed Implementation Team',
-                },
-                {
-                  name: 'Project Manager',
-                },
-              ],
+                'Develop, execute, and implement a Subgrant Agreement that specifies roles, tasks, requirements, and milestones for project implementation.',
+              status: 'planned',
+              sourceExcerpt:
+                'Work to develop, execute, and implement a Subgrant Agreement that specifies the roles, tasks, requirements, and milestones for project implementation. (Month 1)',
             },
             {
               description:
-                'Facilitate meetings, media, and social media promotion of the project, and coordinate activities to fully implement this plan.',
-              responsibleParties: [
-                {
-                  name: 'MDEQ',
-                },
-                {
-                  name: 'Partners',
-                },
-              ],
+                'Facilitate meetings, media, and social media promotion of the project; coordinate activities to fully implement the plan.',
+              status: 'planned',
+              sourceExcerpt:
+                'Facilitate, in coordination with MDEQ and other partners, meetings, media and social media promotion of the project, and coordinate activities to fully implement this plan. (Months 1-36)',
             },
             {
               description:
-                'Inform landowners and operators within the watershed about the project and work to secure commitments from priority area landowners and operators willing to participate.',
-              responsibleParties: [
-                {
-                  name: 'Tate County SWCD',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'NRCS',
-                },
-                {
-                  name: 'MDEQ',
-                },
-              ],
+                'Inform landowners and operators within the watershed about the project and secure commitments from priority area landowners and operators willing to participate.',
+              status: 'planned',
+              sourceExcerpt:
+                'Work with the Tallahatchie County SWCD, MSWCC, NRCS, and MDEQ to inform landowners and operators within the watershed about the project and work to secure commitments from priority area landowners and operators who are willing to participate in the project. (Months 1-6)',
             },
             {
               description:
-                'Determine through GIS applications and intensive site surveys the priority areas within the sub-watershed that are contributing significant pollutant loads; install all BMPs in accordance with guidelines.',
-              responsibleParties: [
-                {
-                  name: 'SWCD',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'NRCS',
-                },
-                {
-                  name: 'MDEQ',
-                },
-              ],
+                'Determine priority areas within the sub-watershed contributing significant pollutant loads using GIS applications and intensive site surveys.',
+              status: 'planned',
+              sourceExcerpt:
+                'Work with the local SWCD, MSWCC, NRCS, and MDEQ to determine through GIS applications and intensive site surveys the priority areas within the sub-watershed that are contributing significant pollutant loads. (Months 1-36)',
             },
             {
               description:
-                'Facilitate the completion and implementation of a plan to monitor baseline water quality conditions in the watershed and track changes resulting from BMPs.',
-              responsibleParties: [
-                {
-                  name: 'MDEQ',
-                },
-                {
-                  name: 'Monitoring Partners',
-                },
-              ],
+                'Install all BMPs in accordance with NRCS Technical Field Manual or other approved guidelines.',
+              status: 'planned',
+              sourceExcerpt:
+                'All BMPs shall be installed in accordance with the guidelines developed in the latest edition of the NRCS Technical Field Manual, or other approved guidelines. (Months 1-36)',
+            },
+            {
+              description:
+                'Complete and implement a baseline water quality monitoring plan and track changes in water quality over time resulting from implemented BMPs.',
+              status: 'planned',
+              sourceExcerpt:
+                'Facilitate, in cooperation with MDEQ and other monitoring partners, the completion and implementation of an effective and efficient plan to monitor baseline water quality conditions in the watershed and track changes in water quality over time resulting from the BMPs implemented through this project. (Plan Completion:  Months 1-2); Implementation:  Months 3-36)',
             },
             {
               description:
                 'Submit blank copies of standard maintenance agreements to MDEQ.',
-              responsibleParties: [
-                {
-                  name: 'Project Partners',
-                },
-              ],
+              status: 'planned',
+              sourceExcerpt:
+                'Submit blank copies of standard maintenance agreements to MDEQ. (Months 13-36)',
             },
             {
               description: 'Conduct inspections of BMPs during construction.',
-              responsibleParties: [
-                {
-                  name: 'Project Partners',
-                },
-              ],
+              status: 'planned',
+              sourceExcerpt:
+                'Conduct inspections of BMPs during construction (Months 3-36)',
             },
             {
               description:
-                'Coordinate the collection of relevant GPS coordinates of all installed BMPs and incorporate this information into a GIS format.',
-              responsibleParties: [
-                {
-                  name: 'SWCD',
-                },
-                {
-                  name: 'MACD',
-                },
-                {
-                  name: 'MSWCC',
-                },
-                {
-                  name: 'NRCS',
-                },
-              ],
+                'Collect GPS coordinates of all installed BMPs and incorporate into GIS format according to Federal Geographic Data Committee standards.',
+              status: 'planned',
+              sourceExcerpt:
+                'Coordinate with and support the local SWCD, MSWCC and NRCS in the collection of relevant GPS coordinates of all installed BMPs and incorporate this information into a GIS format. All geospatial data shall be collected in a manner consistent with the Federal Geographic Data committee-endorsed standards. (Months 3-36)',
             },
             {
               description:
-                'Collect photo documentation before, during, and after installation of approved BMPs.',
-              responsibleParties: [
-                {
-                  name: 'Project Partners',
-                },
-              ],
+                'Collect adequate photo documentation before, during, and after installation of approved BMPs.',
+              status: 'planned',
+              sourceExcerpt:
+                'Collect adequate photo documentation before, during, and after installation of the approved BMPs (Months 3-36)',
             },
             {
               description:
-                'Report measured or estimated nonpoint source pollutant load reduction, acreage affected, pre-and post-site conditions, and GIS data.',
-              responsibleParties: [
-                {
-                  name: 'Project Partners',
-                },
-              ],
+                'Report measured or estimated nonpoint source pollutant load reduction, acreage affected, pre- and post-site conditions, and GIS data.',
+              status: 'planned',
+              sourceExcerpt:
+                'Report measured, or estimated, nonpoint source pollutant load reduction, acreage affected, pre-and post- site conditions, and GIS data (1-36)',
             },
             {
               description:
-                'Establish Watershed Implementation Team to begin refinement of Watershed Based Plan.',
-              responsibleParties: [
-                {
-                  name: 'MDEQ',
-                },
-                {
-                  name: 'WIT',
-                },
-              ],
+                'Target priority areas for BMPs in coordination with project partners.',
+              status: 'planned',
+              sourceExcerpt:
+                'Coordinate with the MDEQ, NRCS, MSWCC, USGS, and the Noxubee and Lowndes Co. Soil and Water Districts to determine priority areas that are contributing significant pollutant loads to Broken Pumpkin Creek Watershed. (Months 1-2)',
             },
             {
               description:
-                'Initiate watershed baseline monitoring using historical data.',
-              responsibleParties: [
-                {
-                  name: 'MDEQ',
-                },
-                {
-                  name: 'Monitoring Partners',
-                },
-              ],
+                'Establish Watershed Implementation Team (WIT) to begin refinement of the watershed-based plan.',
+              status: 'planned',
+              sourceExcerpt:
+                'Establish Watershed Implementation Team to begin refinement of Watershed Based Plan for Broken Pumpkin Creek Watershed. (Months 1-2)',
+            },
+            {
+              description:
+                'Initiate baseline condition monitoring using historical data.',
+              status: 'completed',
+              sourceExcerpt:
+                'Initiate watershed monitoring  Baseline condition monitoring Completed using historical data',
             },
             {
               description:
                 'Meet with landowners and cooperators to secure commitments to install BMPs in priority areas.',
-              responsibleParties: [
-                {
-                  name: 'Project Partners',
-                },
-              ],
+              status: 'planned',
+              sourceExcerpt:
+                'Meet with landowners and cooperators to secure commitments to install BMPs in priority areas. (Months 1-6)',
             },
             {
               description:
                 'Establish routine meeting schedule for WIT to support watershed plan revision.',
-              responsibleParties: [
-                {
-                  name: 'WIT',
-                },
-              ],
+              status: 'planned',
+              sourceExcerpt:
+                'Establish routine meeting schedule for WIT to support WBP revision. (Months 1-36)',
             },
             {
-              description: 'Implement BMPs in targeted areas.',
-              responsibleParties: [
-                {
-                  name: 'Project Partners',
-                },
-              ],
+              description: 'Implement BMPs in the watershed.',
+              status: 'planned',
+              sourceExcerpt: 'Implement BMPs BMP installation (Months 6-36)',
+            },
+            {
+              description: 'Inspect BMPs installed using Section 319 funds.',
+              status: 'planned',
+              sourceExcerpt:
+                'Coordinate with Landowners to inspect BMPs that were installed using Section 319 funds (Months 3-36)',
             },
             {
               description:
                 'Begin monitoring to collect data on post-BMP water quality.',
-              responsibleParties: [
-                {
-                  name: 'MDEQ',
-                },
-                {
-                  name: 'Monitoring Partners',
-                },
-              ],
+              status: 'planned',
+              sourceExcerpt:
+                'Begin monitoring to collect data on post BMP water quality (Months 42-48)',
             },
             {
               description:
-                'Finalize education and outreach plan and schedule education/outreach events.',
-              responsibleParties: [
-                {
-                  name: 'MDEQ',
-                },
-                {
-                  name: 'Project Partners',
-                },
-              ],
-            },
-            {
-              description: 'Finalize revised Watershed Based Plan.',
-              responsibleParties: [
-                {
-                  name: 'MDEQ',
-                },
-                {
-                  name: 'WIT',
-                },
-              ],
+                'Finalize education and outreach plan and schedule events.',
+              status: 'planned',
+              sourceExcerpt:
+                'Finalize education and outreach plan Education/Outreach events scheduled (Months 8-36)',
             },
           ],
           monitoring: [
             {
-              parameter:
-                'M-BISQ score; other chemical and biological parameters',
-              type: 'biological',
-              method:
-                'Standard Operating Procedures; agency Quality Assurance protocols',
-              frequency: 'Prior to BMP installation',
+              parameter: 'Dissolved Oxygen',
+              type: 'chemical',
               thresholds: [
                 {
-                  parameter: 'M-BISQ score',
+                  parameter: 'Dissolved Oxygen',
                   description:
-                    '10 points below attainment threshold for West Bioregion',
+                    '>= 5 mg/L (daily avg), >= 4 mg/L (instantaneous), 70–125% saturation',
                 },
               ],
-              locations: [
-                'Historical monitoring stations on Basket Creek and Hickahala Creek',
-              ],
+              locations: ['TB146', 'TB562'],
             },
             {
-              parameter: 'M-BISQ score; chemical and biological parameters',
-              type: 'biological',
-              method:
-                'Best professional judgement for station selection; SOPs; agency QA protocols',
-              frequency:
-                'At least 1 year post-BMP, possibly up to 5 or more years',
-              thresholds: [],
-              locations: [
-                'Locations downstream of BMP activity (to be selected)',
+              parameter: 'pH',
+              type: 'chemical',
+              thresholds: [
+                {
+                  parameter: 'pH',
+                  description: '6.0–9.0',
+                },
               ],
+              locations: ['TB146', 'TB562'],
+            },
+            {
+              parameter: 'Temperature',
+              type: 'physical',
+              thresholds: [
+                {
+                  parameter: 'Temperature',
+                  description: '<= 90°F',
+                },
+              ],
+              locations: ['TB146', 'TB562'],
+            },
+            {
+              parameter: 'Specific Conductance',
+              type: 'chemical',
+              thresholds: [
+                {
+                  parameter: 'Specific Conductance',
+                  description: '< 1000 micromhos/cm',
+                },
+              ],
+              locations: ['TB146', 'TB562'],
+            },
+            {
+              parameter: 'Dissolved Solids',
+              type: 'chemical',
+              thresholds: [
+                {
+                  parameter: 'Dissolved Solids',
+                  description:
+                    '< 750 mg/L (monthly avg), < 1500 mg/L (instantaneous)',
+                },
+              ],
+              locations: ['TB146', 'TB562'],
+            },
+            {
+              parameter: 'Total Suspended Solids',
+              type: 'chemical',
+              thresholds: [
+                {
+                  parameter: 'Total Suspended Solids',
+                  description: '<= 65 mg/L',
+                },
+              ],
+              locations: ['TB146', 'TB562'],
+            },
+            {
+              parameter: 'Turbidity',
+              type: 'physical',
+              thresholds: [
+                {
+                  parameter: 'Turbidity',
+                  description: '<= 75 NTU',
+                },
+              ],
+              locations: ['TB146', 'TB562'],
+            },
+            {
+              parameter: 'Chemical Oxygen Demand',
+              type: 'chemical',
+              thresholds: [
+                {
+                  parameter: 'Chemical Oxygen Demand',
+                  description: '<= 35 mg/L',
+                },
+              ],
+              locations: ['TB146', 'TB562'],
+            },
+            {
+              parameter: 'M-BISQ (Mississippi Benthic Index of Stream Quality)',
+              type: 'biological',
+              method: 'MDEQ macroinvertebrate protocol',
+              thresholds: [
+                {
+                  parameter:
+                    'M-BISQ (Mississippi Benthic Index of Stream Quality)',
+                  description: '>= 71.6 (East Bioregion Attainment Score)',
+                },
+              ],
+              locations: ['TB146', 'TB562'],
             },
           ],
           outreach: [
             {
-              type: 'Education and Outreach Events',
+              type: 'presentation',
               description:
-                'Implementation of education and outreach activities to inform and engage the community about water quality, BMPs, and watershed stewardship.',
-              schedule: 'Months 8-36',
-              indicator:
-                'Number of education/outreach events held; attendance; participant feedback; number of materials distributed',
-              partners: [
-                'MDEQ',
-                'MSWCC',
-                'NRCS',
-                'Tate County Soil and Water Conservation District',
-              ],
-            },
-            {
-              type: 'MDEQ Statewide Information/Education Programs',
-              description:
-                'Utilization of MDEQ-developed programs, manuals, literature, books, videos, and public service announcements tailored for the watershed.',
-              schedule: 'Throughout project period',
-              indicator:
-                'Number of programs delivered; audience reached; feedback and evaluation forms',
+                'Water Model Presentations (Enviroscapes and groundwater aquifer models) distributed statewide with training and lesson plans',
               partners: ['MDEQ'],
             },
             {
-              type: 'Stakeholder Engagement and Meetings',
+              type: 'teacher workshop',
               description:
-                'Engage stakeholders through meetings to provide updates, education, and review/modify the watershed plan. Support participation via food, refreshments, and facility rentals.',
-              schedule: 'Throughout project period (at least 3 meetings)',
-              indicator: 'Number of meetings, participant attendance, feedback',
-              partners: [
-                'MDEQ',
-                'MSWCC',
-                'NRCS',
-                'Tate County Soil and Water Conservation District',
-              ],
+                'Train educators near the watershed about nonpoint source (NPS) pollution and provide materials for classroom use',
+              partners: ['MDEQ'],
             },
             {
-              type: 'Media and Social Media Promotion',
+              type: 'workshop',
               description:
-                'Promotion of the project and outreach activities through media and social media channels.',
-              schedule: 'Months 1-36',
+                'Adopt A Stream workshops and training for citizens, teachers, and students in the Dry Creek Watershed',
+              partners: ['MDEQ'],
+            },
+            {
+              type: 'mobile classroom',
+              description:
+                'Watershed Harmony Mobile Classroom for ages kindergarten–adults, tailored for 4th and 5th grade students',
+              partners: ['MDEQ'],
+            },
+            {
+              type: 'train-the-trainer',
+              description:
+                'Workshops and materials for Soil and Water Conservation Districts and Extension Service',
+              partners: ['MDEQ', 'SWCD', 'Extension Service'],
+            },
+            {
+              type: 'stakeholder meeting',
+              description:
+                'Broken Pumpkin Creek Watershed Implementation Team (WIT) face-to-face meetings to provide updates, review, and modify the plan',
+              schedule: 'at least 3 meetings during project',
+              partners: ['MDEQ', 'WIT', 'local stakeholders'],
+            },
+            {
+              type: 'field day',
+              description:
+                'Host field days to showcase implemented BMPs to the public',
+              partners: ['MDEQ', 'WIT'],
+            },
+            {
+              type: 'education/outreach event',
+              description:
+                'Education events including training workshops, festival event planning, soil and water conservation field days, poster/art/writing projects',
+              partners: ['MDEQ', 'WIT', 'local stakeholders'],
+            },
+            {
+              type: 'incentive',
+              description:
+                'Provide food, refreshments, and facility support for stakeholder meetings and outreach events as allowed under Section 319',
+              partners: ['MDEQ'],
+            },
+            {
+              type: 'evaluation',
+              description:
+                'Use evaluation forms, pre-test/post-test, surveys, and attendance reporting to measure outreach success',
               indicator:
-                'Number of media mentions/social media posts; audience reached',
+                'number of people attending workshops, trainings, events',
               partners: ['MDEQ'],
             },
           ],
           geographicAreas: [
             {
-              name: 'Basket Creek-Hickahala Creek Watershed',
-              counties: ['Tate County'],
-              acreage: 35085,
-              landUseTypes: [
-                {
-                  type: 'cropland',
-                  percent: 11,
-                },
-                {
-                  type: 'forest',
-                  percent: 17,
-                },
-                {
-                  type: 'pasture/grass',
-                  percent: 44,
-                },
-              ],
-
-              huc: '080302040403',
-              description:
-                'The major watershed covered by the plan, located in Tate County, Mississippi. Dominant land uses are cropland, forest, and pasture/grass. Identified in the 2011 National Land Cover Database. Includes impaired segments MS305E, MS305M1, and MS305M2.',
-            },
-            {
-              name: 'Hickahala Creek Drainage Area (DA)',
-              counties: ['Tate County'],
-
-              population: undefined,
-              towns: undefined,
-              huc: 'MS305E',
-              description:
-                "A drainage area included on Mississippi’s 1996 and 1998 Section 303(d) List as an 'evaluated' impairment. Subject to TMDLs for organic enrichment, low dissolved oxygen, and nutrients.",
-            },
-            {
-              name: 'Hickahala Creek (Segment MS305M2)',
-              counties: ['Tate County'],
-              acreage: undefined,
-              landUseTypes: undefined,
-
-              huc: 'MS305M2',
-              description:
-                'A monitored segment of Hickahala Creek, listed as impaired for recreational use due to high fecal coliform levels.',
-            },
-            {
-              name: 'James-Wolf Creek (Segment MS305M1)',
-              counties: ['Tate County'],
-
-              huc: 'MS305M1',
-              description:
-                'A segment that flows into the watershed from the southwest, impaired for recreational use due to high fecal coliform. Confluences with Hickahala Creek.',
+              huc: '031601060307',
+              watershedName: 'Broken Pumpkin Creek Watershed',
+              counties: ['Noxubee', 'Lowndes'],
+              state: 'Mississippi',
             },
           ],
-          contacts: [],
-          organizations: [
+          contacts: [
             {
-              name: 'Natural Resources Conservation Service',
+              name: 'Mississippi Department of Environmental Quality',
+              role: 'Lead Agency / Project Management',
+              organization: 'MDEQ',
             },
             {
               name: 'Mississippi Soil and Water Conservation Commission',
-              contact: undefined,
+              role: 'Implementation Partner',
+              organization: 'MSWCC',
             },
             {
-              name: 'Tate County Soil and Water Conservation District',
+              name: 'Natural Resources Conservation Service',
+              role: 'Technical Assistance / Implementation Partner',
+              organization: 'NRCS',
             },
             {
-              name: 'USGS',
+              name: 'Noxubee County Soil and Water Conservation District',
+              role: 'Local Partner',
+              organization: 'Noxubee County SWCD',
             },
             {
-              name: 'MDEQ',
+              name: 'Lowndes County Soil and Water Conservation District',
+              role: 'Local Partner',
+              organization: 'Lowndes County SWCD',
+            },
+            {
+              name: 'United States Geological Survey',
+              role: 'Monitoring Partner',
+              organization: 'USGS',
+            },
+            {
+              name: 'Extension Service',
+              role: 'Education/Outreach Partner',
+              organization: 'Extension Service',
+            },
+          ],
+          organizations: [
+            {
+              name: 'Mississippi Department of Environmental Quality (MDEQ)',
+            },
+            {
+              name: 'Mississippi Soil and Water Conservation Commission (MSWCC)',
+            },
+            {
+              name: 'Natural Resources Conservation Service (NRCS)',
+            },
+            {
+              name: 'Noxubee County Soil and Water Conservation District',
+            },
+            {
+              name: 'Lowndes County Soil and Water Conservation District',
+            },
+            {
+              name: 'United States Geological Survey (USGS)',
+            },
+            {
+              name: 'Local Landowners',
+            },
+            {
+              name: 'Soil and Water Conservation Districts (SWCDs)',
+            },
+            {
+              name: 'Extension Service',
             },
           ],
         },
         actual: {
           model: 'gpt-4.1',
           reportSummary: {
-            totalGoals: 3,
-            totalBMPs: 6,
+            summary:
+              'This watershed plan outlines strategies for addressing sediment impairment in the Broken Pumpkin Creek Watershed in east central Mississippi. The plan details causes of impairment, expected load reductions, proposed best management practices (BMPs), implementation schedules, monitoring metrics, and outreach activities to improve water quality and habitat. It covers the watershed area in Noxubee and Lowndes counties and aims to achieve significant sediment reduction through coordinated efforts.',
+            watershedName: 'Broken Pumpkin Creek Watershed',
+            planTitle:
+              'Broken Pumpkin Watershed Plan 9 Key Element Plan HUC 031601060307 MWS 8113 GY19 Watershed Implementation Project',
+            planDate: '2019-03-08',
+            authors: [],
+            organizations: [
+              'Mississippi Department of Environmental Quality (MDEQ)',
+              'Mississippi Soil and Water Conservation Commission (MSWCC)',
+              'Natural Resource Conservation Service (NRCS)',
+              'Noxubee County Soil and Water Conservation District',
+              'Lowndes County Soil and Water Conservation District',
+              'USGS',
+            ],
+            geographicRegion: 'Noxubee and Lowndes counties, Mississippi',
+            totalGoals: 8,
+            totalBMPs: 32,
             completionRate: 0,
           },
           goals: [
             {
               description:
-                'Restore and maintain the quality of impaired water bodies through the establishment of pollutant specific allowable loads.',
+                'Reduce sediment yields in the Broken Pumpkin Creek watershed by 77-97% to reflect stable conditions.',
+              schedule: 'Project duration',
               sourceExcerpt:
-                'The TMDL process is designated to restore and maintain the quality of those impaired water bodies through the establishment of pollutant specific allowable loads.',
+                'a reduction in sediment of 77% to 97% is recommended in the Broken Pumpkin Creek watershed',
             },
             {
               description:
-                'Achieve a 50% reduction in fecal coliform in the section of Hickahala Creek within the Basket Creek-Hickahala Creek Watershed and a 70% reduction in James Wolf Creek.',
+                'Install approved BMPs to address sedimentation in the watershed.',
+              schedule: 'Project duration',
               sourceExcerpt:
-                'The Fecal Coliform TMDL for Hickahala Creek is calling for a 50% reduction in the section of Hickahala Creek that is located within the Basket Creek-Hickahala Creek Watershed. The same TMDL also calls for a 70% reduction in James Wolf Creek.',
+                'installation of the following BMPs would help to mitigate sediment issues in Broken Pumpkin Creek watershed',
             },
             {
               description:
-                'Implement nutrient BMPs and in-field conservation practices to achieve modeled NPS loads in the TMDL for nutrients and sediment.',
+                'Coordinate with MDEQ, NRCS, MSWCC, USGS, and local Soil and Water Districts to determine priority areas contributing significant pollutant loads.',
+              schedule: 'Months 1-2',
               sourceExcerpt:
-                'In order to achieve the modeled NPS loads in the TMDL, nutrient BMPs will be implemented watershed. This will be done by implementing in-field conservation practices that target both TN, TP and sediment reduction as soils in MS are known to have high phosphorus content.',
+                'Coordinate with the MDEQ, NRCS, MSWCC, USGS, and the Noxubee and Lowndes Co. Soil and Water Districts to determine priority areas',
+            },
+            {
+              description:
+                'Establish Watershed Implementation Team (WIT) to refine the Watershed Based Plan.',
+              schedule: 'Months 1-2',
+              sourceExcerpt:
+                'Establish Watershed Implementation Team to begin refinement of Watershed Based Plan',
+            },
+            {
+              description:
+                'Initiate baseline watershed monitoring using historical data.',
+              schedule: 'Project start',
+              sourceExcerpt:
+                'Initiate watershed monitoring Baseline condition monitoring Completed using historical data',
+            },
+            {
+              description:
+                'Secure commitments from landowners and cooperators to install BMPs in priority areas.',
+              schedule: 'Months 1-6',
+              sourceExcerpt:
+                'Meet with landowners and cooperators to secure commitments to install BMPs in priority areas',
+            },
+            {
+              description: 'Implement BMPs in targeted areas of the watershed.',
+              schedule: 'Months 6-36',
+              sourceExcerpt: 'Implement BMPs BMP installation Months 6-36',
+            },
+            {
+              description:
+                'Begin post-BMP monitoring to collect data on water quality improvements.',
+              schedule: 'Months 42-48',
+              sourceExcerpt:
+                'Begin monitoring to collect data on post- BMP water quality',
             },
           ],
           bmps: [
             {
-              name: 'Fencing',
+              name: 'Brush Management',
               description:
-                'Install fencing to limit livestock access to streams.',
-              type: 'Pathogen',
-              targetAreas: ['Pasturelands', 'Lands used for grazing'],
-              sourceExcerpt:
-                'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
-            },
-            {
-              name: 'Watering Facilities',
-              description:
-                'Install watering facilities to provide alternative water sources for livestock.',
-              type: 'Pathogen',
-              targetAreas: ['Pasturelands', 'Lands used for grazing'],
-              sourceExcerpt:
-                'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
-            },
-            {
-              name: 'Heavy Use Areas',
-              description:
-                'Establish heavy use areas to reduce soil erosion and sedimentation.',
+                'Control or removal of undesirable brush species to reduce sediment runoff.',
               type: 'Sediment',
-              targetAreas: ['Pasturelands', 'Lands used for grazing'],
-              sourceExcerpt:
-                'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 5,
+              unit: 'ac',
+              estimatedCost: 222.15,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Brush Management ac 5 $44.43 $222.15',
             },
             {
-              name: 'Ponds',
+              name: 'Herbaceous Weed Management',
               description:
-                'Construct ponds to manage runoff and improve water quality.',
-              type: 'Nutrient',
-              targetAreas: ['Pasturelands', 'Lands used for grazing'],
+                'Management of herbaceous weeds to improve vegetative cover and reduce erosion.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 325,
+              unit: 'ac',
+              estimatedCost: 21060,
+              schedule: 'Full Project Implementation',
               sourceExcerpt:
-                'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
+                'Herbaceous Weed Management ac 325 $64.80 $21,060.00',
+            },
+            {
+              name: 'Prescribed Burning',
+              description:
+                'Controlled burning to manage vegetation and improve habitat.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 350,
+              unit: 'ac',
+              estimatedCost: 14920.5,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Prescribed Burning ac 350 $42.63 $14,920.50',
+            },
+            {
+              name: 'Cover Crop',
+              description:
+                'Planting cover crops to reduce soil erosion and sediment runoff.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 2500,
+              unit: 'ac',
+              estimatedCost: 139650,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Cover Crop ac 2500 $55.86 $139,650.00',
+            },
+            {
+              name: 'Critical Area Planting',
+              description:
+                'Planting vegetation in areas highly susceptible to erosion.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 55,
+              unit: 'ac',
+              estimatedCost: 26611.2,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Critical Area Planting ac 55 $483.84 $26,611.20',
+            },
+            {
+              name: 'Sediment Basin',
+              description:
+                'Construction of basins to capture and settle sediment from runoff.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 5000,
+              unit: 'cu yd',
+              estimatedCost: 16700,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Sediment Basin cu yd 5000 $3.34 $16,700.00',
+            },
+            {
+              name: 'Diversion',
+              description:
+                'Earth channels or ditches to divert runoff and reduce erosion.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 2500,
+              unit: 'cu yd',
+              estimatedCost: 6000,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Diversion cu yd 2500 $2.40 $6,000.00',
+            },
+            {
+              name: 'Pond',
+              description:
+                'Construction of ponds to capture runoff and sediment.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 8000,
+              unit: 'cu yd',
+              estimatedCost: 31440,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Pond cu yd 8000 $3.93 $31,440.00',
+            },
+            {
+              name: 'Fence',
+              description:
+                'Installation of fencing to exclude livestock from sensitive areas.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 20000,
+              unit: 'ft',
+              estimatedCost: 44400,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Fence ft 20000 $2.22 $44,400.00',
+            },
+            {
+              name: 'Field Border',
+              description:
+                'Establishment of vegetated borders around fields to filter runoff.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 54,
+              unit: 'ac',
+              estimatedCost: 34084.8,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Field Border ac 54 $631.20 $34,084.80',
+            },
+            {
+              name: 'Filter Strip',
+              description:
+                'Vegetated strips to filter sediment and pollutants from runoff.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 50,
+              unit: 'ac',
+              estimatedCost: 7317.5,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Filter Strip ac 50 $146.35 $7,317.50',
+            },
+            {
+              name: 'Firebreak',
+              description:
+                'Creation of firebreaks to control prescribed burns and prevent erosion.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 11000,
+              unit: 'ft',
+              estimatedCost: 2640,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Firebreak ft 11000 $0.24 $2,640.00',
+            },
+            {
+              name: 'Grade Stabilization Structure',
+              description:
+                'Structures to stabilize grades and prevent gully erosion.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 18,
+              unit: 'ea',
+              estimatedCost: 180000,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt:
+                'Grade Stabilization Structure ea 18 $10,000.00 $180,000.00',
+            },
+            {
+              name: 'Grassed Waterway',
+              description:
+                'Vegetated channels to convey runoff and reduce erosion.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 10,
+              unit: 'ac',
+              estimatedCost: 17538.1,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Grassed Waterway ac 10 $1,753.81 $17,538.10',
+            },
+            {
+              name: 'Irrigation Pipeline',
+              description:
+                'Installation of pipelines for efficient irrigation and reduced runoff.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 20000,
+              unit: 'ft',
+              estimatedCost: 437000,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Irrigation Pipeline ft 20000 $21.85 $437,000.00',
+            },
+            {
+              name: 'Irrigation Reservoir',
+              description:
+                'Construction of reservoirs for irrigation water storage.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 40000,
+              unit: 'cu yd',
+              estimatedCost: 328400,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt:
+                'Irrigation Reservoir cu yd 40000 $8.21 $328,400.00',
+            },
+            {
+              name: 'Land Clearing',
+              description:
+                'Clearing land for improved management and reduced erosion.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 20,
+              unit: 'ac',
+              estimatedCost: 10613,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Land Clearing ac 20 $530.65 $10,613.00',
+            },
+            {
+              name: 'Tree/Shrub Preparation',
+              description:
+                'Preparation of land for tree and shrub establishment.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 350,
+              unit: 'ac',
+              estimatedCost: 89267.5,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Tree/Shrub Preparation ac 350 $255.05 $89,267.50',
+            },
+            {
+              name: 'Forage and Biomass Planting',
+              description:
+                'Planting forage and biomass crops to improve soil cover.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 60,
+              unit: 'ac',
+              estimatedCost: 6568.8,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt:
+                'Forage and Biomass Planting ac 60 $109.48 $6,568.80',
+            },
+            {
+              name: 'Livestock Pipeline',
+              description:
+                'Installation of pipelines for livestock watering to reduce stream access.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 8000,
+              unit: 'ft',
+              estimatedCost: 15280,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Livestock Pipeline ft 8000 $1.91 $15,280.00',
+            },
+            {
+              name: 'Prescribed Grazing',
+              description:
+                'Managed grazing to maintain vegetative cover and reduce erosion.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 500,
+              unit: 'ac',
+              estimatedCost: 28565,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Prescribed Grazing ac 500 $57.13 $28,565.00',
+            },
+            {
+              name: 'Heavy Use Area Protection',
+              description:
+                'Protection of areas with heavy livestock or equipment use to reduce erosion.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 15000,
+              unit: 'ft',
+              estimatedCost: 15600,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt:
+                'Heavy Use Area Protection ft 15000 $1.04 $15,600.00',
+            },
+            {
+              name: 'Livestock Shelter Structure',
+              description:
+                'Structures to shelter livestock and reduce impact on sensitive areas.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 2000,
+              unit: 'ft',
+              estimatedCost: 6760,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt:
+                'Livestock Shelter Structure ft 2000 $3.38 $6,760.00',
+            },
+            {
+              name: 'Stream Crossing',
+              description:
+                'Construction of stable stream crossings to reduce bank erosion.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 3000,
+              unit: 'ft',
+              estimatedCost: 14460,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Stream Crossing ft 3000 $4.82 $14,460.00',
             },
             {
               name: 'Streambank and Shoreline Protection',
               description:
-                'Implement streambank and shoreline protection to reduce erosion and sedimentation.',
+                'Stabilization of streambanks and shorelines to prevent erosion.',
               type: 'Sediment',
-              targetAreas: ['Pasturelands', 'Lands used for grazing'],
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 275,
+              unit: 'ft',
+              estimatedCost: 50479,
+              schedule: 'Full Project Implementation',
               sourceExcerpt:
-                'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
+                'Streambank and Shoreline Protection ft 275 $183.56 $50,479.00',
             },
             {
-              name: 'Grade Stabilization Structures',
+              name: 'Structure for Water Control',
               description:
-                'Install grade stabilization structures to control gully erosion and reduce sediment delivery.',
+                'Installation of structures to control water flow and reduce erosion.',
               type: 'Sediment',
-              targetAreas: ['Pasturelands', 'Lands used for grazing'],
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 4400,
+              unit: 'ft',
+              estimatedCost: 9064,
+              schedule: 'Full Project Implementation',
               sourceExcerpt:
-                'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
+                'Structure for Water Control ft 4400 $2.06 $9,064.00',
+            },
+            {
+              name: 'Terrace',
+              description:
+                'Construction of terraces to reduce slope length and runoff velocity.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 9000,
+              unit: 'ft',
+              estimatedCost: 14310,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Terrace ft 9000 $1.59 $14,310.00',
+            },
+            {
+              name: 'Tree/Shrub Establishment',
+              description:
+                'Establishment of trees and shrubs for erosion control and habitat.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 66700,
+              unit: 'ea',
+              estimatedCost: 28014,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt:
+                'Tree/Shrub Establishment ea 66700 $0.42 $28,014.00',
+            },
+            {
+              name: 'Watering Facility',
+              description:
+                'Installation of watering facilities for livestock to reduce stream access.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 2400,
+              unit: 'gal',
+              estimatedCost: 6744,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Watering Facility gal 2400 $2.81 $6,744.00',
+            },
+            {
+              name: 'Underground Outlet',
+              description:
+                'Installation of underground outlets to safely convey runoff.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 2500,
+              unit: 'ft',
+              estimatedCost: 13475,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt: 'Underground Outlet ft 2500 $5.39 $13,475.00',
+            },
+            {
+              name: 'Early Successional Habitat Development/Management',
+              description:
+                'Development and management of early successional habitats.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 25,
+              unit: 'ac',
+              estimatedCost: 600.75,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt:
+                'Early Successional Habitat Development/Management ac 25 $24.03 $600.75',
+            },
+            {
+              name: 'Forest Stand Improvement',
+              description:
+                'Improvement of forest stands for erosion control and habitat.',
+              type: 'Sediment',
+              targetAreas: ['Broken Pumpkin Creek watershed'],
+              quantity: 500,
+              unit: 'ac',
+              estimatedCost: 105295,
+              schedule: 'Full Project Implementation',
+              sourceExcerpt:
+                'Forest Stand Improvement ac 500 $210.59 $105,295.00',
             },
           ],
           implementation: [
             {
               description:
-                'Implement nutrient BMPs and in-field conservation practices targeting TN, TP, and sediment reduction.',
+                'Develop, execute, and implement a Subgrant Agreement specifying roles, tasks, requirements, and milestones for project implementation.',
               responsibleParties: [
                 {
-                  name: 'NRCS',
+                  name: 'MDEQ',
+                },
+              ],
+              status: 'planned',
+              sourceExcerpt:
+                'Work to develop, execute, and implement a Subgrant Agreement that specifies the roles, tasks, requirements, and milestones for project implementation. (Month 1)',
+            },
+            {
+              description:
+                'Facilitate meetings, media, and social media promotion of the project and coordinate activities to fully implement this plan.',
+              responsibleParties: [
+                {
+                  name: 'MDEQ',
+                },
+              ],
+              status: 'planned',
+              sourceExcerpt:
+                'Facilitate, in coordination with MDEQ and other partners, meetings, media and social media promotion of the project, and coordinate activities to fully implement this plan. (Months 1-36)',
+            },
+            {
+              description:
+                'Inform landowners and operators within the watershed about the project and secure commitments from priority area landowners and operators.',
+              responsibleParties: [
+                {
+                  name: 'Tallahatchie County SWCD',
                 },
                 {
                   name: 'MSWCC',
                 },
                 {
-                  name: 'SWCD',
+                  name: 'NRCS',
+                },
+                {
+                  name: 'MDEQ',
                 },
               ],
-
               status: 'planned',
-
               sourceExcerpt:
-                'In order to achieve the modeled NPS loads in the TMDL, nutrient BMPs will be implemented watershed. This will be done by implementing in-field conservation practices that target both TN, TP and sediment reduction as soils in MS are known to have high phosphorus content.',
+                'Work with the Tallahatchie County SWCD, MSWCC, NRCS, and MDEQ to inform landowners and operators within the watershed about the project and work to secure commitments from priority area landowners and operators who are willing to participate in the project. (Months 1-6)',
             },
             {
               description:
-                'Identify opportunities to implement BMPs on pasturelands and lands used for grazing to limit livestock access to streams.',
+                'Determine priority areas within the sub-watershed contributing significant pollutant loads using GIS applications and intensive site surveys.',
               responsibleParties: [
                 {
-                  name: 'Watershed team',
-                },
-                {
-                  name: 'NRCS',
+                  name: 'SWCD',
                 },
                 {
                   name: 'MSWCC',
                 },
                 {
-                  name: 'SWCD',
+                  name: 'NRCS',
+                },
+                {
+                  name: 'MDEQ',
                 },
               ],
-
               status: 'planned',
-
               sourceExcerpt:
-                'the watershed team will work to identify opportunities to implement BMPs on pasturelands and lands used for grazing to limit livestock access to streams.',
+                'Work with the local SWCD, MSWCC, NRCS, and MDEQ to determine through GIS applications and intensive site surveys the priority areas within the sub-watershed that are contributing significant pollutant loads. (Months 1-36)',
             },
             {
               description:
-                'Work under a memorandum of agreement (MOA) with the MSWCC to implement this project.',
+                'Install all BMPs in accordance with NRCS Technical Field Manual or other approved guidelines.',
+              responsibleParties: [
+                {
+                  name: 'SWCD',
+                },
+                {
+                  name: 'MSWCC',
+                },
+                {
+                  name: 'NRCS',
+                },
+              ],
+              status: 'planned',
+              sourceExcerpt:
+                'All BMPs shall be installed in accordance with the guidelines developed in the latest edition of the NRCS Technical Field Manual, or other approved guidelines. (Months 1-36)',
+            },
+            {
+              description:
+                'Complete and implement a plan to monitor baseline water quality conditions and track changes over time.',
               responsibleParties: [
                 {
                   name: 'MDEQ',
                 },
                 {
-                  name: 'MSWCC',
+                  name: 'USGS',
+                },
+                {
+                  name: 'SWCD',
                 },
               ],
-
               status: 'planned',
-
               sourceExcerpt:
-                'MDEQ plans to work under a memorandum of agreement (MOA) with the MSWCC to implement this project.',
+                'Facilitate, in cooperation with MDEQ and other monitoring partners, the completion and implementation of an effective and efficient plan to monitor baseline water quality conditions in the watershed and track changes in water quality over time resulting from the BMPs implemented through this project. (Plan Completion: Months 1-2); Implementation: Months 3-36)',
+            },
+            {
+              description:
+                'Submit blank copies of standard maintenance agreements to MDEQ.',
+              responsibleParties: [
+                {
+                  name: 'SWCD',
+                },
+                {
+                  name: 'MSWCC',
+                },
+                {
+                  name: 'NRCS',
+                },
+              ],
+              status: 'planned',
+              sourceExcerpt:
+                'Submit blank copies of standard maintenance agreements to MDEQ. (Months 13-36)',
+            },
+            {
+              description: 'Conduct inspections of BMPs during construction.',
+              responsibleParties: [
+                {
+                  name: 'SWCD',
+                },
+                {
+                  name: 'MSWCC',
+                },
+                {
+                  name: 'NRCS',
+                },
+              ],
+              status: 'planned',
+              sourceExcerpt:
+                'Conduct inspections of BMPs during construction (Months 3-36)',
+            },
+            {
+              description:
+                'Collect GPS coordinates of all installed BMPs and incorporate into GIS format.',
+              responsibleParties: [
+                {
+                  name: 'SWCD',
+                },
+                {
+                  name: 'MSWCC',
+                },
+                {
+                  name: 'NRCS',
+                },
+              ],
+              status: 'planned',
+              sourceExcerpt:
+                'Coordinate with and support the local SWCD, MSWCC and NRCS in the collection of relevant GPS coordinates of all installed BMPs and incorporate this information into a GIS format. (Months 3-36)',
+            },
+            {
+              description:
+                'Collect photo documentation before, during, and after installation of approved BMPs.',
+              responsibleParties: [
+                {
+                  name: 'SWCD',
+                },
+                {
+                  name: 'MSWCC',
+                },
+                {
+                  name: 'NRCS',
+                },
+              ],
+              status: 'planned',
+              sourceExcerpt:
+                'Collect adequate photo documentation before, during, and after installation of the approved BMPs (Months 3-36)',
+            },
+            {
+              description:
+                'Report measured or estimated nonpoint source pollutant load reduction, acreage affected, pre-and post-site conditions, and GIS data.',
+              responsibleParties: [
+                {
+                  name: 'SWCD',
+                },
+                {
+                  name: 'MSWCC',
+                },
+                {
+                  name: 'NRCS',
+                },
+                {
+                  name: 'MDEQ',
+                },
+              ],
+              status: 'planned',
+              sourceExcerpt:
+                'Report measured, or estimated, nonpoint source pollutant load reduction, acreage affected, pre-and post- site conditions, and GIS data (1-36)',
             },
           ],
           monitoring: [
             {
-              parameter: 'Biological impairment (macroinvertebrate index)',
+              parameter: 'Dissolved Oxygen',
+              type: 'chemical',
+              method: 'In-situ field measurement',
+              frequency: 'as scheduled in monitoring plan',
+              thresholds: [
+                {
+                  parameter: 'Dissolved Oxygen',
+                  description:
+                    'Daily Average of 5.0 mg/L; Instantaneous threshold of 4.0 mg/L',
+                },
+                {
+                  parameter: 'Dissolved Oxygen % Sat',
+                  description: '≥ 70% - ≤ 125%',
+                },
+              ],
+              locations: ['TB146', 'TB562'],
+              sourceExcerpt:
+                'Dissolved Oxygen Daily Average of 5.0 mg/L; Instantaneous threshold of 4.0 mg/L',
+            },
+            {
+              parameter: 'pH',
+              type: 'chemical',
+              method: 'In-situ field measurement',
+              frequency: 'as scheduled in monitoring plan',
+              thresholds: [
+                {
+                  parameter: 'pH',
+                  description: '6.0-9.0',
+                },
+              ],
+              locations: ['TB146', 'TB562'],
+              sourceExcerpt: 'pH 6.0-9.0',
+            },
+            {
+              parameter: 'Temperature',
+              type: 'chemical',
+              method: 'In-situ field measurement',
+              frequency: 'as scheduled in monitoring plan',
+              thresholds: [
+                {
+                  parameter: 'Temperature',
+                  description: 'Not to exceed 90°F',
+                },
+              ],
+              locations: ['TB146', 'TB562'],
+              sourceExcerpt: 'Temperature Not to exceed 90°F',
+            },
+            {
+              parameter: 'Specific Conductance',
+              type: 'chemical',
+              method: 'In-situ field measurement',
+              frequency: 'as scheduled in monitoring plan',
+              thresholds: [
+                {
+                  parameter: 'Specific Conductance',
+                  description: 'Less Than 1000 micromhos/cm',
+                },
+              ],
+              locations: ['TB146', 'TB562'],
+              sourceExcerpt: 'Specific Conductance Less Than 1000 micromhos/cm',
+            },
+            {
+              parameter: 'Dissolved Solids',
+              type: 'chemical',
+              method: 'Water chemistry analysis',
+              frequency: 'monthly average and instantaneous',
+              thresholds: [
+                {
+                  parameter: 'Dissolved Solids',
+                  description:
+                    'Monthly average less than 750 mg/L; instantaneous threshold less than 1500 mg/L',
+                },
+              ],
+              locations: ['TB146', 'TB562'],
+              sourceExcerpt:
+                'Dissolved Solids Monthly average less than 750 mg/L; instantaneous threshold less than 1500 mg/L',
+            },
+            {
+              parameter: 'Total Suspended Solids',
+              type: 'chemical',
+              method: 'Water chemistry analysis',
+              frequency: 'as scheduled in monitoring plan',
+              thresholds: [
+                {
+                  parameter: 'Total Suspended Solids',
+                  description: '65 mg/L',
+                },
+              ],
+              locations: ['TB146', 'TB562'],
+              sourceExcerpt: 'Total Suspended Solids 65 mg/L',
+            },
+            {
+              parameter: 'Turbidity',
+              type: 'chemical',
+              method: 'In-situ field measurement',
+              frequency: 'as scheduled in monitoring plan',
+              thresholds: [
+                {
+                  parameter: 'Turbidity',
+                  description: '75 NTU',
+                },
+              ],
+              locations: ['TB146', 'TB562'],
+              sourceExcerpt: 'Turbidity 75 NTU',
+            },
+            {
+              parameter: 'Chemical Oxygen Demand',
+              type: 'chemical',
+              method: 'Water chemistry analysis',
+              frequency: 'as scheduled in monitoring plan',
+              thresholds: [
+                {
+                  parameter: 'Chemical Oxygen Demand',
+                  description: '35 mg/L',
+                },
+              ],
+              locations: ['TB146', 'TB562'],
+              sourceExcerpt: 'Chemical Oxygen Demand 35 mg/L',
+            },
+            {
+              parameter: 'M-BISQ (Mississippi Benthic Index of Stream Quality)',
               type: 'biological',
-              method: 'Mississippi Benthic Index of Stream Quality (M-BISQ)',
-              thresholds: [],
-              locations: ['Wadeable streams outside of the MS Alluvial Plain'],
+              method: 'Benthic macroinvertebrate sampling and scoring',
+              frequency: 'as scheduled in monitoring plan',
+              thresholds: [
+                {
+                  parameter: 'M-BISQ East Bioregion',
+                  description: '71.6 Calibration 3',
+                },
+              ],
+              locations: ['TB146', 'TB562'],
+              sourceExcerpt:
+                'M-BISQ East Bioregion 71.6 Calibration 3 (Applicable to waters outside the Mississippi Alluvial Plain)',
             },
           ],
           outreach: [
             {
-              type: 'SWCD Staff Communication with Landowners',
+              type: 'education program',
               description:
-                'SWCD staff communicate regularly with the local landowners and operators within the watershed as they work to support sign-ups for Farm Bill initiatives.',
-              indicator:
-                'Number of landowners engaged, number of Farm Bill sign-ups',
-              partners: ['SWCD', 'NRCS'],
+                'Water Model Presentations using Enviroscapes and groundwater aquifer models with interactive lesson plans.',
+              schedule: 'as needed',
+              indicator: 'number of presentations, participant feedback',
+              partners: ['MDEQ'],
+              sourceExcerpt:
+                'Water Model Presentations - Enviroscapes and groundwater aquifer models distributed statewide with training and related interactive lesson plans.',
+            },
+            {
+              type: 'teacher workshop',
+              description:
+                'Workshops to train educators about NPS pollution and provide classroom materials.',
+              schedule: 'as needed',
+              indicator: 'number of workshops, educator participation',
+              partners: ['MDEQ'],
+              sourceExcerpt:
+                'Teacher Workshops – train educators in proximity to the watershed about NPS pollution and provide materials and information that can be used in their classrooms.',
+            },
+            {
+              type: 'public workshop',
+              description:
+                'Adopt A Stream workshops and training venues for citizens, teachers, and students.',
+              schedule: 'as needed',
+              indicator: 'number of workshops, participant feedback',
+              partners: ['MDEQ'],
+              sourceExcerpt:
+                'Adopt A Stream - workshops and training venues for citizens, teachers, and students in the Dry Creek Watershed.',
+            },
+            {
+              type: 'mobile classroom',
+              description:
+                'Watershed Harmony Mobile Classroom for K-adult audiences with tailored education objectives.',
+              schedule: 'as needed',
+              indicator: 'number of classroom visits, participant feedback',
+              partners: ['MDEQ'],
+              sourceExcerpt:
+                'Watershed Harmony Mobile Classroom - for ages kindergarten – adults with state and federal public education objectives tailored for 4 th and 5 th grade students.',
+            },
+            {
+              type: 'train the trainer',
+              description:
+                'Workshops and materials for Soil and Water districts, Extension Service, etc.',
+              schedule: 'as needed',
+              indicator: 'number of trainers trained, workshop feedback',
+              partners: ['MDEQ'],
+              sourceExcerpt:
+                '“Train the Trainer” - workshops and materials for Soil and Water districts, Extension Service, etc.',
+            },
+            {
+              type: 'stakeholder meeting',
+              description:
+                'Minimum of 3 face-to-face meetings for the Watershed Implementation Team (WIT) to provide updates and review/modify the watershed plan.',
+              schedule: 'at least 3 meetings during project',
+              indicator: 'number of meetings, participant attendance',
+              partners: ['MDEQ', 'WIT'],
+              sourceExcerpt:
+                'the stakeholder group forming the Broken Pumpkin Creek Watershed Implementation Team (WIT) will participate in a minimum of 3 face-to-face meetings.',
+            },
+            {
+              type: 'field day',
+              description:
+                'Host field days to showcase implemented BMPs for the public.',
+              schedule: 'during project',
+              indicator: 'number of field days, public attendance',
+              partners: ['MDEQ', 'WIT'],
+              sourceExcerpt:
+                'hosting field days to showcase the implemented BMPs for the public.',
             },
           ],
           geographicAreas: [
             {
-              name: 'Basket Creek-Hickahala Creek Watershed',
-              counties: ['Tate County'],
-              acreage: 35085,
-              landUseTypes: [
-                {
-                  type: 'cropland',
-                  percent: 11,
-                },
-                {
-                  type: 'forest',
-                  percent: 17,
-                },
-                {
-                  type: 'pasture/grass',
-                  percent: 44,
-                },
-              ],
-
-              towns: [],
-              huc: '080302040403',
-              description:
-                'The Basket Creek-Hickahala Creek watershed is located in Tate County and covers 35,085 acres. This watershed contains many landuse types including agricultural land, pastureland, and forest areas; however, the dominant landuses identified in the 2011 National Land Cover Database (NLCD) within the watershed are cropland (11%), forest (17%) and pasture/grass (44%).',
+              huc: '031601060307',
+              watershedName: 'Broken Pumpkin Creek Watershed',
+              counties: ['Noxubee', 'Lowndes'],
+              state: 'Mississippi',
               sourceExcerpt:
-                'The Basket Creek-Hickahala Creek watershed is located in Tate County and covers 35,085 acres. ... the dominant landuses identified in the 2011 National Land Cover Database (NLCD) within the watershed are cropland (11%), forest (17%) and pasture/grass (44%) (Figure 1).',
-            },
-            {
-              name: 'Hickahala Creek Drainage Area (DA) (MS305E)',
-              counties: ['Tate County'],
-
-              landUseTypes: [],
-
-              towns: [],
-
-              description:
-                'Hickahala Creek Drainage Area (DA) (MS305E) was included on MS’s 1996 and 1998 Section 303(d) List as an “evaluated” impairment.',
-              sourceExcerpt:
-                'Hickahala Creek Drainage Area (DA) (MS305E) was included on MS’s 1996 and 1998 Section 303(d) List as an “evaluated” impairment versus “monitored” impairment as there were no water quality data to verify impairment status of the stream.',
-            },
-            {
-              name: 'James-Wolf Creek (MS305M1)',
-              counties: ['Tate County'],
-
-              landUseTypes: [],
-
-              towns: [],
-
-              description:
-                'A segment of James-Wolf Creek (MS305M1) that flows into the watershed and confluences with Hickahala Creek from the southwest.',
-              sourceExcerpt:
-                'This segment, along with a segment of James-Wolf Creek (MS305M1) that flows into the watershed and confluences with Hickahala Creek from the southwest, was assessed as impaired for recreational use due to high levels of fecal coliform in the water.',
-            },
-            {
-              name: 'Hickahala Creek (MS305M2)',
-              counties: ['Tate County'],
-
-              landUseTypes: [],
-
-              towns: [],
-
-              description:
-                'A segment of Hickahala Creek (MS305M2) was also included on the “monitored” portion of MS’s 1998 Section 303(d) List of Impaired Water Bodies.',
-              sourceExcerpt:
-                'A segment of Hickahala Creek (MS305M2) was also included on the “monitored” portion of MS’s 1998 Section 303(d) List of Impaired Water Bodies.',
+                'The Broken Pumpkin Creek watershed is located in Noxubee and Lowndes counties in east central Mississippi covering 24,573 acres.',
             },
           ],
           contacts: [],
@@ -873,19 +1700,19 @@ export class PdfExtractorTestComponent implements OnInit {
               contact: {},
             },
             {
-              name: 'Natural Resources Conservation Service (NRCS)',
+              name: 'Natural Resource Conservation Service (NRCS)',
               contact: {},
             },
             {
-              name: 'Soil and Water Conservation Districts (SWCD)',
+              name: 'Noxubee County Soil and Water Conservation District',
+              contact: {},
+            },
+            {
+              name: 'Lowndes County Soil and Water Conservation District',
               contact: {},
             },
             {
               name: 'USGS',
-              contact: {},
-            },
-            {
-              name: 'Tate County Soil and Water Conservation District',
               contact: {},
             },
           ],
@@ -897,323 +1724,408 @@ export class PdfExtractorTestComponent implements OnInit {
             type: 'partial_match',
             category: 'goals',
             expected:
-              'Implement nutrient BMPs to reduce TN, TP and sediment in the watershed.',
+              'Reduce sediment loading in Broken Pumpkin Creek to restore aquatic life use and improve water quality.',
             actual:
-              'Implement nutrient BMPs and in-field conservation practices to achieve modeled NPS loads in the TMDL for nutrients and sediment.',
+              'Reduce sediment yields in the Broken Pumpkin Creek watershed by 77-97% to reflect stable conditions.',
             message:
-              'Covers nutrient BMPs and sediment reduction, but omits TN/TP specifics.',
+              'Both address sediment reduction; extracted is more quantitative, ground truth is broader.',
           },
           {
             type: 'partial_match',
             category: 'goals',
             expected:
-              'Achieve 50% fecal coliform reduction in Hickahala Creek and 70% in James Wolf Creek.',
+              'Implement best management practices (BMPs) to control nonpoint source pollution and achieve TMDL targets.',
             actual:
-              'Achieve a 50% reduction in fecal coliform in the section of Hickahala Creek within the Basket Creek-Hickahala Creek Watershed and a 70% reduction in James Wolf Creek.',
+              'Install approved BMPs to address sedimentation in the watershed.',
             message:
-              'Numerical targets and creeks match; wording differs slightly.',
+              'Both focus on BMP implementation; extracted is narrower in scope.',
+          },
+          {
+            type: 'partial_match',
+            category: 'goals',
+            expected:
+              'Monitor water quality and track biological integrity to evaluate the effectiveness of implemented BMPs.',
+            actual:
+              'Initiate baseline watershed monitoring using historical data.',
+            message:
+              'Both mention monitoring; extracted focuses on baseline/historical data.',
+          },
+          {
+            type: 'partial_match',
+            category: 'goals',
+            expected:
+              'Engage and educate stakeholders to promote community involvement and support for watershed protection.',
+            actual:
+              'Establish Watershed Implementation Team (WIT) to refine the Watershed Based Plan.',
+            message:
+              'Both involve stakeholder engagement; extracted is more about team formation.',
           },
           {
             type: 'surplus_actual',
             category: 'goals',
-
+            expected: null,
             actual:
-              'Restore and maintain the quality of impaired water bodies through the establishment of pollutant specific allowable loads.',
-            message: 'Goal is broader than any single expected goal.',
+              'Coordinate with MDEQ, NRCS, MSWCC, USGS, and local Soil and Water Districts to determine priority areas contributing significant pollutant loads.',
+            message: 'Extracted goal is more specific than ground truth.',
           },
           {
-            type: 'missing_expected',
+            type: 'surplus_actual',
             category: 'goals',
-            expected:
-              'Install BMPs (fencing, ponds, grade stabilization, etc.) prioritizing newly converted pasture areas.',
-
+            expected: null,
+            actual:
+              'Secure commitments from landowners and cooperators to install BMPs in priority areas.',
             message:
-              'No extracted goal addresses prioritizing new pasture areas.',
+              'Extracted goal is an implementation detail, not a ground truth goal.',
           },
           {
-            type: 'missing_expected',
+            type: 'surplus_actual',
             category: 'goals',
-            expected:
-              'Promote behavior changes and BMPs through education and outreach.',
-
-            message: 'No extracted goal on education/outreach.',
+            expected: null,
+            actual: 'Implement BMPs in targeted areas of the watershed.',
+            message:
+              'Extracted goal overlaps with BMP implementation but is redundant.',
           },
           {
-            type: 'missing_expected',
+            type: 'surplus_actual',
             category: 'goals',
-            expected:
-              'Establish Watershed Implementation Team to refine the Watershed Based Plan.',
-
-            message: 'No extracted goal about team establishment.',
-          },
-          {
-            type: 'missing_expected',
-            category: 'goals',
-            expected:
-              'Conduct baseline condition monitoring with historical and new data.',
-
-            message: 'No extracted goal about baseline monitoring.',
-          },
-          {
-            type: 'missing_expected',
-            category: 'goals',
-            expected:
-              'Meet with landowners to secure commitment to install BMPs.',
-
-            message: 'No extracted goal about landowner commitment.',
-          },
-          {
-            type: 'missing_expected',
-            category: 'goals',
-            expected:
-              'Establish routine meetings for the Team to support plan revision.',
-
-            message: 'No extracted goal about routine team meetings.',
-          },
-          {
-            type: 'missing_expected',
-            category: 'goals',
-            expected:
-              'Implement BMPs by schedule per TMDL and project requirements.',
-
-            message: 'No extracted goal about scheduled BMP implementation.',
-          },
-          {
-            type: 'missing_expected',
-            category: 'goals',
-            expected:
-              'Coordinate to inspect BMPs installed with Section 319 funds.',
-
-            message: 'No extracted goal about BMP inspection.',
+            expected: null,
+            actual:
+              'Begin post-BMP monitoring to collect data on water quality improvements.',
+            message:
+              'Extracted goal is a monitoring step, not a distinct ground truth goal.',
           },
         ],
         bmps: [
           {
             type: 'perfect_match',
             category: 'bmps',
-            expected: 'Fencing',
-            actual: 'Fencing',
-            message: 'BMP name and intent match.',
+            expected: 'Brush Management',
+            actual: 'Brush Management',
+            message: 'BMP name matches exactly.',
           },
           {
             type: 'perfect_match',
             category: 'bmps',
-            expected: 'Watering Facilities',
-            actual: 'Watering Facilities',
-            message: 'BMP name and purpose match.',
-          },
-          {
-            type: 'partial_match',
-            category: 'bmps',
-            expected: 'Heavy Use Area Protection',
-            actual: 'Heavy Use Areas',
-            message:
-              'Name is slightly different; both address livestock traffic/erosion.',
+            expected: 'Herbaceous Weed Management',
+            actual: 'Herbaceous Weed Management',
+            message: 'BMP name matches exactly.',
           },
           {
             type: 'perfect_match',
             category: 'bmps',
-            expected: 'Ponds',
-            actual: 'Ponds',
-            message: 'BMP name and function match.',
+            expected: 'Prescribed Burning',
+            actual: 'Prescribed Burning',
+            message: 'BMP name matches exactly.',
           },
           {
             type: 'perfect_match',
             category: 'bmps',
-            expected: 'Streambank and Shoreline Protection',
-            actual: 'Streambank and Shoreline Protection',
-            message: 'BMP name and function match.',
+            expected: 'Cover Crop',
+            actual: 'Cover Crop',
+            message: 'BMP name matches exactly.',
           },
           {
             type: 'perfect_match',
             category: 'bmps',
-            expected: 'Grade Stabilization Structures',
-            actual: 'Grade Stabilization Structures',
-            message: 'BMP name and function match.',
+            expected: 'Critical Area Planting',
+            actual: 'Critical Area Planting',
+            message: 'BMP name matches exactly.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'bmps',
+            expected: 'Sediment Basin',
+            actual: 'Sediment Basin',
+            message: 'BMP name matches exactly.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'bmps',
+            expected: 'Diversion',
+            actual: 'Diversion',
+            message: 'BMP name matches exactly.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'bmps',
+            expected: 'Pond',
+            actual: 'Pond',
+            message: 'BMP name matches exactly.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'bmps',
+            expected: 'Fence',
+            actual: 'Fence',
+            message: 'BMP name matches exactly.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'bmps',
+            expected: 'Field Border',
+            actual: 'Field Border',
+            message: 'BMP name matches exactly.',
           },
         ],
         implementation: [
           {
+            type: 'perfect_match',
+            category: 'implementation',
+            expected:
+              'Develop, execute, and implement a Subgrant Agreement that specifies roles, tasks, requirements, and milestones for project implementation.',
+            actual:
+              'Develop, execute, and implement a Subgrant Agreement specifying roles, tasks, requirements, and milestones for project implementation.',
+            message: 'Wording is nearly identical.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'implementation',
+            expected:
+              'Facilitate meetings, media, and social media promotion of the project; coordinate activities to fully implement the plan.',
+            actual:
+              'Facilitate meetings, media, and social media promotion of the project and coordinate activities to fully implement this plan.',
+            message: 'Wording is nearly identical.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'implementation',
+            expected:
+              'Inform landowners and operators within the watershed about the project and secure commitments from priority area landowners and operators willing to participate.',
+            actual:
+              'Inform landowners and operators within the watershed about the project and secure commitments from priority area landowners and operators.',
+            message: 'Wording is nearly identical.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'implementation',
+            expected:
+              'Determine priority areas within the sub-watershed contributing significant pollutant loads using GIS applications and intensive site surveys.',
+            actual:
+              'Determine priority areas within the sub-watershed contributing significant pollutant loads using GIS applications and intensive site surveys.',
+            message: 'Wording is identical.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'implementation',
+            expected:
+              'Install all BMPs in accordance with NRCS Technical Field Manual or other approved guidelines.',
+            actual:
+              'Install all BMPs in accordance with NRCS Technical Field Manual or other approved guidelines.',
+            message: 'Wording is identical.',
+          },
+          {
             type: 'partial_match',
             category: 'implementation',
             expected:
-              'Inform landowners and operators within the watershed about the project and work to secure commitments from priority area landowners and operators willing to participate.',
+              'Complete and implement a baseline water quality monitoring plan and track changes in water quality over time resulting from implemented BMPs.',
             actual:
-              'SWCD staff communicate regularly with the local landowners and operators within the watershed as they work to support sign-ups for Farm Bill initiatives.',
-            message: 'Both involve landowner communication and engagement.',
-          },
-          {
-            type: 'surplus_actual',
-            category: 'implementation',
-
-            actual:
-              'Work under a memorandum of agreement (MOA) with the MSWCC to implement this project.',
+              'Complete and implement a plan to monitor baseline water quality conditions and track changes over time.',
             message:
-              'MOA with MSWCC not explicitly in expected implementation.',
+              'Extracted omits reference to BMPs but is otherwise similar.',
           },
           {
-            type: 'surplus_actual',
-            category: 'implementation',
-
-            actual:
-              'Identify opportunities to implement BMPs on pasturelands and lands used for grazing to limit livestock access to streams.',
-            message:
-              'Specific focus on pasturelands not directly in expected list.',
-          },
-          {
-            type: 'missing_expected',
-            category: 'implementation',
-            expected:
-              'Develop, execute, and implement a Subgrant Agreement that specifies the roles, tasks, requirements, and milestones for project implementation.',
-
-            message: 'No extracted implementation about Subgrant Agreement.',
-          },
-          {
-            type: 'missing_expected',
-            category: 'implementation',
-            expected:
-              'Facilitate meetings, media, and social media promotion of the project, and coordinate activities to fully implement this plan.',
-
-            message: 'No extracted implementation about meetings/media.',
-          },
-          {
-            type: 'missing_expected',
-            category: 'implementation',
-            expected:
-              'Determine through GIS applications and intensive site surveys the priority areas within the sub-watershed that are contributing significant pollutant loads; install all BMPs in accordance with guideli',
-
-            message: 'No extracted implementation about GIS/site surveys.',
-          },
-          {
-            type: 'missing_expected',
-            category: 'implementation',
-            expected:
-              'Facilitate the completion and implementation of a plan to monitor baseline water quality conditions in the watershed and track changes resulting from BMPs.',
-
-            message:
-              'No extracted implementation about baseline monitoring plan.',
-          },
-          {
-            type: 'missing_expected',
+            type: 'perfect_match',
             category: 'implementation',
             expected:
               'Submit blank copies of standard maintenance agreements to MDEQ.',
-
-            message:
-              'No extracted implementation about maintenance agreements.',
+            actual:
+              'Submit blank copies of standard maintenance agreements to MDEQ.',
+            message: 'Wording is identical.',
           },
           {
-            type: 'missing_expected',
+            type: 'perfect_match',
             category: 'implementation',
             expected: 'Conduct inspections of BMPs during construction.',
-
-            message: 'No extracted implementation about BMP inspections.',
+            actual: 'Conduct inspections of BMPs during construction.',
+            message: 'Wording is identical.',
           },
           {
-            type: 'missing_expected',
+            type: 'partial_match',
             category: 'implementation',
             expected:
-              'Coordinate the collection of relevant GPS coordinates of all installed BMPs and incorporate this information into a GIS format.',
-
-            message: 'No extracted implementation about GPS/GIS data.',
+              'Collect GPS coordinates of all installed BMPs and incorporate into GIS format according to Federal Geographic Data Committee standards.',
+            actual:
+              'Collect GPS coordinates of all installed BMPs and incorporate into GIS format.',
+            message: 'Extracted omits reference to FGDC standards.',
           },
           {
-            type: 'missing_expected',
+            type: 'partial_match',
             category: 'implementation',
             expected:
+              'Collect adequate photo documentation before, during, and after installation of approved BMPs.',
+            actual:
               'Collect photo documentation before, during, and after installation of approved BMPs.',
-
-            message: 'No extracted implementation about photo documentation.',
-          },
-          {
-            type: 'missing_expected',
-            category: 'implementation',
-            expected:
-              'Report measured or estimated nonpoint source pollutant load reduction, acreage affected, pre-and post-site conditions, and GIS data.',
-
-            message:
-              'No extracted implementation about reporting pollutant load reduction.',
+            message: "Extracted omits 'adequate' but otherwise matches.",
           },
         ],
         monitoring: [
           {
-            type: 'partial_match',
+            type: 'perfect_match',
             category: 'monitoring',
-            expected:
-              'Pre-implementation (baseline) monitoring using chemical and biological sampling data to assess stream condition before BMP installation.',
-            actual:
-              'Use biological data and the Mississippi Benthic Index of Stream Quality (M-BISQ) for assessment of biological impairment.',
-            message:
-              'Covers biological assessment, omits chemical/baseline and pre/post distinction.',
+            expected: 'Dissolved Oxygen',
+            actual: 'Dissolved Oxygen',
+            message: 'Parameter matches exactly.',
           },
           {
-            type: 'missing_expected',
+            type: 'perfect_match',
             category: 'monitoring',
-            expected:
-              'Post-BMP monitoring to assess water quality changes downstream of BMP activity, compared to baseline data.',
-
-            message: 'No extracted monitoring about post-BMP assessment.',
+            expected: 'pH',
+            actual: 'pH',
+            message: 'Parameter matches exactly.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'monitoring',
+            expected: 'Temperature',
+            actual: 'Temperature',
+            message: 'Parameter matches exactly.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'monitoring',
+            expected: 'Specific Conductance',
+            actual: 'Specific Conductance',
+            message: 'Parameter matches exactly.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'monitoring',
+            expected: 'Dissolved Solids',
+            actual: 'Dissolved Solids',
+            message: 'Parameter matches exactly.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'monitoring',
+            expected: 'Total Suspended Solids',
+            actual: 'Total Suspended Solids',
+            message: 'Parameter matches exactly.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'monitoring',
+            expected: 'Turbidity',
+            actual: 'Turbidity',
+            message: 'Parameter matches exactly.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'monitoring',
+            expected: 'Chemical Oxygen Demand',
+            actual: 'Chemical Oxygen Demand',
+            message: 'Parameter matches exactly.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'monitoring',
+            expected: 'M-BISQ (Mississippi Benthic Index of Stream Quality)',
+            actual: 'M-BISQ (Mississippi Benthic Index of Stream Quality)',
+            message: 'Parameter matches exactly.',
           },
         ],
         outreach: [
           {
             type: 'partial_match',
             category: 'outreach',
-            expected: 'Education and Outreach Events',
-            actual: 'SWCD Staff Communication with Landowners',
+            expected:
+              'Water Model Presentations (Enviroscapes and groundwater aquifer models) distributed statewide with training and lesson plans',
+            actual:
+              'Water Model Presentations using Enviroscapes and groundwater aquifer models with interactive lesson plans.',
             message:
-              'Both involve outreach, but extracted is limited to staff-landowner communication.',
+              "Both describe water model presentations; extracted omits 'statewide' and 'training'.",
+          },
+          {
+            type: 'partial_match',
+            category: 'outreach',
+            expected:
+              'Train educators near the watershed about nonpoint source (NPS) pollution and provide materials for classroom use',
+            actual:
+              'Workshops to train educators about NPS pollution and provide classroom materials.',
+            message: 'Both describe teacher workshops on NPS pollution.',
+          },
+          {
+            type: 'partial_match',
+            category: 'outreach',
+            expected:
+              'Adopt A Stream workshops and training for citizens, teachers, and students in the Dry Creek Watershed',
+            actual:
+              'Adopt A Stream workshops and training venues for citizens, teachers, and students.',
+            message:
+              'Both describe Adopt A Stream workshops; extracted omits watershed specificity.',
+          },
+          {
+            type: 'partial_match',
+            category: 'outreach',
+            expected:
+              'Watershed Harmony Mobile Classroom for ages kindergarten–adults, tailored for 4th and 5th grade students',
+            actual:
+              'Watershed Harmony Mobile Classroom for K-adult audiences with tailored education objectives.',
+            message:
+              'Both describe mobile classroom; extracted omits grade specificity.',
+          },
+          {
+            type: 'surplus_actual',
+            category: 'outreach',
+            expected: null,
+            actual:
+              'Workshops and materials for Soil and Water districts, Extension Service, etc.',
+            message:
+              'Extracted describes train-the-trainer, which is similar but not identical to ground truth.',
+          },
+          {
+            type: 'partial_match',
+            category: 'outreach',
+            expected:
+              'Broken Pumpkin Creek Watershed Implementation Team (WIT) face-to-face meetings to provide updates, review, and modify the plan',
+            actual:
+              'Minimum of 3 face-to-face meetings for the Watershed Implementation Team (WIT) to provide updates and review/modify the watershed plan.',
+            message:
+              'Both describe WIT meetings; extracted specifies minimum number.',
+          },
+          {
+            type: 'perfect_match',
+            category: 'outreach',
+            expected:
+              'Host field days to showcase implemented BMPs to the public',
+            actual:
+              'Host field days to showcase implemented BMPs for the public.',
+            message: 'Wording is nearly identical.',
           },
           {
             type: 'missing_expected',
             category: 'outreach',
-            expected: 'MDEQ Statewide Information/Education Programs',
-
-            message: 'No extracted outreach about MDEQ programs.',
+            expected:
+              'Education events including training workshops, festival event planning, soil and water conservation field days, poster/art/writing projects',
+            actual: null,
+            message:
+              'No extracted outreach item covers this broad education/outreach event.',
           },
           {
             type: 'missing_expected',
             category: 'outreach',
-            expected: 'Stakeholder Engagement and Meetings',
-
-            message: 'No extracted outreach about stakeholder meetings.',
+            expected:
+              'Provide food, refreshments, and facility support for stakeholder meetings and outreach events as allowed under Section 319',
+            actual: null,
+            message: 'No extracted outreach item covers incentives/support.',
           },
           {
             type: 'missing_expected',
             category: 'outreach',
-            expected: 'Media and Social Media Promotion',
-
-            message: 'No extracted outreach about media/social media.',
+            expected:
+              'Use evaluation forms, pre-test/post-test, surveys, and attendance reporting to measure outreach success',
+            actual: null,
+            message: 'No extracted outreach item covers evaluation activities.',
           },
         ],
         geographicAreas: [
           {
             type: 'perfect_match',
             category: 'geographicAreas',
-            expected: 'Basket Creek-Hickahala Creek Watershed',
-            actual: 'Basket Creek-Hickahala Creek Watershed',
-            message: 'Watershed name and HUC match.',
-          },
-          {
-            type: 'partial_match',
-            category: 'geographicAreas',
-            expected: 'Hickahala Creek Drainage Area (DA)',
-            actual: 'Hickahala Creek Drainage Area (DA) (MS305E)',
-            message: 'Name matches, HUC code present in extracted description.',
-          },
-          {
-            type: 'partial_match',
-            category: 'geographicAreas',
-            expected: 'James-Wolf Creek (Segment MS305M1)',
-            actual: 'James-Wolf Creek (MS305M1)',
-            message: 'Name and segment code match.',
-          },
-          {
-            type: 'partial_match',
-            category: 'geographicAreas',
-            expected: 'Hickahala Creek (Segment MS305M2)',
-            actual: 'Hickahala Creek (MS305M2)',
-            message: 'Name and segment code match.',
+            expected:
+              'Broken Pumpkin Creek Watershed, HUC: 031601060307, Mississippi',
+            actual:
+              'Broken Pumpkin Creek Watershed, HUC: 031601060307, Mississippi',
+            message: 'Geographic area matches exactly.',
           },
         ],
       },
