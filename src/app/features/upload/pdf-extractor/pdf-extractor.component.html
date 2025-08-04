@@ -245,10 +245,17 @@
         </button>
 
         @if (!isProcessing()) {
-        <p class="mt-3 text-sm text-gray-500">or drop a file</p>
+        <p class="mt-3 text-gray-500">or drop a file</p>
         } @if (selectedFile() && isProcessing()) {
-        <p class="mt-3 text-sm text-gray-600">
-          Extracting data from {{ selectedFile()!.name }}...
+        <p class="mt-5 text-gray-700">
+          Extracting data from
+          <span class="font-bold">{{
+            selectedFile()!.name.length > 20
+              ? selectedFile()!.name.substring(0, 20) +
+                "..." +
+                selectedFile()!.name.split(".").pop()
+              : selectedFile()!.name
+          }}</span>
         </p>
         }
       </div>
