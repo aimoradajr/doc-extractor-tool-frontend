@@ -210,6 +210,7 @@ export interface AccuracyTestResult {
     implementation: AccuracyMetric;
     monitoring: AccuracyMetric;
     outreach?: AccuracyMetric;
+    geographicAreas?: AccuracyMetric;
   };
   comparison?: {
     expected: any;
@@ -221,6 +222,7 @@ export interface AccuracyTestResult {
     implementation: ComparisonItem[];
     monitoring: ComparisonItem[];
     outreach?: ComparisonItem[];
+    geographicAreas?: ComparisonItem[];
   };
 }
 

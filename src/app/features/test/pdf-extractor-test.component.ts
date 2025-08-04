@@ -86,6 +86,14 @@ export class PdfExtractorTestComponent implements OnInit {
           totalExtracted: 4,
           totalExpected: 5,
         },
+        geographicAreas: {
+          precision: 1.0,
+          recall: 1.0,
+          f1Score: 1.0,
+          correctCount: 1,
+          totalExtracted: 1,
+          totalExpected: 1,
+        },
       },
       comparison: {
         expected: {
@@ -1324,6 +1332,22 @@ export class PdfExtractorTestComponent implements OnInit {
             expected: 'Teacher Workshops',
             actual: null,
             message: 'Expected teacher workshop not found in extracted data.',
+          },
+        ],
+        geographicAreas: [
+          {
+            type: 'perfect_match',
+            category: 'geographicAreas',
+            expected: 'Basket Creek-Hickahala Creek Watershed',
+            actual: 'Basket Creek-Hickahala Creek Watershed',
+            message: 'Geographic area name matches exactly.',
+          },
+          {
+            type: 'partial_match',
+            category: 'geographicAreas',
+            expected: 'Tate County',
+            actual: 'Tate County, Mississippi',
+            message: 'County identified but with state specification.',
           },
         ],
       },
