@@ -426,436 +426,442 @@
         <div class="am-results-structured-data mt-2">
           <h3 class="text-lg font-semibold mb-4">Details</h3>
 
-          <!-- Tab Navigation -->
-          <div>
-            <div>
-              <div role="tablist">
-                @for (tab of tabs; track tab.id) {
-                <button
-                  (click)="switchTab(tab.id)"
-                  [class]="activeTab() === tab.id ? 'active' : ''"
-                >
-                  {{ tab.icon }} {{ tab.label }}
-                </button>
-                }
-              </div>
-            </div>
-          </div>
-
-          <!-- Tab Content -->
-          <div>
+          <!-- PrimeNG TabView -->
+          <p-tabView>
             <!-- Summary Tab -->
-            @if (activeTab() === 'summary') {
-            <div class="space-y-6">
-              <!-- Overview and Status Summary Row -->
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Overview Card -->
-                <div class="p-4 bg-gray-50 rounded border">
-                  <h4 class="font-semibold text-green-800 mb-4">Overview</h4>
-                  <p class="text-sm text-gray-700 leading-relaxed">
-                    This report tracks
-                    {{ extractedData()!.goals?.length || 0 }} main goals related
-                    to different critical areas, with multiple benchmarks for
-                    each goal. The data shows implementation status across
-                    multiple watersheds in Columbia County.
-                  </p>
+            <p-tabPanel header="Summary">
+              <div class="space-y-6">
+                <!-- Overview and Status Summary Row -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <!-- Overview Card -->
+                  <div class="p-4 bg-gray-50 rounded border">
+                    <h4 class="font-semibold text-green-800 mb-4">Overview</h4>
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                      This report tracks
+                      {{ extractedData()!.goals?.length || 0 }} main goals
+                      related to different critical areas, with multiple
+                      benchmarks for each goal. The data shows implementation
+                      status across multiple watersheds in Columbia County.
+                    </p>
+                  </div>
+
+                  <!-- Status Summary Card -->
+                  <div class="p-4 bg-gray-50 rounded border">
+                    <h4 class="font-semibold text-green-800 mb-4">
+                      Status Summary
+                    </h4>
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                      <div>
+                        <p class="text-2xl font-bold text-green-600 mb-1">
+                          100%
+                        </p>
+                        <p class="text-xs text-gray-600">Protection Goals</p>
+                      </div>
+                      <div>
+                        <p class="text-2xl font-bold text-blue-600 mb-1">90%</p>
+                        <p class="text-xs text-gray-600">Enhancement Goals</p>
+                      </div>
+                      <div>
+                        <p class="text-2xl font-bold text-purple-600 mb-1">
+                          48%
+                        </p>
+                        <p class="text-xs text-gray-600">Benchmarks Met</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <!-- Status Summary Card -->
-                <div class="p-4 bg-gray-50 rounded border">
+                <!-- Data Visualization Section -->
+                <div class="p-4 bg-white rounded border">
                   <h4 class="font-semibold text-green-800 mb-4">
-                    Status Summary
+                    Data Visualization
                   </h4>
-                  <div class="grid grid-cols-3 gap-4 text-center">
-                    <div>
-                      <p class="text-2xl font-bold text-green-600 mb-1">100%</p>
-                      <p class="text-xs text-gray-600">Protection Goals</p>
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                  >
+                    <!-- Chart Card 1 -->
+                    <div
+                      class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                    >
+                      <div class="flex items-center justify-center h-32">
+                        <p class="text-gray-500 text-sm">
+                          Goals Progress Chart
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p class="text-2xl font-bold text-blue-600 mb-1">90%</p>
-                      <p class="text-xs text-gray-600">Enhancement Goals</p>
+
+                    <!-- Chart Card 2 -->
+                    <div
+                      class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                    >
+                      <div class="flex items-center justify-center h-32">
+                        <p class="text-gray-500 text-sm">BMPs Implementation</p>
+                      </div>
                     </div>
-                    <div>
-                      <p class="text-2xl font-bold text-purple-600 mb-1">48%</p>
-                      <p class="text-xs text-gray-600">Benchmarks Met</p>
+
+                    <!-- Chart Card 3 -->
+                    <div
+                      class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                    >
+                      <div class="flex items-center justify-center h-32">
+                        <p class="text-gray-500 text-sm">
+                          Geographic Distribution
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Chart Card 4 -->
+                    <div
+                      class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                    >
+                      <div class="flex items-center justify-center h-32">
+                        <p class="text-gray-500 text-sm">Timeline Overview</p>
+                      </div>
+                    </div>
+
+                    <!-- Chart Card 5 -->
+                    <div
+                      class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                    >
+                      <div class="flex items-center justify-center h-32">
+                        <p class="text-gray-500 text-sm">Status Breakdown</p>
+                      </div>
+                    </div>
+
+                    <!-- Chart Card 6 -->
+                    <div
+                      class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                    >
+                      <div class="flex items-center justify-center h-32">
+                        <p class="text-gray-500 text-sm">Performance Metrics</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <!-- Data Visualization Section -->
-              <div class="p-4 bg-white rounded border">
-                <h4 class="font-semibold text-green-800 mb-4">
-                  Data Visualization
-                </h4>
+                <!-- Quick Overview Cards -->
                 <div
-                  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
                 >
-                  <!-- Chart Card 1 -->
-                  <div
-                    class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
-                  >
-                    <div class="flex items-center justify-center h-32">
-                      <p class="text-gray-500 text-sm">Goals Progress Chart</p>
+                  <div class="p-4 bg-white rounded border">
+                    <div class="flex items-center">
+                      <div>
+                        <p class="text-sm text-gray-600">Goals</p>
+                        <p class="text-xl font-bold">
+                          {{ extractedData()!.goals?.length || 0 }}
+                        </p>
+                      </div>
                     </div>
                   </div>
 
-                  <!-- Chart Card 2 -->
-                  <div
-                    class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
-                  >
-                    <div class="flex items-center justify-center h-32">
-                      <p class="text-gray-500 text-sm">BMPs Implementation</p>
+                  <div class="p-4 bg-white rounded border">
+                    <div class="flex items-center">
+                      <div>
+                        <p class="text-sm text-gray-600">BMPs</p>
+                        <p class="text-xl font-bold">
+                          {{ extractedData()!.bmps?.length || 0 }}
+                        </p>
+                      </div>
                     </div>
                   </div>
 
-                  <!-- Chart Card 3 -->
-                  <div
-                    class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
-                  >
-                    <div class="flex items-center justify-center h-32">
-                      <p class="text-gray-500 text-sm">
-                        Geographic Distribution
-                      </p>
+                  <div class="p-4 bg-white rounded border">
+                    <div class="flex items-center">
+                      <div>
+                        <p class="text-sm text-gray-600">Areas</p>
+                        <p class="text-xl font-bold">
+                          {{ extractedData()!.geographicAreas?.length || 0 }}
+                        </p>
+                      </div>
                     </div>
                   </div>
 
-                  <!-- Chart Card 4 -->
-                  <div
-                    class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
-                  >
-                    <div class="flex items-center justify-center h-32">
-                      <p class="text-gray-500 text-sm">Timeline Overview</p>
-                    </div>
-                  </div>
-
-                  <!-- Chart Card 5 -->
-                  <div
-                    class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
-                  >
-                    <div class="flex items-center justify-center h-32">
-                      <p class="text-gray-500 text-sm">Status Breakdown</p>
-                    </div>
-                  </div>
-
-                  <!-- Chart Card 6 -->
-                  <div
-                    class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
-                  >
-                    <div class="flex items-center justify-center h-32">
-                      <p class="text-gray-500 text-sm">Performance Metrics</p>
+                  <div class="p-4 bg-white rounded border">
+                    <div class="flex items-center">
+                      <div>
+                        <p class="text-sm text-gray-600">Organizations</p>
+                        <p class="text-xl font-bold">
+                          {{ extractedData()!.organizations?.length || 0 }}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <!-- Quick Overview Cards -->
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="p-4 bg-white rounded border">
-                  <div class="flex items-center">
-                    <div>
-                      <p class="text-sm text-gray-600">Goals</p>
-                      <p class="text-xl font-bold">
-                        {{ extractedData()!.goals?.length || 0 }}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="p-4 bg-white rounded border">
-                  <div class="flex items-center">
-                    <div>
-                      <p class="text-sm text-gray-600">BMPs</p>
-                      <p class="text-xl font-bold">
-                        {{ extractedData()!.bmps?.length || 0 }}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="p-4 bg-white rounded border">
-                  <div class="flex items-center">
-                    <div>
-                      <p class="text-sm text-gray-600">Areas</p>
-                      <p class="text-xl font-bold">
-                        {{ extractedData()!.geographicAreas?.length || 0 }}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="p-4 bg-white rounded border">
-                  <div class="flex items-center">
-                    <div>
-                      <p class="text-sm text-gray-600">Organizations</p>
-                      <p class="text-xl font-bold">
-                        {{ extractedData()!.organizations?.length || 0 }}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            }
+            </p-tabPanel>
 
             <!-- Goals Tab -->
-            @if (activeTab() === 'goals') {
-            <div>
-              @if (extractedData()!.goals && extractedData()!.goals!.length > 0)
-              {
-              <div class="space-y-4">
-                <h4 class="font-semibold text-green-800 mb-4">
-                  Goals ({{ extractedData()!.goals!.length }})
-                </h4>
-                @for (goal of extractedData()!.goals!; track $index) {
-                <div
-                  class="p-4 bg-white rounded border border-l-4 border-green-500"
-                >
-                  <p class="font-medium text-gray-900 mb-2">
-                    {{ goal.description }}
-                  </p>
-                  @if (goal.objective) {
-                  <p class="text-sm text-gray-700 mb-2">
-                    <strong>Objective:</strong> {{ goal.objective }}
-                  </p>
-                  } @if (goal.targetArea) {
-                  <p class="text-sm text-gray-600 mb-2">
-                    <strong>Target Area:</strong> {{ goal.targetArea }}
-                  </p>
-                  } @if (goal.desiredOutcomes && goal.desiredOutcomes.length >
-                  0) {
-                  <div class="mt-3">
-                    <p class="text-sm font-medium text-gray-700 mb-2">
-                      Desired Outcomes:
+            <p-tabPanel header="Goals">
+              <div>
+                @if (extractedData()!.goals && extractedData()!.goals!.length >
+                0) {
+                <div class="space-y-4">
+                  <h4 class="font-semibold text-green-800 mb-4">
+                    Goals ({{ extractedData()!.goals!.length }})
+                  </h4>
+                  @for (goal of extractedData()!.goals!; track $index) {
+                  <div
+                    class="p-4 bg-white rounded border border-l-4 border-green-500"
+                  >
+                    <p class="font-medium text-gray-900 mb-2">
+                      {{ goal.description }}
                     </p>
-                    <ul class="text-sm text-gray-600 ml-4 list-disc space-y-1">
-                      @for (outcome of goal.desiredOutcomes; track $index) {
-                      <li>{{ outcome }}</li>
-                      }
-                    </ul>
+                    @if (goal.objective) {
+                    <p class="text-sm text-gray-700 mb-2">
+                      <strong>Objective:</strong> {{ goal.objective }}
+                    </p>
+                    } @if (goal.targetArea) {
+                    <p class="text-sm text-gray-600 mb-2">
+                      <strong>Target Area:</strong> {{ goal.targetArea }}
+                    </p>
+                    } @if (goal.desiredOutcomes && goal.desiredOutcomes.length >
+                    0) {
+                    <div class="mt-3">
+                      <p class="text-sm font-medium text-gray-700 mb-2">
+                        Desired Outcomes:
+                      </p>
+                      <ul
+                        class="text-sm text-gray-600 ml-4 list-disc space-y-1"
+                      >
+                        @for (outcome of goal.desiredOutcomes; track $index) {
+                        <li>{{ outcome }}</li>
+                        }
+                      </ul>
+                    </div>
+                    }
                   </div>
                   }
                 </div>
+                } @else {
+                <div class="text-center py-8 text-gray-500">
+                  <p>No goals data available</p>
+                </div>
                 }
               </div>
-              } @else {
-              <div class="text-center py-8 text-gray-500">
-                <p>No goals data available</p>
-              </div>
-              }
-            </div>
-            }
+            </p-tabPanel>
 
             <!-- BMPs Tab -->
-            @if (activeTab() === 'bmps') {
-            <div>
-              @if (extractedData()!.bmps && extractedData()!.bmps!.length > 0) {
-              <div class="space-y-4">
-                <h4 class="font-semibold text-green-800 mb-4">
-                  Best Management Practices ({{
-                    extractedData()!.bmps!.length
-                  }})
-                </h4>
-                @for (bmp of extractedData()!.bmps!; track $index) {
-                <div
-                  class="p-4 bg-white rounded border border-l-4 border-blue-500"
-                >
-                  <p class="font-medium text-gray-900 mb-2">{{ bmp.name }}</p>
-                  @if (bmp.description) {
-                  <p class="text-sm text-gray-700 mb-3">
-                    {{ bmp.description }}
-                  </p>
-                  }
+            <p-tabPanel header="BMPs">
+              <div>
+                @if (extractedData()!.bmps && extractedData()!.bmps!.length > 0)
+                {
+                <div class="space-y-4">
+                  <h4 class="font-semibold text-green-800 mb-4">
+                    Best Management Practices ({{
+                      extractedData()!.bmps!.length
+                    }})
+                  </h4>
+                  @for (bmp of extractedData()!.bmps!; track $index) {
                   <div
-                    class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm mb-3"
+                    class="p-4 bg-white rounded border border-l-4 border-blue-500"
                   >
-                    @if (bmp.type) {
-                    <div>
-                      <span class="font-medium text-gray-600">Type:</span>
-                      <span
-                        class="ml-2 px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs"
-                      >
-                        {{ bmp.type }}
-                      </span>
+                    <p class="font-medium text-gray-900 mb-2">{{ bmp.name }}</p>
+                    @if (bmp.description) {
+                    <p class="text-sm text-gray-700 mb-3">
+                      {{ bmp.description }}
+                    </p>
+                    }
+                    <div
+                      class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm mb-3"
+                    >
+                      @if (bmp.type) {
+                      <div>
+                        <span class="font-medium text-gray-600">Type:</span>
+                        <span
+                          class="ml-2 px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs"
+                        >
+                          {{ bmp.type }}
+                        </span>
+                      </div>
+                      } @if (bmp.quantity && bmp.unit) {
+                      <div>
+                        <span class="font-medium text-gray-600">Quantity:</span>
+                        <span class="text-gray-900 ml-2"
+                          >{{ bmp.quantity }} {{ bmp.unit }}</span
+                        >
+                      </div>
+                      }
                     </div>
-                    } @if (bmp.quantity && bmp.unit) {
-                    <div>
-                      <span class="font-medium text-gray-600">Quantity:</span>
-                      <span class="text-gray-900 ml-2"
-                        >{{ bmp.quantity }} {{ bmp.unit }}</span
+                    @if (bmp.priorityFactors && bmp.priorityFactors.length > 0)
+                    {
+                    <div class="mt-3">
+                      <p class="text-sm font-medium text-gray-700 mb-2">
+                        Priority Factors:
+                      </p>
+                      <ul
+                        class="text-sm text-gray-600 ml-4 list-disc space-y-1"
                       >
+                        @for (factor of bmp.priorityFactors; track $index) {
+                        <li>{{ factor }}</li>
+                        }
+                      </ul>
                     </div>
                     }
                   </div>
-                  @if (bmp.priorityFactors && bmp.priorityFactors.length > 0) {
-                  <div class="mt-3">
-                    <p class="text-sm font-medium text-gray-700 mb-2">
-                      Priority Factors:
-                    </p>
-                    <ul class="text-sm text-gray-600 ml-4 list-disc space-y-1">
-                      @for (factor of bmp.priorityFactors; track $index) {
-                      <li>{{ factor }}</li>
-                      }
-                    </ul>
-                  </div>
                   }
+                </div>
+                } @else {
+                <div class="text-center py-8 text-gray-500">
+                  <p>No BMPs data available</p>
                 </div>
                 }
               </div>
-              } @else {
-              <div class="text-center py-8 text-gray-500">
-                <p>No BMPs data available</p>
-              </div>
-              }
-            </div>
-            }
+            </p-tabPanel>
 
             <!-- Implementation Tab -->
-            @if (activeTab() === 'implementation') {
-            <div class="text-center py-8 text-gray-500">
-              <p class="text-lg font-medium mb-2">Implementation Details</p>
-              <p class="text-sm">
-                Implementation tracking data will be displayed here
-              </p>
-            </div>
-            }
+            <p-tabPanel header="Implementation">
+              <div class="text-center py-8 text-gray-500">
+                <p class="text-lg font-medium mb-2">Implementation Details</p>
+                <p class="text-sm">
+                  Implementation tracking data will be displayed here
+                </p>
+              </div>
+            </p-tabPanel>
 
             <!-- Monitoring Tab -->
-            @if (activeTab() === 'monitoring') {
-            <div class="text-center py-8 text-gray-500">
-              <p class="text-lg font-medium mb-2">Monitoring Data</p>
-              <p class="text-sm">
-                Environmental monitoring metrics will be displayed here
-              </p>
-            </div>
-            }
+            <p-tabPanel header="Monitoring">
+              <div class="text-center py-8 text-gray-500">
+                <p class="text-lg font-medium mb-2">Monitoring Data</p>
+                <p class="text-sm">
+                  Environmental monitoring metrics will be displayed here
+                </p>
+              </div>
+            </p-tabPanel>
 
             <!-- Outreach Tab -->
-            @if (activeTab() === 'outreach') {
-            <div class="text-center py-8 text-gray-500">
-              <p class="text-lg font-medium mb-2">Outreach Programs</p>
-              <p class="text-sm">
-                Community outreach and education data will be displayed here
-              </p>
-            </div>
-            }
+            <p-tabPanel header="Outreach">
+              <div class="text-center py-8 text-gray-500">
+                <p class="text-lg font-medium mb-2">Outreach Programs</p>
+                <p class="text-sm">
+                  Community outreach and education data will be displayed here
+                </p>
+              </div>
+            </p-tabPanel>
 
             <!-- Areas Tab -->
-            @if (activeTab() === 'areas') {
-            <div>
-              @if (extractedData()!.geographicAreas &&
-              extractedData()!.geographicAreas!.length > 0) {
-              <div class="space-y-4">
-                <h4 class="font-semibold text-green-800 mb-4">
-                  Geographic Areas ({{
-                    extractedData()!.geographicAreas!.length
-                  }})
-                </h4>
-                @for (area of extractedData()!.geographicAreas!; track $index) {
-                <div
-                  class="p-4 bg-white rounded border border-l-4 border-purple-500"
-                >
-                  <p class="font-medium text-gray-900 mb-3">{{ area.name }}</p>
+            <p-tabPanel header="Areas">
+              <div>
+                @if (extractedData()!.geographicAreas &&
+                extractedData()!.geographicAreas!.length > 0) {
+                <div class="space-y-4">
+                  <h4 class="font-semibold text-green-800 mb-4">
+                    Geographic Areas ({{
+                      extractedData()!.geographicAreas!.length
+                    }})
+                  </h4>
+                  @for (area of extractedData()!.geographicAreas!; track $index)
+                  {
                   <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm mb-3"
+                    class="p-4 bg-white rounded border border-l-4 border-purple-500"
                   >
-                    @if (area.counties && area.counties.length > 0) {
-                    <div>
-                      <span class="font-medium text-gray-600">Counties:</span>
-                      <p class="text-gray-900 mt-1">
-                        {{ area.counties.join(", ") }}
-                      </p>
-                    </div>
-                    } @if (area.acreage) {
-                    <div>
-                      <span class="font-medium text-gray-600">Acreage:</span>
-                      <p class="text-gray-900 mt-1">
-                        {{ area.acreage | number }} acres
-                      </p>
-                    </div>
-                    } @if (area.huc) {
-                    <div>
-                      <span class="font-medium text-gray-600">HUC:</span>
-                      <p class="text-gray-900 mt-1">{{ area.huc }}</p>
-                    </div>
-                    }
-                  </div>
-                  @if (area.landUseTypes && area.landUseTypes.length > 0) {
-                  <div class="mt-3">
-                    <p class="text-sm font-medium text-gray-700 mb-2">
-                      Land Use Types:
+                    <p class="font-medium text-gray-900 mb-3">
+                      {{ area.name }}
                     </p>
-                    <div class="flex flex-wrap gap-2">
-                      @for (landUse of area.landUseTypes; track $index) {
-                      <span
-                        class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium"
-                      >
-                        {{ landUse.type }}: {{ landUse.percent }}%
-                      </span>
+                    <div
+                      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm mb-3"
+                    >
+                      @if (area.counties && area.counties.length > 0) {
+                      <div>
+                        <span class="font-medium text-gray-600">Counties:</span>
+                        <p class="text-gray-900 mt-1">
+                          {{ area.counties.join(", ") }}
+                        </p>
+                      </div>
+                      } @if (area.acreage) {
+                      <div>
+                        <span class="font-medium text-gray-600">Acreage:</span>
+                        <p class="text-gray-900 mt-1">
+                          {{ area.acreage | number }} acres
+                        </p>
+                      </div>
+                      } @if (area.huc) {
+                      <div>
+                        <span class="font-medium text-gray-600">HUC:</span>
+                        <p class="text-gray-900 mt-1">{{ area.huc }}</p>
+                      </div>
                       }
                     </div>
+                    @if (area.landUseTypes && area.landUseTypes.length > 0) {
+                    <div class="mt-3">
+                      <p class="text-sm font-medium text-gray-700 mb-2">
+                        Land Use Types:
+                      </p>
+                      <div class="flex flex-wrap gap-2">
+                        @for (landUse of area.landUseTypes; track $index) {
+                        <span
+                          class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium"
+                        >
+                          {{ landUse.type }}: {{ landUse.percent }}%
+                        </span>
+                        }
+                      </div>
+                    </div>
+                    } @if (area.description) {
+                    <p
+                      class="text-sm text-gray-700 mt-3 p-3 bg-gray-50 rounded"
+                    >
+                      {{ area.description }}
+                    </p>
+                    }
                   </div>
-                  } @if (area.description) {
-                  <p class="text-sm text-gray-700 mt-3 p-3 bg-gray-50 rounded">
-                    {{ area.description }}
-                  </p>
                   }
+                </div>
+                } @else {
+                <div class="text-center py-8 text-gray-500">
+                  <p>No geographic areas data available</p>
                 </div>
                 }
               </div>
-              } @else {
-              <div class="text-center py-8 text-gray-500">
-                <p>No geographic areas data available</p>
-              </div>
-              }
-            </div>
-            }
+            </p-tabPanel>
 
             <!-- Organizations Tab -->
-            @if (activeTab() === 'organizations') {
-            <div>
-              @if (extractedData()!.organizations &&
-              extractedData()!.organizations!.length > 0) {
-              <div class="space-y-4">
-                <h4 class="font-semibold text-green-800 mb-4">
-                  Organizations ({{ extractedData()!.organizations!.length }})
-                </h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  @for (org of extractedData()!.organizations!; track $index) {
-                  <div
-                    class="p-4 bg-white rounded border border-l-4 border-orange-500"
-                  >
-                    <p class="font-medium text-gray-900 mb-2">{{ org.name }}</p>
-                    @if (org.contact) {
-                    <div class="text-sm text-gray-600 space-y-1">
-                      <p><strong>Contact:</strong> {{ org.contact.name }}</p>
-                      @if (org.contact.email) {
-                      <p><strong>Email:</strong> {{ org.contact.email }}</p>
-                      } @if (org.contact.phone) {
-                      <p><strong>Phone:</strong> {{ org.contact.phone }}</p>
+            <p-tabPanel header="Organizations">
+              <div>
+                @if (extractedData()!.organizations &&
+                extractedData()!.organizations!.length > 0) {
+                <div class="space-y-4">
+                  <h4 class="font-semibold text-green-800 mb-4">
+                    Organizations ({{ extractedData()!.organizations!.length }})
+                  </h4>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    @for (org of extractedData()!.organizations!; track $index)
+                    {
+                    <div
+                      class="p-4 bg-white rounded border border-l-4 border-orange-500"
+                    >
+                      <p class="font-medium text-gray-900 mb-2">
+                        {{ org.name }}
+                      </p>
+                      @if (org.contact) {
+                      <div class="text-sm text-gray-600 space-y-1">
+                        <p><strong>Contact:</strong> {{ org.contact.name }}</p>
+                        @if (org.contact.email) {
+                        <p><strong>Email:</strong> {{ org.contact.email }}</p>
+                        } @if (org.contact.phone) {
+                        <p><strong>Phone:</strong> {{ org.contact.phone }}</p>
+                        }
+                      </div>
                       }
                     </div>
                     }
                   </div>
-                  }
                 </div>
+                } @else {
+                <div class="text-center py-8 text-gray-500">
+                  <p>No organizations data available</p>
+                </div>
+                }
               </div>
-              } @else {
-              <div class="text-center py-8 text-gray-500">
-                <p>No organizations data available</p>
-              </div>
-              }
-            </div>
-            }
+            </p-tabPanel>
 
             <!-- Charts Tab -->
-            @if (activeTab() === 'charts') {
-            <div class="text-center py-8 text-gray-500">
-              <p class="text-lg font-medium mb-2">Data Visualization</p>
-              <p class="text-sm">Charts and graphs will be displayed here</p>
-            </div>
-            }
-          </div>
+            <p-tabPanel header="Charts">
+              <div class="text-center py-8 text-gray-500">
+                <p class="text-lg font-medium mb-2">Data Visualization</p>
+                <p class="text-sm">Charts and graphs will be displayed here</p>
+              </div>
+            </p-tabPanel>
+          </p-tabView>
         </div>
         }
       </div>

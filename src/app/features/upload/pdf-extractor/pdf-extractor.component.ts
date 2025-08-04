@@ -1,12 +1,13 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TabViewModule } from 'primeng/tabview';
 import { ApiService } from '../../../core/services/api.service';
 import { MockApiService } from '../../../core/services/mock-api.service';
 import { ExtractedData } from '../../../core/interfaces/api.interfaces';
 
 @Component({
   selector: 'app-pdf-extractor',
-  imports: [CommonModule],
+  imports: [CommonModule, TabViewModule],
   templateUrl: './pdf-extractor.component.html',
   styleUrl: './pdf-extractor.component.scss',
 })
@@ -40,30 +41,6 @@ export class PdfExtractorComponent implements OnInit {
   // Confirmation modal state
   showConfirmModal = signal(false);
   pendingFile = signal<File | null>(null);
-
-  // Tab management for results display
-  activeTab = signal<string>('summary');
-
-  // Available tabs for the report data
-  tabs = [
-    { id: 'summary', label: 'Summary', icon: '' },
-    { id: 'goals', label: 'Goals', icon: '' },
-    { id: 'bmps', label: 'BMPs', icon: '' },
-    { id: 'implementation', label: 'Implementation', icon: '' },
-    { id: 'monitoring', label: 'Monitoring', icon: '' },
-    { id: 'outreach', label: 'Outreach', icon: '' },
-    { id: 'areas', label: 'Areas', icon: '' },
-    { id: 'organizations', label: 'Organizations', icon: '' },
-    { id: 'charts', label: 'Charts', icon: '' },
-  ];
-
-  /**
-   * Switch to a different tab in the results display
-   */
-  switchTab(tabId: string) {
-    this.activeTab.set(tabId);
-    console.log(`📑 Switched to ${tabId} tab`);
-  }
 
   /**
    * Get the appropriate service based on mock flag
@@ -357,6 +334,5 @@ export class PdfExtractorComponent implements OnInit {
     this.extractedData.set(null);
     this.errorMessage.set(null);
     this.connectionStatus.set(null);
-    this.activeTab.set('summary'); // Reset to summary tab
   }
 }
