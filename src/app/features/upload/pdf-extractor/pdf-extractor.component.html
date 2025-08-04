@@ -467,7 +467,7 @@
           <p-tabView [scrollable]="true" class="am-extract-result-tabs">
             <!-- Summary Tab -->
             <p-tabPanel header="Summary">
-              <div class="space-y-6">
+              <div class="space-y-6 pt-3">
                 <!-- Overview and Status Summary Row -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <!-- Overview Card -->
@@ -537,118 +537,75 @@
                   </p-card>
                 </div>
 
-                <!-- Data Visualization Section -->
-                <p-card header="Data Visualization">
-                  <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-                  >
-                    <!-- Chart Card 1 -->
+                <div class="mt-3">
+                  <!-- Data Visualization Section -->
+                  <p-card header="Data Visualization">
                     <div
-                      class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
                     >
-                      <div class="flex items-center justify-center h-32">
-                        <p class="text-gray-500 text-sm">
-                          Goals Progress Chart
-                        </p>
+                      <!-- Chart Card 1 -->
+                      <div
+                        class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                      >
+                        <div class="flex items-center justify-center h-32">
+                          <p class="text-gray-500 text-sm">
+                            Goals Progress Chart
+                          </p>
+                        </div>
                       </div>
-                    </div>
 
-                    <!-- Chart Card 2 -->
-                    <div
-                      class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
-                    >
-                      <div class="flex items-center justify-center h-32">
-                        <p class="text-gray-500 text-sm">BMPs Implementation</p>
+                      <!-- Chart Card 2 -->
+                      <div
+                        class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                      >
+                        <div class="flex items-center justify-center h-32">
+                          <p class="text-gray-500 text-sm">
+                            BMPs Implementation
+                          </p>
+                        </div>
                       </div>
-                    </div>
 
-                    <!-- Chart Card 3 -->
-                    <div
-                      class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
-                    >
-                      <div class="flex items-center justify-center h-32">
-                        <p class="text-gray-500 text-sm">
-                          Geographic Distribution
-                        </p>
+                      <!-- Chart Card 3 -->
+                      <div
+                        class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                      >
+                        <div class="flex items-center justify-center h-32">
+                          <p class="text-gray-500 text-sm">
+                            Geographic Distribution
+                          </p>
+                        </div>
                       </div>
-                    </div>
 
-                    <!-- Chart Card 4 -->
-                    <div
-                      class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
-                    >
-                      <div class="flex items-center justify-center h-32">
-                        <p class="text-gray-500 text-sm">Timeline Overview</p>
+                      <!-- Chart Card 4 -->
+                      <div
+                        class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                      >
+                        <div class="flex items-center justify-center h-32">
+                          <p class="text-gray-500 text-sm">Timeline Overview</p>
+                        </div>
                       </div>
-                    </div>
 
-                    <!-- Chart Card 5 -->
-                    <div
-                      class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
-                    >
-                      <div class="flex items-center justify-center h-32">
-                        <p class="text-gray-500 text-sm">Status Breakdown</p>
+                      <!-- Chart Card 5 -->
+                      <div
+                        class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                      >
+                        <div class="flex items-center justify-center h-32">
+                          <p class="text-gray-500 text-sm">Status Breakdown</p>
+                        </div>
                       </div>
-                    </div>
 
-                    <!-- Chart Card 6 -->
-                    <div
-                      class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
-                    >
-                      <div class="flex items-center justify-center h-32">
-                        <p class="text-gray-500 text-sm">Performance Metrics</p>
+                      <!-- Chart Card 6 -->
+                      <div
+                        class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                      >
+                        <div class="flex items-center justify-center h-32">
+                          <p class="text-gray-500 text-sm">
+                            Performance Metrics
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </p-card>
-
-                <!-- Quick Overview Cards -->
-                <div
-                  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
-                >
-                  <div class="p-4 bg-white rounded border">
-                    <div class="flex items-center">
-                      <div>
-                        <p class="text-sm text-gray-600">Goals</p>
-                        <p class="text-xl font-bold">
-                          {{ extractedData()!.goals?.length || 0 }}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="p-4 bg-white rounded border">
-                    <div class="flex items-center">
-                      <div>
-                        <p class="text-sm text-gray-600">BMPs</p>
-                        <p class="text-xl font-bold">
-                          {{ extractedData()!.bmps?.length || 0 }}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="p-4 bg-white rounded border">
-                    <div class="flex items-center">
-                      <div>
-                        <p class="text-sm text-gray-600">Areas</p>
-                        <p class="text-xl font-bold">
-                          {{ extractedData()!.geographicAreas?.length || 0 }}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="p-4 bg-white rounded border">
-                    <div class="flex items-center">
-                      <div>
-                        <p class="text-sm text-gray-600">Organizations</p>
-                        <p class="text-xl font-bold">
-                          {{ extractedData()!.organizations?.length || 0 }}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  </p-card>
                 </div>
               </div>
             </p-tabPanel>
