@@ -10,65 +10,356 @@ export class MockApiService {
    * Mock sample data for testing without consuming API tokens
    */
   private readonly mockExtractedData: ExtractedData = {
+    model: 'gpt-4.1',
     reportSummary: {
       summary:
-        'This watershed management plan focuses on restoring water quality in the Basket Creek-Hickahala Creek Watershed through targeted pollution reduction strategies and best management practices implementation.',
+        'This watershed plan addresses water quality impairments in the Basket Creek-Hickahala Creek Watershed in Tate County, Mississippi. It outlines causes of impairment, expected pollutant load reductions, proposed management measures, and technical and financial assistance for implementing best management practices (BMPs) to restore and protect water quality.',
       watershedName: 'Basket Creek-Hickahala Creek Watershed',
-      planTitle: 'Basket Creek-Hickahala Creek Watershed Management Plan',
-      planDate: '2023-05-15',
-      authors: [
-        'Department of Environmental Quality',
-        'Watershed Management Council',
+      planTitle: 'Basket Creek-Hickahala Creek Watershed Plan',
+      planDate: '2018-09-20',
+      authors: [],
+      organizations: [
+        'Mississippi Department of Environmental Quality',
+        'Mississippi Soil and Water Conservation Commission',
+        'Natural Resources Conservation Service',
+        'Tate County Soil and Water Conservation District',
+        'USGS',
       ],
-      organizations: ['DEQ', 'WMC', 'Local Conservation District'],
-      geographicRegion: 'Southeast Mississippi',
-      totalGoals: 2,
-      totalBMPs: 1,
-      completionRate: null,
+      geographicRegion: 'Tate County, Mississippi',
+      totalGoals: 3,
+      totalBMPs: 6,
+      completionRate: 0,
     },
     goals: [
       {
-        id: '080302040403',
-        description: 'Identification of Causes and Sources of Impairment',
+        id: 'goal1',
+        description:
+          'Reduce organic enrichment, low dissolved oxygen, and nutrient loads to meet TMDL standards in Hickahala and Senatobia Creeks.',
         objective:
-          'Restore and maintain the quality of impaired water bodies through the establishment of pollutant specific allowable loads',
-        targetArea: 'Basket Creek-Hickahala Creek Watershed',
+          'Achieve modeled NPS loads for nutrients and organic enrichment/low DO as specified in the TMDL.',
+        targetArea:
+          'Hickahala and Senatobia Creeks within Basket Creek-Hickahala Creek Watershed',
+        schedule: 'Ongoing, as per TMDL implementation',
         contacts: [],
         desiredOutcomes: [
-          'Restoration of water quality',
-          'Establishment of pollutant specific allowable loads',
+          'Restoration of water quality to meet designated uses',
+          'Compliance with TMDL pollutant load limits',
         ],
+        sourceExcerpt:
+          'The TMDL for Organic Enrichment, Low DO, and Nutrients for Hickahala and Senatobia Creeks (MS305E), which encompasses Basket Creek-Hickahala Creek Watershed, states that restrictions on NPDES permitting activities will be put in place.',
       },
       {
-        description: 'Expected Load Reduction',
+        id: 'goal2',
+        description:
+          'Achieve a 50% reduction in fecal coliform in Hickahala Creek and a 70% reduction in James Wolf Creek.',
         objective:
-          'Ensure the maximum load of TBODu specified in the TMDL of 1,317 lbs/day will not be exceeded',
-        targetArea: 'Basket Creek-Hickahala Creek Watershed',
+          'Reduce pathogen impairment to meet water quality standards for recreational use.',
+        targetArea:
+          'Hickahala Creek and James Wolf Creek within Basket Creek-Hickahala Creek Watershed',
+        schedule: 'As specified in the Fecal Coliform TMDL (2003)',
         contacts: [],
         desiredOutcomes: [
-          '50% reduction in fecal coliform in Hickahala Creek',
-          '70% reduction in James Wolf Creek',
+          'Improved recreational water quality',
+          'Reduced pathogen levels',
         ],
+        sourceExcerpt:
+          'The Fecal Coliform TMDL for Hickahala Creek is calling for a 50% reduction in the section of Hickahala Creek that is located within the Basket Creek-Hickahala Creek Watershed. The same TMDL also calls for a 70% reduction in James Wolf Creek.',
+      },
+      {
+        id: 'goal3',
+        description:
+          'Implement BMPs to mitigate sediment and nutrient issues in the watershed, prioritizing newly converted pasture areas.',
+        objective:
+          'Install BMPs such as fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
+        targetArea:
+          'Basket Creek-Hickahala Creek Watershed, especially newly converted pasture areas',
+        schedule: 'Prioritized during project implementation period',
+        contacts: [],
+        desiredOutcomes: [
+          'Reduced sediment and nutrient loading',
+          'Stream recovery and improved aquatic habitat',
+        ],
+        sourceExcerpt:
+          'Based on their analysis, installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
       },
     ],
     bmps: [
       {
         name: 'Fencing',
-        type: 'Sediment',
-        targetAreas: ['Basket Creek-Hickahala Creek Watershed'],
-        partners: [],
+        description:
+          'Install fencing to limit livestock access to streams, reducing pathogen and sediment inputs.',
+        type: 'Pathogen',
+        targetAreas: ['pasturelands', 'lands used for grazing'],
+        quantity: null,
+        unit: null,
+        estimatedCost: null,
+        partners: [
+          {
+            name: 'Natural Resources Conservation Service',
+          },
+          {
+            name: 'Mississippi Soil and Water Conservation Commission',
+          },
+        ],
+        schedule: 'During project implementation period',
         priorityFactors: [
           'Likely water quality benefit',
           'Willing landowners',
-          'Implementation of the recommendations of the TMDLs',
-          'Ease of showing effectiveness of the BMP(s) through monitoring',
+          'Implementation of TMDL recommendations',
+          'Ease of showing effectiveness',
           'Shorter length of time for anticipated results',
         ],
+        sourceExcerpt:
+          'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
+      },
+      {
+        name: 'Watering Facilities',
+        description:
+          'Provide alternative watering facilities for livestock to reduce direct stream access.',
+        type: 'Pathogen',
+        targetAreas: ['pasturelands', 'lands used for grazing'],
+        quantity: null,
+        unit: null,
+        estimatedCost: null,
+        partners: [
+          {
+            name: 'Natural Resources Conservation Service',
+          },
+          {
+            name: 'Mississippi Soil and Water Conservation Commission',
+          },
+        ],
+        schedule: 'During project implementation period',
+        priorityFactors: [
+          'Likely water quality benefit',
+          'Willing landowners',
+          'Implementation of TMDL recommendations',
+          'Ease of showing effectiveness',
+          'Shorter length of time for anticipated results',
+        ],
+        sourceExcerpt:
+          'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
+      },
+      {
+        name: 'Heavy Use Areas',
+        description:
+          'Stabilize heavy use areas to reduce soil erosion and sediment delivery to streams.',
+        type: 'Sediment',
+        targetAreas: ['pasturelands', 'lands used for grazing'],
+        quantity: null,
+        unit: null,
+        estimatedCost: null,
+        partners: [
+          {
+            name: 'Natural Resources Conservation Service',
+          },
+          {
+            name: 'Mississippi Soil and Water Conservation Commission',
+          },
+        ],
+        schedule: 'During project implementation period',
+        priorityFactors: [
+          'Likely water quality benefit',
+          'Willing landowners',
+          'Implementation of TMDL recommendations',
+          'Ease of showing effectiveness',
+          'Shorter length of time for anticipated results',
+        ],
+        sourceExcerpt:
+          'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
+      },
+      {
+        name: 'Ponds',
+        description:
+          'Construct ponds to capture runoff and reduce nutrient and sediment transport.',
+        type: 'Nutrient',
+        targetAreas: ['pasturelands', 'lands used for grazing'],
+        quantity: null,
+        unit: null,
+        estimatedCost: null,
+        partners: [
+          {
+            name: 'Natural Resources Conservation Service',
+          },
+          {
+            name: 'Mississippi Soil and Water Conservation Commission',
+          },
+        ],
+        schedule: 'During project implementation period',
+        priorityFactors: [
+          'Likely water quality benefit',
+          'Willing landowners',
+          'Implementation of TMDL recommendations',
+          'Ease of showing effectiveness',
+          'Shorter length of time for anticipated results',
+        ],
+        sourceExcerpt:
+          'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
+      },
+      {
+        name: 'Streambank and Shoreline Protection',
+        description:
+          'Implement streambank and shoreline protection measures to reduce erosion and sedimentation.',
+        type: 'Sediment',
+        targetAreas: ['streams', 'shorelines'],
+        quantity: null,
+        unit: null,
+        estimatedCost: null,
+        partners: [
+          {
+            name: 'Natural Resources Conservation Service',
+          },
+          {
+            name: 'Mississippi Soil and Water Conservation Commission',
+          },
+        ],
+        schedule: 'During project implementation period',
+        priorityFactors: [
+          'Likely water quality benefit',
+          'Willing landowners',
+          'Implementation of TMDL recommendations',
+          'Ease of showing effectiveness',
+          'Shorter length of time for anticipated results',
+        ],
+        sourceExcerpt:
+          'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
+      },
+      {
+        name: 'Grade Stabilization Structures',
+        description:
+          'Install grade stabilization structures to control gully erosion and reduce sediment delivery.',
+        type: 'Sediment',
+        targetAreas: ['pasturelands', 'lands used for grazing'],
+        quantity: null,
+        unit: null,
+        estimatedCost: null,
+        partners: [
+          {
+            name: 'Natural Resources Conservation Service',
+          },
+          {
+            name: 'Mississippi Soil and Water Conservation Commission',
+          },
+        ],
+        schedule: 'During project implementation period',
+        priorityFactors: [
+          'Likely water quality benefit',
+          'Willing landowners',
+          'Implementation of TMDL recommendations',
+          'Ease of showing effectiveness',
+          'Shorter length of time for anticipated results',
+        ],
+        sourceExcerpt:
+          'installation of the following BMPs would mitigate sediment and nutrient issues in the Basket Creek-Hickahala Creek watershed helping the stream recover: fencing, watering facilities, heavy use areas, ponds, streambank and shoreline protection, and grade stabilization structures.',
       },
     ],
-    implementation: [],
-    monitoring: [],
-    outreach: [],
+    implementation: [
+      {
+        description:
+          'Implement nutrient BMPs by installing in-field conservation practices targeting TN, TP, and sediment reduction.',
+        responsibleParties: [
+          {
+            name: 'Natural Resources Conservation Service',
+          },
+          {
+            name: 'Mississippi Soil and Water Conservation Commission',
+          },
+        ],
+        startDate: 'During project implementation period',
+        endDate: 'End of grant period',
+        status: 'planned',
+        outcome: 'Achieve modeled NPS loads in the TMDL',
+        probableCompletionDate: 'End of grant period',
+        sourceExcerpt:
+          'In order to achieve the modeled NPS loads in the TMDL, nutrient BMPs will be implemented watershed. This will be done by implementing in-field conservation practices that target both TN, TP and sediment reduction as soils in MS are known to have high phosphorus content.',
+      },
+      {
+        description:
+          'Identify and implement BMPs on pasturelands and lands used for grazing to limit livestock access to streams.',
+        responsibleParties: [
+          {
+            name: 'Natural Resources Conservation Service',
+          },
+          {
+            name: 'Mississippi Soil and Water Conservation Commission',
+          },
+        ],
+        startDate: 'During project implementation period',
+        endDate: 'End of grant period',
+        status: 'planned',
+        outcome: 'Mitigate NPS contributors to pathogens in the watershed',
+        probableCompletionDate: 'End of grant period',
+        sourceExcerpt:
+          'the watershed team will work to identify opportunities to implement BMPs on pasturelands and lands used for grazing to limit livestock access to streams.',
+      },
+      {
+        description:
+          'Work under a memorandum of agreement (MOA) with MSWCC to implement project activities, including administration, management, and watershed plan revision.',
+        responsibleParties: [
+          {
+            name: 'Mississippi Department of Environmental Quality',
+          },
+          {
+            name: 'Mississippi Soil and Water Conservation Commission',
+          },
+        ],
+        startDate: 'During project implementation period',
+        endDate: 'End of grant period',
+        status: 'planned',
+        outcome:
+          'Project implementation, administration, management, and plan revision completed',
+        probableCompletionDate: 'End of grant period',
+        sourceExcerpt:
+          'MDEQ plans to work under a memorandum of agreement (MOA) with the MSWCC to implement this project. Project partners provided the funding amounts used to estimate costs for BMP installation.',
+      },
+    ],
+    monitoring: [
+      {
+        description:
+          'Monitor biological impairment using the Mississippi Benthic Index of Stream Quality (M-BISQ) for wadeable streams.',
+        indicator: 'Biological impairment (macroinvertebrate index)',
+        method: 'Mississippi Benthic Index of Stream Quality (M-BISQ)',
+        frequency: 'As part of biological monitoring program',
+        thresholds: [],
+        responsibleParties: [
+          {
+            name: 'Mississippi Department of Environmental Quality',
+          },
+        ],
+        sampleLocations: ['wadeable streams outside of the MS Alluvial Plain'],
+        sampleSchedule: 'As determined by biological monitoring program',
+        sourceExcerpt:
+          'a robust multi-metric benthic macroinvertebrate index, the Mississippi Benthic Index of Stream Quality (M-BISQ), was developed for wadeable streams outside of the MS Alluvial Plain. Using biological data, the evaluated listings for pesticides and sedimentation/siltation were replaced with biological impairment.',
+      },
+    ],
+    outreach: [
+      {
+        name: 'Farm Bill Initiative Outreach',
+        description:
+          'SWCD staff communicate regularly with local landowners and operators to support sign-ups for Farm Bill initiatives.',
+        partners: [
+          {
+            name: 'Soil and Water Conservation Districts',
+          },
+          {
+            name: 'Natural Resources Conservation Service',
+          },
+        ],
+        indicators:
+          'Number of landowners engaged; number of sign-ups for Farm Bill initiatives',
+        schedule: 'Ongoing during project period',
+        budget: null,
+        events: [
+          {
+            type: 'outreach meetings',
+            audience: 'local landowners and operators',
+          },
+        ],
+        targetAudience: 'Local landowners and operators within the watershed',
+        sourceExcerpt:
+          'SWCD staff communicate regularly with the local landowners and operators within the watershed as they work to support sign-ups for Farm Bill initiatives',
+      },
+    ],
     geographicAreas: [
       {
         name: 'Basket Creek-Hickahala Creek Watershed',
@@ -88,148 +379,89 @@ export class MockApiService {
             percent: 44,
           },
         ],
+        population: null,
         towns: [],
         huc: '080302040403',
         description:
           'The Basket Creek-Hickahala Creek watershed is located in Tate County and covers 35,085 acres. This watershed contains many landuse types including agricultural land, pastureland, and forest areas.',
+        sourceExcerpt:
+          'The Basket Creek-Hickahala Creek watershed is located in Tate County and covers 35,085 acres. This watershed contains many landuse types including agricultural land, pastureland, and forest areas; however, the dominant landuses identified in the 2011 National Land Cover Database (NLCD) within the watershed are cropland (11%), forest (17%) and pasture/grass (44%) (Figure 1).',
+      },
+      {
+        name: 'Hickahala Creek Drainage Area (DA) (MS305E)',
+        counties: ['Tate County'],
+        acreage: null,
+        landUseTypes: [],
+        population: null,
+        towns: [],
+        huc: null,
+        description:
+          'Hickahala Creek Drainage Area (DA) (MS305E) was included on MS’s 1996 and 1998 Section 303(d) List as an “evaluated” impairment.',
+        sourceExcerpt:
+          'Hickahala Creek Drainage Area (DA) (MS305E) was included on MS’s 1996 and 1998 Section 303(d) List as an “evaluated” impairment versus “monitored” impairment as there were no water quality data to verify impairment status of the stream.',
+      },
+      {
+        name: 'James-Wolf Creek (MS305M1)',
+        counties: ['Tate County'],
+        acreage: null,
+        landUseTypes: [],
+        population: null,
+        towns: [],
+        huc: null,
+        description:
+          'A segment of James-Wolf Creek (MS305M1) that flows into the watershed and confluences with Hickahala Creek from the southwest.',
+        sourceExcerpt:
+          'This segment, along with a segment of James-Wolf Creek (MS305M1) that flows into the watershed and confluences with Hickahala Creek from the southwest, was assessed as impaired for recreational use due to high levels of fecal coliform in the water.',
+      },
+      {
+        name: 'Hickahala Creek (MS305M2)',
+        counties: ['Tate County'],
+        acreage: null,
+        landUseTypes: [],
+        population: null,
+        towns: [],
+        huc: null,
+        description:
+          'A segment of Hickahala Creek (MS305M2) was included on the “monitored” portion of MS’s 1998 Section 303(d) List of Impaired Water Bodies.',
+        sourceExcerpt:
+          'A segment of Hickahala Creek (MS305M2) was also included on the “monitored” portion of MS’s 1998 Section 303(d) List of Impaired Water Bodies.',
       },
     ],
     contacts: [],
     organizations: [
       {
+        name: 'Mississippi Department of Environmental Quality',
+        contact: {
+          name: '',
+          role: '',
+        },
+      },
+      {
         name: 'Mississippi Soil and Water Conservation Commission',
+        contact: {
+          name: '',
+          role: '',
+        },
       },
       {
         name: 'Natural Resources Conservation Service',
-      },
-      {
-        name: 'Soil and Water Conservation Districts',
-      },
-    ],
-  } as ExtractedData;
-
-  private readonly mockExtractedData2: ExtractedData = {
-    reportSummary: {
-      summary:
-        'Comprehensive water quality improvement plan for the Duck River Watershed focusing on agricultural runoff reduction and habitat restoration through strategic implementation of conservation practices.',
-      watershedName: 'Duck River Watershed',
-      planTitle: 'Duck River Watershed Protection and Restoration Plan',
-      planDate: '2023-08-22',
-      authors: [
-        'Tennessee Department of Environment',
-        'Duck River Conservation Alliance',
-      ],
-      organizations: ['TDEC', 'DRCA', 'NRCS', 'Local Farmers Cooperative'],
-      geographicRegion: 'Middle Tennessee River Basin',
-      totalGoals: 1,
-      totalBMPs: 9,
-      completionRate: null,
-    },
-    goals: [
-      {
-        description:
-          'Reduce nutrient and sediment loading, achieve standards for Low DO/Organic enrichment ands narrative standards for nutrient loading, and Fish and Wildlife Support designated use',
-        objective:
-          'Continue existing programs and projects related to farmer education, BMP implementation, and habitat conservation',
-        targetArea: 'Entire watershed',
-        schedule: '2012-2014',
-        contacts: [
-          {
-            name: 'Mark Gilbert',
-            role: null,
-            organization: 'MSWCC',
-          },
-          {
-            name: null,
-            role: null,
-            organization: 'NRCS',
-          },
-          {
-            name: null,
-            role: null,
-            organization: 'Tippah Co. SWCD',
-          },
-        ],
-        desiredOutcomes: null,
-      },
-    ],
-    bmps: [
-      {
-        name: 'Grade Stabilization Structures',
-        description: null,
-        type: null,
-        targetAreas: ['Entire Watershed'],
-        quantity: null,
-        unit: null,
-        estimatedCost: null,
-        partners: [
-          {
-            name: 'Local landowners',
-          },
-        ],
-        schedule: '2012-2014',
-        priorityFactors: null,
-      },
-    ],
-    implementation: [],
-    monitoring: [],
-    outreach: [],
-    geographicAreas: [
-      {
-        name: 'Bell Creek-West Prong Muddy Creek Watershed',
-        counties: null,
-        acreage: null,
-        landUseTypes: null,
-        population: null,
-        towns: null,
-        huc: null,
-        description:
-          'The targeted area for this project is the cropland and pastureland in Tippah County that lie within the watershed boundaries.',
-      },
-    ],
-    contacts: [
-      {
-        name: 'Mark Gilbert',
-        role: null,
-        organization: 'MSWCC',
-        phone: '601-354-7645',
-        email: null,
-      },
-      {
-        name: null,
-        role: null,
-        organization: 'NRCS',
-        phone: '662-837-4464 ext. 3',
-        email: null,
-      },
-      {
-        name: null,
-        role: null,
-        organization: 'Tippah Co. SWCD',
-        phone: '662-837-4464 ext. 3',
-        email: null,
-      },
-    ],
-    organizations: [
-      {
-        name: 'MSWCC',
         contact: {
-          name: 'Mark Gilbert',
-          role: null,
+          name: '',
+          role: '',
         },
       },
       {
-        name: 'NRCS',
+        name: 'Tate County Soil and Water Conservation District',
         contact: {
-          name: null,
-          role: null,
+          name: '',
+          role: '',
         },
       },
       {
-        name: 'Tippah Co. SWCD',
+        name: 'USGS',
         contact: {
-          name: null,
-          role: null,
+          name: '',
+          role: '',
         },
       },
     ],
