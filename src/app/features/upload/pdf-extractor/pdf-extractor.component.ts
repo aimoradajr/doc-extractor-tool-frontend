@@ -3,13 +3,21 @@ import { CommonModule } from '@angular/common';
 import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
 import { AccordionModule } from 'primeng/accordion';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { MenuItem } from 'primeng/api';
 import { ApiService } from '../../../core/services/api.service';
 import { MockApiService } from '../../../core/services/mock-api.service';
 import { ExtractedData } from '../../../core/interfaces/api.interfaces';
 
 @Component({
   selector: 'app-pdf-extractor',
-  imports: [CommonModule, TabViewModule, CardModule, AccordionModule],
+  imports: [
+    CommonModule,
+    TabViewModule,
+    CardModule,
+    AccordionModule,
+    SplitButtonModule,
+  ],
   templateUrl: './pdf-extractor.component.html',
   styleUrl: './pdf-extractor.component.scss',
 })
@@ -43,6 +51,27 @@ export class PdfExtractorComponent implements OnInit {
   // Confirmation modal state
   showConfirmModal = signal(false);
   pendingFile = signal<File | null>(null);
+
+  // Export menu items
+  exportMenuItems: MenuItem[] = [
+    {
+      label: 'JSON',
+      icon: 'pi pi-file-export',
+      command: () => this.exportData('json'),
+    },
+    {
+      label: 'Excel',
+      icon: 'pi pi-file-excel',
+      command: () => this.exportData('excel'),
+      disabled: true, // Will enable when Excel export is implemented
+    },
+    {
+      label: 'CSV',
+      icon: 'pi pi-file',
+      command: () => this.exportData('csv'),
+      disabled: true, // Will enable when CSV export is implemented
+    },
+  ];
 
   /**
    * Get the appropriate service based on mock flag
@@ -323,6 +352,48 @@ export class PdfExtractorComponent implements OnInit {
         this.isTestingConnection.set(false);
       },
     });
+  }
+
+  /**
+   * Export extracted data in the specified format
+   */
+  exportData(format: 'json' | 'excel' | 'csv') {
+    const data = this.extractedData();
+    if (!data) {
+      console.warn('No data available for export');
+      return;
+    }
+
+    const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
+
+    switch (format) {
+      case 'json':
+        this.exportAsJson(data, timestamp);
+        break;
+      case 'excel':
+        console.log('Excel export not yet implemented');
+        break;
+      case 'csv':
+        console.log('CSV export not yet implemented');
+        break;
+    }
+  }
+
+  /**
+   * Export data as JSON file
+   */
+  private exportAsJson(data: ExtractedData, timestamp: string) {
+    const jsonData = JSON.stringify(data, null, 2);
+    const blob = new Blob([jsonData], { type: 'application/json' });
+    const url = window.URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `watershed-plan-extraction-${timestamp}.json`;
+    link.click();
+
+    window.URL.revokeObjectURL(url);
+    console.log('JSON export completed');
   }
 
   /**

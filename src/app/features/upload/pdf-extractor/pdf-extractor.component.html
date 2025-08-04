@@ -389,14 +389,18 @@
     <div class="bg-white rounded-lg shadow-lg mt-4 p-8">
       <!-- Extraction Results Section -->
       <div class="space-y-6">
-        <div class="text-center">
+        <div class="flex justify-between items-center">
           <h2 class="text-2xl font-bold text-gray-900">Extraction Results</h2>
-          <!-- <button
-            (click)="reset()"
-            class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
-          >
-            Process Another File
-          </button> -->
+
+          <!-- Export Button -->
+          <p-splitButton
+            label="Export"
+            icon="pi pi-download"
+            severity="secondary"
+            [model]="exportMenuItems"
+            (onClick)="exportData('json')"
+            styleClass="p-button-sm"
+          ></p-splitButton>
         </div>
 
         <!-- Document Details -->
