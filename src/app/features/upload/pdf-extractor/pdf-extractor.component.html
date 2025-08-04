@@ -256,13 +256,13 @@
 
       <!-- Error Message -->
       @if (errorMessage()) {
-      <div
-        class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-6"
-      >
-        <div class="flex">
-          <div class="flex-shrink-0">
+      <div class="text-center mt-4 mb-2">
+        <div
+          class="bg-red-50 border border-red-200 rounded-lg px-6 py-4 inline-block"
+        >
+          <div class="flex items-center justify-center">
             <svg
-              class="h-5 w-5 text-red-400"
+              class="h-6 w-6 text-red-500 mr-2"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -272,9 +272,7 @@
                 clip-rule="evenodd"
               />
             </svg>
-          </div>
-          <div class="ml-3">
-            <p class="text-sm font-medium">{{ errorMessage() }}</p>
+            <p class="text-lg text-red-600 font-medium">{{ errorMessage() }}</p>
           </div>
         </div>
       </div>
