@@ -417,6 +417,7 @@ export interface PresetOption {
   id: string;
   name: string;
   pdfFile: string;
+  pdfFileSize: string;
   groundTruthFile: string;
 }
 

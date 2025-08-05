@@ -61,7 +61,7 @@
             <option value="">Choose a preset...</option>
             @for (preset of presetOptions(); track preset.id) {
             <option [value]="preset.id">
-              [{{ preset.id }}] {{ preset.name }}
+              [{{ preset.id }}] {{ preset.pdfFileSize }} - {{ preset.name }}
             </option>
             }
           </select>

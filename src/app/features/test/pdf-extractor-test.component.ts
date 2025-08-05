@@ -2157,35 +2157,6 @@ export class PdfExtractorTestComponent implements OnInit {
         console.error('Failed to load presets:', error);
         this.errorMessage.set('Failed to load preset options');
         this.isLoadingPresets.set(false);
-
-        // Mock data for development (matching API structure)
-        this.presetOptions.set([
-          {
-            id: 'preset1',
-            name: 'Bell Creek Muddy Creek Watershed Plan 2012',
-            pdfFile: 'Bell_Creek_Muddy_Creek_Watershed_Plan_2012.pdf',
-            groundTruthFile: 'Bell_Creek_Muddy_Creek_Watershed_Plan_2012.json',
-          },
-          {
-            id: 'preset2',
-            name: 'Basket Creek Hickahala Creek 9 Key Element Plan 2018',
-            pdfFile: 'Basket_Creek_Hickahala_Creek_9_Key_Element_Plan_2018.pdf',
-            groundTruthFile:
-              'Basket_Creek_Hickahala_Creek_9_Key_Element_Plan_2018.json',
-          },
-          {
-            id: 'preset3',
-            name: 'Pickwick Reservoir Watershed Plan 2009',
-            pdfFile: 'Pickwick_Reservoir_Watershed_Plan_2009.pdf',
-            groundTruthFile: 'Pickwick_Reservoir_Watershed_Plan_2009.json',
-          },
-          {
-            id: 'preset4',
-            name: 'Broken Pumpkin 9 Key Element Plan 2019',
-            pdfFile: 'Broken_Pumpkin_9_Key_Element_Plan_2019.pdf',
-            groundTruthFile: 'Broken_Pumpkin_9_Key_Element_Plan_2019.json',
-          },
-        ]);
       },
     });
   }
