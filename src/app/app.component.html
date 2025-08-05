@@ -1,52 +1,50 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 <div class="min-h-screen bg-gray-100 text-gray-800">
   <header class="bg-white shadow">
-    <nav class="container mx-auto px-6 py-4">
+    <nav class="max-w-5xl mx-auto px-12 py-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center space-x-6">
-          <div class="text-xl font-bold">📄 Document Extraction Tool</div>
-
-          <!-- Navigation Links -->
-          <div class="flex items-center space-x-4">
-            <a
-              href="/"
-              [class]="
-                isActiveRoute('/')
-                  ? 'px-4 py-2 bg-blue-600 text-white rounded-md font-medium text-sm transition-colors'
-                  : 'px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md font-medium text-sm transition-colors'
-              "
+          <div class="flex items-center space-x-3">
+            <!-- Test: Show placeholder emoji if image fails -->
+            <div
+              class="h-8 w-8 flex items-center justify-center bg-blue-100 rounded"
             >
-              Extract Documents
-            </a>
-            <a
-              href="/test"
-              [class]="
-                isActiveRoute('/test')
-                  ? 'px-4 py-2 bg-blue-600 text-white rounded-md font-medium text-sm transition-colors'
-                  : 'px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md font-medium text-sm transition-colors'
-              "
-            >
-              Accuracy Test
-            </a>
+              <img
+                src="assets/images/logo.png"
+                alt="Company Logo"
+                class="h-8 w-auto max-w-none"
+                onerror="console.error('Logo failed to load:', this.src); this.parentElement.innerHTML='🏢'"
+                onload="console.log('Logo loaded successfully:', this.src); this.parentElement.classList.remove('bg-blue-100')"
+              />
+            </div>
+            <div class="text-2xl font-bold">
+              <span class="text-gray-600">document</span
+              ><span class="text-gray-900 ml-1">extraction</span
+              ><span class="text-gray-500 ml-1">tool</span>
+            </div>
           </div>
         </div>
-
-        <div class="text-sm text-gray-600">
-          <!-- AI-Powered Agricultural Report Analysis -->
+        <!-- Navigation Links -->
+        <div class="flex items-center space-x-1 pr-1">
+          <p-button
+            label="Extract PDF"
+            [text]="true"
+            [severity]="isActiveRoute('/') ? 'primary' : 'secondary'"
+            size="small"
+            (onClick)="navigateTo('/')"
+          ></p-button>
+          <p-button
+            label="Accuracy Test"
+            [text]="true"
+            [severity]="isActiveRoute('/test') ? 'primary' : 'secondary'"
+            size="small"
+            (onClick)="navigateTo('/test')"
+          ></p-button>
         </div>
       </div>
     </nav>
   </header>
 
-  <main class="container mx-auto px-6">
+  <main class="max-w-5xl mx-auto px-6">
     <router-outlet />
   </main>
 
