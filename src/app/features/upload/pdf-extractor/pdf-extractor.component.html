@@ -397,9 +397,10 @@
             label="Export"
             icon="pi pi-download"
             severity="secondary"
+            text="true"
             [model]="exportMenuItems"
             (onClick)="exportData('json')"
-            styleClass="p-button-sm"
+            size="small"
           ></p-splitButton>
         </div>
 
@@ -1112,14 +1113,6 @@
                   <p>No organizations data available</p>
                 </div>
                 }
-              </div>
-            </p-tabPanel>
-
-            <!-- Charts Tab -->
-            <p-tabPanel header="Charts">
-              <div class="text-center py-8 text-gray-500">
-                <p class="text-lg font-medium mb-2">Data Visualization</p>
-                <p class="text-sm">Charts and graphs will be displayed here</p>
               </div>
             </p-tabPanel>
           </p-tabView>
