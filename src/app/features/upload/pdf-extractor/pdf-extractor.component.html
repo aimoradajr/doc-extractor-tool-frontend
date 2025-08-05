@@ -545,7 +545,7 @@
                   <!-- Data Visualization Section -->
                   <p-card header="Data Visualization">
                     <div
-                      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4"
                     >
                       <!-- Chart Card 1 -->
                       <div
@@ -558,15 +558,14 @@
                         </div>
                       </div>
 
-                      <!-- Chart Card 2 -->
-                      <div
-                        class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
-                      >
-                        <div class="flex items-center justify-center h-32">
-                          <p class="text-gray-500 text-sm">
-                            BMPs Implementation
-                          </p>
-                        </div>
+                      <!-- Implementation Status Chart -->
+                      <div class="lg:col-span-1">
+                        <app-implementation-status-chart
+                          [implementationData]="
+                            extractedData()!.implementation || []
+                          "
+                        >
+                        </app-implementation-status-chart>
                       </div>
 
                       <!-- Chart Card 3 -->
