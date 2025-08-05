@@ -20,6 +20,7 @@ export class PdfExtractorTestComponent implements OnInit {
   mode = signal<'upload' | 'preset'>('preset');
   selectedFile = signal<File | null>(null);
   selectedPreset = signal<string>('');
+  selectedExtractMode = signal<string>('extract2');
   presetOptions = signal<PresetOption[]>([]);
   isLoading = signal(false);
   isLoadingPresets = signal(false);
@@ -2247,8 +2248,14 @@ export class PdfExtractorTestComponent implements OnInit {
     // Choose the appropriate API method based on mode
     const testObservable =
       currentMode === 'preset'
-        ? this.accuracyTestService.runTestWithPreset(this.selectedPreset())
-        : this.accuracyTestService.runTestWithFile(this.selectedFile()!);
+        ? this.accuracyTestService.runTestWithPreset(
+            this.selectedPreset(),
+            this.selectedExtractMode()
+          )
+        : this.accuracyTestService.runTestWithFile(
+            this.selectedFile()!,
+            this.selectedExtractMode()
+          );
 
     testObservable.subscribe({
       next: (result: AccuracyTestResult) => {
@@ -2270,6 +2277,7 @@ export class PdfExtractorTestComponent implements OnInit {
   reset() {
     this.selectedFile.set(null);
     this.selectedPreset.set('');
+    this.selectedExtractMode.set('extract2');
     this.testResult.set(null);
     this.errorMessage.set(null);
     this.expandedComparisons.set({});

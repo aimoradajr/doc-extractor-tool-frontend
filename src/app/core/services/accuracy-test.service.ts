@@ -27,10 +27,14 @@ export class AccuracyTestService {
   /**
    * Run accuracy test with preset
    */
-  runTestWithPreset(presetId: string): Observable<AccuracyTestResult> {
+  runTestWithPreset(
+    presetId: string,
+    extractMode: string = 'extract2'
+  ): Observable<AccuracyTestResult> {
     const formData = new FormData();
     formData.append('mode', 'preset');
     formData.append('preset', presetId);
+    formData.append('extract_mode', extractMode);
 
     return this.http.post<AccuracyTestResult>(`${this.baseUrl}/test`, formData);
   }
@@ -38,10 +42,14 @@ export class AccuracyTestService {
   /**
    * Run accuracy test with file upload
    */
-  runTestWithFile(file: File): Observable<AccuracyTestResult> {
+  runTestWithFile(
+    file: File,
+    extractMode: string = 'extract2'
+  ): Observable<AccuracyTestResult> {
     const formData = new FormData();
     formData.append('mode', 'upload');
     formData.append('pdf', file);
+    formData.append('extract_mode', extractMode);
 
     return this.http.post<AccuracyTestResult>(`${this.baseUrl}/test`, formData);
   }
