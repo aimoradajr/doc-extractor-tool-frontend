@@ -1,21 +1,13 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  AfterViewInit,
-  ViewChild,
-  ElementRef,
-} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Chart, ChartConfiguration, ChartType, registerables } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
+import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { ImplementationActivity } from '../../core/interfaces/api.interfaces';
-
-Chart.register(...registerables);
 
 @Component({
   selector: 'app-implementation-status-chart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, BaseChartDirective],
   template: `
     <div class="h-full flex flex-col overflow-hidden">
       <div class="chart-header mb-4 flex-shrink-0">
@@ -28,7 +20,14 @@ Chart.register(...registerables);
       </div>
 
       <div class="chart-wrapper relative flex-1 w-full min-h-0">
-        <canvas #chartCanvas></canvas>
+        <canvas
+          baseChart
+          [type]="'doughnut'"
+          [labels]="doughnutChartLabels"
+          [datasets]="doughnutChartDatasets"
+          [options]="doughnutChartOptions"
+          [legend]="true"
+        ></canvas>
       </div>
 
       <div
@@ -66,23 +65,29 @@ Chart.register(...registerables);
     `,
   ],
 })
-export class ImplementationStatusChartComponent
-  implements OnInit, AfterViewInit
-{
-  @ViewChild('chartCanvas') chartCanvas!: ElementRef<HTMLCanvasElement>;
+export class ImplementationStatusChartComponent implements OnInit {
   @Input() implementationData: ImplementationActivity[] = [];
 
-  chart?: Chart;
+  // Doughnut Chart properties following ng2-charts pattern
+  public doughnutChartLabels: string[] = [
+    'Completed',
+    'In Progress',
+    'Planned',
+  ];
+  public doughnutChartDatasets: ChartConfiguration<'doughnut'>['data']['datasets'] =
+    [];
+  public doughnutChartOptions: ChartOptions<'doughnut'> = {
+    responsive: true,
+    maintainAspectRatio: false,
+  };
+
   completedCount = 0;
   inProgressCount = 0;
   plannedCount = 0;
 
   ngOnInit() {
     this.calculateCounts();
-  }
-
-  ngAfterViewInit() {
-    this.createChart();
+    this.setupChart();
   }
 
   private calculateCounts() {
@@ -101,75 +106,59 @@ export class ImplementationStatusChartComponent
     ).length;
   }
 
-  private createChart() {
-    const ctx = this.chartCanvas.nativeElement.getContext('2d');
-    if (!ctx) return;
+  private setupChart() {
+    // Set datasets
+    this.doughnutChartDatasets = [
+      {
+        data: [this.completedCount, this.inProgressCount, this.plannedCount],
+        backgroundColor: [
+          '#10b981', // Green for completed
+          '#3b82f6', // Blue for in progress
+          '#f59e0b', // Yellow for planned
+        ],
+        borderColor: ['#059669', '#2563eb', '#d97706'],
+        borderWidth: 2,
+        hoverBackgroundColor: ['#047857', '#1d4ed8', '#b45309'],
+      },
+    ];
 
-    const data = {
-      labels: ['Completed', 'In Progress', 'Planned'],
-      datasets: [
-        {
-          data: [this.completedCount, this.inProgressCount, this.plannedCount],
-          backgroundColor: [
-            '#10b981', // Green for completed
-            '#3b82f6', // Blue for in progress
-            '#f59e0b', // Yellow for planned
-          ],
-          borderColor: ['#059669', '#2563eb', '#d97706'],
-          borderWidth: 2,
-          hoverBackgroundColor: ['#047857', '#1d4ed8', '#b45309'],
-        },
-      ],
-    };
-
-    const config: ChartConfiguration<'doughnut'> = {
-      type: 'doughnut',
-      data: data,
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        cutout: '60%', // Creates the donut hole
-        plugins: {
-          legend: {
-            position: 'bottom',
-            labels: {
-              padding: 20,
-              usePointStyle: true,
-              font: {
-                size: 12,
-              },
-            },
-          },
-          tooltip: {
-            callbacks: {
-              label: (context: any) => {
-                const label = context.label || '';
-                const value = context.parsed;
-                const total = this.implementationData.length;
-                const percentage =
-                  total > 0 ? Math.round((value / total) * 100) : 0;
-                return `${label}: ${value} (${percentage}%)`;
-              },
+    // Set options
+    this.doughnutChartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '60%', // Creates the donut hole
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            padding: 20,
+            usePointStyle: true,
+            font: {
+              size: 12,
             },
           },
         },
-        animation: {
-          duration: 1000,
-        },
-        elements: {
-          arc: {
-            borderWidth: 2,
+        tooltip: {
+          callbacks: {
+            label: (context: any) => {
+              const label = context.label || '';
+              const value = context.parsed;
+              const total = this.implementationData.length;
+              const percentage =
+                total > 0 ? Math.round((value / total) * 100) : 0;
+              return `${label}: ${value} (${percentage}%)`;
+            },
           },
         },
       },
+      animation: {
+        duration: 1000,
+      },
+      elements: {
+        arc: {
+          borderWidth: 2,
+        },
+      },
     };
-
-    this.chart = new Chart(ctx, config);
-  }
-
-  ngOnDestroy() {
-    if (this.chart) {
-      this.chart.destroy();
-    }
   }
 }

@@ -1,22 +1,13 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  AfterViewInit,
-  ViewChild,
-  ElementRef,
-  OnDestroy,
-} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Chart, ChartConfiguration, registerables } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
+import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { BMP } from '../../core/interfaces/api.interfaces';
-
-Chart.register(...registerables);
 
 @Component({
   selector: 'app-bmp-type-chart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, BaseChartDirective],
   template: `
     <div class="h-full flex flex-col">
       <div class="chart-header mb-4 flex-shrink-0">
@@ -29,7 +20,14 @@ Chart.register(...registerables);
       </div>
 
       <div class="chart-wrapper relative flex-1 w-full min-h-0">
-        <canvas #chartCanvas></canvas>
+        <canvas
+          baseChart
+          [type]="'pie'"
+          [labels]="pieChartLabels"
+          [datasets]="pieChartDatasets"
+          [options]="pieChartOptions"
+          [legend]="true"
+        ></canvas>
       </div>
 
       <div class="chart-summary mt-4 flex-shrink-0">
@@ -57,11 +55,17 @@ Chart.register(...registerables);
     `,
   ],
 })
-export class BmpTypeChartComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('chartCanvas') chartCanvas!: ElementRef<HTMLCanvasElement>;
+export class BmpTypeChartComponent implements OnInit {
   @Input() bmpData: BMP[] = [];
 
-  chart?: Chart;
+  // Pie Chart properties following ng2-charts pattern
+  public pieChartLabels: string[] = [];
+  public pieChartDatasets: ChartConfiguration<'pie'>['data']['datasets'] = [];
+  public pieChartOptions: ChartOptions<'pie'> = {
+    responsive: true,
+    maintainAspectRatio: false,
+  };
+
   typeCounts: { type: string; count: number; color: string }[] = [];
   totalBMPs = 0;
 
@@ -79,16 +83,7 @@ export class BmpTypeChartComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.calculateTypeCounts();
-  }
-
-  ngAfterViewInit() {
-    this.createChart();
-  }
-
-  ngOnDestroy() {
-    if (this.chart) {
-      this.chart.destroy();
-    }
+    this.setupChart();
   }
 
   private calculateTypeCounts() {
@@ -110,10 +105,7 @@ export class BmpTypeChartComponent implements OnInit, AfterViewInit, OnDestroy {
     this.totalBMPs = this.bmpData.length;
   }
 
-  private createChart() {
-    const ctx = this.chartCanvas.nativeElement.getContext('2d');
-    if (!ctx) return;
-
+  private setupChart() {
     const labels = this.typeCounts.map((item) => item.type);
     const data = this.typeCounts.map((item) => item.count);
     const colors = this.typeCounts.map((item) => item.color);
@@ -121,93 +113,89 @@ export class BmpTypeChartComponent implements OnInit, AfterViewInit, OnDestroy {
     // Generate border colors (slightly darker)
     const borderColors = colors.map((color) => this.darkenColor(color));
 
-    const chartData = {
-      labels: labels,
-      datasets: [
-        {
-          data: data,
-          backgroundColor: colors,
-          borderColor: borderColors,
-          borderWidth: 2,
-          hoverBackgroundColor: borderColors,
-        },
-      ],
-    };
+    // Set labels
+    this.pieChartLabels = labels;
 
-    const config: ChartConfiguration<'pie'> = {
-      type: 'pie',
-      data: chartData,
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'bottom',
-            labels: {
-              padding: 15,
-              usePointStyle: true,
-              font: {
-                size: 11,
-              },
-              generateLabels: (chart) => {
-                const data = chart.data;
-                if (data.labels && data.datasets.length) {
-                  return data.labels.map((label, i) => {
-                    const value = data.datasets[0].data[i] as number;
-                    const percentage =
-                      this.totalBMPs > 0
-                        ? Math.round((value / this.totalBMPs) * 100)
-                        : 0;
-                    const backgroundColor = Array.isArray(
-                      data.datasets[0].backgroundColor
-                    )
-                      ? (data.datasets[0].backgroundColor[i] as string)
-                      : (data.datasets[0].backgroundColor as string);
-                    const borderColor = Array.isArray(
-                      data.datasets[0].borderColor
-                    )
-                      ? (data.datasets[0].borderColor[i] as string)
-                      : (data.datasets[0].borderColor as string);
-                    return {
-                      text: `${label}: ${value} (${percentage}%)`,
-                      fillStyle: backgroundColor,
-                      strokeStyle: borderColor,
-                      lineWidth: 2,
-                      hidden: false,
-                      index: i,
-                    };
-                  });
-                }
-                return [];
-              },
+    // Set datasets
+    this.pieChartDatasets = [
+      {
+        data: data,
+        backgroundColor: colors,
+        borderColor: borderColors,
+        borderWidth: 2,
+        hoverBackgroundColor: borderColors,
+      },
+    ];
+
+    // Set options
+    this.pieChartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            padding: 15,
+            usePointStyle: true,
+            font: {
+              size: 11,
             },
-          },
-          tooltip: {
-            callbacks: {
-              label: (context: any) => {
-                const label = context.label || '';
-                const value = context.parsed;
-                const percentage =
-                  this.totalBMPs > 0
-                    ? Math.round((value / this.totalBMPs) * 100)
-                    : 0;
-                return `${label}: ${value} BMPs (${percentage}%)`;
-              },
+            generateLabels: (chart: any) => {
+              const data = chart.data;
+              if (data.labels && data.datasets.length) {
+                return data.labels.map((label: any, i: any) => {
+                  const value = data.datasets[0].data[i] as number;
+                  const percentage =
+                    this.totalBMPs > 0
+                      ? Math.round((value / this.totalBMPs) * 100)
+                      : 0;
+                  const backgroundColor = Array.isArray(
+                    data.datasets[0].backgroundColor
+                  )
+                    ? (data.datasets[0].backgroundColor[i] as string)
+                    : (data.datasets[0].backgroundColor as string);
+                  const borderColor = Array.isArray(
+                    data.datasets[0].borderColor
+                  )
+                    ? (data.datasets[0].borderColor[i] as string)
+                    : (data.datasets[0].borderColor as string);
+                  return {
+                    text: `${label}: ${value} (${percentage}%)`,
+                    fillStyle: backgroundColor,
+                    strokeStyle: borderColor,
+                    lineWidth: 2,
+                    hidden: false,
+                    index: i,
+                  };
+                });
+              }
+              return [];
             },
           },
         },
-        animation: {
-          duration: 1000,
-        },
-        elements: {
-          arc: {
-            borderWidth: 2,
+        tooltip: {
+          callbacks: {
+            label: (context: any) => {
+              const label = context.label || '';
+              const value = context.parsed;
+              const percentage =
+                this.totalBMPs > 0
+                  ? Math.round((value / this.totalBMPs) * 100)
+                  : 0;
+              return `${label}: ${value} BMPs (${percentage}%)`;
+            },
           },
         },
       },
+      animation: {
+        duration: 1000,
+      },
+      elements: {
+        arc: {
+          borderWidth: 2,
+        },
+      },
     };
-
-    this.chart = new Chart(ctx, config);
   }
 
   private darkenColor(color: string): string {
