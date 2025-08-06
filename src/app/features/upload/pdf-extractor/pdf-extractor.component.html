@@ -605,7 +605,11 @@
                     class="rounded-lg border border-green-200 bg-green-50 p-5 shadow-sm"
                   >
                     <p class="font-semibold text-green-900 text-base mb-2">
-                      <span class="font-bold">Goal:</span>
+                      <span class="font-bold">Goal</span>
+                      <span class="font-bold text-gray-500 ml-1">{{
+                        $index + 1
+                      }}</span
+                      >:
                       <span
                         [pTooltip]="
                           goal.sourceExcerpt
@@ -654,7 +658,11 @@
                     class="rounded-lg border border-blue-200 bg-blue-50 p-5 shadow-sm"
                   >
                     <p class="font-semibold text-blue-900 text-base mb-3">
-                      <span class="font-bold">BMP:</span>
+                      <span class="font-bold">BMP</span>
+                      <span class="font-bold text-gray-500 ml-1">{{
+                        $index + 1
+                      }}</span
+                      >:
                       <span
                         [pTooltip]="
                           bmp.sourceExcerpt
@@ -766,7 +774,11 @@
                     class="rounded-lg border border-purple-200 bg-purple-50 p-5 shadow-sm"
                   >
                     <p class="font-semibold text-purple-900 text-base mb-3">
-                      <span class="font-bold">Implementation:</span>
+                      <span class="font-bold">Implementation</span>
+                      <span class="font-bold text-gray-500 ml-1">{{
+                        $index + 1
+                      }}</span
+                      >:
                       <span
                         [pTooltip]="
                           activity.sourceExcerpt
@@ -852,7 +864,11 @@
                     class="rounded-lg border border-orange-200 bg-orange-50 p-5 shadow-sm"
                   >
                     <p class="font-semibold text-orange-900 text-base mb-3">
-                      <span class="font-bold">Monitoring:</span>
+                      <span class="font-bold">Monitoring</span>
+                      <span class="font-bold text-gray-500 ml-1">{{
+                        $index + 1
+                      }}</span
+                      >:
                       <span
                         [pTooltip]="
                           metric.sourceExcerpt
@@ -963,7 +979,11 @@
                     class="rounded-lg border border-emerald-200 bg-emerald-50 p-5 shadow-sm"
                   >
                     <h3 class="font-semibold text-emerald-900 text-base mb-3">
-                      <span class="font-bold">Outreach:</span>
+                      <span class="font-bold">Outreach</span>
+                      <span class="font-bold text-gray-500 ml-1">{{
+                        $index + 1
+                      }}</span
+                      >:
                       <span
                         [pTooltip]="
                           activity.sourceExcerpt
@@ -1067,6 +1087,10 @@
                         [showDelay]="300"
                         class="cursor-help"
                       >
+                        <span class="font-bold text-gray-500 ml-1">{{
+                          $index + 1
+                        }}</span
+                        >:
                         {{ area.watershedName }}
                       </span>
                     </h3>
@@ -1143,6 +1167,10 @@
                         [showDelay]="300"
                         class="cursor-help"
                       >
+                        <span class="font-bold text-gray-500 ml-1">{{
+                          $index + 1
+                        }}</span
+                        >:
                         {{ org.name }}
                       </span>
                     </h3>
