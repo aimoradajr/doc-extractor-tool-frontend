@@ -18,21 +18,21 @@ Chart.register(...registerables);
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="bmp-chart-container">
-      <div class="chart-header mb-4">
-        <h3 class="text-lg font-semibold text-gray-900">
-          BMP Type Distribution
+    <div class="h-full flex flex-col">
+      <div class="chart-header mb-4 flex-shrink-0">
+        <h3 class="text-lg font-semibold text-gray-800 text-center">
+          BMP Distribution by Type
         </h3>
-        <p class="text-sm text-gray-600">
-          Breakdown of Best Management Practices by category
+        <p class="text-sm text-gray-600 text-center mt-1">
+          Total BMPs: {{ totalBMPs }}
         </p>
       </div>
 
-      <div class="chart-wrapper relative h-80 w-full">
+      <div class="chart-wrapper relative flex-1 w-full min-h-0">
         <canvas #chartCanvas></canvas>
       </div>
 
-      <div class="chart-summary mt-4">
+      <div class="chart-summary mt-4 flex-shrink-0">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
           @for (item of typeCounts; track item.type) {
           <div class="bg-gray-50 p-3 rounded-lg">
@@ -42,9 +42,6 @@ Chart.register(...registerables);
             <div class="text-xs text-gray-700">{{ item.type }}</div>
           </div>
           }
-        </div>
-        <div class="mt-3 text-center text-sm text-gray-600">
-          Total BMPs: {{ totalBMPs }}
         </div>
       </div>
     </div>

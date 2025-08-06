@@ -552,16 +552,14 @@
                       <div class="lg:col-span-1">
                         @if (extractedData()?.bmps &&
                         extractedData()!.bmps!.length > 0) {
-                        <app-bmp-type-chart [bmpData]="extractedData()!.bmps!">
-                        </app-bmp-type-chart>
-                        } @else {
                         <div
-                          class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
+                          class="bg-white border border-gray-200 rounded-lg shadow-sm h-96 flex flex-col"
                         >
-                          <div class="flex items-center justify-center h-32">
-                            <p class="text-gray-500 text-sm">
-                              BMP Type Chart (No data available)
-                            </p>
+                          <div class="flex-1 p-4 h-full">
+                            <app-bmp-type-chart
+                              [bmpData]="extractedData()!.bmps!"
+                            >
+                            </app-bmp-type-chart>
                           </div>
                         </div>
                         }
@@ -569,51 +567,17 @@
 
                       <!-- Implementation Status Chart -->
                       <div class="lg:col-span-1">
-                        <app-implementation-status-chart
-                          [implementationData]="
-                            extractedData()!.implementation || []
-                          "
+                        <div
+                          class="bg-white border border-gray-200 rounded-lg shadow-sm h-96 flex flex-col"
                         >
-                        </app-implementation-status-chart>
-                      </div>
-
-                      <!-- Chart Card 3 -->
-                      <div
-                        class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
-                      >
-                        <div class="flex items-center justify-center h-32">
-                          <p class="text-gray-500 text-sm">
-                            Geographic Distribution
-                          </p>
-                        </div>
-                      </div>
-
-                      <!-- Chart Card 4 -->
-                      <div
-                        class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
-                      >
-                        <div class="flex items-center justify-center h-32">
-                          <p class="text-gray-500 text-sm">Timeline Overview</p>
-                        </div>
-                      </div>
-
-                      <!-- Chart Card 5 -->
-                      <div
-                        class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
-                      >
-                        <div class="flex items-center justify-center h-32">
-                          <p class="text-gray-500 text-sm">Status Breakdown</p>
-                        </div>
-                      </div>
-
-                      <!-- Chart Card 6 -->
-                      <div
-                        class="p-4 bg-gray-50 rounded border border-dashed border-gray-300"
-                      >
-                        <div class="flex items-center justify-center h-32">
-                          <p class="text-gray-500 text-sm">
-                            Performance Metrics
-                          </p>
+                          <div class="flex-1 p-4 h-full">
+                            <app-implementation-status-chart
+                              [implementationData]="
+                                extractedData()!.implementation || []
+                              "
+                            >
+                            </app-implementation-status-chart>
+                          </div>
                         </div>
                       </div>
                     </div>

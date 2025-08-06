@@ -17,21 +17,23 @@ Chart.register(...registerables);
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="implementation-chart-container">
-      <div class="chart-header mb-4">
-        <h3 class="text-lg font-semibold text-gray-900">
-          Implementation Status
+    <div class="h-full flex flex-col overflow-hidden">
+      <div class="chart-header mb-4 flex-shrink-0">
+        <h3 class="text-lg font-semibold text-gray-800 text-center">
+          Implementation Status Overview
         </h3>
-        <p class="text-sm text-gray-600">
-          Progress breakdown of implementation activities
+        <p class="text-sm text-gray-600 text-center mt-1">
+          Total Activities: {{ implementationData.length }}
         </p>
       </div>
 
-      <div class="chart-wrapper relative h-80 w-full">
+      <div class="chart-wrapper relative flex-1 w-full min-h-0">
         <canvas #chartCanvas></canvas>
       </div>
 
-      <div class="chart-summary mt-4 grid grid-cols-3 gap-4 text-center">
+      <div
+        class="chart-summary mt-4 flex-shrink-0 grid grid-cols-3 gap-4 text-center"
+      >
         <div class="bg-green-50 p-3 rounded-lg">
           <div class="text-2xl font-bold text-green-600">
             {{ completedCount }}
