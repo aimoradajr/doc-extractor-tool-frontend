@@ -35,8 +35,8 @@ export class PdfExtractorComponent implements OnInit {
 
   // 🛠️ DEVELOPMENT DEBUG CONTROLS
   // Set showDebugPanel to false to hide all debug tools in production
-  showDebugPanel = signal(true);
-  useMockData = signal(true); // Now toggleable from UI
+  showDebugPanel = signal(false);
+  useMockData = signal(false); // Now toggleable from UI
 
   // Component state with proper typing
   selectedFile = signal<File | null>(null);
