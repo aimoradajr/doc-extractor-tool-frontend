@@ -624,16 +624,19 @@
                   <div
                     class="rounded-lg border border-blue-200 bg-blue-50 p-5 shadow-sm"
                   >
-                    <p class="font-semibold text-blue-900 text-base mb-2">
+                    <p class="font-semibold text-blue-900 text-base mb-3">
                       <span class="font-bold">BMP:</span> {{ bmp.name }}
                     </p>
+
                     @if (bmp.description) {
-                    <p class="text-sm text-gray-700 mb-2">
+                    <p class="text-sm text-gray-700 mb-4">
                       {{ bmp.description }}
                     </p>
                     }
+
+                    <!-- Main Details Grid -->
                     <div
-                      class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm mb-2"
+                      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm mb-4"
                     >
                       @if (bmp.type) {
                       <div>
@@ -646,12 +649,53 @@
                       } @if (bmp.quantity && bmp.unit) {
                       <div>
                         <span class="font-medium text-gray-600">Quantity:</span>
-                        <span class="text-gray-900 ml-2"
-                          >{{ bmp.quantity }} {{ bmp.unit }}</span
+                        <span class="text-gray-900 ml-2 font-medium"
+                          >{{ bmp.quantity | number }} {{ bmp.unit }}</span
+                        >
+                      </div>
+                      } @if (bmp.estimatedCost) {
+                      <div>
+                        <span class="font-medium text-gray-600"
+                          >Est. Cost:</span
+                        >
+                        <span class="text-green-700 ml-2 font-medium"
+                          >${{ bmp.estimatedCost | number }}</span
                         >
                       </div>
                       }
                     </div>
+
+                    <!-- Target Areas -->
+                    @if (bmp.targetAreas && bmp.targetAreas.length > 0) {
+                    <div class="mb-4">
+                      <p class="text-sm font-medium text-gray-700 mb-2">
+                        Target Areas:
+                      </p>
+                      <div class="flex flex-wrap gap-2">
+                        @for (area of bmp.targetAreas; track $index) {
+                        <span
+                          class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium"
+                        >
+                          {{ area }}
+                        </span>
+                        }
+                      </div>
+                    </div>
+                    }
+
+                    <!-- Schedule -->
+                    @if (bmp.schedule) {
+                    <div class="mb-4">
+                      <span class="font-medium text-gray-700 text-sm"
+                        >Implementation Schedule:</span
+                      >
+                      <p
+                        class="text-sm text-gray-900 mt-1 bg-white border border-blue-200 rounded p-3"
+                      >
+                        {{ bmp.schedule }}
+                      </p>
+                    </div>
+                    }
                   </div>
                   }
                 </div>
@@ -1056,13 +1100,6 @@
                         </div>
                         }
                       </div>
-                    </div>
-                    } @if (org.sourceExcerpt) {
-                    <div class="mt-3 p-3 bg-blue-100 rounded text-sm">
-                      <span class="font-medium text-blue-800"
-                        >Source Excerpt:</span
-                      >
-                      <p class="text-blue-700 mt-1">{{ org.sourceExcerpt }}</p>
                     </div>
                     }
                   </div>
