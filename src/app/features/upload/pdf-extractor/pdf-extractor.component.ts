@@ -364,6 +364,7 @@ export class PdfExtractorComponent implements OnInit {
 
   /**
    * Export extracted data in the specified format
+   * Allow raw implementation export later.
    */
   exportData(format: 'json' | 'excel' | 'csv') {
     const data = this.extractedData();
@@ -406,6 +407,9 @@ export class PdfExtractorComponent implements OnInit {
 
   /**
    * Reset the component to initial state
+   *
+   * Allows resetting internal elements like input states and all component.
+   * Maintains overall reset and default appearance just right.
    */
   reset() {
     this.selectedFile.set(null);
