@@ -534,40 +534,58 @@
 
                 <div class="mt-2">
                   <!-- Data Visualization Section -->
-                  <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4"
-                  >
-                    <!-- BMP Type Distribution Chart -->
-                    <div class="lg:col-span-1">
+                  <div class="space-y-4">
+                    <!-- Top Row: BMP Type and Implementation Status Charts -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <!-- BMP Type Distribution Chart -->
+                      <div>
+                        @if (extractedData()?.bmps &&
+                        extractedData()!.bmps!.length > 0) {
+                        <div
+                          class="bg-white border border-gray-200 rounded-lg shadow-sm h-96 flex flex-col"
+                        >
+                          <div class="flex-1 p-4 h-full">
+                            <app-bmp-type-chart
+                              [bmpData]="extractedData()!.bmps!"
+                            >
+                            </app-bmp-type-chart>
+                          </div>
+                        </div>
+                        }
+                      </div>
+
+                      <!-- Implementation Status Chart -->
+                      <div>
+                        <div
+                          class="bg-white border border-gray-200 rounded-lg shadow-sm h-96 flex flex-col"
+                        >
+                          <div class="flex-1 p-4 h-full">
+                            <app-implementation-status-chart
+                              [implementationData]="
+                                extractedData()!.implementation || []
+                              "
+                            >
+                            </app-implementation-status-chart>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Bottom Row: BMP Cost Analysis Chart (Full Width) -->
+                    <div>
                       @if (extractedData()?.bmps &&
                       extractedData()!.bmps!.length > 0) {
                       <div
                         class="bg-white border border-gray-200 rounded-lg shadow-sm h-96 flex flex-col"
                       >
                         <div class="flex-1 p-4 h-full">
-                          <app-bmp-type-chart
+                          <app-bmp-cost-chart
                             [bmpData]="extractedData()!.bmps!"
                           >
-                          </app-bmp-type-chart>
+                          </app-bmp-cost-chart>
                         </div>
                       </div>
                       }
-                    </div>
-
-                    <!-- Implementation Status Chart -->
-                    <div class="lg:col-span-1">
-                      <div
-                        class="bg-white border border-gray-200 rounded-lg shadow-sm h-96 flex flex-col"
-                      >
-                        <div class="flex-1 p-4 h-full">
-                          <app-implementation-status-chart
-                            [implementationData]="
-                              extractedData()!.implementation || []
-                            "
-                          >
-                          </app-implementation-status-chart>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>

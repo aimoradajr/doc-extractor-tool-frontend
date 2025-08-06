@@ -12,6 +12,7 @@ import { MockApiService } from '../../../core/services/mock-api.service';
 import { ExtractedData } from '../../../core/interfaces/api.interfaces';
 import { ImplementationStatusChartComponent } from '../../../shared/components/implementation-status-chart.component';
 import { BmpTypeChartComponent } from '../../../shared/components/bmp-type-chart.component';
+import { BmpCostChartComponent } from '../../../shared/components/bmp-cost-chart.component';
 
 @Component({
   selector: 'app-pdf-extractor',
@@ -25,6 +26,7 @@ import { BmpTypeChartComponent } from '../../../shared/components/bmp-type-chart
     DialogModule,
     ImplementationStatusChartComponent,
     BmpTypeChartComponent,
+    BmpCostChartComponent,
   ],
   templateUrl: './pdf-extractor.component.html',
   styleUrl: './pdf-extractor.component.scss',
@@ -35,8 +37,8 @@ export class PdfExtractorComponent implements OnInit {
 
   // 🛠️ DEVELOPMENT DEBUG CONTROLS
   // Set showDebugPanel to false to hide all debug tools in production
-  showDebugPanel = signal(false);
-  useMockData = signal(false); // Now toggleable from UI
+  showDebugPanel = signal(true);
+  useMockData = signal(true); // Now toggleable from UI
 
   // Component state with proper typing
   selectedFile = signal<File | null>(null);
