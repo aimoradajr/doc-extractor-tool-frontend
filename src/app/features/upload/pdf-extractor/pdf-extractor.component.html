@@ -1074,120 +1074,63 @@
   </div>
 
   <!-- Confirmation Modal -->
-  @if (showConfirmModal()) {
-  <div
-    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+  <p-dialog
+    [(visible)]="showConfirmModal"
+    header="Upload Another PDF?"
+    [modal]="true"
+    [draggable]="false"
+    [resizable]="false"
+    [style]="{ width: '32rem' }"
+    [breakpoints]="{ '768px': '90vw', '576px': '95vw' }"
+    [closable]="true"
+    (onHide)="cancelUpload()"
   >
-    <div class="bg-white rounded-lg shadow-xl max-w-lg w-full mx-4 p-8">
-      <!-- Modal Header -->
-      <div class="flex items-center justify-between mb-6">
-        <h3 class="text-xl font-semibold text-gray-900">Upload Another PDF?</h3>
-        <button
-          (click)="cancelUpload()"
-          class="text-gray-400 hover:text-gray-600 transition-colors"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-      </div>
-
-      <!-- Modal Content -->
-      <div class="mb-6">
-        <p class="text-gray-700 mb-5 text-base">
-          You are about to upload a new PDF file:
-        </p>
-        <div class="bg-blue-50 rounded-lg p-5 border border-blue-200">
-          <div class="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-7 flex-shrink-0 mr-4"
+    @if (pendingFile()) {
+    <div class="mb-6">
+      <p class="text-gray-700 mb-5 text-base">
+        You are about to upload a new PDF file:
+      </p>
+      <div class="bg-blue-50 rounded-lg p-5 border border-blue-200">
+        <div class="flex items-center">
+          <i class="pi pi-file-pdf text-blue-600 text-3xl mr-4"></i>
+          <div class="flex-1 min-w-0">
+            <p
+              class="font-medium text-blue-900 break-words overflow-wrap-anywhere text-base"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m6.75 12-3-3m0 0-3 3m3-3v6m-1.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
-              />
-            </svg>
-
-            <div class="flex-1 min-w-0">
-              <p
-                class="font-medium text-blue-900 break-words overflow-wrap-anywhere text-base"
-              >
-                {{ pendingFile()?.name }}
-              </p>
-              <p class="text-sm text-blue-700 mt-1">
-                {{ (pendingFile()!.size / 1024 / 1024).toFixed(2) }} MB
-              </p>
-            </div>
+              {{ pendingFile()!.name }}
+            </p>
+            <p class="text-sm text-blue-700 mt-1">
+              {{ (pendingFile()!.size / 1024 / 1024).toFixed(2) }} MB
+            </p>
           </div>
         </div>
-        <p class="text-orange-600 mt-5 text-sm flex items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6 mr-2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"
-            />
-          </svg>
-          This will replace your current extraction results.
-        </p>
       </div>
-
-      <!-- Modal Actions -->
-      <div class="flex gap-3 justify-end">
-        <button
-          (click)="cancelUpload()"
-          class="px-5 py-3 text-gray-700 hover:bg-gray-100 rounded-full font-medium transition-colors"
-        >
-          Cancel
-        </button>
-        <button
-          (click)="confirmUpload()"
-          class="px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-colors inline-flex items-center"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6 mr-2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z"
-            />
-          </svg>
-
-          Upload PDF
-        </button>
+      <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 mt-4">
+        <div class="flex items-center">
+          <i class="pi pi-exclamation-triangle text-orange-600 mr-2"></i>
+          <p class="text-orange-700 text-sm">
+            This will replace your current extraction results.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-  }
+    }
+
+    <ng-template pTemplate="footer">
+      <div class="flex gap-3 justify-end">
+        <p-button
+          label="Cancel"
+          severity="secondary"
+          (onClick)="cancelUpload()"
+        ></p-button>
+        <p-button
+          label="Upload PDF"
+          icon="pi pi-upload"
+          (onClick)="confirmUpload()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-dialog>
 
   <!-- End full-width drag container -->
 </div>
