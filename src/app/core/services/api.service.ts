@@ -20,12 +20,12 @@ export class ApiService {
     const formData = new FormData();
     formData.append('pdf', file);
 
-    console.log(
-      '🌐 REAL API: Extracting from PDF using:',
-      `${this.baseUrl}/extract`
-    );
+    const extractMode = 'extract2'; // Default extract mode (extract1, extract2, extract3)
 
-    return this.http.post<ExtractedData>(`${this.baseUrl}/extract`, formData);
+    return this.http.post<ExtractedData>(
+      `${this.baseUrl}/${extractMode}`,
+      formData
+    );
   }
 
   /**
