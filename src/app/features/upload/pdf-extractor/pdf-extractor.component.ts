@@ -9,6 +9,7 @@ import { ApiService } from '../../../core/services/api.service';
 import { MockApiService } from '../../../core/services/mock-api.service';
 import { ExtractedData } from '../../../core/interfaces/api.interfaces';
 import { ImplementationStatusChartComponent } from '../../../shared/components/implementation-status-chart.component';
+import { BmpTypeChartComponent } from '../../../shared/components/bmp-type-chart.component';
 
 @Component({
   selector: 'app-pdf-extractor',
@@ -19,6 +20,7 @@ import { ImplementationStatusChartComponent } from '../../../shared/components/i
     AccordionModule,
     SplitButtonModule,
     ImplementationStatusChartComponent,
+    BmpTypeChartComponent,
   ],
   templateUrl: './pdf-extractor.component.html',
   styleUrl: './pdf-extractor.component.scss',

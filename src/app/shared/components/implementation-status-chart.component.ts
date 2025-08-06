@@ -27,10 +27,7 @@ Chart.register(...registerables);
         </p>
       </div>
 
-      <div
-        class="chart-wrapper"
-        style="position: relative; height: 300px; width: 100%;"
-      >
+      <div class="chart-wrapper relative h-80 w-full">
         <canvas #chartCanvas></canvas>
       </div>
 
