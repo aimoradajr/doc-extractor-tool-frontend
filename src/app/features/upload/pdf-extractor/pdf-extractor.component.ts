@@ -304,7 +304,7 @@ export class PdfExtractorComponent implements OnInit {
     const service = this.getService();
     service.extractFromPdf(file).subscribe({
       next: (extractedData: ExtractedData) => {
-        console.log('PDF extraction successful:', extractedData);
+        // console.log('PDF extraction successful:', extractedData);
 
         // Set the extracted data directly
         this.extractedData.set(extractedData);
@@ -341,7 +341,7 @@ export class PdfExtractorComponent implements OnInit {
     const service = this.getService();
     service.testConnection().subscribe({
       next: (response: any) => {
-        console.log('Backend connected:', response);
+        // console.log('Backend connected:', response);
         this.connectionStatus.set({
           success: true,
           message: response.message || 'Backend connection successful!',
@@ -402,7 +402,7 @@ export class PdfExtractorComponent implements OnInit {
     link.click();
 
     window.URL.revokeObjectURL(url);
-    console.log('JSON export completed');
+    // console.log('JSON export completed');
   }
 
   /**
