@@ -6,6 +6,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
+import { TooltipModule } from 'primeng/tooltip';
 import { MenuItem } from 'primeng/api';
 import { ApiService } from '../../../core/services/api.service';
 import { MockApiService } from '../../../core/services/mock-api.service';
@@ -24,6 +25,7 @@ import { BmpCostChartComponent } from '../../../shared/components/bmp-cost-chart
     SplitButtonModule,
     ButtonModule,
     DialogModule,
+    TooltipModule,
     ImplementationStatusChartComponent,
     BmpTypeChartComponent,
     BmpCostChartComponent,

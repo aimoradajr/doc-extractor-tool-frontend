@@ -606,7 +606,18 @@
                   >
                     <p class="font-semibold text-green-900 text-base mb-2">
                       <span class="font-bold">Goal:</span>
-                      {{ goal.description }}
+                      <span
+                        [pTooltip]="
+                          goal.sourceExcerpt
+                            ? 'Source Excerpt: ' + goal.sourceExcerpt
+                            : 'No source excerpt available'
+                        "
+                        tooltipPosition="top"
+                        [showDelay]="300"
+                        class="cursor-help"
+                      >
+                        {{ goal.description }}
+                      </span>
                     </p>
                     @if (goal.schedule) {
                     <p class="text-sm text-gray-700 mt-1">
@@ -643,7 +654,19 @@
                     class="rounded-lg border border-blue-200 bg-blue-50 p-5 shadow-sm"
                   >
                     <p class="font-semibold text-blue-900 text-base mb-3">
-                      <span class="font-bold">BMP:</span> {{ bmp.name }}
+                      <span class="font-bold">BMP:</span>
+                      <span
+                        [pTooltip]="
+                          bmp.sourceExcerpt
+                            ? 'Source Excerpt: ' + bmp.sourceExcerpt
+                            : 'No source excerpt available'
+                        "
+                        tooltipPosition="top"
+                        [showDelay]="300"
+                        class="cursor-help"
+                      >
+                        {{ bmp.name }}
+                      </span>
                     </p>
 
                     @if (bmp.description) {
@@ -744,7 +767,18 @@
                   >
                     <p class="font-semibold text-purple-900 text-base mb-3">
                       <span class="font-bold">Implementation:</span>
-                      {{ activity.description }}
+                      <span
+                        [pTooltip]="
+                          activity.sourceExcerpt
+                            ? 'Source Excerpt: ' + activity.sourceExcerpt
+                            : 'No source excerpt available'
+                        "
+                        tooltipPosition="top"
+                        [showDelay]="300"
+                        class="cursor-help"
+                      >
+                        {{ activity.description }}
+                      </span>
                     </p>
 
                     <!-- Timeline and Status Row -->
@@ -819,7 +853,18 @@
                   >
                     <p class="font-semibold text-orange-900 text-base mb-3">
                       <span class="font-bold">Monitoring:</span>
-                      {{ metric.parameter }}
+                      <span
+                        [pTooltip]="
+                          metric.sourceExcerpt
+                            ? 'Source Excerpt: ' + metric.sourceExcerpt
+                            : 'No source excerpt available'
+                        "
+                        tooltipPosition="top"
+                        [showDelay]="300"
+                        class="cursor-help"
+                      >
+                        {{ metric.parameter }}
+                      </span>
                     </p>
 
                     <!-- Monitoring Details Grid -->
@@ -919,7 +964,18 @@
                   >
                     <h3 class="font-semibold text-emerald-900 text-base mb-2">
                       <span class="font-bold">Outreach:</span>
-                      {{ activity.type }}
+                      <span
+                        [pTooltip]="
+                          activity.sourceExcerpt
+                            ? 'Source Excerpt: ' + activity.sourceExcerpt
+                            : 'No source excerpt available'
+                        "
+                        tooltipPosition="top"
+                        [showDelay]="300"
+                        class="cursor-help"
+                      >
+                        {{ activity.type }}
+                      </span>
                     </h3>
 
                     @if (activity.description) {
@@ -997,7 +1053,18 @@
                     class="rounded-lg border border-green-200 bg-green-50 p-5 shadow-sm"
                   >
                     <h3 class="font-semibold text-green-900 text-base mb-3">
-                      {{ area.watershedName }}
+                      <span
+                        [pTooltip]="
+                          area.sourceExcerpt
+                            ? 'Source Excerpt: ' + area.sourceExcerpt
+                            : 'No source excerpt available'
+                        "
+                        tooltipPosition="top"
+                        [showDelay]="300"
+                        class="cursor-help"
+                      >
+                        {{ area.watershedName }}
+                      </span>
                     </h3>
 
                     <!-- Geographic Details Grid -->
@@ -1062,7 +1129,18 @@
                     class="rounded-lg border border-blue-200 bg-blue-50 p-5 shadow-sm"
                   >
                     <h3 class="font-semibold text-blue-900 text-base mb-3">
-                      {{ org.name }}
+                      <span
+                        [pTooltip]="
+                          org.sourceExcerpt
+                            ? 'Source Excerpt: ' + org.sourceExcerpt
+                            : 'No source excerpt available'
+                        "
+                        tooltipPosition="top"
+                        [showDelay]="300"
+                        class="cursor-help"
+                      >
+                        {{ org.name }}
+                      </span>
                     </h3>
 
                     @if (org.contact) {
