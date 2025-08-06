@@ -423,6 +423,13 @@
                   extractedData()!.reportSummary!.geographicRegion
                 }}</span>
               </p>
+              } @if (extractedData()!.processingTimeMs) {
+              <p class="text-sm">
+                <span class="font-medium">Processing Time:</span>
+                <span class="ml-2 text-blue-600 font-medium">{{
+                  formatProcessingTime(extractedData()!.processingTimeMs!)
+                }}</span>
+              </p>
               }
             </div>
           </div>

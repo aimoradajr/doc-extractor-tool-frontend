@@ -429,4 +429,19 @@ export class PdfExtractorComponent implements OnInit {
     this.errorMessage.set(null);
     this.connectionStatus.set(null);
   }
+
+  /**
+   * Format processing time from milliseconds to a readable format
+   */
+  formatProcessingTime(processingTimeMs: number): string {
+    if (processingTimeMs < 1000) {
+      return `${processingTimeMs} ms`;
+    } else if (processingTimeMs < 60000) {
+      return `${(processingTimeMs / 1000).toFixed(1)} seconds`;
+    } else {
+      const minutes = Math.floor(processingTimeMs / 60000);
+      const seconds = Math.floor((processingTimeMs % 60000) / 1000);
+      return `${minutes}m ${seconds}s`;
+    }
+  }
 }
