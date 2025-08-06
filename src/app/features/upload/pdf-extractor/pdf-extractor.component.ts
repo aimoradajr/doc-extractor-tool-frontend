@@ -4,6 +4,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
 import { AccordionModule } from 'primeng/accordion';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { ButtonModule } from 'primeng/button';
 import { MenuItem } from 'primeng/api';
 import { ApiService } from '../../../core/services/api.service';
 import { MockApiService } from '../../../core/services/mock-api.service';
@@ -19,6 +20,7 @@ import { BmpTypeChartComponent } from '../../../shared/components/bmp-type-chart
     CardModule,
     AccordionModule,
     SplitButtonModule,
+    ButtonModule,
     ImplementationStatusChartComponent,
     BmpTypeChartComponent,
   ],
