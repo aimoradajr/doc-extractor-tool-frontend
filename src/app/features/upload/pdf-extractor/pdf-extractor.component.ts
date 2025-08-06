@@ -263,18 +263,24 @@ export class PdfExtractorComponent implements OnInit {
       // Validate PDF file
       if (file.type !== 'application/pdf') {
         this.errorMessage.set('Please select a PDF file.');
+        // Clear input value to allow re-selection of the same file
+        input.value = '';
         return;
       }
 
       // Check file size (max 100MB)
       if (file.size > 100 * 1024 * 1024) {
         this.errorMessage.set('File size must be less than 100MB.');
+        // Clear input value to allow re-selection of the same file
+        input.value = '';
         return;
       }
 
       // If results are already displayed, show confirmation modal
       if (this.extractedData()) {
         this.showUploadConfirmation(file);
+        // Clear input value to allow re-selection of the same file
+        input.value = '';
         return;
       }
 
@@ -283,6 +289,9 @@ export class PdfExtractorComponent implements OnInit {
       this.errorMessage.set(null);
       this.uploadedFileInfo.set(null);
       this.extractedData.set(null);
+
+      // Clear input value to allow re-selection of the same file
+      input.value = '';
 
       // Auto-start extraction immediately
       this.extractFromPdf();
