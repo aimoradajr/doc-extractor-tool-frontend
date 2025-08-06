@@ -1,6 +1,24 @@
 # Deployment Guide
 
-This guide covers deploying the Document Extraction Tool frontend to production using Vercel. Vercel is optimized for modern frontend frameworks like Angular and offers a simple, fast deployment workflow.
+This guide covers deploying t## Notes
+
+- No custom configuration is required for Angular deployment on Vercel.
+- The `.npmrc` file handles dependency conflicts automatically.
+- For backend deployment, see the backend repository's deployment guide.
+
+## Troubleshooting
+
+### Dependency Conflicts
+
+If you encounter npm peer dependency errors during build:
+
+- Ensure the `.npmrc` file is present in the root directory with `legacy-peer-deps=true`
+- This resolves conflicts between ng2-charts and Angular versions
+
+### Build Failures
+
+- Check that the output directory matches your Angular project name in `angular.json`
+- Verify environment files are properly configured for productionocument Extraction Tool frontend to production using Vercel. Vercel is optimized for modern frontend frameworks like Angular and offers a simple, fast deployment workflow.
 
 ## Recommended: Vercel for Frontend
 
@@ -23,6 +41,7 @@ Vercel is ideal for Angular projects due to its:
      - **Build Command:** `npm run build` or `ng build`
      - **Output Directory:** `dist/`
    - No custom settings needed for standard Angular CLI projects.
+   - **Important:** The project includes a `.npmrc` file with `legacy-peer-deps=true` to resolve ng2-charts dependency conflicts during build.
 
 3. **Set Branch for Production**
 
