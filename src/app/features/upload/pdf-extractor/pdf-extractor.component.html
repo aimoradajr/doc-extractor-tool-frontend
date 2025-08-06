@@ -43,7 +43,7 @@
   }
 
   <!-- Centered content container -->
-  <div class="max-w-7xl mx-auto p-6">
+  <div class="max-w-7xl mx-auto p-4">
     <!-- Debug Panel - Moved to top, separate from main card -->
     @if (showDebugPanel()) {
     <div class="mb-6 p-4 bg-gray-50 border border-gray-200 rounded-lg">
@@ -188,16 +188,18 @@
 
     <!-- Upload Section - Always visible, but changes based on state -->
     <div
-      class="bg-white rounded-lg shadow-lg py-4 pl-8 pr-7"
+      class="bg-white rounded-lg shadow-lg py-4 px-4 md:px-8"
       [class.border-2]="extractedData() && errorMessage()"
       [class.border-red-500]="extractedData() && errorMessage()"
     >
       @if (!extractedData()) {
       <!-- Full Upload Section - When no results -->
-      <div class="am-upload-form">
+      <div class="am-upload-form pb-2 md:pb-0">
         <!-- Header -->
-        <div class="text-center mb-8">
-          <h1 class="text-3xl font-bold text-gray-900 max-w-lg mx-auto">
+        <div class="text-center mb-4 md:mb-8 mt-4 md:mt-0">
+          <h1
+            class="text-2xl md:text-3xl font-bold text-gray-700 max-w-lg mx-auto"
+          >
             Upload a watershed plan PDF to extract structured data
           </h1>
         </div>
@@ -260,7 +262,7 @@
           </button>
 
           @if (!isProcessing()) {
-          <p class="mt-3 text-gray-500">or drop a file</p>
+          <p class="mt-3 hidden md:block text-gray-500">or drop a file</p>
           } @if (selectedFile() && isProcessing()) {
           <p class="mt-5 text-gray-700">
             Extracting data from
@@ -341,8 +343,9 @@
               d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <h2 class="text-xl font-semibold text-green-600">
-            Extraction complete!
+          <h2 class="text-xl md:text-xl font-semibold text-green-600">
+            <span class="hidden md:inline">Extraction complete!</span>
+            <span class="md:hidden">Complete!</span>
           </h2>
           }
         </div>
@@ -376,7 +379,12 @@
                 d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z"
               />
             </svg>
-            @if (errorMessage()) { Try another PDF } @else { Upload another PDF
+            @if (errorMessage()) {
+            <span class="hidden sm:inline">Try another PDF</span>
+            <span class="sm:hidden">Try another</span>
+            } @else {
+            <span class="hidden sm:inline">Upload another PDF</span>
+            <span class="sm:hidden">Upload another</span>
             }
           </button>
         </div>
