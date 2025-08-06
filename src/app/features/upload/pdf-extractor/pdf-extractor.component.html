@@ -296,7 +296,7 @@
           } @else {
           <!-- Success state -->
           <svg
-            class="w-6 h-6 text-green-500 mr-3"
+            class="w-6 h-6 text-green-500 mr-2"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -308,7 +308,7 @@
               d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <h2 class="text-xl md:text-xl font-semibold text-green-600">
+          <h2 class="text-lg md:text-xl font-semibold text-green-600">
             <span class="hidden md:inline">Extraction complete!</span>
             <span class="md:hidden">Complete!</span>
           </h2>
@@ -351,7 +351,10 @@
       <!-- Extraction Results Section -->
       <div class="space-y-6">
         <div class="flex justify-between items-center">
-          <h2 class="text-2xl font-bold text-gray-900">Extraction Results</h2>
+          <h2 class="font-bold text-gray-900">
+            <span class="text-2xl hidden sm:inline">Extraction Results</span>
+            <span class="text-2xl sm:hidden">Results</span>
+          </h2>
 
           <!-- Export Button -->
           <p-splitButton
@@ -362,20 +365,21 @@
             [model]="exportMenuItems"
             (onClick)="exportData('json')"
             size="small"
+            class="-mr-2 md:mr-0"
           ></p-splitButton>
         </div>
 
         <!-- Document Details -->
         <div class="am-results-document-details">
           <h3 class="text-lg font-semibold mb-4">Document Details</h3>
-          <div class="pl-4">
+          <div class="pl-2 md:pl-4">
             <div class="space-y-2">
               <p class="text-sm">
-                <span class="font-medium">File Name:</span>
+                <span class="font-medium">File:</span>
                 <span class="ml-2">{{ uploadedFileInfo()!.originalName }}</span>
               </p>
               <p class="text-sm">
-                <span class="font-medium">File Size:</span>
+                <span class="font-medium">Size:</span>
                 <span class="ml-2"
                   >{{
                     (uploadedFileInfo()!.size / 1024 / 1024).toFixed(2)
@@ -385,7 +389,7 @@
               </p>
               @if (extractedData()!.reportSummary?.watershedName) {
               <p class="text-sm">
-                <span class="font-medium">Watershed Name:</span>
+                <span class="font-medium">Watershed:</span>
                 <span class="ml-2">{{
                   extractedData()!.reportSummary!.watershedName
                 }}</span>
@@ -427,7 +431,7 @@
         <!-- Structured Data Display with Tabs -->
         @if (extractedData()) {
         <div class="am-results-structured-data mt-2">
-          <h3 class="text-lg font-semibold mb-4">Plan Details</h3>
+          <h3 class="text-lg font-semibold mb-2">Plan Details</h3>
 
           <!-- PrimeNG TabView -->
           <p-tabView [scrollable]="true" class="am-extract-result-tabs">
